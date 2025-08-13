@@ -21,11 +21,7 @@ export function HeroSection() {
 
       <div className="container mx-auto px-4 py-20 text-center relative z-10">
         <div className="max-w-4xl mx-auto animate-fade-in-up">
-          {/* Badge */}
-          <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-8">
-            <Sparkles className="w-4 h-4 text-white" />
-            <span className="text-white text-sm font-medium">Diseños Exclusivos 2024</span>
-          </div>
+          
 
           {/* Main Heading */}
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight">
