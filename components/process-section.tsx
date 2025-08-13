@@ -28,7 +28,7 @@ const steps = [
 ]
 
 export function ProcessSection() {
-  const whatsappQuoteUrl = "https://wa.me/TUNUMERO?text=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20un%20dise%C3%B1o%20de%20invitaci%C3%B3n%20digital."
+  const whatsappQuoteUrl = "https://wa.me/8111230266?text=Hola%2C%20me%20gustar%C3%ADa%20cotizar%20un%20dise%C3%B1o%20de%20invitaci%C3%B3n%20digital."
   
   return (
     <section id="proceso" className="py-20 bg-gradient-to-br from-[#F8BBD9]/20 to-[#D4AF37]/20">

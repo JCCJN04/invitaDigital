@@ -80,9 +80,7 @@ export function Header() {
                   {item.label}
                 </a>
               ))}
-              <Button className="bg-[#D4AF37] hover:bg-[#B8941F] text-white px-8 py-4 rounded-full font-medium mt-6 text-lg">
-                Contáctame
-              </Button>
+              
             </nav>
           </div>
         )}

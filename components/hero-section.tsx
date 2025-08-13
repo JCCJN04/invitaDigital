@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Sparkles } from "lucide-react"
 
 export function HeroSection() {
-  const whatsappUrl = "https://wa.me/TUNUMERO?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20un%20dise%C3%B1o."
+  const whatsappUrl = "https://wa.me/8111230266?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20un%20dise%C3%B1o."
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-hero-gradient">

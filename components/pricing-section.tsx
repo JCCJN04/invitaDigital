@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { Check, Crown, Sparkles, Zap } from "lucide-react"
+import { Check, Crown, Sparkles, Zap, XIcon } from "lucide-react"
 
 const plans = [
   {
@@ -11,12 +11,13 @@ const plans = [
     popular: false,
     description: "Perfecto para eventos íntimos",
     features: [
-      "hasta 8 fotos",
-      "Maximo 2 ligas",
-      "Hasta 2 revisiones",
-      "qr basico",
+      { text: "Hasta 8 fotos", included: true },
+      { text: "Máximo 2 ligas", included: true },
+      { text: "Hasta 2 revisiones", included: true },
+      { text: "QR básico", included: true },
+      { text: "Animaciones incluidas", included: false },
+      { text: "Hasta 1 canción", included: false },
     ],
-    
   },
   {
     name: "Premium",
@@ -26,16 +27,14 @@ const plans = [
     popular: true,
     description: "La opción más elegida",
     features: [
-      "Todo lo de Básico",
-      "Hasta 16 fotos",
-      "Hasta 5 ligas",
-      "4 Revisiones",
-      "Diseño 100% personalizado",
-      "Maximo 4 revisiones",
-      "Animaciones incluidas",
-      "Versión para redes sociales",
-      "qr personalizado",
-      "hasta 1 cancion"
+      { text: "Todo lo de Básico", included: true },
+      { text: "Hasta 16 fotos", included: true },
+      { text: "Hasta 5 ligas", included: true },
+      { text: "4 Revisiones", included: true },
+      { text: "Diseño 100% personalizado", included: true },
+      { text: "Animaciones incluidas", included: true },
+      { text: "QR personalizado", included: true },
+      { text: "Hasta 1 canción", included: true },
     ],
   },
   {
@@ -46,12 +45,11 @@ const plans = [
     popular: false,
     description: "Para eventos extraordinarios",
     features: [
-      "Todo lo de Premium",
-      "fotos ilimitadas",
-      "Ligas ilimitadas",
-      "Revisiones ilimitadas",
-      "Códigos QR personalizados",
-      "hasta 3 canciones",
+      { text: "Todo lo de Premium", included: true },
+      { text: "Hasta 40 fotos", included: true },
+      { text: "Ligas ilimitadas", included: true },
+      { text: "8 Revisiones", included: true },
+      { text: "Hasta 3 canciones", included: true },
     ],
   },
 ]
@@ -69,7 +67,7 @@ export function PricingSection() {
           {/* Limited Time Offer */}
           <div className="inline-flex items-center space-x-2 bg-red-100 text-red-800 px-4 py-2 rounded-full mb-8">
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-            <span className="font-medium">Oferta Especial: 40% de descuento - Solo por tiempo limitado</span>
+            <span className="font-medium">Descuentos en los planes - Solo por tiempo limitado</span>
           </div>
         </div>
 
@@ -116,8 +114,12 @@ export function PricingSection() {
                 <ul className="space-y-4 mb-8">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">
-                      <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">{feature}</span>
+                      {feature.included ? (
+                        <Check className="w-5 h-5 text-green-500 mr-3 flex-shrink-0" />
+                      ) : (
+                        <XIcon className="w-5 h-5 text-red-500 mr-3 flex-shrink-0" />
+                      )}
+                      <span className="text-gray-700">{feature.text}</span>
                     </li>
                   ))}
                 </ul>

@@ -72,7 +72,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-[#D4AF37]" />
-                <span className="text-gray-300">+52 55 1234 5678</span>
+                <span className="text-gray-300">+52 81 1123 0266</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-[#D4AF37]" />
@@ -80,7 +80,7 @@ export function Footer() {
               </li>
               <li className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-[#D4AF37]" />
-                <span className="text-gray-300">Ciudad de México, México</span>
+                <span className="text-gray-300">Monterrey, Nuevo león, México</span>
               </li>
             </ul>
           </div>
@@ -89,7 +89,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2024 InvitaDigital. Todos los derechos reservados.</p>
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">© 2025 InvitaDigital. Todos los derechos reservados.</p>
             <div className="flex space-x-6 text-sm">
               <a href="#" className="text-gray-400 hover:text-[#D4AF37] transition-colors">
                 Términos y Condiciones
