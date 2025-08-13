@@ -1,3 +1,5 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Check, Crown, Sparkles, Zap, XIcon } from "lucide-react"
@@ -55,6 +57,11 @@ const plans = [
 ]
 
 export function PricingSection() {
+  const getWhatsappUrl = (planName) => {
+    const message = `Hola, me interesa el plan de invitaciones digitales "${planName}".`
+    return `https://wa.me/8111230266?text=${encodeURIComponent(message)}`
+  }
+
   return (
     <section id="precios" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
@@ -67,7 +74,7 @@ export function PricingSection() {
           {/* Limited Time Offer */}
           <div className="inline-flex items-center space-x-2 bg-red-100 text-red-800 px-4 py-2 rounded-full mb-8">
             <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-            <span className="font-medium">Descuentos en los planes - Solo por tiempo limitado</span>
+            <span className="font-medium">Precios con descuento por tiempo limitado</span>
           </div>
         </div>
 
@@ -125,15 +132,17 @@ export function PricingSection() {
                 </ul>
 
                 {/* CTA Button */}
-                <Button
-                  className={`w-full py-3 rounded-full font-semibold ${
-                    plan.popular
-                      ? "bg-[#D4AF37] hover:bg-[#B8941F] text-white"
-                      : "bg-gray-800 hover:bg-gray-700 text-white"
-                  }`}
-                >
-                  Elegir {plan.name}
-                </Button>
+                <a href={getWhatsappUrl(plan.name)} target="_blank" rel="noopener noreferrer">
+                  <Button
+                    className={`w-full py-3 rounded-full font-semibold ${
+                      plan.popular
+                        ? "bg-[#D4AF37] hover:bg-[#B8941F] text-white"
+                        : "bg-gray-800 hover:bg-gray-700 text-white"
+                    }`}
+                  >
+                    Elegir {plan.name}
+                  </Button>
+                </a>
               </div>
             </div>
           ))}

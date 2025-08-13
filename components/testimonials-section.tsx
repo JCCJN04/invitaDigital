@@ -7,7 +7,7 @@ const testimonials = [
     rating: 5,
     comment:
       "Increíble servicio! La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/persona2.jpeg?height=80&width=80",
   },
   {
     name: "Ana Rodríguez",
@@ -15,7 +15,7 @@ const testimonials = [
     rating: 5,
     comment:
       "El proceso fue súper fácil y rápido. En menos de un día tenía mi invitación perfecta. ¡Totalmente recomendado!",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/persona1.jpeg?height=80&width=80",
   },
   {
     name: "Carlos Mendoza",
@@ -23,14 +23,14 @@ const testimonials = [
     rating: 5,
     comment:
       "Excelente atención al cliente y diseños hermosos. La invitación digital fue un éxito total en nuestro baby shower.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/persona3.jpeg?height=80&width=80",
   },
   {
     name: "Sofía Martín",
     event: "Cumpleaños",
     rating: 5,
     comment: "Calidad premium a precio increíble. El diseño superó mis expectativas y el proceso fue muy profesional.",
-    image: "/placeholder.svg?height=80&width=80",
+    image: "/persona4.jpeg?height=80&width=80",
   },
 ]
 
@@ -43,7 +43,7 @@ export function TestimonialsSection() {
             Lo que Dicen Nuestros Clientes
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Miles de clientes satisfechos han confiado en nosotros para sus momentos más especiales
+            Clientes satisfechos han confiado en nosotros para sus momentos más especiales
           </p>
         </div>
 
@@ -82,19 +82,16 @@ export function TestimonialsSection() {
         {/* Trust Indicators */}
         <div className="mt-16 text-center">
           <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#F8BBD9]/10 rounded-2xl p-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <div className="text-3xl font-bold text-[#D4AF37] mb-2">5,000+</div>
+                <div className="text-3xl font-bold text-[#D4AF37] mb-2">5+</div>
                 <div className="text-gray-600">Invitaciones Entregadas</div>
               </div>
               <div>
-                <div className="text-3xl font-bold text-[#D4AF37] mb-2">98%</div>
+                <div className="text-3xl font-bold text-[#D4AF37] mb-2">100%</div>
                 <div className="text-gray-600">Satisfacción del Cliente</div>
               </div>
-              <div>
-                <div className="text-3xl font-bold text-[#D4AF37] mb-2">24h</div>
-                <div className="text-gray-600">Tiempo de Entrega</div>
-              </div>
+              
             </div>
           </div>
         </div>

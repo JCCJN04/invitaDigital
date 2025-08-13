@@ -8,6 +8,8 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
+  const whatsappUrl = "https://wa.me/8111230266?text=Hola%2C%20me%20gustar%C3%ADa%20contactar%20con%20ustedes."
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
@@ -37,7 +39,7 @@ export function Header() {
             <div className="w-10 h-10 bg-hero-gradient rounded-full flex items-center justify-center">
               <Heart className="w-6 h-6 text-white" />
             </div>
-            <span className="text-xl font-serif font-bold text-gray-800">InvitaDigital</span>
+            <span className="text-xl font-serif font-bold text-gray-800">InvitacionesDigitalesMty</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -55,8 +57,10 @@ export function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-[#D4AF37] hover:bg-[#B8941F] text-white px-6 py-2 rounded-full font-medium">
-              Contáctame
+            <Button className="bg-[#D4AF37] hover:bg-[#B8941F] text-white px-6 py-2 rounded-full font-medium" asChild>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                    Contáctame
+                </a>
             </Button>
           </div>
 
@@ -80,7 +84,11 @@ export function Header() {
                   {item.label}
                 </a>
               ))}
-              
+              <Button className="bg-[#D4AF37] hover:bg-[#B8941F] text-white px-8 py-4 rounded-full font-medium mt-6 text-lg" asChild>
+                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                    Contáctame
+                </a>
+            </Button>
             </nav>
           </div>
         )}
