@@ -61,18 +61,14 @@ export function HeroSection() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 mt-16 max-w-2xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-16 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">5,000+</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">5+</div>
               <div className="text-white/80 text-sm">Invitaciones Creadas</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">98%</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">100%</div>
               <div className="text-white/80 text-sm">Clientes Satisfechos</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">24h</div>
-              <div className="text-white/80 text-sm">Entrega Máxima</div>
             </div>
           </div>
         </div>

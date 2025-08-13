@@ -10,13 +10,13 @@ const benefits = [
   {
     icon: Palette,
     title: "Diseño Artesanal",
-    description: "Cada invitación es diseñada a mano especialmente para tu evento. Trabajo artesanal y único.",
+    description: "Cada invitación es diseñada a mano especialmente para tu evento.",
     color: "text-purple-600",
   },
   {
     icon: Zap,
     title: "Entrega Rápida",
-    description: "Recibe tu diseño personalizado en máximo 24 horas. Servicio profesional y eficiente.",
+    description: "Recibe tu invitación digital rapido y facil. Servicio profesional y eficiente.",
     color: "text-yellow-600",
   },
   {
@@ -28,13 +28,13 @@ const benefits = [
   {
     icon: DollarSign,
     title: "Súper Económico",
-    description: "Hasta 70% más barato que invitaciones físicas. Calidad premium, precio justo.",
+    description: "Hasta 85% más barato que invitaciones físicas. Calidad premium, precio justo.",
     color: "text-green-600",
   },
   {
     icon: Clock,
     title: "Disponible 24/7",
-    description: "Crea y modifica tus invitaciones cuando quieras, donde quieras.",
+    description: "Mucho mas facil y rapido que las invitaciones fisica.",
     color: "text-indigo-600",
   },
 ]
