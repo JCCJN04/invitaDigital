@@ -1,7 +1,7 @@
 import { Star, Quote } from "lucide-react"
 
 const testimonials = [
-  {
+  /*{
     name: "María González",
     event: "Boda",
     rating: 5,
@@ -24,14 +24,14 @@ const testimonials = [
     comment:
       "Excelente atención al cliente y diseños hermosos. La invitación digital fue un éxito total en nuestro baby shower.",
     image: "/persona3.jpeg?height=80&width=80",
-  },
+  },*/
   {
-    name: "Sofía Martín",
-    event: "Cumpleaños",
+    name: "Sandra Castillo",
+    event: "XV Años",
     rating: 5,
     comment: "Calidad premium a precio increíble. El diseño superó mis expectativas y el proceso fue muy profesional.",
     image: "/persona4.jpeg?height=80&width=80",
-  },
+  }
 ]
 
 export function TestimonialsSection() {
@@ -84,7 +84,7 @@ export function TestimonialsSection() {
           <div className="bg-gradient-to-r from-[#D4AF37]/10 to-[#F8BBD9]/10 rounded-2xl p-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <div className="text-3xl font-bold text-[#D4AF37] mb-2">5+</div>
+                <div className="text-3xl font-bold text-[#D4AF37] mb-2">1</div>
                 <div className="text-gray-600">Invitaciones Entregadas</div>
               </div>
               <div>

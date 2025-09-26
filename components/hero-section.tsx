@@ -63,7 +63,7 @@ export function HeroSection() {
           {/* Stats */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mt-16 max-w-2xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-white mb-2">5+</div>
+              <div className="text-3xl md:text-4xl font-bold text-white mb-2">1</div>
               <div className="text-white/80 text-sm">Invitaciones Creadas</div>
             </div>
             <div className="text-center">
