@@ -70,27 +70,33 @@ export function GallerySection() {
       : designs.filter((design) => design.category.includes(activeCategory))
 
   return (
-    <section id="galeria" className="py-20 bg-white">
+    <section id="galeria" className="py-24 bg-gradient-to-b from-white via-[#f4f2ff] to-white relative overflow-hidden">
+      {/* Decorative elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-gradient-to-br from-[#6258FF]/12 to-transparent rounded-full blur-3xl -z-10"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-[#ff8dc7]/12 to-transparent rounded-full blur-3xl -z-10"></div>
+
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-serif font-bold text-gray-800 mb-6">Diseños que Inspiran</h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Explora nuestra colección de invitaciones digitales premium, cada una diseñada para hacer tu evento
-            inolvidable
+        <div className="text-center mb-20 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#111033] mb-6">Diseños que Inspiran</h2>
+          <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+            Explora nuestra colección de invitaciones digitales premium, cada una diseñada para hacer tu evento inolvidable
           </p>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-            {categories.map((category) => (
+          <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
+            {categories.map((category, index) => (
               <Button
                 key={category}
                 variant={activeCategory === category ? "default" : "outline"}
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-full px-4 py-3 sm:px-6 sm:py-2 text-sm sm:text-base ${
+                className={`rounded-full px-5 py-2 sm:px-7 sm:py-3 text-sm sm:text-base font-medium transition-all duration-300 ${
                   activeCategory === category
-                    ? "bg-[#D4AF37] hover:bg-[#B8941F] text-white"
-                    : "border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white"
+                    ? "bg-gradient-to-r from-[#6258FF] via-[#7e6bff] to-[#ff8dc7] hover:shadow-lg hover:shadow-[#6258FF]/50 text-white shadow-lg"
+                    : "border-2 border-[#6258FF] text-[#6258FF] hover:bg-[#6258FF] hover:text-white hover:border-[#6258FF] transform hover:scale-105"
                 }`}
+                style={{
+                  animation: `slideInUp 0.5s ease-out ${index * 0.05}s both`,
+                }}
               >
                 {category}
               </Button>
@@ -100,15 +106,25 @@ export function GallerySection() {
 
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredDesigns.map((design) => (
-            <div key={design.id} className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover-lift">
-              
+          {filteredDesigns.map((design, index) => (
+            <div
+              key={design.id}
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 border border-[#ece9ff] hover:border-[#6258FF]/40"
+              style={{
+                animation: `scaleIn 0.5s ease-out ${index * 0.1}s both`,
+              }}
+            >
+              {/* Background gradient on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-[#6258FF]/6 via-transparent to-[#ff8dc7]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0"></div>
+
               {design.id === "live-preview" ? (
                 // Enlaza toda la tarjeta al sitio web de muestra
-                <a href={design.url} target="_blank" rel="noopener noreferrer" className="block w-full h-full">
+                <a href={design.url} target="_blank" rel="noopener noreferrer" className="block w-full h-full relative z-10">
                   {/* Badge */}
                   {design.popular && (
-                    <Badge className="absolute top-4 left-4 z-10 bg-[#D4AF37] text-white">Más Popular</Badge>
+                    <Badge className="absolute top-4 left-4 z-20 bg-gradient-to-r from-[#6258FF] via-[#7e6bff] to-[#ff8dc7] text-white shadow-lg">
+                      ⭐ Más Popular
+                    </Badge>
                   )}
 
                   {/* Imagen de previsualización */}
@@ -116,26 +132,25 @@ export function GallerySection() {
                     <img
                       src={design.image || "/placeholder.svg"}
                       alt={design.title}
-                      className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500"></div>
                   </div>
 
                   {/* Contenido de la tarjeta */}
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-semibold text-gray-800">{design.title}</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        {design.category.join(", ")}
+                  <div className="p-6 relative z-10">
+                    <div className="flex flex-col gap-3">
+                      <h3 className="text-xl font-semibold text-[#1f1c4f] group-hover:text-[#6258FF] transition-colors">{design.title}</h3>
+                      <Badge variant="secondary" className="text-xs w-fit bg-gradient-to-r from-[#6258FF]/12 to-[#ff8dc7]/16 text-[#433d7d] border-0">
+                        {design.category.filter(c => c !== "Todos").join(", ")}
                       </Badge>
                     </div>
                   </div>
 
                   {/* Overlay con el botón de "Ver en Vivo" */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8 z-20">
                     <Button
-                      variant="outline"
-                      className="border-white text-white hover:bg-white hover:text-gray-800 bg-transparent px-6 py-3 text-base"
+                      className="border-white bg-white/20 text-white hover:bg-white hover:text-[#111033] backdrop-blur px-8 py-3 text-base font-semibold transition-all duration-300 transform hover:scale-110"
                       asChild
                     >
                       <span className="flex items-center gap-2">
@@ -149,28 +164,29 @@ export function GallerySection() {
                 // Código para los otros diseños de la galería
                 <>
                   {design.popular && (
-                    <Badge className="absolute top-4 left-4 z-10 bg-[#D4AF37] text-white">Más Popular</Badge>
+                    <Badge className="absolute top-4 left-4 z-10 bg-gradient-to-r from-[#6258FF] via-[#7e6bff] to-[#ff8dc7] text-white shadow-lg">
+                      ⭐ Más Popular
+                    </Badge>
                   )}
                   <div className="relative overflow-hidden">
                     <img
                       src={design.image || "/placeholder.svg"}
                       alt={design.title}
-                      className="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-80 object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-500"></div>
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-center justify-between mb-3">
-                      <h3 className="text-xl font-semibold text-gray-800">{design.title}</h3>
-                      <Badge variant="secondary" className="text-xs">
-                        {design.category.join(", ")}
+                  <div className="p-6 relative z-10">
+                    <div className="flex flex-col gap-3">
+                      <h3 className="text-xl font-semibold text-[#1f1c4f] group-hover:text-[#6258FF] transition-colors">{design.title}</h3>
+                      <Badge variant="secondary" className="text-xs w-fit bg-gradient-to-r from-[#6258FF]/12 to-[#ff8dc7]/16 text-[#433d7d] border-0">
+                        {design.category.filter(c => c !== "Todos").join(", ")}
                       </Badge>
                     </div>
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-6">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end justify-center pb-8 z-20">
                     <Button
-                      variant="outline"
-                      className="border-white text-white hover:bg-white hover:text-gray-800 bg-transparent px-6 py-3 text-base"
+                      className="border-white bg-white/20 text-white hover:bg-white hover:text-[#111033] backdrop-blur px-8 py-3 text-base font-semibold transition-all duration-300 transform hover:scale-110"
                     >
                       Vista Previa
                     </Button>
@@ -182,16 +198,16 @@ export function GallerySection() {
         </div>
 
         {/* View More Button */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-16 animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
           <Button
             size="lg"
-            variant="outline"
-            className="border-[#D4AF37] text-[#D4AF37] hover:bg-[#D4AF37] hover:text-white px-8 py-3 rounded-full font-semibold bg-transparent"
+            className="border-2 border-[#6258FF] bg-white text-[#6258FF] hover:bg-gradient-to-r hover:from-[#6258FF] hover:via-[#7e6bff] hover:to-[#ff8dc7] hover:text-white px-10 py-3 rounded-full font-semibold transition-all duration-300 transform hover:scale-105"
           >
             Ver Catálogo Completo
           </Button>
         </div>
       </div>
+
     </section>
   )
 }
