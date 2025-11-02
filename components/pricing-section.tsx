@@ -165,18 +165,7 @@ export function PricingSection() {
         </div>
 
         {/* Guarantee */}
-        <div className="text-center mt-16">
-          <div className="bg-gradient-to-br from-white to-[#f8f7ff] rounded-2xl p-8 shadow-lg max-w-2xl mx-auto border border-[#ece9ff]">
-            <div className="w-16 h-16 bg-[#e0fce6] rounded-full flex items-center justify-center mx-auto mb-6">
-              <Check className="w-8 h-8 text-[#22c55e]" />
-            </div>
-            <h3 className="text-2xl font-serif font-bold text-[#111033] mb-4">Garantía de Satisfacción 100%</h3>
-            <p className="text-gray-600">
-              Si no quedas completamente satisfecho con tu invitación, te devolvemos tu dinero. Sin preguntas, sin
-              complicaciones.
-            </p>
-          </div>
-        </div>
+        
       </div>
     </section>
   )

@@ -27,7 +27,7 @@ export function HeroSection() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/80 px-4 py-2 shadow-lg backdrop-blur mb-8 group hover:bg-white transition-all duration-300 hover:border-[#6258FF]">
               <Sparkles className="h-4 w-4 text-[#6258FF] group-hover:rotate-180 transition-transform duration-500" />
-              <span className="text-sm font-medium text-gray-700">Diseños digitales personalizados para cada celebración</span>
+              <span className="text-sm font-medium text-gray-700">🔥 Oferta especial: Diseño de prueba GRATIS + Descuento por lanzamiento</span>
             </div>
 
             {/* Main Heading */}
@@ -38,7 +38,7 @@ export function HeroSection() {
 
             {/* Description */}
             <p className="mt-8 text-lg text-gray-600 md:text-xl md:leading-relaxed">
-              Creamos invitaciones interactivas, elegantes y memorables que capturan la esencia de tu evento. Menos papelería, más impacto y una experiencia premium para tus invitados.
+              Transforma tu evento en una experiencia digital inolvidable. Invitaciones interactivas con animaciones, música y confirmación instantánea. <strong className="text-[#6258FF]">Ahorra hasta 70% vs invitaciones impresas</strong> y cuida el medio ambiente. Entrega en 24 horas garantizada.
             </p>
 
             {/* CTA Buttons */}

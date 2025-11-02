@@ -1,37 +1,60 @@
 import { Star, Quote } from "lucide-react"
 
 const testimonials = [
-  /*{
+  {
     name: "María González",
     event: "Boda",
     rating: 5,
     comment:
-      "Increíble servicio! La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño.",
-    image: "/persona2.jpeg?height=80&width=80",
+      "¡Increíble servicio! La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda en Monterrey.",
+    image: "/persona1.jpeg?height=80&width=80",
+    location: "San Pedro, NL",
   },
   {
     name: "Ana Rodríguez",
     event: "XV Años",
     rating: 5,
     comment:
-      "El proceso fue súper fácil y rápido. En menos de un día tenía mi invitación perfecta. ¡Totalmente recomendado!",
-    image: "/persona1.jpeg?height=80&width=80",
+      "El proceso fue súper fácil y rápido. En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. ¡Totalmente recomendado! Ahorré mucho comparado con invitaciones impresas.",
+    image: "/persona2.jpeg?height=80&width=80",
+    location: "Monterrey, NL",
   },
   {
     name: "Carlos Mendoza",
     event: "Baby Shower",
     rating: 5,
     comment:
-      "Excelente atención al cliente y diseños hermosos. La invitación digital fue un éxito total en nuestro baby shower.",
+      "Excelente atención al cliente y diseños hermosos. La invitación digital fue un éxito total en nuestro baby shower. Pudimos compartirla por WhatsApp al instante.",
     image: "/persona3.jpeg?height=80&width=80",
-  },*/
+    location: "Guadalupe, NL",
+  },
   {
     name: "Sandra Castillo",
     event: "XV Años",
     rating: 5,
-    comment: "Calidad premium a precio increíble. El diseño superó mis expectativas y el proceso fue muy profesional.",
+    comment:
+      "Calidad premium a precio increíble. El diseño superó mis expectativas y el proceso fue muy profesional. Las revisiones ilimitadas me encantaron.",
     image: "/persona4.jpeg?height=80&width=80",
-  }
+    location: "Apodaca, NL",
+  },
+  {
+    name: "Roberto Salinas",
+    event: "Boda",
+    rating: 5,
+    comment:
+      "Diseño espectacular con QR personalizado. Todos nuestros invitados confirmaron asistencia digital. Ahorramos tiempo y dinero, además de cuidar el medio ambiente.",
+    image: "/placeholder.svg?height=80&width=80",
+    location: "Monterrey, NL",
+  },
+  {
+    name: "Lucia Fernández",
+    event: "Cumpleaños",
+    rating: 5,
+    comment:
+      "¡Me encantó! La invitación para el cumpleaños de mi hijo quedó hermosa. El equipo fue super atento y las animaciones le dieron un toque especial.",
+    image: "/placeholder.svg?height=80&width=80",
+    location: "Santa Catarina, NL",
+  },
 ]
 
 export function TestimonialsSection() {
@@ -93,6 +116,7 @@ export function TestimonialsSection() {
                   <div>
                     <h4 className="font-semibold text-[#1f1c4f] group-hover:text-[#6258FF] transition-colors">{testimonial.name}</h4>
                     <p className="text-xs text-gray-500">{testimonial.event}</p>
+                    {testimonial.location && <p className="text-xs text-gray-400">📍 {testimonial.location}</p>}
                   </div>
                 </div>
               </div>
@@ -106,13 +130,13 @@ export function TestimonialsSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="text-center group">
                 <div className="text-5xl font-bold text-brand-gradient mb-3 group-hover:scale-110 transition-transform">
-                  1
+                  120+
                 </div>
-                <div className="text-gray-600 font-medium group-hover:text-[#6258FF] transition-colors">Invitaciones Entregadas</div>
+                <div className="text-gray-600 font-medium group-hover:text-[#6258FF] transition-colors">Eventos Exitosos</div>
               </div>
               <div className="text-center group">
                 <div className="text-5xl font-bold text-brand-gradient mb-3 group-hover:scale-110 transition-transform">
-                  100%
+                  98%
                 </div>
                 <div className="text-gray-600 font-medium group-hover:text-[#6258FF] transition-colors">Satisfacción del Cliente</div>
               </div>

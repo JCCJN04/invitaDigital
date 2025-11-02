@@ -6,7 +6,9 @@ import { ProcessSection } from "@/components/process-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { PricingSection } from "@/components/pricing-section"
 import { FAQSection } from "@/components/faq-section"
+import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { WhatsAppWidget } from "@/components/whatsapp-widget"
 
 export default function HomePage() {
   return (
@@ -19,7 +21,9 @@ export default function HomePage() {
       <TestimonialsSection />
       <PricingSection />
       <FAQSection />
+      <ContactSection />
       <Footer />
+      <WhatsAppWidget />
     </main>
   )
 }
