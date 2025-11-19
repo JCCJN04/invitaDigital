@@ -29,65 +29,64 @@ export function Header() {
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-  isScrolled ? "bg-gradient-to-b from-white via-white/98 to-white/95 backdrop-blur-xl shadow-2xl border-b border-[#d8d5f0]/60" : "bg-transparent"
+        isScrolled ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-200/50" : "bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4 py-4">
-        <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center space-x-3 group cursor-pointer">
-            <div className="w-10 h-10 bg-gradient-to-br from-[#6258FF] to-[#ff8dc7] rounded-full flex items-center justify-center shadow-lg group-hover:shadow-xl transition-shadow">
-              <Heart className="w-5 h-5 text-white" />
+      <div className="container mx-auto px-6 md:px-10">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo - Minimalista */}
+          <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <div className="w-8 h-8 bg-[#1e3a8a] rounded-full flex items-center justify-center">
+              <Heart className="w-4 h-4 text-white" />
             </div>
-            <span className="text-lg font-serif font-bold text-brand-gradient">InvitacionesDigitalesMty</span>
-          </div>
+            <span className="hidden sm:inline text-sm font-semibold text-[#1f2937]">Invitaciones</span>
+          </a>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden md:flex items-center gap-8">
             {menuItems.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
-                className="relative text-gray-700 hover:text-[#6258FF] transition-all duration-300 font-medium px-3 py-2 text-sm group"
+                className="text-gray-600 hover:text-[#1e3a8a] transition-colors text-sm font-medium"
               >
                 {item.label}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-[#6258FF] to-[#ff8dc7] group-hover:w-full transition-all duration-300"></span>
               </a>
             ))}
           </nav>
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button className="bg-gradient-to-r from-[#6258FF] via-[#7e6bff] to-[#ff8dc7] hover:shadow-lg hover:shadow-[#6258FF]/50 text-white px-6 py-2 rounded-full font-semibold transition-all duration-300 transform hover:-translate-y-0.5" asChild>
-                <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    Contáctame
-                </a>
+            <Button className="bg-[#1e3a8a] hover:bg-[#1e40af] text-white px-6 py-2 rounded-lg text-sm font-semibold transition-all" asChild>
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                Contáctame
+              </a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
-          <button className="md:hidden p-3 -m-1" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-            {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button className="md:hidden p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-6 border-t border-gray-200/50 animate-in fade-in slide-in-from-top-2 duration-300">
-            <nav className="flex flex-col space-y-3 mt-6">
+          <div className="md:hidden pb-4 border-t border-gray-200/50 animate-in fade-in slide-in-from-top-2 duration-300">
+            <nav className="flex flex-col gap-3 pt-4">
               {menuItems.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}
-                  className="text-gray-700 hover:text-[#6258FF] transition-all duration-300 font-medium py-2 text-base hover:pl-2"
+                  className="text-gray-600 hover:text-[#1e3a8a] transition-colors text-sm font-medium py-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
                 </a>
               ))}
-              <Button className="bg-gradient-to-r from-[#6258FF] via-[#7e6bff] to-[#ff8dc7] hover:shadow-lg text-white px-8 py-3 rounded-full font-semibold mt-4 text-base w-full transition-all duration-300" asChild>
+              <Button className="bg-[#1e3a8a] hover:bg-[#1e40af] text-white px-6 py-2 rounded-lg text-sm font-semibold mt-2 w-full transition-all" asChild>
                 <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    Contáctame
+                  Contáctame
                 </a>
               </Button>
             </nav>

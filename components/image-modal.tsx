@@ -82,7 +82,7 @@ export function ImageModal({ isOpen, onClose, imageSrc, imageAlt, title, categor
               href="https://wa.me/8111230266?text=Hola%2C%20me%20interesa%20este%20dise%C3%B1o"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-gradient-to-r from-[#6258FF] via-[#7e6bff] to-[#ff8dc7] hover:shadow-lg hover:shadow-[#6258FF]/50 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 transform hover:-translate-y-0.5 text-center"
+              className="bg-[#1e3a8a] hover:bg-[#1e40af] hover:shadow-lg hover:shadow-[#1e3a8a]/50 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 text-center"
             >
               Me Interesa Este Diseño
             </a>

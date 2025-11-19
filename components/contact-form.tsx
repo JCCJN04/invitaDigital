@@ -173,7 +173,7 @@ export function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-gradient-to-r from-[#6258FF] via-[#7e6bff] to-[#ff8dc7] hover:shadow-lg hover:shadow-[#6258FF]/50 text-white py-6 rounded-full font-semibold text-lg transition-all duration-300 transform hover:-translate-y-0.5"
+        className="w-full bg-[#1e3a8a] hover:bg-[#1e40af] hover:shadow-lg hover:shadow-[#1e3a8a]/50 text-white py-6 rounded-lg font-semibold text-lg transition-all duration-300"
       >
         {isSubmitting ? (
           <span className="flex items-center justify-center gap-2">
