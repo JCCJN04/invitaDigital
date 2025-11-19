@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Playfair_Display, Inter } from "next/font/google"
 import "./globals.css"
+import { Analytics } from "@vercel/analytics/react"
 import { GoogleAnalytics } from "@/components/analytics/google-analytics"
 import { FacebookPixel } from "@/components/analytics/facebook-pixel"
 
