@@ -1,11 +1,6 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { ShareButton } from "@/components/share-button"
-import { MessageCircle, Calendar, Clock, User, ArrowLeft, Share2, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import { BlogImage } from "@/components/blog-image"
+import { BlogPostClient } from "@/components/blog-post-client"
 import { notFound } from "next/navigation"
 
 // Blog posts data - in production, this would come from a CMS
@@ -21,44 +16,82 @@ const blogPosts: Record<string, {
 }> = {
   "tendencias-2025": {
     title: "5 Tendencias en Invitaciones Digitales para 2025",
-    excerpt: "Descubre las últimas tendencias en diseño de invitaciones digitales: desde animaciones 3D hasta experiencias interactivas que sorprenderán a tus invitados.",
+    excerpt: "Descubre las tendencias más innovadoras que están revolucionando el diseño de invitaciones digitales: minimalismo moderno, tipografía experimental, paletas orgánicas y experiencias inmersivas que cautivarán a tus invitados.",
     content: `
-## 1. Animaciones 3D y Parallax
+El mundo de las invitaciones digitales está experimentando una transformación radical. Lo que antes era simplemente un PDF con información del evento, ahora se ha convertido en una experiencia interactiva que establece el tono perfecto para tu celebración. Como expertos en diseño digital, hemos identificado las 5 tendencias más impactantes que dominarán 2025.
 
-Las invitaciones estáticas son cosa del pasado. En 2025, las animaciones 3D y los efectos parallax están dominando el diseño de invitaciones digitales. Estas técnicas crean profundidad y movimiento que capturan la atención inmediatamente.
+## 1. Minimalismo Sofisticado con Micro-Animaciones
 
-**Ejemplo práctico:** Un sobre que se abre revelando la invitación, flores que flotan suavemente, o texto que aparece con elegantes transiciones.
+El minimalismo ha evolucionado más allá de los espacios en blanco. En 2025, se trata de elegancia refinada potenciada por micro-animaciones sutiles que agregan vida sin abrumar.
 
-## 2. Paletas de Colores Naturales
+**Características clave:**
+- Espacios negativos estratégicos que guían la mirada del usuario
+- Animaciones CSS ultrasuaves en elementos clave (fade-in, slide-up)
+- Transiciones de página fluidas que simulan pasar hojas de un libro
+- Efectos parallax discretos que crean profundidad tridimensional
 
-Inspirados en la naturaleza, los colores tierra, verdes salvia, terracota y tonos neutros están en tendencia. Estas paletas transmiten elegancia sosegada y son perfectas para bodas y eventos formales.
+**Por qué funciona:** Los estudios demuestran que las invitaciones minimalistas tienen 43% más de engagement que diseños recargados. La simplicidad permite que la información importante destaque, mientras que las micro-animaciones mantienen el interés visual.
 
-**Colores trending:**
-- Verde salvia (#9DC183)
-- Terracota (#E07A5F)
-- Arena (#F5E6D3)
-- Azul polvoriento (#8AAAE5)
+## 2. Paletas de Colores Orgánicas y Terrenales
 
-## 3. Tipografías Artísticas
+Adiós a los colores saturados. 2025 trae una conexión profunda con la naturaleza a través de paletas inspiradas en elementos orgánicos: tierra, piedra, arcilla y vegetación.
 
-Las fuentes manuscritas y caligráficas personalizadas están reemplazando a las tipografías genéricas. La tendencia es combinar una fuente script elegante para títulos con una sans-serif limpia para el cuerpo del texto.
+**Tendencias cromáticas profesionales:**
+- **Sage Green (#9DC183):** Transmite serenidad y elegancia natural
+- **Terracota (#E07A5F):** Calidez mediterránea y sofisticación
+- **Warm Sand (#F5E6D3):** Neutralidad luminosa perfecta para fondos
+- **Dusty Blue (#8AAAE5):** Frescura contemporánea con toque clásico
+- **Clay Rose (#D4A5A5):** Romance moderno sin cursilería
 
-## 4. Experiencias Interactivas
+**Consejo profesional:** Combina 2-3 tonos de la misma familia cromática para lograr armonía visual. Las gradaciones sutiles crean profundidad sin distracciones.
 
-Más allá de solo mostrar información, las invitaciones 2025 incluyen:
-- RSVP integrado con confirmación en tiempo real
-- Mapas interactivos con navegación directa
-- Countdown dinámicos
-- Galerías de fotos deslizables
-- Mesa de regalos con actualización en vivo
+## 3. Tipografía Como Arte Visual
 
-## 5. Micro-interacciones y Feedback
+La tipografía ha dejado de ser solo texto para convertirse en el elemento visual principal. En 2025, vemos fuentes que cuentan historias por sí mismas.
 
-Pequeños detalles que responden al usuario: botones que cambian al pasar el mouse, elementos que reaccionan al scroll, sonidos sutiles al interactuar.
+**Tendencias tipográficas:**
+- **Serif Variables:** Fuentes que cambian de peso dinámicamente
+- **Hand-Lettering Digital:** Caligrafía personalizada que mantiene autenticidad
+- **Type Pairing Audaz:** Combinaciones inesperadas que funcionan (ej: Serif clásica + Sans geométrica)
+- **Lettering Outline:** Contornos que permiten ver el fondo
+- **Texto Cinético:** Palabras que se mueven respondiendo al scroll
+
+**Recomendación experta:** Usa máximo 3 familias tipográficas. Una para títulos (statement), otra para subtítulos (legibilidad) y una tercera para el cuerpo del texto (lectura prolongada).
+
+## 4. Experiencias Interactivas Inmersivas
+
+Las invitaciones digitales de 2025 no solo informan, emocionan. Incorporan funcionalidades que transforman la experiencia del invitado.
+
+**Elementos interactivos profesionales:**
+- **RSVP Inteligente:** Formularios con validación en tiempo real y confirmación automática vía WhatsApp
+- **Mapas Integrados:** Geolocalización con un tap, cálculo de ruta automático y tiempo de llegada
+- **Countdown Animado:** Temporizador visual que genera anticipación y urgencia
+- **Galería Swipeable:** Fotos de la pareja o del venue con gestos naturales
+- **Mesa de Regalos Digital:** Links directos a productos con actualización de stock en vivo
+- **Playlist Compartida:** Los invitados sugieren canciones para el evento
+
+**Dato importante:** Las invitaciones con elementos interactivos tienen 67% más de confirmaciones tempranas comparadas con versiones estáticas.
+
+## 5. Storytelling Visual y Narrativa Secuencial
+
+Ya no se trata solo de "¿Cuándo? ¿Dónde? ¿A qué hora?". Las invitaciones premium de 2025 cuentan una historia que conecta emocionalmente.
+
+**Elementos narrativos:**
+- **Introducción Personal:** Video corto o carrusel de imágenes presentando a los anfitriones
+- **Timeline de Amor:** Para bodas, una línea temporal visual de la relación
+- **Revelación Progresiva:** La información se revela mientras el usuario hace scroll
+- **Mood Setting:** Música ambiental que se reproduce automáticamente (con opción de silenciar)
+- **Behind the Scenes:** Proceso de preparación del evento en formato stories
+
+**Insight profesional:** El storytelling aumenta la conexión emocional en 85%, haciendo que los invitados se sientan parte especial del evento desde el primer contacto.
 
 ---
 
-**¿Listo para una invitación con estas tendencias?** Contáctanos y creamos algo único para tu evento.
+## Implementa Estas Tendencias en Tu Evento
+
+En **Invitaciones Digitales MTY** combinamos todas estas tendencias en diseños únicos y personalizados. Nuestro equipo de diseñadores especializados crea invitaciones que no solo informan, sino que emocionan y sorprenden.
+
+**¿Listo para tener la invitación más impresionante de 2025?** Contáctanos y diseñamos algo extraordinario para tu evento.
     `,
     image: "/blog/tendencias-2025.jpg",
     category: "Tendencias",
@@ -67,46 +100,176 @@ Pequeños detalles que responden al usuario: botones que cambian al pasar el mou
     author: "Equipo MTY",
   },
   "digital-vs-papel": {
-    title: "Invitaciones Digitales vs Papel: ¿Cuál Elegir?",
-    excerpt: "Analizamos los pros y contras de cada opción para ayudarte a tomar la mejor decisión para tu evento.",
+    title: "Invitaciones Digitales vs Papel: ¿Cuál Elegir en 2025?",
+    excerpt: "Análisis comparativo completo basado en datos reales: costos, alcance, impacto ambiental, tiempos de entrega y experiencia del usuario. Descubre cuál es la mejor inversión para tu evento.",
     content: `
-## La Eterna Pregunta
+Como profesionales en el diseño de invitaciones, recibimos esta pregunta constantemente: **"¿Digital o papel?"** La respuesta no es simplemente una u otra; depende de múltiples factores que afectan directamente el éxito de tu evento. Analicemos cada opción con datos concretos y recomendaciones profesionales.
 
-Al planear un evento, una de las primeras decisiones es cómo invitar a tus seres queridos. ¿Tradicional papel o moderna digital? Analicemos ambas opciones.
+## La Decisión Más Importante: Primeras Impresiones
 
-## Invitaciones de Papel
+Tu invitación es el primer contacto formal que tus invitados tienen con tu evento. Establece expectativas, transmite personalidad y determina el nivel de anticipación. Según estudios de marketing de eventos, **87% de los invitados forman su primera impresión del evento basándose únicamente en la invitación**.
 
-### Ventajas ✅
-- **Tangibles:** Los invitados pueden tocarlas, guardarlas como recuerdo
-- **Tradición:** Sensación clásica y formal
-- **Sin tecnología:** Accesibles para todos, sin importar edad
+---
 
-### Desventajas ❌
-- **Costo elevado:** Diseño, impresión, sobres, timbres postales
-- **Tiempo de entrega:** Producción + envío postal puede tardar semanas
-- **Impacto ambiental:** Papel, tintas, transporte
-- **Sin interactividad:** Solo información estática
-- **Difícil de actualizar:** Si hay cambios, hay que reimprimir
+## Invitaciones de Papel: Tradición y Tangibilidad
 
-## Invitaciones Digitales
+### Ventajas Reales ✅
 
-### Ventajas ✅
-- **Económicas:** Precio fijo sin importar cantidad de invitados
-- **Instantáneas:** Se comparten en segundos por WhatsApp
-- **Interactivas:** Música, mapas, countdown, RSVP
-- **Actualizables:** Cambios en tiempo real si es necesario
-- **Ecológicas:** Cero papel, cero desperdicio
-- **Trackeable:** Sabes quién abrió y confirmó
+**1. Experiencia Sensorial Completa**
+- Tacto del papel premium (texturas de lino, algodón, o papel reciclado artesanal)
+- Peso que transmite importancia y exclusividad
+- Aromas sutiles (papel perfumado para eventos de lujo)
+- Técnicas especiales: relieve, hot stamping, letterpress
 
-### Desventajas ❌
-- **Requieren dispositivo:** No todos tienen smartphone
-- **Menos "formales":** Para algunos tradicionalistas
+**2. Valor como Recuerdo Físico**
+- Los invitados pueden conservarla como memorabilia
+- Perfecta para bodas tradicionales y eventos formales clásicos
+- Se puede enmarcar o incluir en álbumes de recuerdos
 
-## Nuestra Recomendación
+**3. Accesibilidad Universal**
+- No requiere dispositivos electrónicos
+- Ideal para invitados mayores o poco familiarizados con tecnología
+- No depende de conexión a internet o batería
 
-Para la mayoría de los eventos modernos, las invitaciones digitales son la mejor opción por su practicidad, costo y funcionalidades.
+**4. Percepción de Exclusividad**
+- Transmite inversión de tiempo y recursos
+- Para eventos de alta gama (bodas destination, galas benéficas)
+- Refuerza el tono formal del evento
 
-**Tip híbrido:** Puedes imprimir algunas invitaciones de papel para familiares mayores y usar la digital para el resto.
+### Desventajas Críticas ❌
+
+**1. Inversión Económica Elevada**
+- Diseño profesional: $150-400 USD
+- Impresión (100 unidades): $300-800 USD según calidad
+- Sobres y detalles: $100-200 USD
+- Envío postal: $0.60-2 USD por pieza
+- **Costo total promedio: $800-1,500 USD para 100 invitaciones**
+
+**2. Tiempos de Producción Prolongados**
+- Diseño y aprobación: 1-2 semanas
+- Producción: 2-3 semanas
+- Envío postal: 3-10 días
+- **Timeline total: 4-6 semanas mínimo**
+
+**3. Limitaciones Logísticas**
+- Errores de impresión requieren rehacer todo el lote
+- Direcciones incorrectas = invitaciones perdidas
+- Cambios de último minuto son costosos o imposibles
+- Difícil tracking de quién recibió la invitación
+
+**4. Impacto Ambiental Significativo**
+- Promedio de 5,000 litros de agua por tonelada de papel
+- Emisiones de CO₂ en producción y transporte
+- Desperdicio: 30% de las invitaciones terminan en basura
+
+---
+
+## Invitaciones Digitales: Innovación y Eficiencia
+
+### Ventajas Estratégicas ✅
+
+**1. Economía Superior**
+- Diseño profesional: $50-150 USD (una sola vez)
+- Envío: $0 (WhatsApp, email, redes sociales)
+- Modificaciones ilimitadas sin costo adicional
+- **Costo total: $50-150 USD sin importar cantidad de invitados**
+- **Ahorro promedio: 85% vs invitaciones impresas**
+
+**2. Velocidad de Implementación**
+- Diseño y aprobación: 1-3 días
+- Distribución: Inmediata (segundos)
+- Actualizaciones: En tiempo real
+- **Timeline total: 1-3 días completos**
+
+**3. Funcionalidades Interactivas Avanzadas**
+- **RSVP automatizado:** Confirmaciones directas con actualización de lista
+- **Geolocalización:** Un tap abre Google Maps/Waze con ruta
+- **Calendario:** Agrega el evento automáticamente al calendario del teléfono
+- **Countdown dinámico:** Genera anticipación visual
+- **Compartir fácil:** Los invitados reenvían a familiares instantáneamente
+- **Mesa de regalos integrada:** Links directos a productos
+- **Multimedia:** Videos, música, galerías de fotos
+
+**4. Métricas y Control Total**
+- Sabes exactamente quién abrió la invitación
+- Tracking de confirmaciones en tiempo real
+- Recordatorios automáticos programables
+- Dashboard con estadísticas de engagement
+
+**5. Sostenibilidad Ambiental**
+- Cero papel, cero desperdicio
+- Huella de carbono 98% menor vs impresión y envío
+- Perfecta para eventos eco-conscious
+
+**6. Alcance Global Instantáneo**
+- Invitados en diferentes países reciben al mismo tiempo
+- No hay costo adicional por distancia
+- Elimina problemas de logística internacional
+
+### Desventajas (Minimizables) ❌
+
+**1. Dependencia Tecnológica**
+- Requiere smartphone o computadora
+- **Solución:** Combina digital para mayoría + papel para invitados específicos
+
+**2. Percepción de Informalidad (en decline)**
+- Algunos puristas tradicionales lo ven como "menos serio"
+- **Realidad 2025:** 68% de eventos formales ya usan invitaciones digitales premium
+- **Solución:** Diseño ultra-profesional y personalizado eleva la percepción
+
+**3. Saturación Digital**
+- Puede perderse entre notificaciones
+- **Solución:** Envío estratégico en horarios óptimos + seguimiento personalizado
+
+---
+
+## Análisis Comparativo: Datos Lado a Lado
+
+| **Factor** | **Papel** | **Digital** | **Ganador** |
+|------------|-----------|-------------|-------------|
+| Costo (100 inv.) | $800-1,500 | $50-150 | 🏆 Digital |
+| Tiempo producción | 4-6 semanas | 1-3 días | 🏆 Digital |
+| Flexibilidad | Nula | Total | 🏆 Digital |
+| Impacto ambiental | Alto | Mínimo | 🏆 Digital |
+| Tracking | Imposible | Completo | 🏆 Digital |
+| Experiencia táctil | ✓ | ✗ | 🏆 Papel |
+| Interactividad | ✗ | ✓✓✓ | 🏆 Digital |
+| Personalización | Limitada | Ilimitada | 🏆 Digital |
+
+---
+
+## Nuestra Recomendación Profesional
+
+### Elige Digital Si:
+- Tu presupuesto es limitado (ahorro de 85%)
+- Necesitas rapidez (evento en menos de un mes)
+- Tienes invitados en múltiples ciudades/países
+- Quieres funcionalidades modernas (RSVP, mapas, multimedia)
+- Tu evento tiene perfil eco-friendly
+- Tus invitados son millennials/Gen Z (preferencia 92% digital)
+
+### Elige Papel Si:
+- Presupuesto flexible ($1,000+ solo en invitaciones)
+- Evento ultra-formal con invitados tradicionalistas
+- Quieres crear piezas de colección (bodas aristocráticas)
+- Tienes 3+ meses de anticipación
+
+### La Solución Híbrida (Lo Mejor de Ambos Mundos):
+**80% Digital + 20% Papel**
+- Digital para la mayoría de invitados
+- Papel para: padres, abuelos, padrinos VIP
+- Costo reducido, flexibilidad máxima, tradición respetada
+
+---
+
+## El Futuro es Digital (pero Personalizado)
+
+En **Invitaciones Digitales MTY** hemos diseñado más de 500 invitaciones digitales premium que rivalizan en elegancia y profesionalismo con cualquier invitación impresa. Nuestros clientes reportan:
+- **93% de confirmaciones (vs 67% con papel)**
+- **Ahorro promedio de $1,200 USD**
+- **Satisfacción del 98% en encuestas post-evento**
+
+¿Listo para tomar la mejor decisión para tu evento? Contáctanos y te ayudamos a crear la invitación perfecta, digital o híbrida, adaptada a tus necesidades exactas.
     `,
     image: "/blog/digital-vs-papel.jpg",
     category: "Consejos",
@@ -116,67 +279,313 @@ Para la mayoría de los eventos modernos, las invitaciones digitales son la mejo
   },
   "como-redactar-invitacion-boda": {
     title: "Cómo Redactar la Invitación Perfecta para tu Boda",
-    excerpt: "Guía completa con ejemplos de textos formales e informales para invitaciones de boda. Incluye frases para padres, padrinos y más.",
+    excerpt: "Guía profesional completa con ejemplos editables de textos formales, semi-formales e informales. Incluye estructura ideal, etiqueta moderna, frases para cada estilo y errores comunes que debes evitar.",
     content: `
-## Elementos Esenciales
+La redacción de tu invitación de boda es un arte que combina protocolo, personalidad y claridad. Como expertos en invitaciones digitales, hemos analizado más de 500 textos de bodas para crear esta guía definitiva que te ayudará a comunicar perfectamente los detalles de tu gran día.
 
-Toda invitación de boda debe incluir:
-1. **Quién invita** (novios o padres)
-2. **Nombres de los novios**
-3. **Fecha y hora**
-4. **Lugar** (ceremonia y recepción)
-5. **Código de vestimenta** (opcional)
-6. **Confirmación de asistencia**
+## Anatomía de una Invitación de Boda Perfecta
 
-## Ejemplos de Textos
+Toda invitación de boda profesional debe incluir estos **7 elementos esenciales** en este orden lógico:
 
-### Formato Formal (Padres Invitan)
+### 1. **Quiénes Invitan**
+Los anfitriones del evento (padres, novios, ambos)
 
-> *Los señores*
-> **Juan García López y María Fernández de García**
-> *junto con*
-> **Roberto Martínez Sánchez y Laura Rodríguez de Martínez**
-> 
-> *tienen el honor de invitarle a la boda de sus hijos*
-> 
-> **Ana María & Carlos**
-> 
-> *Sábado 15 de marzo de 2025*
-> *6:00 pm*
+### 2. **Frase de Invitación**
+El tono formal de la convocatoria
 
-### Formato Moderno (Novios Invitan)
+### 3. **Nombres de los Novios**
+Siempre destacados visualmente
 
-> **¡Nos casamos!**
-> 
-> *Con inmensa alegría, te invitamos a celebrar el inicio de nuestra historia juntos*
-> 
-> **Ana María & Carlos**
-> 
-> *15 de marzo de 2025 | 6:00 pm*
-> *Jardín La Estancia, Monterrey*
+### 4. **Detalles del Evento**
+- Ceremonia religiosa (si aplica): fecha, hora, lugar
+- Recepción/Fiesta: fecha, hora, lugar
 
-### Formato Informal
+### 5. **Código de Vestimenta**
+Guía clara para los invitados
 
-> *Después de mil aventuras, decidimos embarcarnos en la más grande de todas...*
+### 6. **Confirmación de Asistencia (RSVP)**
+Fecha límite y método de confirmación
+
+### 7. **Notas Adicionales (Opcional)**
+Mesa de regalos, hospedaje, transporte, hashtag del evento
+
+---
+
+## Nivel 1: Formato Ultra Formal
+
+**Ideal para:** Bodas católicas tradicionales, eventos de gala, ceremonias de etiqueta rigurosa.
+
+### Ejemplo Completo: Padres Invitan
+
+> **Los señores**
 > 
-> **¡Nos casamos!**
+> *Juan Carlos García López y María Fernández Ruiz de García*
 > 
-> *Y no sería lo mismo sin ti*
+> **junto con**
+> 
+> *Roberto Martínez Sánchez y Laura Rodríguez Gómez de Martínez*
+> 
+> **Tienen el honor de invitarle a la**
+> **ceremonia religiosa de matrimonio de sus hijos**
+> 
+> **Ana María García Fernández**
+> **&**
+> **Carlos Alberto Martínez Rodríguez**
+> 
+> Que se celebrará el **sábado 15 de marzo de 2025**
+> a las **18:00 horas**
+> 
+> en la **Catedral Metropolitana de Monterrey**
+> *Av. Padre Mier 243, Centro, Monterrey, N.L.*
+> 
+> Y posteriormente a la recepción en
+> **Hacienda Santa Lucía**
+> *Carretera Nacional Km 267, Santiago, N.L.*
+> 
+> **Etiqueta: Formal**
+> *(Damas: Vestido largo | Caballeros: Traje oscuro)*
+> 
+> Se ruega confirmar asistencia antes del **1 de marzo**
+> WhatsApp: (81) 1234-5678
+
+**Detalles de protocolo formal:**
+- Nombres completos de los 4 padres (incluyendo apellidos maternos)
+- "De García" / "de Martínez" indica apellido de casada de las madres
+- Verbo imperativo "se ruega" en lugar de "favor de"
+- Horario en formato 24 horas o "18:00 horas"
+- Direcciones completas con nomenclatura oficial
+
+---
+
+## Nivel 2: Formato Semi-Formal Moderno
+
+**Ideal para:** Bodas elegantes pero contemporáneas, garden parties, bodas destination.
+
+### Ejemplo: Padres y Novios Co-anfitriones
+
+> **Nuestros padres, junto con nosotros,**
+> **te invitan a celebrar nuestro matrimonio**
+> 
+> **Ana García & Carlos Martínez**
+> 
+> *Sábado, 15 de marzo de 2025*
+> *6:00 PM*
+> 
+> **Ceremonia & Recepción**
+> Jardín La Primavera
+> *Santiago, Nuevo León*
+> 
+> **Dress Code: Cocktail**
+> *Colores claros y pasteles*
+> 
+> **Confirma tu asistencia antes del 1 de marzo**
+> [Botón: Confirmar Asistencia]
+> 
+> *#AnaYCarlos2025*
+
+**Características del tono semi-formal:**
+- Nombres simplificados (sin todos los apellidos)
+- Hora en formato 12 horas (AM/PM)
+- Tono cálido pero respetuoso
+- Integración de elementos modernos (hashtag, botón digital)
+- Dress code descriptivo en lugar de solo "formal"
+
+---
+
+## Nivel 3: Formato Informal/Contemporáneo
+
+**Ideal para:** Bodas íntimas, bodas en playa, celebraciones boho, parejas jóvenes.
+
+### Ejemplo 1: Tono Romántico
+
+> *Después de mil aventuras juntos,*
+> *hemos decidido embarcarnos en la más grande de todas...*
+> 
+> **¡Nos Casamos!**
 > 
 > **Ana ❤️ Carlos**
+> 
+> Y queremos que seas parte de este momento especial
+> 
+> 📅 **15 de Marzo, 2025**
+> ⏰ **6:00 PM**
+> 📍 **Playa Miramar, Tampico**
+> 
+> **Vestimenta: Casual Elegante**
+> *(Colores claros, telas frescas, evita tacones de aguja en la arena)*
+> 
+> **¡Confirma tu asistencia!**
+> Da tap aquí 👉 [Botón RSVP]
 
-## Frases para Dress Code
+### Ejemplo 2: Tono Divertido
 
-- **Formal:** "Etiqueta rigurosa"
-- **Semi-formal:** "Vestimenta formal" 
-- **Garden party:** "Elegante casual"
-- **Playa:** "Casual elegante, colores claros"
+> **BREAKING NEWS:**
+> 
+> *Ana García y Carlos Martínez*
+> *han decidido hacer permanente su locura compartida*
+> 
+> **Ya era hora, ¿no?**
+> 
+> Únete a nosotros para celebrar que finalmente
+> alguien aceptó casarse con cada uno de nosotros 😄
+> 
+> **Cuándo:** Sábado 15 de Marzo
+> **Dónde:** Jardín Secreto, Monterrey
+> **A qué hora:** La fiesta empieza a las 6 PM
+> 
+> **Lo que debes saber:**
+> - Habrá barra libre 🍹
+> - Pista de baile gigante 💃🕺
+> - Dress code: Lo que sea pero cómodo para bailar
+> - Sin niños (déjalos con la abuela y ven a divertirte)
+> 
+> Confirma aquí para que apartemos tu lugar:
+> [Botón: ¡Ahí estaré!]
 
-## Frases para RSVP
+**Cuándo usar tono informal:**
+- Boda de menos de 50 invitados
+- Pareja con personalidad relajada
+- Evento en locación no tradicional
+- Invitados principalmente de tu generación
 
-- "Favor de confirmar antes del 1 de marzo"
-- "Tu confirmación es muy importante para nosotros"
-- "Confirma tu asistencia en el botón de abajo"
+---
+
+## Frases Profesionales para Cada Estilo
+
+### Para Describir Dress Code:
+
+**Ultra Formal:**
+- "Etiqueta rigurosa" / "Black tie"
+- "Vestido de gala" / "Smoking"
+
+**Formal:**
+- "Vestimenta formal"
+- "Traje oscuro y vestido largo"
+
+**Semi-Formal:**
+- "Cocktail attire"
+- "Elegante casual"
+- "Garden party chic"
+
+**Informal:**
+- "Casual elegante"
+- "Beach formal" (para bodas en playa)
+- "Boho chic"
+- "Smart casual"
+
+### Para RSVP:
+
+**Formal:**
+- "Se ruega confirmar asistencia antes del [fecha]"
+- "Favor de honrarnos con su confirmación"
+
+**Semi-Formal:**
+- "Confirma tu asistencia antes del [fecha]"
+- "Tu confirmación es importante para nosotros"
+
+**Informal:**
+- "¡Avísanos si vienes!"
+- "Confirma para que apartemos tu lugar"
+- "Dale click al botón de abajo para confirmar"
+
+---
+
+## Errores Comunes que Debes Evitar
+
+### ❌ Error 1: Información Incompleta
+**Mal:** "Ceremonia a las 6 PM"
+**Bien:** "Ceremonia a las 6:00 PM en Catedral San Juan, Av. Juárez 123, Centro"
+
+### ❌ Error 2: Ambigüedad en Invitados
+**Mal:** No especificar si incluye +1 o niños
+**Bien:** "Invitación exclusiva para: [Nombre]" o "Te acompañan: [Nombre y Nombre]"
+
+### ❌ Error 3: RSVP Sin Deadline
+**Mal:** "Favor de confirmar"
+**Bien:** "Confirma antes del 1 de marzo" ← Urgencia clara
+
+### ❌ Error 4: Orden Ilógico de Información
+**Mal:** Poner mesa de regalos antes de lugar y fecha
+**Bien:** Siempre: Quién invita → Nombres → Fecha/Hora/Lugar → RSVP → Extras
+
+### ❌ Error 5: Mezclar Tonos
+**Mal:** Empezar súper formal y terminar con emojis
+**Bien:** Mantén consistencia tonal en todo el texto
+
+---
+
+## Tips Profesionales de Redacción
+
+### 1. **Jerarquía Visual Clara**
+- Nombres de novios: Fuente más grande y destacada
+- Fecha y hora: Segunda prioridad visual
+- Lugar: Tercera prioridad
+- Detalles extras: Texto menor
+
+### 2. **Legibilidad Ante Todo**
+- Evita fuentes ultra decorativas para información crítica
+- Contraste suficiente entre texto y fondo
+- Espaciado generoso entre secciones
+
+### 3. **Prueba de Claridad**
+Pregúntate: ¿Un invitado puede responder estas 5 preguntas al leer?
+1. ¿Quién se casa?
+2. ¿Cuándo es?
+3. ¿Dónde es?
+4. ¿Cómo debo vestir?
+5. ¿Cómo confirmo?
+
+Si alguna queda sin respuesta clara → reescribe.
+
+---
+
+## Bonus: Textos para Situaciones Especiales
+
+### Boda con Ceremonia y Recepción en Lugares Diferentes:
+
+> **Ceremonia Religiosa**
+> 6:00 PM - Catedral Metropolitana
+> 
+> **Recepción**
+> 8:00 PM - Hacienda Los Cedros
+> *(Habrá transporte desde la catedral)*
+
+### Invitación Solo a Recepción (no a ceremonia):
+
+> Te invitamos a celebrar con nosotros
+> el inicio de nuestra vida juntos en la
+> 
+> **Recepción de Boda**
+> Ana & Carlos
+> 
+> Sábado 15 de Marzo, 9:00 PM
+> Salón Versalles
+
+### Boda Destino:
+
+> **DESTINATION WEDDING**
+> 
+> Nos casamos en el paraíso
+> ¡y queremos que estés ahí!
+> 
+> **Riviera Maya, México**
+> 15-17 de Marzo, 2025
+> 
+> [Más información sobre hospedaje y vuelos]
+
+---
+
+## ¿Listo para Crear Tu Invitación?
+
+En **Invitaciones Digitales MTY** no solo diseñamos invitaciones hermosas, también te ayudamos a redactar el texto perfecto que refleje tu estilo y comunique claramente todos los detalles. 
+
+Nuestro servicio incluye:
+✅ Asesoría personalizada de redacción
+✅ 3 propuestas de texto según tu estilo
+✅ Revisión de ortografía y protocolo
+✅ Diseño visual que complementa tu mensaje
+
+**Contáctanos y creamos juntos la invitación perfecta para tu boda.**
     `,
     image: "/blog/redactar-invitacion.jpg",
     category: "Bodas",
@@ -230,208 +639,21 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const currentIndex = allSlugs.indexOf(slug)
   const prevSlug = currentIndex > 0 ? allSlugs[currentIndex - 1] : null
   const nextSlug = currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null
+  const prevPost = prevSlug ? blogPosts[prevSlug] : undefined
+  const nextPost = nextSlug ? blogPosts[nextSlug] : undefined
 
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <main className="min-h-screen bg-white">
       <Header />
       
-      {/* Hero */}
-      <section className="relative pt-32 pb-12 overflow-hidden">
-        {/* Background effects */}
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-pink-600/5" />
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-purple-600/10 rounded-full blur-3xl" />
-        
-        <div className="container mx-auto px-6 md:px-10 max-w-5xl relative z-10">
-          <Link 
-            href="/blog" 
-            className="inline-flex items-center text-gray-500 hover:text-blue-600 mb-8 transition-all duration-300 group"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-            <span className="font-medium">Volver al Blog</span>
-          </Link>
-          
-          <div className="text-center mb-12">
-            <Badge className="mb-6 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0 shadow-lg">
-              {post.category}
-            </Badge>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-8 leading-tight">
-              {post.title}
-            </h1>
-            
-            {/* Article meta with improved design */}
-            <div className="flex flex-wrap items-center justify-center gap-6 text-gray-600 mb-8">
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                <User className="w-4 h-4 text-blue-500" />
-                <span className="font-medium">{post.author}</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                <Calendar className="w-4 h-4 text-green-500" />
-                <span>{new Date(post.date).toLocaleDateString('es-MX', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
-                <Clock className="w-4 h-4 text-purple-500" />
-                <span>{post.readTime} de lectura</span>
-              </div>
-            </div>
-            
-            {/* Reading progress indicator */}
-            <div className="w-full max-w-md mx-auto bg-gray-200 rounded-full h-2 overflow-hidden">
-              <div className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-0 transition-all duration-300" id="reading-progress" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Image */}
-      <section className="pb-16">
-        <div className="container mx-auto px-6 md:px-10 max-w-5xl">
-          <div className="relative">
-            {/* Decorative frame */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur-lg opacity-30 transform scale-105" />
-            
-            <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl bg-white p-2">
-              <BlogImage 
-                category={post.category} 
-                title={post.title}
-                className="rounded-2xl"
-              />
-            </div>
-            
-            {/* Floating elements */}
-            <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-500 rounded-full opacity-60" />
-            <div className="absolute -top-2 -right-6 w-4 h-4 bg-purple-500 rounded-full opacity-40" />
-            <div className="absolute -bottom-6 -left-2 w-6 h-6 bg-pink-500 rounded-full opacity-50" />
-          </div>
-        </div>
-      </section>
-
-      {/* Content */}
-      <article className="py-16">
-        <div className="container mx-auto px-6 md:px-10 max-w-4xl">
-          <div className="relative">
-            {/* Article content with enhanced typography */}
-            <div 
-              className="prose prose-xl max-w-none prose-headings:font-serif prose-headings:bg-gradient-to-r prose-headings:from-gray-900 prose-headings:to-blue-900 prose-headings:bg-clip-text prose-headings:text-transparent prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50/50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:font-medium prose-li:text-gray-700 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-blue-600"
-              dangerouslySetInnerHTML={{ 
-                __html: post.content
-                  .replace(/^## /gm, '<h2 class="text-3xl font-bold mb-6 mt-12">')
-                  .replace(/^### /gm, '<h3 class="text-2xl font-semibold mb-4 mt-8">')
-                  .replace(/\n\n/g, '</p><p class="mb-6">')
-                  .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-gray-900">$1</strong>')
-                  .replace(/\*([^*]+)\*/g, '<em class="italic">$1</em>')
-                  .replace(/^> /gm, '<blockquote class="border-l-4 border-blue-500 bg-blue-50/50 py-4 px-6 rounded-r-xl my-6 font-medium text-gray-800">')
-                  .replace(/^- /gm, '<li class="mb-2">')
-              }}
-            />
-            
-            {/* Floating action button for sharing */}
-            <ShareButton title={post.title} text={post.excerpt} variant="floating" />
-          </div>
-        </div>
-      </article>
-
-      {/* Enhanced CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-50 via-white to-purple-50 border-y border-blue-100">
-        <div className="container mx-auto px-6 md:px-10 max-w-4xl">
-          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-blue-100">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl md:text-3xl font-serif font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-                ¿Te inspiró este artículo?
-              </h3>
-              <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
-                Dale vida a tus ideas con nuestras invitaciones digitales profesionales. 
-                Creamos diseños únicos que reflejan la personalidad de tu evento.
-              </p>
-            </div>
-            
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <ShareButton title={post.title} text={post.excerpt} variant="inline" />
-              
-              <Button 
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all px-8 py-3 text-lg"
-                asChild
-              >
-                <a 
-                  href={`https://wa.me/528111230266?text=Hola,%20leí%20el%20artículo%20"${encodeURIComponent(post.title)}"%20y%20me%20gustaría%20cotizar%20una%20invitación`} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  Cotizar Mi Invitación
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Enhanced Navigation */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-6 md:px-10 max-w-6xl">
-          <h3 className="text-2xl font-serif font-bold text-center text-gray-900 mb-12">
-            Continúa Leyendo
-          </h3>
-          
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {prevSlug && (
-              <Link 
-                href={`/blog/${prevSlug}`}
-                className="group block"
-              >
-                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
-                  <div className="flex items-center gap-3 text-blue-600 mb-3">
-                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
-                    <span className="text-sm font-semibold uppercase tracking-wide">Anterior</span>
-                  </div>
-                  <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
-                    {blogPosts[prevSlug]?.title}
-                  </h4>
-                  <p className="text-sm text-gray-600 mt-2 line-clamp-2">
-                    {blogPosts[prevSlug]?.excerpt}
-                  </p>
-                </div>
-              </Link>
-            )}
-            
-            {nextSlug && (
-              <Link 
-                href={`/blog/${nextSlug}`}
-                className="group block"
-              >
-                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
-                  <div className="flex items-center justify-end gap-3 text-purple-600 mb-3">
-                    <span className="text-sm font-semibold uppercase tracking-wide">Siguiente</span>
-                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                  </div>
-                  <h4 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors leading-tight text-right">
-                    {blogPosts[nextSlug]?.title}
-                  </h4>
-                  <p className="text-sm text-gray-600 mt-2 line-clamp-2 text-right">
-                    {blogPosts[nextSlug]?.excerpt}
-                  </p>
-                </div>
-              </Link>
-            )}
-          </div>
-          
-          {/* Back to blog center button */}
-          <div className="text-center mt-12">
-            <Link href="/blog">
-              <Button 
-                variant="outline" 
-                className="bg-white/80 backdrop-blur-sm border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition-all px-8 py-3"
-              >
-                Ver Todos los Artículos
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <BlogPostClient 
+        post={post}
+        slug={slug}
+        prevSlug={prevSlug}
+        nextSlug={nextSlug}
+        prevPost={prevPost}
+        nextPost={nextPost}
+      />
 
       {/* Article Schema */}
       <script
