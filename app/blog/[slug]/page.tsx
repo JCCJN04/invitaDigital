@@ -2,9 +2,10 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
+import { ShareButton } from "@/components/share-button"
 import { MessageCircle, Calendar, Clock, User, ArrowLeft, Share2, ArrowRight } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
+import { BlogImage } from "@/components/blog-image"
 import { notFound } from "next/navigation"
 
 // Blog posts data - in production, this would come from a CMS
@@ -18,7 +19,7 @@ const blogPosts: Record<string, {
   readTime: string
   author: string
 }> = {
-  "tendencias-invitaciones-digitales-2025": {
+  "tendencias-2025": {
     title: "5 Tendencias en Invitaciones Digitales para 2025",
     excerpt: "Descubre las últimas tendencias en diseño de invitaciones digitales: desde animaciones 3D hasta experiencias interactivas que sorprenderán a tus invitados.",
     content: `
@@ -65,7 +66,7 @@ Pequeños detalles que responden al usuario: botones que cambian al pasar el mou
     readTime: "5 min",
     author: "Equipo MTY",
   },
-  "invitacion-digital-vs-papel": {
+  "digital-vs-papel": {
     title: "Invitaciones Digitales vs Papel: ¿Cuál Elegir?",
     excerpt: "Analizamos los pros y contras de cada opción para ayudarte a tomar la mejor decisión para tu evento.",
     content: `
@@ -231,129 +232,203 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const nextSlug = currentIndex < allSlugs.length - 1 ? allSlugs[currentIndex + 1] : null
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
       <Header />
       
       {/* Hero */}
-      <section className="pt-32 pb-8">
-        <div className="container mx-auto px-6 md:px-10 max-w-4xl">
+      <section className="relative pt-32 pb-12 overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-purple-600/5 to-pink-600/5" />
+        <div className="absolute -top-20 -right-20 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-purple-600/10 rounded-full blur-3xl" />
+        
+        <div className="container mx-auto px-6 md:px-10 max-w-5xl relative z-10">
           <Link 
             href="/blog" 
-            className="inline-flex items-center text-gray-500 hover:text-[#1e3a8a] mb-6 transition-colors"
+            className="inline-flex items-center text-gray-500 hover:text-blue-600 mb-8 transition-all duration-300 group"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Volver al Blog
+            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+            <span className="font-medium">Volver al Blog</span>
           </Link>
           
-          <Badge className="mb-4 bg-[#1e3a8a]/10 text-[#1e3a8a]">
-            {post.category}
-          </Badge>
-          
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-serif font-bold text-gray-900 mb-6">
-            {post.title}
-          </h1>
-          
-          <div className="flex flex-wrap items-center gap-4 text-gray-500 mb-8">
-            <span className="flex items-center gap-2">
-              <User className="w-4 h-4" />
-              {post.author}
-            </span>
-            <span className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              {new Date(post.date).toLocaleDateString('es-MX', { 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-              })}
-            </span>
-            <span className="flex items-center gap-2">
-              <Clock className="w-4 h-4" />
-              {post.readTime} de lectura
-            </span>
+          <div className="text-center mb-12">
+            <Badge className="mb-6 px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white border-0 shadow-lg">
+              {post.category}
+            </Badge>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent mb-8 leading-tight">
+              {post.title}
+            </h1>
+            
+            {/* Article meta with improved design */}
+            <div className="flex flex-wrap items-center justify-center gap-6 text-gray-600 mb-8">
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                <User className="w-4 h-4 text-blue-500" />
+                <span className="font-medium">{post.author}</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                <Calendar className="w-4 h-4 text-green-500" />
+                <span>{new Date(post.date).toLocaleDateString('es-MX', { 
+                  year: 'numeric', 
+                  month: 'long', 
+                  day: 'numeric' 
+                })}</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full shadow-md">
+                <Clock className="w-4 h-4 text-purple-500" />
+                <span>{post.readTime} de lectura</span>
+              </div>
+            </div>
+            
+            {/* Reading progress indicator */}
+            <div className="w-full max-w-md mx-auto bg-gray-200 rounded-full h-2 overflow-hidden">
+              <div className="h-full bg-gradient-to-r from-blue-500 to-purple-600 rounded-full w-0 transition-all duration-300" id="reading-progress" />
+            </div>
           </div>
         </div>
       </section>
 
       {/* Featured Image */}
-      <section className="pb-8">
-        <div className="container mx-auto px-6 md:px-10 max-w-4xl">
-          <div className="aspect-video relative rounded-2xl overflow-hidden bg-gray-100">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              className="object-cover"
-              priority
-            />
+      <section className="pb-16">
+        <div className="container mx-auto px-6 md:px-10 max-w-5xl">
+          <div className="relative">
+            {/* Decorative frame */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-3xl blur-lg opacity-30 transform scale-105" />
+            
+            <div className="aspect-video relative rounded-3xl overflow-hidden shadow-2xl bg-white p-2">
+              <BlogImage 
+                category={post.category} 
+                title={post.title}
+                className="rounded-2xl"
+              />
+            </div>
+            
+            {/* Floating elements */}
+            <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-500 rounded-full opacity-60" />
+            <div className="absolute -top-2 -right-6 w-4 h-4 bg-purple-500 rounded-full opacity-40" />
+            <div className="absolute -bottom-6 -left-2 w-6 h-6 bg-pink-500 rounded-full opacity-50" />
           </div>
         </div>
       </section>
 
       {/* Content */}
-      <article className="py-8">
-        <div className="container mx-auto px-6 md:px-10 max-w-3xl">
-          <div 
-            className="prose prose-lg max-w-none prose-headings:font-serif prose-headings:text-gray-900 prose-p:text-gray-600 prose-a:text-[#1e3a8a] prose-strong:text-gray-900 prose-blockquote:border-[#1e3a8a] prose-blockquote:bg-gray-50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-lg prose-blockquote:not-italic"
-            dangerouslySetInnerHTML={{ 
-              __html: post.content
-                .replace(/^## /gm, '<h2>')
-                .replace(/^### /gm, '<h3>')
-                .replace(/\n\n/g, '</p><p>')
-                .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-                .replace(/\*([^*]+)\*/g, '<em>$1</em>')
-                .replace(/^> /gm, '<blockquote>')
-                .replace(/^- /gm, '<li>')
-            }}
-          />
+      <article className="py-16">
+        <div className="container mx-auto px-6 md:px-10 max-w-4xl">
+          <div className="relative">
+            {/* Article content with enhanced typography */}
+            <div 
+              className="prose prose-xl max-w-none prose-headings:font-serif prose-headings:bg-gradient-to-r prose-headings:from-gray-900 prose-headings:to-blue-900 prose-headings:bg-clip-text prose-headings:text-transparent prose-p:text-gray-700 prose-p:leading-relaxed prose-a:text-blue-600 prose-a:no-underline hover:prose-a:underline prose-strong:text-gray-900 prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50/50 prose-blockquote:py-4 prose-blockquote:px-6 prose-blockquote:rounded-r-xl prose-blockquote:not-italic prose-blockquote:font-medium prose-li:text-gray-700 prose-code:bg-gray-100 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:text-blue-600"
+              dangerouslySetInnerHTML={{ 
+                __html: post.content
+                  .replace(/^## /gm, '<h2 class="text-3xl font-bold mb-6 mt-12">')
+                  .replace(/^### /gm, '<h3 class="text-2xl font-semibold mb-4 mt-8">')
+                  .replace(/\n\n/g, '</p><p class="mb-6">')
+                  .replace(/\*\*([^*]+)\*\*/g, '<strong class="font-semibold text-gray-900">$1</strong>')
+                  .replace(/\*([^*]+)\*/g, '<em class="italic">$1</em>')
+                  .replace(/^> /gm, '<blockquote class="border-l-4 border-blue-500 bg-blue-50/50 py-4 px-6 rounded-r-xl my-6 font-medium text-gray-800">')
+                  .replace(/^- /gm, '<li class="mb-2">')
+              }}
+            />
+            
+            {/* Floating action button for sharing */}
+            <ShareButton title={post.title} text={post.excerpt} variant="floating" />
+          </div>
         </div>
       </article>
 
-      {/* Share & CTA */}
-      <section className="py-8 border-t border-gray-100">
-        <div className="container mx-auto px-6 md:px-10 max-w-3xl">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <Button variant="outline" className="gap-2">
-              <Share2 className="w-4 h-4" />
-              Compartir artículo
-            </Button>
+      {/* Enhanced CTA Section */}
+      <section className="py-16 bg-gradient-to-r from-blue-50 via-white to-purple-50 border-y border-blue-100">
+        <div className="container mx-auto px-6 md:px-10 max-w-4xl">
+          <div className="bg-white/80 backdrop-blur-sm rounded-3xl p-8 md:p-12 shadow-xl border border-blue-100">
+            <div className="text-center mb-8">
+              <h3 className="text-2xl md:text-3xl font-serif font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
+                ¿Te inspiró este artículo?
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed max-w-2xl mx-auto">
+                Dale vida a tus ideas con nuestras invitaciones digitales profesionales. 
+                Creamos diseños únicos que reflejan la personalidad de tu evento.
+              </p>
+            </div>
             
-            <Button className="bg-[#1e3a8a] hover:bg-[#1e40af] text-white" asChild>
-              <a 
-                href={`https://wa.me/528111230266?text=Hola,%20leí%20el%20artículo%20"${encodeURIComponent(post.title)}"%20y%20me%20gustaría%20cotizar%20una%20invitación`} 
-                target="_blank" 
-                rel="noopener noreferrer"
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <ShareButton title={post.title} text={post.excerpt} variant="inline" />
+              
+              <Button 
+                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white shadow-lg hover:shadow-xl transition-all px-8 py-3 text-lg"
+                asChild
               >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                Cotizar Mi Invitación
-              </a>
-            </Button>
+                <a 
+                  href={`https://wa.me/528111230266?text=Hola,%20leí%20el%20artículo%20"${encodeURIComponent(post.title)}"%20y%20me%20gustaría%20cotizar%20una%20invitación`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  Cotizar Mi Invitación
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Navigation */}
-      <section className="py-12 bg-gray-50">
-        <div className="container mx-auto px-6 md:px-10 max-w-3xl">
-          <div className="flex justify-between">
-            {prevSlug ? (
+      {/* Enhanced Navigation */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-6 md:px-10 max-w-6xl">
+          <h3 className="text-2xl font-serif font-bold text-center text-gray-900 mb-12">
+            Continúa Leyendo
+          </h3>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {prevSlug && (
               <Link 
                 href={`/blog/${prevSlug}`}
-                className="flex items-center gap-2 text-gray-600 hover:text-[#1e3a8a] transition-colors"
+                className="group block"
               >
-                <ArrowLeft className="w-4 h-4" />
-                Artículo anterior
+                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+                  <div className="flex items-center gap-3 text-blue-600 mb-3">
+                    <ArrowLeft className="w-5 h-5 group-hover:-translate-x-1 transition-transform" />
+                    <span className="text-sm font-semibold uppercase tracking-wide">Anterior</span>
+                  </div>
+                  <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors leading-tight">
+                    {blogPosts[prevSlug]?.title}
+                  </h4>
+                  <p className="text-sm text-gray-600 mt-2 line-clamp-2">
+                    {blogPosts[prevSlug]?.excerpt}
+                  </p>
+                </div>
               </Link>
-            ) : <div />}
+            )}
             
-            {nextSlug ? (
+            {nextSlug && (
               <Link 
                 href={`/blog/${nextSlug}`}
-                className="flex items-center gap-2 text-gray-600 hover:text-[#1e3a8a] transition-colors"
+                className="group block"
               >
-                Siguiente artículo
-                <ArrowRight className="w-4 h-4" />
+                <div className="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 h-full">
+                  <div className="flex items-center justify-end gap-3 text-purple-600 mb-3">
+                    <span className="text-sm font-semibold uppercase tracking-wide">Siguiente</span>
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors leading-tight text-right">
+                    {blogPosts[nextSlug]?.title}
+                  </h4>
+                  <p className="text-sm text-gray-600 mt-2 line-clamp-2 text-right">
+                    {blogPosts[nextSlug]?.excerpt}
+                  </p>
+                </div>
               </Link>
-            ) : <div />}
+            )}
+          </div>
+          
+          {/* Back to blog center button */}
+          <div className="text-center mt-12">
+            <Link href="/blog">
+              <Button 
+                variant="outline" 
+                className="bg-white/80 backdrop-blur-sm border-2 border-blue-200 hover:border-blue-400 hover:bg-blue-50 transition-all px-8 py-3"
+              >
+                Ver Todos los Artículos
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

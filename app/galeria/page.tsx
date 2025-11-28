@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Button } from "@/components/ui/button"
@@ -6,27 +9,10 @@ import { Eye, MessageCircle, Filter } from "lucide-react"
 import Link from "next/link"
 import Image from "next/image"
 
-export const metadata = {
-  title: "Galería de Invitaciones Digitales | Ejemplos Reales Monterrey",
-  description: "🎨 Explora nuestra galería de invitaciones digitales: bodas, XV años, baby showers, cumpleaños y más. Diseños reales de clientes en Monterrey. ¡Inspírate para tu evento!",
-  keywords: [
-    "galeria invitaciones digitales",
-    "ejemplos invitaciones digitales",
-    "portafolio invitaciones",
-    "diseños invitaciones monterrey",
-    "invitaciones digitales ejemplos",
-  ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/galeria",
-  },
-}
-
 const categories = [
-  { id: "todos", label: "Todos", count: 10 },
-  { id: "bodas", label: "Bodas", count: 4 },
-  { id: "xv-anos", label: "XV Años", count: 3 },
-  { id: "baby-shower", label: "Baby Shower", count: 2 },
-  { id: "cumpleanos", label: "Cumpleaños", count: 1 },
+  { id: "todos", label: "Todos" },
+  { id: "bodas", label: "Bodas" },
+  { id: "xv-anos", label: "XV Años" },
 ]
 
 const designs = [
@@ -49,57 +35,26 @@ const designs = [
     image: "/boda-alma-mauricio.jpg",
     url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
     style: "Romántico Elegante",
-    features: ["Mapa", "RSVP", "Galería"],
+    features: ["Mapa", "Galería", "Música"],
     popular: true,
-  },
-  {
-    id: 3,
-    title: "Boda María & Carlos",
-    category: "bodas",
-    categoryLabel: "Boda",
-    image: "/placeholder.jpg",
-    url: "#",
-    style: "Clásico Dorado",
-    features: ["Música", "Timeline", "QR"],
-    popular: false,
-  },
-  {
-    id: 4,
-    title: "XV Años Valentina",
-    category: "xv-anos",
-    categoryLabel: "XV Años",
-    image: "/placeholder.jpg",
-    url: "#",
-    style: "Rosa Princesa",
-    features: ["Countdown", "Dress Code", "Mesa de Regalos"],
-    popular: false,
-  },
-  {
-    id: 5,
-    title: "Baby Shower Mateo",
-    category: "baby-shower",
-    categoryLabel: "Baby Shower",
-    image: "/placeholder.jpg",
-    url: "#",
-    style: "Safari Aventura",
-    features: ["Mesa de Regalos", "Juegos", "RSVP"],
-    popular: false,
-  },
-  {
-    id: 6,
-    title: "Boda Ana & Roberto",
-    category: "bodas",
-    categoryLabel: "Boda",
-    image: "/placeholder.jpg",
-    url: "#",
-    style: "Minimalista Moderno",
-    features: ["Mapa Doble", "Historia", "Galería"],
-    popular: false,
   },
 ]
 
 export default function GaleriaPage() {
+  const [activeFilter, setActiveFilter] = useState("todos")
+  
   const whatsappUrl = "https://wa.me/528111230266?text=Hola,%20vi%20su%20galería%20y%20me%20gustaría%20cotizar%20una%20invitación%20digital"
+
+  // Filtrar diseños según la categoría seleccionada
+  const filteredDesigns = activeFilter === "todos" 
+    ? designs 
+    : designs.filter(design => design.category === activeFilter)
+
+  // Contar diseños por categoría
+  const getCategoryCount = (categoryId: string) => {
+    if (categoryId === "todos") return designs.length
+    return designs.filter(d => d.category === categoryId).length
+  }
 
   return (
     <main className="min-h-screen bg-white">
@@ -132,7 +87,7 @@ export default function GaleriaPage() {
         </div>
       </section>
 
-      {/* Filters */}
+      {/* Filters - Ahora funcionales */}
       <section className="py-8 border-b border-gray-200 sticky top-16 bg-white z-40">
         <div className="container mx-auto px-6 md:px-10">
           <div className="flex items-center gap-4 overflow-x-auto pb-2">
@@ -140,14 +95,15 @@ export default function GaleriaPage() {
             {categories.map((category) => (
               <button
                 key={category.id}
+                onClick={() => setActiveFilter(category.id)}
                 className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-                  category.id === "todos"
+                  activeFilter === category.id
                     ? "bg-[#1e3a8a] text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                 }`}
               >
                 {category.label}
-                <span className="ml-2 text-xs opacity-70">({category.count})</span>
+                <span className="ml-2 text-xs opacity-70">({getCategoryCount(category.id)})</span>
               </button>
             ))}
           </div>
@@ -157,38 +113,42 @@ export default function GaleriaPage() {
       {/* Gallery Grid */}
       <section className="py-16">
         <div className="container mx-auto px-6 md:px-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {designs.map((design) => (
-              <div
-                key={design.id}
-                className="group relative rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300"
-              >
-                {/* Image */}
-                <div className="aspect-[3/4] relative bg-gray-100">
-                  <Image
-                    src={design.image}
-                    alt={`Invitación digital ${design.categoryLabel} - ${design.title}`}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  
-                  {/* Badges */}
-                  <div className="absolute top-4 left-4 flex gap-2">
-                    <Badge className="bg-white/90 text-gray-800 backdrop-blur-sm">
-                      {design.categoryLabel}
-                    </Badge>
-                    {design.popular && (
-                      <Badge className="bg-[#1e3a8a] text-white">
-                        ⭐ Popular
+          {filteredDesigns.length === 0 ? (
+            <div className="text-center py-12">
+              <p className="text-gray-500">No hay diseños en esta categoría aún.</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+              {filteredDesigns.map((design) => (
+                <div
+                  key={design.id}
+                  className="group relative rounded-2xl overflow-hidden border border-gray-200 hover:shadow-xl transition-all duration-300"
+                >
+                  {/* Image */}
+                  <div className="aspect-[3/4] relative bg-gray-100">
+                    <Image
+                      src={design.image}
+                      alt={`Invitación digital ${design.categoryLabel} - ${design.title}`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    
+                    {/* Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    
+                    {/* Badges */}
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <Badge className="bg-white/90 text-gray-800 backdrop-blur-sm">
+                        {design.categoryLabel}
                       </Badge>
-                    )}
-                  </div>
-                  
-                  {/* View Button */}
-                  {design.url !== "#" && (
+                      {design.popular && (
+                        <Badge className="bg-[#1e3a8a] text-white">
+                          ⭐ Popular
+                        </Badge>
+                      )}
+                    </div>
+                    
+                    {/* View Button */}
                     <a
                       href={design.url}
                       target="_blank"
@@ -200,29 +160,29 @@ export default function GaleriaPage() {
                         Ver en Vivo
                       </span>
                     </a>
-                  )}
-                </div>
-                
-                {/* Info */}
-                <div className="p-5 bg-white">
-                  <h3 className="font-semibold text-gray-900 mb-1">{design.title}</h3>
-                  <p className="text-sm text-gray-500 mb-3">{design.style}</p>
+                  </div>
                   
-                  {/* Features */}
-                  <div className="flex flex-wrap gap-2">
-                    {design.features.map((feature, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
-                      >
-                        {feature}
-                      </span>
-                    ))}
+                  {/* Info */}
+                  <div className="p-5 bg-white">
+                    <h3 className="font-semibold text-gray-900 mb-1">{design.title}</h3>
+                    <p className="text-sm text-gray-500 mb-3">{design.style}</p>
+                    
+                    {/* Features */}
+                    <div className="flex flex-wrap gap-2">
+                      {design.features.map((feature, index) => (
+                        <span
+                          key={index}
+                          className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
+                        >
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -244,7 +204,7 @@ export default function GaleriaPage() {
               </a>
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
-              <Link href="/#precios">
+              <Link href="/precios">
                 Ver Precios
               </Link>
             </Button>

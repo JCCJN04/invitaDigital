@@ -7,8 +7,8 @@ import { Check, Sparkles, Crown, Rocket, MessageCircle, Star, ArrowRight } from 
 import Link from "next/link"
 
 export const metadata = {
-  title: "Precios Invitaciones Digitales Monterrey 2025 | Desde $799 MXN",
-  description: "💰 Conoce nuestros precios de invitaciones digitales para bodas, XV años, baby shower y más. Planes desde $799 MXN con entrega en 48hrs. ¡Cotiza gratis hoy!",
+  title: "Precios Invitaciones Digitales Monterrey 2025 | Desde $1,399 MXN",
+  description: "💰 Conoce nuestros precios de invitaciones digitales para bodas, XV años, baby shower y más. Planes desde $1,399 MXN con entrega rápida. ¡Cotiza gratis hoy!",
   keywords: [
     "precios invitaciones digitales",
     "costo invitaciones digitales monterrey",
@@ -24,89 +24,70 @@ export const metadata = {
 
 const plans = [
   {
-    id: "esencial",
-    name: "Esencial",
+    id: "basico",
+    name: "Básico",
     description: "Ideal para eventos íntimos",
-    price: 799,
-    originalPrice: 1199,
+    price: 1399,
+    originalPrice: 1699,
     popular: false,
     icon: Sparkles,
     color: "blue",
     features: [
-      "Diseño personalizado único",
-      "Datos del evento (fecha, hora, lugar)",
+      "Hasta 8 fotos",
+      "Máximo 2 ligas",
+      "Hasta 2 revisiones",
       "Mapa de ubicación interactivo",
       "Compatible móvil y desktop",
-      "1 revisión incluida",
-      "Entrega en 3-5 días",
       "Link único para compartir",
       "Soporte por WhatsApp",
     ],
     notIncluded: [
-      "Música de fondo",
-      "Galería de fotos",
-      "Confirmación RSVP",
-      "Countdown animado",
+      "Animaciones incluidas",
+      "Hasta 1 canción",
     ],
   },
   {
     id: "premium",
     name: "Premium",
-    description: "El más vendido",
-    price: 1299,
-    originalPrice: 1799,
+    description: "La opción más elegida",
+    price: 1799,
+    originalPrice: 2199,
     popular: true,
     icon: Crown,
     color: "purple",
     features: [
-      "Todo lo del plan Esencial",
-      "Música de fondo personalizada",
-      "Galería de hasta 10 fotos",
-      "Countdown animado",
-      "Animaciones elegantes",
-      "3 revisiones incluidas",
-      "Entrega en 48-72 horas",
-      "Código QR descargable",
-      "Soporte prioritario",
+      "Todo lo de Básico",
+      "Hasta 16 fotos",
+      "Hasta 5 ligas",
+      "4 Revisiones",
+      "Diseño 100% personalizado",
+      "Animaciones incluidas",
+      "QR personalizado",
+      "Hasta 1 canción",
     ],
-    notIncluded: [
-      "RSVP con panel de control",
-      "Mesa de regalos integrada",
-    ],
+    notIncluded: [],
   },
   {
     id: "deluxe",
     name: "Deluxe",
     description: "La experiencia completa",
-    price: 1999,
-    originalPrice: 2499,
+    price: 2499,
+    originalPrice: 2999,
     popular: false,
     icon: Rocket,
     color: "rose",
     features: [
-      "Todo lo del plan Premium",
-      "RSVP con panel de control",
-      "Mesa de regalos integrada",
-      "Galería ilimitada de fotos",
-      "Itinerario del evento",
-      "Historia de la pareja/homenajeado",
-      "Dress code con ejemplos",
-      "Revisiones ilimitadas",
-      "Entrega en 24-48 horas",
-      "Dominio personalizado opcional",
-      "Soporte 24/7 prioritario",
+      "Todo lo de Premium",
+      "Hasta 40 fotos",
+      "Ligas ilimitadas",
+      "8 Revisiones",
+      "Hasta 3 canciones",
     ],
     notIncluded: [],
   },
 ]
 
-const addons = [
-  { name: "Música adicional", price: 99, description: "Añade una pista extra" },
-  { name: "Galería extra +10 fotos", price: 149, description: "Para el plan Esencial" },
-  { name: "Dominio personalizado", price: 299, description: "tuevento.com por 1 año" },
-  { name: "Video de fondo", price: 399, description: "Video corto animado" },
-  { name: "Rediseño completo", price: 499, description: "Cambio total de diseño" },
-]
+// Addons removidos según solicitud del cliente
 
 const guarantees = [
   { text: "Satisfacción 100% garantizada", icon: "✅" },
@@ -247,30 +228,7 @@ export default function PreciosPage() {
         </div>
       </section>
 
-      {/* Add-ons */}
-      <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-6 md:px-10">
-          <h2 className="text-3xl font-serif font-bold text-gray-900 mb-4 text-center">
-            Complementos Opcionales
-          </h2>
-          <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
-            Personaliza aún más tu invitación con estos extras
-          </p>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 max-w-5xl mx-auto">
-            {addons.map((addon, index) => (
-              <div 
-                key={index}
-                className="bg-white p-4 rounded-xl border border-gray-200 hover:border-[#1e3a8a] hover:shadow-lg transition-all"
-              >
-                <p className="font-semibold text-gray-900">{addon.name}</p>
-                <p className="text-xs text-gray-500 mb-2">{addon.description}</p>
-                <p className="text-lg font-bold text-[#1e3a8a]">+${addon.price} MXN</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Comparison Table */}
       <section className="py-16">
@@ -294,18 +252,16 @@ export default function PreciosPage() {
               </thead>
               <tbody className="divide-y divide-gray-100">
                 {[
-                  { feature: "Diseño personalizado", esencial: true, premium: true, deluxe: true },
+                  { feature: "Hasta fotos", esencial: "8", premium: "16", deluxe: "40" },
+                  { feature: "Ligas/enlaces", esencial: "2", premium: "5", deluxe: "Ilimitadas" },
+                  { feature: "Revisiones", esencial: "2", premium: "4", deluxe: "8" },
                   { feature: "Mapa interactivo", esencial: true, premium: true, deluxe: true },
                   { feature: "Responsivo móvil/desktop", esencial: true, premium: true, deluxe: true },
-                  { feature: "Música de fondo", esencial: false, premium: true, deluxe: true },
-                  { feature: "Galería de fotos", esencial: false, premium: "10 fotos", deluxe: "Ilimitadas" },
-                  { feature: "Countdown animado", esencial: false, premium: true, deluxe: true },
-                  { feature: "Animaciones", esencial: "Básicas", premium: "Elegantes", deluxe: "Premium" },
-                  { feature: "RSVP con panel", esencial: false, premium: false, deluxe: true },
-                  { feature: "Mesa de regalos", esencial: false, premium: false, deluxe: true },
-                  { feature: "Revisiones", esencial: "1", premium: "3", deluxe: "Ilimitadas" },
-                  { feature: "Tiempo de entrega", esencial: "3-5 días", premium: "48-72 hrs", deluxe: "24-48 hrs" },
-                  { feature: "Precio", esencial: "$799", premium: "$1,299", deluxe: "$1,999" },
+                  { feature: "Animaciones incluidas", esencial: false, premium: true, deluxe: true },
+                  { feature: "Canción/música", esencial: false, premium: "1", deluxe: "3" },
+                  { feature: "Diseño 100% personalizado", esencial: false, premium: true, deluxe: true },
+                  { feature: "QR personalizado", esencial: false, premium: true, deluxe: true },
+                  { feature: "Precio", esencial: "$1,399", premium: "$1,799", deluxe: "$2,499" },
                 ].map((row, index) => (
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="py-3 px-4 text-gray-700">{row.feature}</td>
