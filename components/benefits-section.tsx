@@ -45,7 +45,7 @@ export function BenefitsSection() {
       <div className="container mx-auto px-6 md:px-10">
         <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">
-            ¿Por qué elegir invitaciones digitales?
+            ¿Por Qué Elegir Invitaciones Digitales? 6 Ventajas
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Moderniza tu evento con tecnología confiable y diseño extraordinario

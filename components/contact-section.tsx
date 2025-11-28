@@ -6,7 +6,7 @@ export function ContactSection() {
       <div className="container mx-auto px-6 md:px-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">
-            Solicita tu cotización
+            Cotiza tu Invitación Digital en Monterrey
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Cuéntanos sobre tu evento. Respuesta en menos de 1 hora.

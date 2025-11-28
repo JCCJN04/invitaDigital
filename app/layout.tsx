@@ -204,25 +204,49 @@ export default function RootLayout({
     },
   }
 
-  // FAQ Schema
+  // FAQ Schema - Sincronizado con todas las FAQs del sitio
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: [
       {
         "@type": "Question",
-        name: "¿En qué formatos recibo mi invitación digital?",
+        name: "¿Qué son las invitaciones digitales y cómo funcionan?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Todos los planes incluyen formato digital HD optimizado para teléfono, computadora y iPad.",
+          text: "Las invitaciones digitales son diseños personalizados que recibes en formato digital (enlace web/liga). Puedes compartirlas por WhatsApp, email, redes sociales o cualquier plataforma. Tus invitados solo necesitan hacer clic en el enlace para ver toda la información del evento con animaciones, música, mapas interactivos y confirmar asistencia.",
         },
       },
       {
         "@type": "Question",
-        name: "¿Cuánto tiempo tardan en entregar mi invitación?",
+        name: "¿En qué formatos recibo mi invitación digital?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "El tiempo de entrega promedio es de 24 horas. Para diseños más complejos puede tomar hasta 48 horas.",
+          text: "Recibes tu invitación como una liga/URL única optimizada para verse perfecta en celulares, tablets y computadoras. También incluimos QR personalizado para imprimir si lo deseas. Todo en HD con carga rápida garantizada.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Cuánto tiempo tardan en entregar mi invitación en Monterrey?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Nuestro tiempo promedio de entrega es de 24 horas. Para diseños más complejos del plan Deluxe puede tomar hasta 48 horas. ¡Tenemos servicio express disponible si lo necesitas con urgencia!",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Cómo comparto la invitación con mis invitados?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Es súper fácil. Recibes tu invitación que sería una liga la cual puedes enviar por WhatsApp (recomendado), mensaje de texto, email, Facebook, Instagram, o cualquier medio digital. Tus invitados solo hacen clic y ven tu invitación completa. También puedes imprimir el código QR.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Qué incluye cada plan de invitaciones digitales?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Plan Básico ($1399): hasta 8 fotos, 2 ligas, 2 revisiones. Plan Premium ($1799): hasta 16 fotos, 5 ligas, 4 revisiones, diseño 100% personalizado, animaciones, QR personalizado, 1 canción. Plan Deluxe ($2499): hasta 40 fotos, ligas ilimitadas, 8 revisiones, 3 canciones.",
         },
       },
       {
@@ -230,10 +254,88 @@ export default function RootLayout({
         name: "¿Puedo hacer cambios después de recibir mi diseño?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sí, dependiendo del plan que elijas: Plan Básico incluye 2 revisiones, Premium 4 revisiones, y Deluxe 8 revisiones.",
+          text: "¡Claro que sí! Dependiendo del plan: Plan Básico incluye 2 revisiones, Premium 4 revisiones, y Deluxe 8 revisiones. Trabajamos contigo hasta que quedes 100% satisfecho con tu invitación.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Qué información necesitan para crear mi diseño?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Necesitamos detalles básicos como: tipo de evento, fecha, lugar, horario, colores preferidos, fotos (si deseas incluirlas), y cualquier elemento especial. Nuestro equipo te guía en todo el proceso por WhatsApp. Es muy simple y rápido.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Las invitaciones digitales son más económicas que las impresas?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "¡Sí! Ahorras hasta 70% comparado con invitaciones físicas tradicionales. Sin gastos de impresión, sin envíos costosos, sin desperdicios. Además son eco-friendly y puedes compartirlas ilimitadamente sin costo extra.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Pueden crear diseños para cualquier tipo de evento en Monterrey?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "¡Absolutamente! Creamos invitaciones para bodas, XV años, baby showers, cumpleaños, graduaciones, eventos corporativos, aniversarios, bautizos, despedidas y cualquier celebración especial que tengas en mente. Cada diseño es único y personalizado.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Las invitaciones digitales funcionan en todos los celulares?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sí, están optimizadas para funcionar perfectamente en iPhone, Android, tablets y computadoras. No requieren descargar ninguna app. Se adaptan automáticamente al tamaño de pantalla y funcionan con cualquier navegador moderno.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Ofrecen garantía de satisfacción?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "¡Por supuesto! Tenemos garantía de satisfacción 100%. Si no quedas completamente satisfecho con tu invitación, te devolvemos tu dinero. Sin preguntas, sin complicaciones. Nuestro compromiso es tu felicidad total.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Puedo agregar música o videos a mi invitación digital?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sí, los planes Premium y Deluxe incluyen música de fondo personalizada. El plan Deluxe te permite hasta 3 canciones. También podemos integrar videos cortos en tu invitación para hacerla aún más especial y memorable.",
         },
       },
     ],
+  }
+
+  // BreadcrumbList Schema para navegación estructurada
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Inicio",
+        item: SITE_URL,
+      },
+    ],
+  }
+
+  // WebSite Schema para búsqueda del sitio
+  const websiteSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: BUSINESS_NAME,
+    url: SITE_URL,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/?s={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
   }
 
   return (
@@ -245,9 +347,11 @@ export default function RootLayout({
         />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#6258FF" />
+        <meta name="theme-color" content="#1e3a8a" />
       </head>
       <body className="font-sans antialiased">
         <GoogleAnalytics />

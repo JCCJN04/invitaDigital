@@ -35,7 +35,7 @@ export function ProcessSection() {
       <div className="container mx-auto px-6 md:px-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">
-            Proceso simple y rápido
+            Cómo Creamos tu Invitación Digital
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Cuatro pasos para tu invitación perfecta

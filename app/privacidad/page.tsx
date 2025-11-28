@@ -5,7 +5,10 @@ import Link from "next/link"
 
 export const metadata = {
   title: "Política de Privacidad | InvitacionesDigitalesmty",
-  description: "Política de privacidad y manejo de datos personales de InvitacionesDigitalesmty en Monterrey, NL.",
+  description: "Política de privacidad y manejo de datos personales de InvitacionesDigitalesmty en Monterrey, NL. Conoce cómo protegemos tu información.",
+  alternates: {
+    canonical: "https://invitacionesdigitalesmty.com.mx/privacidad",
+  },
 }
 
 export default function PrivacyPage() {

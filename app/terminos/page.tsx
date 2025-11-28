@@ -6,7 +6,10 @@ import Link from "next/link"
 export const metadata = {
   title: "Términos y Condiciones | InvitacionesDigitalesmty",
   description:
-    "Términos y condiciones de servicio de InvitacionesDigitalesmty para diseño de invitaciones digitales en Monterrey.",
+    "Términos y condiciones de servicio de InvitacionesDigitalesmty para diseño de invitaciones digitales en Monterrey. Planes, precios y garantías.",
+  alternates: {
+    canonical: "https://invitacionesdigitalesmty.com.mx/terminos",
+  },
 }
 
 export default function TermsPage() {

@@ -15,6 +15,7 @@ const designs = [
     url: "https://invitacionesemmaypau.vercel.app/",
     popular: true,
     description: "Diseño elegante con tonos pastel y animaciones",
+    altText: "Invitación digital XV años Emma y Pau - diseño elegante tonos pastel con animaciones Monterrey",
   },
   {
     id: "boda-alma-mauricio",
@@ -24,6 +25,7 @@ const designs = [
     url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
     popular: true,
     description: "Invitación de boda elegante con diseño romántico",
+    altText: "Invitación digital de boda Alma y Mauricio - diseño romántico elegante Monterrey",
   },
 ]
 
@@ -37,7 +39,7 @@ export function GallerySection() {
     <section id="galeria" className="py-20 bg-white">
       <div className="container mx-auto px-6 md:px-10">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">Nuestros diseños</h2>
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">Galería de Invitaciones Digitales</h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-10">
             Explora nuestras creaciones personalizadas
           </p>
@@ -79,8 +81,11 @@ export function GallerySection() {
               <div className="relative overflow-hidden h-96 bg-gray-100">
                 <img
                   src={design.image}
-                  alt={design.title}
+                  alt={design.altText || design.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                  width={800}
+                  height={600}
                 />
               </div>
 

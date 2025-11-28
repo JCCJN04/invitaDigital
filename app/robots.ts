@@ -1,7 +1,7 @@
 import { MetadataRoute } from "next"
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://invitacionesdigitalesmty.com" // Actualiza con tu dominio real
+  const baseUrl = "https://invitacionesdigitalesmty.com.mx"
 
   return {
     rules: [

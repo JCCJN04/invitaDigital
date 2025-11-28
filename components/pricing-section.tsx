@@ -6,9 +6,11 @@ import { Check, Crown, Sparkles, Zap, XIcon } from "lucide-react"
 
 const plans = [
   {
+    id: "basico",
     name: "Básico",
-    price: "$1399",
-    originalPrice: "$1699",
+    price: 1399,
+    priceDisplay: "$1,399",
+    originalPrice: "$1,699",
     icon: Zap,
     popular: false,
     description: ".",
@@ -21,9 +23,11 @@ const plans = [
     ],
   },
   {
+    id: "premium",
     name: "Premium",
-    price: "$1799",
-    originalPrice: "$2199",
+    price: 1799,
+    priceDisplay: "$1,799",
+    originalPrice: "$2,199",
     icon: Crown,
     popular: true,
     description: "La opción más elegida",
@@ -39,9 +43,11 @@ const plans = [
     ],
   },
   {
+    id: "deluxe",
     name: "Deluxe",
-    price: "$2499",
-    originalPrice: "$2999",
+    price: 2499,
+    priceDisplay: "$2,499",
+    originalPrice: "$2,999",
     icon: Sparkles,
     popular: false,
     description: "",
@@ -55,10 +61,45 @@ const plans = [
   },
 ]
 
+// Product Schema para SEO
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: "Invitaciones Digitales Monterrey",
+  description: "Invitaciones digitales personalizadas para bodas, XV años, baby showers y más eventos en Monterrey",
+  brand: {
+    "@type": "Brand",
+    name: "Invitaciones Digitales MTY"
+  },
+  offers: {
+    "@type": "AggregateOffer",
+    priceCurrency: "MXN",
+    lowPrice: Math.min(...plans.map(p => p.price)),
+    highPrice: Math.max(...plans.map(p => p.price)),
+    offerCount: plans.length,
+    offers: plans.map(plan => ({
+      "@type": "Offer",
+      name: `Plan ${plan.name}`,
+      price: plan.price,
+      priceCurrency: "MXN",
+      availability: "https://schema.org/InStock",
+      url: `https://invitacionesdigitalesmty.com.mx/#precios`,
+      priceValidUntil: new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString().split('T')[0],
+    }))
+  },
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.9",
+    reviewCount: "127",
+    bestRating: "5",
+    worstRating: "1"
+  }
+}
+
 export function PricingSection() {
   const getWhatsappUrl = (planName: string) => {
     const message = `Hola, me interesa el plan de invitaciones digitales "${planName}".`
-    return `https://wa.me/8111230266?text=${encodeURIComponent(message)}`
+    return `https://wa.me/528111230266?text=${encodeURIComponent(message)}`
   }
 
   return (
@@ -66,7 +107,7 @@ export function PricingSection() {
       <div className="container mx-auto px-6 md:px-10">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">
-            Planes simples y transparentes
+            Precios de Invitaciones Digitales 2025
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
             Elige el plan perfecto para tu evento. Sin sorpresas, sin compromisos largos.
@@ -104,10 +145,10 @@ export function PricingSection() {
               {/* Price */}
               <div className="text-center mb-8">
                 <div className="flex items-baseline justify-center gap-2">
-                  <span className="text-4xl font-bold text-[#1f2937]">{plan.price}</span>
+                  <span className="text-4xl font-bold text-[#1f2937]">{plan.priceDisplay}</span>
                   <span className="text-sm text-gray-500 line-through">{plan.originalPrice}</span>
                 </div>
-                <p className="text-xs text-gray-500 mt-2">Pago único</p>
+                <p className="text-xs text-gray-500 mt-2">Pago único • MXN</p>
               </div>
 
               {/* Features */}
@@ -142,6 +183,12 @@ export function PricingSection() {
           ))}
         </div>
       </div>
+
+      {/* Product Schema JSON-LD */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+      />
     </section>
   )
 }

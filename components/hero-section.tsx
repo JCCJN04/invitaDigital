@@ -30,8 +30,8 @@ export function HeroSection() {
 
             {/* Main Heading - Minimalista */}
             <h1 className="mt-4 text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight text-[#1f2937]">
-              Invitaciones digitales<br />
-              <span className="text-[#1e3a8a]">que enamoran</span>
+              Invitaciones Digitales<br />
+              <span className="text-[#1e3a8a]">en Monterrey</span>
             </h1>
 
             {/* Description - Limpia y concisa */}
