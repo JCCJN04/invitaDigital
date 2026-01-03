@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/citliyamed/:path*",
+      "destination": "https://citliyamed.vercel.app/:path*"
+    }
+  ]
+}
