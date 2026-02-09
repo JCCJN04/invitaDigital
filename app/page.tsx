@@ -8,6 +8,7 @@ import { PricingSection } from "@/components/pricing-section"
 import { FAQSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { AISummarySection } from "@/components/ai-summary-section"
 import dynamic from "next/dynamic"
 
 const WhatsAppWidget = dynamic(() => import("@/components/whatsapp-widget").then((mod) => mod.WhatsAppWidget))
@@ -22,6 +23,7 @@ export default function HomePage() {
       <ProcessSection />
       <TestimonialsSection />
       <PricingSection />
+      <AISummarySection />
       <FAQSection />
       <ContactSection />
       <Footer />

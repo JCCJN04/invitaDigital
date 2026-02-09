@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Eye } from "lucide-react"
+import Image from "next/image"
 
 const categories = ["Todos", "Bodas", "XV Años", "Baby Shower", "Cumpleaños", "Corporativos"]
 
@@ -79,13 +80,12 @@ export function GallerySection() {
               )}
 
               <div className="relative overflow-hidden aspect-[4/5] bg-[#f3eee8]">
-                <img
+                <Image
                   src={design.image}
                   alt={design.altText || design.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                  width={800}
-                  height={1000}
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
 
                 <div className="absolute inset-0 bg-[#1c1917]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">

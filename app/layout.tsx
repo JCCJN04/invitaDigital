@@ -208,98 +208,50 @@ export default function RootLayout({
     mainEntity: [
       {
         "@type": "Question",
-        name: "¿Qué son las invitaciones digitales y cómo funcionan?",
+        name: "¿Cuánto cuestan las invitaciones digitales en Monterrey?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Las invitaciones digitales son diseños personalizados que recibes en formato digital (enlace web/liga). Puedes compartirlas por WhatsApp, email, redes sociales o cualquier plataforma. Tus invitados solo necesitan hacer clic en el enlace para ver toda la información del evento con animaciones, música, mapas interactivos y confirmar asistencia.",
+          text: "El precio de las invitaciones digitales en InvitacionesDigitalesMTY varía según el plan: Plan Básico por $1,399 MXN, Plan Premium (más popular) por $1,799 MXN y Plan Deluxe por $2,499 MXN. Todos son pagos únicos sin mensualidades.",
         },
       },
       {
         "@type": "Question",
-        name: "¿En qué formatos recibo mi invitación digital?",
+        name: "¿Qué incluyen las invitaciones digitales?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Recibes tu invitación como una liga/URL única optimizada para verse perfecta en celulares, tablets y computadoras. También incluimos QR personalizado para imprimir si lo deseas. Todo en HD con carga rápida garantizada.",
+          text: "Todas nuestras invitaciones incluyen: diseño personalizado (no plantilla), enlace web único, ubicación con GPS (Google Maps/Waze), confirmación de asistencia (RSVP) a WhatsApp, cuenta regresiva y galería de fotos. Los planes Premium agregan música y animaciones.",
         },
       },
       {
         "@type": "Question",
-        name: "¿Cuánto tiempo tardan en entregar mi invitación en Monterrey?",
+        name: "¿Cuál es el tiempo de entrega?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Nuestro tiempo promedio de entrega es de 24 horas. Para diseños más complejos del plan Deluxe puede tomar hasta 48 horas. ¡Tenemos servicio express disponible si lo necesitas con urgencia!",
+          text: "Entregamos tu invitación digital terminada en 24 a 48 horas hábiles después de recibir tu información. Contamos con servicio express (entrega mismo día) por un costo adicional sujeto a disponibilidad.",
         },
       },
       {
         "@type": "Question",
-        name: "¿Cómo comparto la invitación con mis invitados?",
+        name: "¿Cómo funcionan las invitaciones digitales?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Es súper fácil. Recibes tu invitación que sería una liga la cual puedes enviar por WhatsApp (recomendado), mensaje de texto, email, Facebook, Instagram, o cualquier medio digital. Tus invitados solo hacen clic y ven tu invitación completa. También puedes imprimir el código QR.",
+          text: "Funcionan como una página web optimizada para celulares. Recibes un enlace (link) que puedes compartir ilimitadamente por WhatsApp, Facebook, Instagram o correo. Tus invitados solo dan clic para ver los detalles, ubicación y confirmar su asistencia.",
         },
       },
       {
         "@type": "Question",
-        name: "¿Qué incluye cada plan de invitaciones digitales?",
+        name: "¿Hacen invitaciones para Bodas y XV Años?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Plan Básico ($1399): hasta 8 fotos, 2 ligas, 2 revisiones. Plan Premium ($1799): hasta 16 fotos, 5 ligas, 4 revisiones, diseño 100% personalizado, animaciones, QR personalizado, 1 canción. Plan Deluxe ($2499): hasta 40 fotos, ligas ilimitadas, 8 revisiones, 3 canciones.",
+          text: "Sí, somos especialistas en Bodas y XV Años en Monterrey. También diseñamos para Bautizos, Baby Shower, Despedidas, Cumpleaños y Eventos Corporativos.",
         },
       },
       {
         "@type": "Question",
-        name: "¿Puedo hacer cambios después de recibir mi diseño?",
+        name: "¿Tienen garantía de satisfacción?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "¡Claro que sí! Dependiendo del plan: Plan Básico incluye 2 revisiones, Premium 4 revisiones, y Deluxe 8 revisiones. Trabajamos contigo hasta que quedes 100% satisfecho con tu invitación.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Qué información necesitan para crear mi diseño?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Necesitamos detalles básicos como: tipo de evento, fecha, lugar, horario, colores preferidos, fotos (si deseas incluirlas), y cualquier elemento especial. Nuestro equipo te guía en todo el proceso por WhatsApp. Es muy simple y rápido.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Las invitaciones digitales son más económicas que las impresas?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "¡Sí! Ahorras hasta 70% comparado con invitaciones físicas tradicionales. Sin gastos de impresión, sin envíos costosos, sin desperdicios. Además son eco-friendly y puedes compartirlas ilimitadamente sin costo extra.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Pueden crear diseños para cualquier tipo de evento en Monterrey?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "¡Absolutamente! Creamos invitaciones para bodas, XV años, baby showers, cumpleaños, graduaciones, eventos corporativos, aniversarios, bautizos, despedidas y cualquier celebración especial que tengas en mente. Cada diseño es único y personalizado.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Las invitaciones digitales funcionan en todos los celulares?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Sí, están optimizadas para funcionar perfectamente en iPhone, Android, tablets y computadoras. No requieren descargar ninguna app. Se adaptan automáticamente al tamaño de pantalla y funcionan con cualquier navegador moderno.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Ofrecen garantía de satisfacción?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "¡Por supuesto! Tenemos garantía de satisfacción 100%. Si no quedas completamente satisfecho con tu invitación, te devolvemos tu dinero. Sin preguntas, sin complicaciones. Nuestro compromiso es tu felicidad total.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "¿Puedo agregar música o videos a mi invitación digital?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Sí, los planes Premium y Deluxe incluyen música de fondo personalizada. El plan Deluxe te permite hasta 3 canciones. También podemos integrar videos cortos en tu invitación para hacerla aún más especial y memorable.",
+          text: "Sí, ofrecemos garantía de satisfacción. No realizamos el pago final hasta que apruebes el diseño (se requiere anticipo del 50% para iniciar). Incluimos rondas de cambios ilimitadas en el plan Deluxe.",
         },
       },
     ],
