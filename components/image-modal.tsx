@@ -82,13 +82,13 @@ export function ImageModal({ isOpen, onClose, imageSrc, imageAlt, title, categor
               href="https://wa.me/8111230266?text=Hola%2C%20me%20interesa%20este%20dise%C3%B1o"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#1e3a8a] hover:bg-[#1e40af] hover:shadow-lg hover:shadow-[#1e3a8a]/50 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 text-center"
+              className="bg-[#d4a373] hover:bg-[#c08552] text-[#1c1917] px-8 py-3 rounded-full font-bold transition-all duration-300 text-center shadow-lg hover:shadow-[#d4a373]/20"
             >
               Me Interesa Este Diseño
             </a>
             <button
               onClick={onClose}
-              className="border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur"
+              className="border border-white/30 text-white hover:bg-white/10 px-8 py-3 rounded-full font-semibold transition-all duration-300 backdrop-blur"
             >
               Ver Más Diseños
             </button>

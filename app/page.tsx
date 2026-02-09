@@ -8,7 +8,9 @@ import { PricingSection } from "@/components/pricing-section"
 import { FAQSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
-import { WhatsAppWidget } from "@/components/whatsapp-widget"
+import dynamic from "next/dynamic"
+
+const WhatsAppWidget = dynamic(() => import("@/components/whatsapp-widget").then((mod) => mod.WhatsAppWidget))
 
 export default function HomePage() {
   return (

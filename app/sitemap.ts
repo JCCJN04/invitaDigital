@@ -1,7 +1,9 @@
 import { MetadataRoute } from "next"
+import { getAllPosts } from "@/lib/blog-data"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://invitacionesdigitalesmty.com.mx"
+  const posts = getAllPosts()
 
   // Páginas principales con prioridades específicas
   const mainRoutes = [
@@ -19,15 +21,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { route: "/invitaciones/baby-shower", priority: 0.9, changeFrequency: "weekly" as const },
   ]
 
-  // Artículos del blog
-  const blogPosts = [
-    "tendencias-invitaciones-digitales-2025",
-    "invitacion-digital-vs-papel",
-    "como-redactar-invitacion-boda",
-  ]
-
-  const blogRoutes = blogPosts.map((slug) => ({
-    route: `/blog/${slug}`,
+  const blogRoutes = posts.map((post) => ({
+    route: `/blog/${post.id}`,
     priority: 0.7,
     changeFrequency: "monthly" as const,
   }))

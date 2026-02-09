@@ -42,12 +42,12 @@ const designs = [
 
 export default function GaleriaPage() {
   const [activeFilter, setActiveFilter] = useState("todos")
-  
+
   const whatsappUrl = "https://wa.me/528111230266?text=Hola,%20vi%20su%20galería%20y%20me%20gustaría%20cotizar%20una%20invitación%20digital"
 
   // Filtrar diseños según la categoría seleccionada
-  const filteredDesigns = activeFilter === "todos" 
-    ? designs 
+  const filteredDesigns = activeFilter === "todos"
+    ? designs
     : designs.filter(design => design.category === activeFilter)
 
   // Contar diseños por categoría
@@ -59,25 +59,25 @@ export default function GaleriaPage() {
   return (
     <main className="min-h-screen bg-white">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-gradient-to-b from-gray-50 to-white">
         <div className="container mx-auto px-6 md:px-10 text-center">
-          <Badge className="mb-6 bg-[#1e3a8a]/10 text-[#1e3a8a]">
+          <Badge className="mb-6 bg-[#d4a373]/10 text-[#d4a373]">
             🎨 Portafolio
           </Badge>
-          
+
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gray-900 mb-6">
             Galería de Invitaciones Digitales
           </h1>
-          
+
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Explora nuestros diseños reales. Cada invitación es única y personalizada 
+            Explora nuestros diseños reales. Cada invitación es única y personalizada
             para reflejar la esencia de cada evento.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-[#1e3a8a] hover:bg-[#1e40af] text-white" asChild>
+            <Button size="lg" className="bg-[#1c1917] hover:bg-[#44403c] text-white" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Cotizar Mi Diseño
@@ -96,11 +96,10 @@ export default function GaleriaPage() {
               <button
                 key={category.id}
                 onClick={() => setActiveFilter(category.id)}
-                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-                  activeFilter === category.id
-                    ? "bg-[#1e3a8a] text-white"
+                className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${activeFilter === category.id
+                    ? "bg-[#1c1917] text-white"
                     : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                }`}
+                  }`}
               >
                 {category.label}
                 <span className="ml-2 text-xs opacity-70">({getCategoryCount(category.id)})</span>
@@ -132,22 +131,22 @@ export default function GaleriaPage() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    
+
                     {/* Overlay */}
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    
+
                     {/* Badges */}
                     <div className="absolute top-4 left-4 flex gap-2">
                       <Badge className="bg-white/90 text-gray-800 backdrop-blur-sm">
                         {design.categoryLabel}
                       </Badge>
                       {design.popular && (
-                        <Badge className="bg-[#1e3a8a] text-white">
+                        <Badge className="bg-[#d4a373] text-[#1c1917]">
                           ⭐ Popular
                         </Badge>
                       )}
                     </div>
-                    
+
                     {/* View Button */}
                     <a
                       href={design.url}
@@ -161,12 +160,12 @@ export default function GaleriaPage() {
                       </span>
                     </a>
                   </div>
-                  
+
                   {/* Info */}
                   <div className="p-5 bg-white">
                     <h3 className="font-semibold text-gray-900 mb-1">{design.title}</h3>
                     <p className="text-sm text-gray-500 mb-3">{design.style}</p>
-                    
+
                     {/* Features */}
                     <div className="flex flex-wrap gap-2">
                       {design.features.map((feature, index) => (
@@ -187,17 +186,17 @@ export default function GaleriaPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-[#1e3a8a]">
+      <section className="py-20 bg-[#1c1917]">
         <div className="container mx-auto px-6 md:px-10 text-center">
           <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
             ¿Te Gustó Algún Diseño?
           </h2>
-          <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-            Podemos crear algo similar o completamente único para ti. 
+          <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            Podemos crear algo similar o completamente único para ti.
             Cuéntanos tu visión y la hacemos realidad.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-[#1e3a8a] hover:bg-blue-50" asChild>
+            <Button size="lg" className="bg-white text-[#1c1917] hover:bg-gray-100" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="w-5 h-5 mr-2" />
                 Cotizar por WhatsApp
@@ -218,7 +217,7 @@ export default function GaleriaPage() {
           <h2 className="text-2xl font-serif font-bold text-gray-900 mb-8 text-center">
             Explora por Categoría
           </h2>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
             <Link
               href="/invitaciones/boda"
@@ -230,7 +229,7 @@ export default function GaleriaPage() {
               </h3>
               <p className="text-sm text-gray-500 mt-1">Diseños románticos y elegantes</p>
             </Link>
-            
+
             <Link
               href="/invitaciones/xv-anos"
               className="p-6 bg-white rounded-xl border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all text-center group"
@@ -241,7 +240,7 @@ export default function GaleriaPage() {
               </h3>
               <p className="text-sm text-gray-500 mt-1">Dignos de una princesa</p>
             </Link>
-            
+
             <Link
               href="/invitaciones/baby-shower"
               className="p-6 bg-white rounded-xl border border-gray-200 hover:border-sky-300 hover:shadow-lg transition-all text-center group"

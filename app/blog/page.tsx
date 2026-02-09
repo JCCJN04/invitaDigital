@@ -1,6 +1,7 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { BlogClient } from "@/components/blog-client"
+import { getAllPosts } from "@/lib/blog-data"
 
 export const metadata = {
   title: "Blog | Invitaciones Digitales | Tips, Ideas y Tendencias 2025",
@@ -17,49 +18,14 @@ export const metadata = {
   },
 }
 
-// Blog posts - estos slugs corresponden a los artículos completos en [slug]/page.tsx
-const blogPosts = [
-  {
-    id: "tendencias-2025",
-    title: "5 Tendencias en Invitaciones Digitales para 2025",
-    excerpt: "Descubre las últimas tendencias en diseño de invitaciones digitales: minimalismo elegante, tipografía artística, paletas naturales, micro-animaciones y narrativa visual.",
-    image: "/blog/tendencias-2025.jpg",
-    category: "Tendencias",
-    date: "2025-01-15",
-    readTime: "5 min",
-    author: "Equipo MTY",
-    featured: true,
-  },
-  {
-    id: "digital-vs-papel",
-    title: "Invitaciones Digitales vs Papel: ¿Cuál Elegir en 2025?",
-    excerpt: "Comparativa completa de costos, alcance, impacto ambiental y experiencia. Descubre cuál es la mejor opción para tu evento.",
-    image: "/blog/digital-vs-papel.jpg",
-    category: "Consejos",
-    date: "2025-01-10",
-    readTime: "6 min",
-    author: "Equipo MTY",
-    featured: true,
-  },
-  {
-    id: "como-redactar-invitacion-boda",
-    title: "Cómo Redactar la Invitación Perfecta para tu Boda",
-    excerpt: "Guía completa con ejemplos de textos formales, semi-formales e informales. Incluye frases para invitaciones en nombre de los padres y más.",
-    image: "/blog/redactar-invitacion.jpg",
-    category: "Bodas",
-    date: "2025-01-05",
-    readTime: "7 min",
-    author: "Equipo MTY",
-    featured: true,
-  },
-]
-
 export default function BlogPage() {
+  const posts = getAllPosts()
+
   return (
-    <main className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-blue-50">
+    <main className="min-h-screen bg-[#fdfcfb]">
       <Header />
-      
-      <BlogClient />
+
+      <BlogClient initialPosts={posts} />
 
       {/* Blog Schema */}
       <script
@@ -79,7 +45,7 @@ export default function BlogPage() {
                 url: "https://invitacionesdigitalesmty.com.mx/logo.png"
               }
             },
-            blogPost: blogPosts.map(post => ({
+            blogPost: posts.map(post => ({
               "@type": "BlogPosting",
               headline: post.title,
               description: post.excerpt,

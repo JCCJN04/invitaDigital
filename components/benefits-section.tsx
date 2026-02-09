@@ -4,70 +4,65 @@ const benefits = [
   {
     icon: Leaf,
     title: "Eco-Friendly",
-    description: "Sin desperdicio de papel. Cuida el medio ambiente con cada invitación digital.",
-  color: "text-[#0f766e]",
+    description: "Un gesto de amor por el planeta. Elegancia que no deja huella: cero papel, 100% estilo.",
+    color: "text-[#0f766e]",
   },
   {
     icon: Palette,
     title: "Diseño Artesanal",
-    description: "Cada invitación es diseñada a mano especialmente para tu evento.",
-  color: "text-[#1e3a8a]",
+    description: "Refleja tu esencia en cada detalle. No usamos plantillas genéricas, creamos algo tan único como su historia.",
+    color: "text-[#1e3a8a]",
   },
   {
     icon: Zap,
-    title: "Entrega Rápida",
-    description: "Recibe tu invitación digital rapido y facil. Servicio profesional y eficiente.",
-  color: "text-[#f97316]",
+    title: "Entrega Instantánea",
+    description: "Listas para compartir en un instante. Sin esperas ni imprentas, tu invitación lista cuando la emoción está a flor de piel.",
+    color: "text-[#f97316]",
   },
   {
     icon: Share2,
-    title: "Fácil de Compartir",
-    description: "WhatsApp, email, redes sociales. Llega a todos tus invitados al instante.",
-  color: "text-[#06b6d4]",
+    title: "Comparte la Magia",
+    description: "Llega al corazón de tus invitados al instante por WhatsApp, Email o Redes Sociales.",
+    color: "text-[#06b6d4]",
   },
   {
     icon: DollarSign,
     title: "Súper Económico",
     description: "Hasta 85% más barato que invitaciones físicas. Calidad premium, precio justo.",
-  color: "text-[#10b981]",
+    color: "text-[#10b981]",
   },
   {
     icon: Clock,
     title: "Disponible 24/7",
     description: "Mucho mas facil y rapido que las invitaciones fisica.",
-  color: "text-[#f97316]",
+    color: "text-[#f97316]",
   },
 ]
 
 export function BenefitsSection() {
   return (
-    <section className="py-20 bg-white">
+    <section id="beneficios" className="py-20 bg-white">
       <div className="container mx-auto px-6 md:px-10">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">
-            ¿Por Qué Elegir Invitaciones Digitales? 6 Ventajas
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1c1917] mb-4">
+            ¿Por qué elegir invitaciones digitales?
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Moderniza tu evento con tecnología confiable y diseño extraordinario
+          <p className="text-lg text-[#4a4a4a] max-w-2xl mx-auto">
+            La forma moderna, elegante y emotiva de invitar a tus seres queridos.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {benefits.map((benefit, index) => (
             <div
               key={index}
-              className="p-6 border border-gray-200 rounded-xl hover:border-[#1e3a8a]/40 hover:shadow-md transition-all duration-300 group"
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-              }}
+              className="p-6 rounded-2xl bg-[#fdfcfb] border border-[#f3eee8] hover:shadow-lg hover:border-[#d4a373]/30 transition-all duration-300 group"
             >
-              <div className="mb-4 w-12 h-12 rounded-lg bg-[#dbeafe] flex items-center justify-center group-hover:bg-[#1e3a8a] transition-colors duration-300">
-                <benefit.icon className={`w-6 h-6 ${benefit.color} group-hover:text-white transition-colors duration-300`} />
+              <div className="w-12 h-12 bg-[#f3eee8] rounded-xl flex items-center justify-center mb-6 group-hover:bg-[#d4a373]/20 transition-colors">
+                <benefit.icon className="w-6 h-6 text-[#1c1917] group-hover:text-[#d4a373] transition-colors" />
               </div>
-              <h3 className="text-lg font-semibold text-[#1f2937] mb-2">
-                {benefit.title}
-              </h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
+              <h3 className="text-xl font-bold text-[#1c1917] mb-3">{benefit.title}</h3>
+              <p className="text-sm text-[#4a4a4a]/80 leading-relaxed">
                 {benefit.description}
               </p>
             </div>

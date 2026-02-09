@@ -29,14 +29,15 @@ export function WhatsAppWidget() {
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative bg-[#1e3a8a] hover:bg-[#1e40af] text-white rounded-full p-4 shadow-2xl transition-all duration-300 transform hover:scale-110 animate-bounce hover:animate-none"
+            className="group relative bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full p-4 shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl"
             aria-label="Abrir chat de WhatsApp"
           >
             <MessageCircle className="w-7 h-7" />
             {/* Pulse effect */}
-            <span className="absolute inset-0 rounded-full bg-[#1e3a8a] animate-ping opacity-75"></span>
-            {/* Badge */}
-            <span className="absolute -top-1 -right-1 bg-[#f97316] text-white text-xs rounded-full w-5 h-5 flex items-center justify-center font-bold">
+            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75"></span>
+
+            {/* Notification Badge */}
+            <span className="absolute -top-1 -right-1 bg-[#ef4444] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm animate-bounce">
               1
             </span>
           </button>
@@ -44,22 +45,28 @@ export function WhatsAppWidget() {
 
         {/* Popup Card */}
         {isOpen && (
-          <div className="bg-white rounded-2xl shadow-2xl w-80 overflow-hidden animate-in slide-in-from-bottom-5 duration-300">
+          <div className="bg-white rounded-2xl shadow-2xl w-80 overflow-hidden animate-in slide-in-from-bottom-5 duration-300 border border-gray-100">
             {/* Header */}
-            <div className="bg-[#1e3a8a] p-4 text-white">
-              <div className="flex items-center justify-between">
+            <div className="bg-[#075e54] p-4 text-white relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-2 opacity-10">
+                <MessageCircle className="w-24 h-24" />
+              </div>
+              <div className="flex items-center justify-between relative z-10">
                 <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center">
-                    <MessageCircle className="w-6 h-6 text-[#1e3a8a]" />
+                  <div className="w-10 h-10 bg-white/90 rounded-full flex items-center justify-center shadow-sm">
+                    <MessageCircle className="w-5 h-5 text-[#075e54]" />
                   </div>
                   <div>
-                    <h3 className="font-semibold">InvitaDigital</h3>
-                    <p className="text-xs opacity-90">En línea</p>
+                    <h3 className="font-semibold text-sm">Invitaciones MTY</h3>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 bg-[#25D366] rounded-full animate-pulse"></span>
+                      <p className="text-[10px] opacity-90 font-medium tracking-wide">Línea Directa</p>
+                    </div>
                   </div>
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="hover:bg-white/20 rounded-full p-1 transition-colors"
+                  className="hover:bg-active/20 rounded-full p-1.5 transition-colors text-white/80 hover:text-white"
                   aria-label="Cerrar chat"
                 >
                   <X className="w-5 h-5" />
@@ -67,26 +74,16 @@ export function WhatsAppWidget() {
               </div>
             </div>
 
-            {/* Message */}
-            <div className="p-4 bg-[#f5f5f5]">
-              <div className="bg-white rounded-lg rounded-tl-none p-3 shadow-sm mb-4 border-l-4 border-[#1e3a8a]">
-                <p className="text-gray-800 text-sm leading-relaxed">
-                  ¡Hola! 👋 Bienvenido a <span className="font-semibold text-[#1e3a8a]">InvitaDigital</span>
+            {/* Message Area */}
+            <div className="p-4 bg-[#e5ddd5]/30 bg-opacity-50">
+              <div className="bg-white rounded-lg rounded-tl-none p-3 shadow-sm mb-4 border-l-4 border-[#25D366] relative">
+                <p className="text-gray-700 text-sm leading-relaxed">
+                  ¡Hola! 👋 Bienvenido a <span className="font-semibold text-[#075e54]">Invitaciones MTY</span>
                   <br />
                   <br />
-                  ¿Te gustaría crear una invitación digital única para tu evento especial?
-                  <br />
-                  <br />
-                  <span className="font-medium">🎨 Diseños personalizados</span>
-                  <br />
-                  <span className="font-medium">⚡ Entrega en 24 horas</span>
-                  <br />
-                  <span className="font-medium text-[#1e3a8a]">💰 Desde $1399</span>
-                  <br />
-                  <br />
-                  ¡Escríbenos y te asesoramos!
+                  ¿Te gustaría una cotización rápida o ver nuestros diseños premium?
                 </p>
-                <p className="text-xs text-gray-400 mt-2">Hace 2 minutos</p>
+                <div className="text-[10px] text-gray-400 mt-2 text-right">Justo ahora</div>
               </div>
 
               {/* CTA Button */}
@@ -94,14 +91,14 @@ export function WhatsAppWidget() {
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block w-full bg-[#1e3a8a] hover:bg-[#1e40af] text-white text-center py-3 px-4 rounded-lg font-semibold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2"
+                className="block w-full bg-[#25D366] hover:bg-[#20bd5a] text-white text-center py-3 px-4 rounded-xl font-semibold transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
               >
                 <MessageCircle className="w-5 h-5" />
-                Chatear por WhatsApp
+                Iniciar Chat
               </a>
 
-              <p className="text-xs text-gray-600 text-center mt-3">
-                ⏱️ Respuesta promedio: <span className="font-semibold text-[#1e3a8a]">menos de 5 minutos</span>
+              <p className="text-[10px] text-center text-gray-400 mt-3">
+                Respuesta promedio: &lt; 5 minutos
               </p>
             </div>
           </div>

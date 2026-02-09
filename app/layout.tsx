@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Playfair_Display, Inter } from "next/font/google"
+import { Playfair_Display, Montserrat } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/react"
 import { GoogleAnalytics } from "@/components/analytics/google-analytics"
@@ -12,10 +12,10 @@ const playfair = Playfair_Display({
   variable: "--font-playfair",
 })
 
-const inter = Inter({
+const montserrat = Montserrat({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-montserrat",
 })
 
 const SITE_URL = "https://invitacionesdigitalesmty.com.mx" // Actualiza con tu dominio
@@ -25,25 +25,22 @@ const BUSINESS_PHONE = "+52 81 1123 0266"
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Invitaciones Digitales Monterrey | Diseños Premium Personalizados 2025",
+    default: "Invitaciones Digitales Monterrey | Bodas y XV Años Inolvidables",
     template: `%s | ${BUSINESS_NAME}`,
   },
   description:
-    "🎉 Invitaciones digitales premium en Monterrey. Bodas, XV años, baby showers. ⚡ Entrega 24hrs 🌿 Eco-friendly 💰 Hasta 70% más económicas. +120 eventos exitosos. ¡Diseño gratis!",
+    "✨ Crea una primera impresión inolvidable. Invitaciones digitales premium para bodas y XV años en Monterrey. Diseños elegantes, animados y personalizados.",
   keywords: [
     "invitaciones digitales monterrey",
-    "invitaciones digitales monterrey nl",
-    "invitaciones de boda digitales",
-    "invitaciones xv años digitales",
-    "invitaciones baby shower digitales",
+    "invitaciones de boda monterrey",
+    "invitaciones xv años elegantes",
+    "diseño de invitaciones premium",
+    "save the date digital",
+    "invitaciones web boda",
+    "wedding invitations digital",
+    "invitaciones interactivas",
     "invitaciones digitales mexico",
-    "diseño de invitaciones personalizadas",
-    "invitaciones whatsapp",
-    "invitaciones ecologicas",
-    "invitaciones digitales economicas",
     "invitaciones para eventos monterrey",
-    "invitaciones cumpleaños digitales",
-    "invitaciones corporativas digitales",
   ],
   authors: [{ name: BUSINESS_NAME, url: SITE_URL }],
   creator: BUSINESS_NAME,
@@ -58,9 +55,9 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: SITE_URL,
     siteName: BUSINESS_NAME,
-    title: "Invitaciones Digitales Monterrey | Diseños Premium Personalizados",
+    title: "Invitaciones Digitales Monterrey | Bodas y XV Años Premium",
     description:
-      "🎉 Crea invitaciones digitales únicas en Monterrey. Bodas, XV años, baby showers. Entrega en 24hrs. Hasta 70% más económicas que invitaciones impresas. +120 clientes satisfechos.",
+      "✨ Crea la primera impresión perfecta para tu evento. Invitaciones digitales de lujo, animadas y personalizadas. Bodas, XV años, Baby Shower.",
     images: [
       {
         url: `${SITE_URL}/og-image.jpg`, // Deberás crear esta imagen 1200x630px
@@ -75,7 +72,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Invitaciones Digitales Monterrey | Diseños Premium",
     description:
-      "🎉 Invitaciones digitales personalizadas. Entrega 24hrs. Hasta 70% más económicas. +120 eventos exitosos en Monterrey.",
+      "✨ Invitaciones digitales de lujo. La forma más elegante y moderna de invitar a tu evento en Monterrey.",
     images: [`${SITE_URL}/og-image.jpg`],
   },
   robots: {
@@ -107,7 +104,7 @@ export default function RootLayout({
     "@id": SITE_URL,
     name: BUSINESS_NAME,
     description:
-      "Diseño de invitaciones digitales personalizadas para bodas, XV años, baby showers y eventos especiales en Monterrey, NL.",
+      "Diseño de invitaciones digitales premium para bodas, XV años, baby showers y eventos especiales en Monterrey, NL.",
     url: SITE_URL,
     telephone: BUSINESS_PHONE,
     priceRange: "$$",
@@ -175,9 +172,9 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Plan Básico - Invitación Digital",
-            description: "Hasta 8 fotos, 2 ligas, 2 revisiones, QR básico",
+            description: "Hasta 8 fotos, ubicación, mesa de regalos, 2 revisiones",
           },
-          price: "799",
+          price: "1999",
           priceCurrency: "MXN",
         },
         {
@@ -185,9 +182,9 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Plan Premium - Invitación Digital",
-            description: "Hasta 16 fotos, 5 ligas, 4 revisiones, diseño 100% personalizado, animaciones",
+            description: "Hasta 16 fotos, 5 secciones, 4 revisiones, diseño a medida, animaciones",
           },
-          price: "999",
+          price: "2600",
           priceCurrency: "MXN",
         },
         {
@@ -195,9 +192,9 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Plan Deluxe - Invitación Digital",
-            description: "Hasta 40 fotos, ligas ilimitadas, 8 revisiones, 3 canciones",
+            description: "Galería completa (40 fotos), enlaces ilimitados, revisiones ilimitadas, 3 canciones",
           },
-          price: "1799",
+          price: "3499",
           priceCurrency: "MXN",
         },
       ],
@@ -339,7 +336,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="es" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="es" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -351,7 +348,7 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <meta name="theme-color" content="#1e3a8a" />
+        <meta name="theme-color" content="#1c1917" />
       </head>
       <body className="font-sans antialiased">
         <GoogleAnalytics />

@@ -65,25 +65,25 @@ const faqs = [
 
 export function FAQSection() {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-24 bg-white">
       <div className="container mx-auto px-6 md:px-10">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1f2937] mb-4">
-            Preguntas Frecuentes sobre Invitaciones Digitales
+        <div className="text-center mb-16 animate-fade-in-up">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1c1917] mb-6">
+            Preguntas Frecuentes
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Resolvemos tus dudas para que disfrutes del mejor servicio
+          <p className="text-lg text-[#4a4a4a] max-w-2xl mx-auto">
+            Todo lo que necesitas saber sobre tus invitaciones digitales
           </p>
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="w-full">
+          <Accordion type="single" collapsible className="w-full space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-200">
-                <AccordionTrigger className="text-left font-semibold text-[#1f2937] hover:text-[#1e3a8a] py-4">
+              <AccordionItem key={index} value={`item-${index}`} className="border border-[#f3eee8] rounded-xl px-4 lg:px-6 bg-[#fdfcfb] data-[state=open]:border-[#d4a373] data-[state=open]:shadow-md transition-all duration-300">
+                <AccordionTrigger className="text-left font-serif font-semibold text-[#1c1917] hover:text-[#d4a373] py-6 text-base lg:text-lg">
                   {faq.question}
                 </AccordionTrigger>
-                <AccordionContent className="text-gray-600 pb-4">
+                <AccordionContent className="text-[#4a4a4a] pb-6 leading-relaxed">
                   {faq.answer}
                 </AccordionContent>
               </AccordionItem>
