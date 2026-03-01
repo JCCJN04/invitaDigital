@@ -4,6 +4,8 @@ module.exports = {
     return [
       { source: "/citliyamed", destination: "https://citliyamed.vercel.app/" },
       { source: "/citliyamed/:path*", destination: "https://citliyamed.vercel.app/:path*" },
+      { source: "/paulaxv", destination: "https://paula-sage.vercel.app/" },
+      { source: "/paulaxv/:path*", destination: "https://paula-sage.vercel.app/:path*" },
     ];
   },
 };

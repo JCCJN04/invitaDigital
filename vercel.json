@@ -3,6 +3,10 @@
     {
       "source": "/citliyamed/:path*",
       "destination": "https://citliyamed.vercel.app/:path*"
+    },
+    {
+      "source": "/paulaxv/:path*",
+      "destination": "https://paula-sage.vercel.app/:path*"
     }
   ]
 }
