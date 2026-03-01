@@ -5,6 +5,10 @@
       "destination": "https://citliyamed.vercel.app/:path*"
     },
     {
+      "source": "/paulaxv/_next/:path*",
+      "destination": "https://paula-sage.vercel.app/_next/:path*"
+    },
+    {
       "source": "/paulaxv/:path*",
       "destination": "https://paula-sage.vercel.app/:path*"
     }
