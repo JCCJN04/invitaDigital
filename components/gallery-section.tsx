@@ -59,7 +59,7 @@ export function GallerySection() {
               <div className="absolute inset-x-8 top-12 bottom-0 bg-white rounded-t-xl shadow-2xl overflow-hidden border border-gray-100">
                 <Image
                   src={design.image}
-                  alt={design.title}
+                  alt={`Invitación digital diseño ${design.title}`}
                   className="object-cover transition-transform duration-700 group-hover:scale-105"
                   fill
                   sizes="(max-width: 768px) 100vw, 320px"

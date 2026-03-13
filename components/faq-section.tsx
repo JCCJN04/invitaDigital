@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "¿Cuánto cuestan las invitaciones digitales en Monterrey?",
     answer:
-      "El precio de las invitaciones digitales en InvitacionesDigitalesMTY varía según el plan: Plan Básico por $1,999 MXN, Plan Premium (más popular) por $2,600 MXN y Plan Deluxe por $3,499 MXN. Todos son pagos únicos sin mensualidades.",
+      "Una invitación digital web es una experiencia interactiva diseñada para sorprender a tus invitados desde su celular. El precio de las invitaciones digitales web premium en InvitacionesDigitalesMTY (Monterrey) varía según el nivel de personalización y las funcionalidades interactivas deseadas. Contamos con tres opciones principales de pago único (sin mensualidades). El Plan Básico tiene un costo de $1,999 MXN e incluye hasta 8 fotografías, confirmación de asistencia (RSVP) directa a WhatsApp, y enlaces de ubicación GPS exactos hacia Google Maps y Waze. Nuestro paquete más solicitado es el Plan Premium por $2,600 MXN, el cual eleva la experiencia añadiendo música de fondo personalizada, animaciones sutiles a medida, 5 secciones de información detallada de tu Boda o XV Años, y hasta 16 fotografías. Finalmente, contamos con el exclusivo Plan Deluxe por $3,499 MXN, ideal para parejas y quinceañeras que buscan el máximo lujo, incluyendo una galería inmersiva de hasta 40 fotos, múltiples pistas musicales, enlaces ilimitados a mesas de regalos, y el beneficio único de contar con revisiones de diseño ilimitadas hasta alcanzar la perfección absoluta.",
   },
   {
     question: "¿Qué incluyen las invitaciones digitales?",

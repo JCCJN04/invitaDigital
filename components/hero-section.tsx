@@ -18,9 +18,8 @@ export function HeroSection() {
 
         {/* Headline exact copy from screenshot */}
         <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#111827] mb-6 leading-[1.1] animate-fade-in-up max-w-4xl mx-auto" style={{ animationDelay: "100ms", opacity: 0 }}>
-          Tus momentos más importantes, en una <br className="hidden md:block" />
-          <span className="text-primary">experiencia digital</span><br />
-          inolvidable
+          <span className="text-primary">Invitaciones Digitales Premium</span><br className="hidden md:block" />
+          para tus momentos más <br className="hidden lg:block"/> importantes
         </h1>
 
         {/* Subtitle exact copy from screenshot */}
