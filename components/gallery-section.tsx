@@ -1,104 +1,75 @@
 "use client"
 
-import { useState } from "react"
-import { Badge } from "@/components/ui/badge"
-import { Eye } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import Image from "next/image"
-
-const categories = ["Todos", "Bodas", "XV Años", "Baby Shower", "Cumpleaños", "Corporativos"]
 
 const designs = [
   {
-    id: "live-preview",
-    title: "XV Años Emma & Pau",
-    category: ["Todos", "XV Años"],
-    image: "/prueba.jpg",
+    id: "classic-rose",
+    title: "Classic Rose",
+    image: "/prueba.jpg", // Using existing placeholder images
     url: "https://invitacionesemmaypau.vercel.app/",
-    popular: true,
-    description: "Diseño elegante con tonos pastel y animaciones",
-    altText: "Invitación digital XV años Emma y Pau - diseño elegante tonos pastel con animaciones Monterrey",
+    bg: "bg-[#fdecea]"
   },
   {
-    id: "boda-alma-mauricio",
-    title: "Boda Alma & Mauricio",
-    category: ["Todos", "Bodas"],
+    id: "golden-geo",
+    title: "Golden Geo",
     image: "/boda-alma-mauricio.jpg",
     url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
-    popular: true,
-    description: "Invitación de boda elegante con diseño romántico",
-    altText: "Invitación digital de boda Alma y Mauricio - diseño romántico elegante Monterrey",
+    bg: "bg-[#cfc8b3]"
   },
 ]
 
 export function GallerySection() {
-  const [activeCategory, setActiveCategory] = useState("Todos")
-
-  const filteredDesigns =
-    activeCategory === "Todos" ? designs : designs.filter((design) => design.category.includes(activeCategory))
-
   return (
-    <section id="galeria" className="py-24 bg-[#fdfcfb]">
-      <div className="container mx-auto px-6 md:px-10">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1c1917] mb-6">Galería de Diseños</h2>
-          <p className="text-lg text-[#4a4a4a] max-w-2xl mx-auto mb-10">
-            Explora nuestra colección de invitaciones digitales exclusivas
-          </p>
+    <section id="galeria" className="py-24 bg-[#fafafa] relative overflow-hidden">
+      <div className="container mx-auto px-6 md:px-10 max-w-7xl">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 animate-fade-in-up">
+          <div>
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#111827] mb-2">
+              Explora nuestras plantillas
+            </h2>
+            <p className="text-gray-500 font-light text-lg">
+              Diseños armados profesionalmente para cada estilo de evento.
+            </p>
+          </div>
 
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all ${(
-                  activeCategory === category
-                    ? "bg-[#1c1917] text-white shadow-md"
-                    : "bg-white border border-[#e5e7eb] text-[#4a4a4a] hover:border-[#d4a373] hover:text-[#d4a373]"
-                )}`}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="flex items-center gap-3">
+            <button className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 hover:text-primary transition-colors text-gray-400">
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 hover:text-primary transition-colors text-gray-400">
+              <ChevronRight className="w-5 h-5" />
+            </button>
           </div>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {filteredDesigns.map((design) => (
+        {/* Gallery Horizontal Scroll layout */}
+        <div className="flex gap-6 overflow-x-auto pb-8 snap-x scrollbar-hide" style={{ scrollbarWidth: "none" }}>
+          {designs.map((design) => (
             <a
               key={design.id}
               href={design.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 bg-white"
+              className="group relative flex-none w-[280px] md:w-[320px] aspect-[4/6] rounded-[2rem] overflow-hidden snap-center transition-transform hover:scale-[1.02] shadow-sm hover:shadow-xl"
             >
-              {design.popular && (
-                <Badge className="absolute top-4 left-4 z-20 bg-[#d4a373] hover:bg-[#d4a373] text-[#1c1917] font-semibold border-none">
-                  ★ Popular
-                </Badge>
-              )}
-
-              <div className="relative overflow-hidden aspect-[4/5] bg-[#f3eee8]">
+              <div className={`absolute inset-0 ${design.bg}`}></div>
+              {/* Inner card representing the digital invitation */}
+              <div className="absolute inset-x-8 top-12 bottom-0 bg-white rounded-t-xl shadow-2xl overflow-hidden border border-gray-100">
                 <Image
                   src={design.image}
-                  alt={design.altText || design.title}
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                  alt={design.title}
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
                   fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 320px"
                 />
-
-                <div className="absolute inset-0 bg-[#1c1917]/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center backdrop-blur-[2px]">
-                  <div className="bg-white/90 text-[#1c1917] px-6 py-3 rounded-full font-semibold flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    <Eye className="w-4 h-4" />
-                    Ver Invitación
+                {/* Overlaid transparent button on hover */}
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                  <div className="bg-white/90 px-4 py-2 rounded-full text-xs font-bold text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
+                    Ver Plantilla
                   </div>
                 </div>
-              </div>
-
-              <div className="p-6">
-                <h3 className="font-serif font-bold text-xl text-[#1c1917] mb-2">{design.title}</h3>
-                <p className="text-sm text-[#4a4a4a] line-clamp-2">{design.description}</p>
               </div>
             </a>
           ))}

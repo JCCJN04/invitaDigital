@@ -4,7 +4,7 @@ const faqs = [
   {
     question: "¿Cuánto cuestan las invitaciones digitales en Monterrey?",
     answer:
-      "El precio de las invitaciones digitales en InvitacionesDigitalesMTY varía según el plan: Plan Básico por $1,399 MXN, Plan Premium (más popular) por $1,799 MXN y Plan Deluxe por $2,499 MXN. Todos son pagos únicos sin mensualidades.",
+      "El precio de las invitaciones digitales en InvitacionesDigitalesMTY varía según el plan: Plan Básico por $1,999 MXN, Plan Premium (más popular) por $2,600 MXN y Plan Deluxe por $3,499 MXN. Todos son pagos únicos sin mensualidades.",
   },
   {
     question: "¿Qué incluyen las invitaciones digitales?",
