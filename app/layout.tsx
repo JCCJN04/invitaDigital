@@ -18,18 +18,18 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
 })
 
-const SITE_URL = "https://invitacionesdigitalesmty.com.mx" // Actualiza con tu dominio
-const BUSINESS_NAME = "InvitacionesDigitalesmty"
+const SITE_URL = "https://invitacionesdigitalesmty.com.mx"
+const BUSINESS_NAME = "Invitaciones Digitales MTY"
 const BUSINESS_PHONE = "+52 81 1123 0266"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Invitaciones Digitales Monterrey | Bodas y XV Años Inolvidables",
+    default: "Invitaciones Digitales en Monterrey | Bodas, XV Años y Eventos",
     template: `%s | ${BUSINESS_NAME}`,
   },
   description:
-    "✨ Crea una primera impresión inolvidable. Invitaciones digitales premium para bodas y XV años en Monterrey. Diseños elegantes, animados y personalizados.",
+    "Invitaciones digitales premium en Monterrey para bodas, XV años y eventos especiales. Diseños personalizados con RSVP, mapa y confirmación por WhatsApp.",
   keywords: [
     "invitaciones digitales monterrey",
     "invitaciones de boda monterrey",
@@ -55,25 +55,24 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: SITE_URL,
     siteName: BUSINESS_NAME,
-    title: "Invitaciones Digitales Monterrey | Bodas y XV Años Premium",
+    title: "Invitaciones Digitales en Monterrey | Diseños Premium",
     description:
-      "✨ Crea la primera impresión perfecta para tu evento. Invitaciones digitales de lujo, animadas y personalizadas. Bodas, XV años, Baby Shower.",
+      "Invitaciones digitales premium para bodas, XV años, bautizos y eventos en Monterrey. Diseños personalizados listos para compartir.",
     images: [
       {
-        url: `${SITE_URL}/og-image.jpg`, // Deberás crear esta imagen 1200x630px
+        url: `${SITE_URL}/boda-alma-mauricio.jpg`,
         width: 1200,
         height: 630,
-        alt: "Invitaciones Digitales Premium - InvitacionesDigitalesmty",
-        type: "image/jpeg",
+        alt: "Invitaciones Digitales MTY en Monterrey",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Invitaciones Digitales Monterrey | Diseños Premium",
+    title: "Invitaciones Digitales en Monterrey | Diseños Premium",
     description:
-      "✨ Invitaciones digitales de lujo. La forma más elegante y moderna de invitar a tu evento en Monterrey.",
-    images: [`${SITE_URL}/og-image.jpg`],
+      "Invitaciones digitales premium para bodas, XV años y eventos especiales en Monterrey.",
+    images: [`${SITE_URL}/boda-alma-mauricio.jpg`],
   },
   robots: {
     index: true,
@@ -88,6 +87,9 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: SITE_URL,
+    languages: {
+      "es-MX": SITE_URL,
+    },
   },
   category: "business",
 }
@@ -101,11 +103,13 @@ export default function RootLayout({
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": SITE_URL,
+    "@id": `${SITE_URL}#localbusiness`,
     name: BUSINESS_NAME,
     description:
       "Diseño de invitaciones digitales premium para bodas, XV años, baby showers y eventos especiales en Monterrey, NL.",
     url: SITE_URL,
+    image: `${SITE_URL}/boda-alma-mauricio.jpg`,
+    logo: `${SITE_URL}/placeholder-logo.png`,
     telephone: BUSINESS_PHONE,
     priceRange: "$$",
     address: {

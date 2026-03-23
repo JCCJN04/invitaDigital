@@ -59,7 +59,7 @@ export function ContactSection() {
             {/* Guarantee */}
             <div className="bg-[#1c1917] text-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#d4a373]/10 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
-              <p className="font-serif font-bold text-lg mb-2 text-[#d4a373]">✨ Diseño d prueba gratis</p>
+              <p className="font-serif font-bold text-lg mb-2 text-[#d4a373]">Diseno de prueba gratis</p>
               <p className="text-sm text-[#e6ccb2] leading-relaxed relative z-10">
                 Solicita tu cotización ahora y recibe un boceto inicial de tu invitación completamente gratis. Sin compromiso de compra.
               </p>

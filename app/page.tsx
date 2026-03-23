@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
 import { BenefitsSection } from "@/components/benefits-section"
@@ -12,6 +13,21 @@ import { Footer } from "@/components/footer"
 import dynamic from "next/dynamic"
 
 const WhatsAppWidget = dynamic(() => import("@/components/whatsapp-widget").then((mod) => mod.WhatsAppWidget))
+
+export const metadata: Metadata = {
+  title: "Invitaciones Digitales en Monterrey para Bodas y XV Años",
+  description:
+    "Creamos invitaciones digitales premium en Monterrey con diseño personalizado, RSVP por WhatsApp, ubicación GPS y entrega rápida para bodas, XV años y eventos.",
+  keywords: [
+    "invitaciones digitales monterrey",
+    "invitaciones digitales boda monterrey",
+    "invitaciones xv años monterrey",
+    "invitaciones digitales con rsvp",
+  ],
+  alternates: {
+    canonical: "https://invitacionesdigitalesmty.com.mx",
+  },
+}
 
 export default function HomePage() {
   return (

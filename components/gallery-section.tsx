@@ -18,6 +18,13 @@ const designs = [
     url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
     bg: "bg-[#cfc8b3]"
   },
+  {
+    id: "paula-xv",
+    title: "Paula XV",
+    image: "/paula.png",
+    url: "https://www.invitacionesdigitalesmty.com.mx/paulaxv",
+    bg: "bg-[#e9d9d1]"
+  },
 ]
 
 export function GallerySection() {

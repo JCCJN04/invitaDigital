@@ -27,6 +27,10 @@ export function HeroSection() {
           Crea invitaciones digitales premium con RSVP automático, mapas interactivos y confirmación en tiempo real. Sorprende a tus invitados desde el primer clic.
         </p>
 
+        <p className="text-sm md:text-base text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: "250ms", opacity: 0 }}>
+          Servicio especializado en Monterrey, San Pedro y toda el area metropolitana de Nuevo Leon para bodas, XV anos, bautizos y eventos sociales.
+        </p>
+
         {/* Buttons exact copy from screenshot */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: "300ms", opacity: 0 }}>
           <Button
@@ -49,6 +53,20 @@ export function HeroSection() {
               Ver demostración
             </a>
           </Button>
+        </div>
+
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm animate-fade-in-up" style={{ animationDelay: "340ms", opacity: 0 }}>
+          <a href="#precios" className="text-gray-700 hover:text-primary transition-colors">
+            Ver paquetes y precios
+          </a>
+          <span className="text-gray-300" aria-hidden="true">|</span>
+          <a href="#faq" className="text-gray-700 hover:text-primary transition-colors">
+            Resolver dudas frecuentes
+          </a>
+          <span className="text-gray-300" aria-hidden="true">|</span>
+          <a href="#contacto-form" className="text-gray-700 hover:text-primary transition-colors">
+            Solicitar cotizacion
+          </a>
         </div>
 
         {/* Hero Image Mockups Representation from Screenshot */}
