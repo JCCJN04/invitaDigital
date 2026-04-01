@@ -17,18 +17,18 @@ export function Footer() {
 
           {/* Links */}
           <div className="flex gap-6 text-xs text-gray-500 font-medium">
-            <Link href="#" className="hover:text-primary transition-colors">Términos</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Privacidad</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Cookies</Link>
-            <Link href="#" className="hover:text-primary transition-colors">Soporte</Link>
+            <Link href="/terminos" className="hover:text-primary transition-colors">Términos</Link>
+            <Link href="/privacidad" className="hover:text-primary transition-colors">Privacidad</Link>
+            <Link href="/cookies" className="hover:text-primary transition-colors">Cookies</Link>
+            <a href="https://wa.me/528111230266?text=Hola%2C%20necesito%20soporte." target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Soporte</a>
           </div>
 
           {/* Social Icons */}
           <div className="flex gap-4">
-            <a href="#" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors">
+            <a href="https://www.instagram.com/invitacionesdigitalesmty" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Instagram">
               <Twitter className="w-4 h-4" />
             </a>
-            <a href="#" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors">
+            <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Email">
               <Mail className="w-4 h-4" />
             </a>
           </div>
@@ -37,7 +37,7 @@ export function Footer() {
 
         {/* Bottom */}
         <div className="text-center pt-8 border-t border-gray-50 text-[10px] text-gray-400 font-medium tracking-wide">
-          <p>© 2024 InvitacionesDigitalesMTY. Todos los derechos reservados.</p>
+          <p>© 2026 InvitacionesDigitalesMTY. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

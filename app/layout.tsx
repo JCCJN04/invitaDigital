@@ -109,19 +109,23 @@ export default function RootLayout({
       "Diseño de invitaciones digitales premium para bodas, XV años, baby showers y eventos especiales en Monterrey, NL.",
     url: SITE_URL,
     image: `${SITE_URL}/boda-alma-mauricio.jpg`,
-    logo: `${SITE_URL}/placeholder-logo.png`,
+    logo: `${SITE_URL}/logo.png`,
     telephone: BUSINESS_PHONE,
+    email: "",
     priceRange: "$$",
+    paymentAccepted: "Cash, Credit Card, Bank Transfer",
+    currenciesAccepted: "MXN",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Monterrey",
-      addressRegion: "NL",
+      addressRegion: "Nuevo León",
+      postalCode: "64000",
       addressCountry: "MX",
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "25.6866",
-      longitude: "-100.3161",
+      latitude: "25.68660",
+      longitude: "-100.31610",
     },
     areaServed: [
       {
@@ -129,7 +133,7 @@ export default function RootLayout({
         name: "Monterrey",
       },
       {
-        "@type": "State",
+        "@type": "AdministrativeArea",
         name: "Nuevo León",
       },
       {
@@ -137,31 +141,87 @@ export default function RootLayout({
         name: "México",
       },
     ],
-    openingHoursSpecification: {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "09:00",
-      closes: "20:00",
-    },
-    sameAs: ["https://www.instagram.com/invitacionesdigitalesmty.co"],
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "19:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: "10:00",
+        closes: "14:00",
+      },
+    ],
+    sameAs: [
+      "https://www.facebook.com/invitacionesdigitalesmty",
+      "https://www.instagram.com/invitacionesdigitalesmty",
+    ],
     aggregateRating: {
       "@type": "AggregateRating",
       ratingValue: "5.0",
-      reviewCount: "120",
+      reviewCount: 6,
       bestRating: "5",
       worstRating: "1",
     },
+    review: [
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "María González" },
+        datePublished: "2024-12-15",
+        reviewBody: "¡Increíble servicio! La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda en Monterrey.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
+      },
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Ana Rodríguez" },
+        datePublished: "2024-11-28",
+        reviewBody: "El proceso fue súper fácil y rápido. En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. ¡Totalmente recomendado!",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
+      },
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Carlos Mendoza" },
+        datePublished: "2024-11-10",
+        reviewBody: "Excelente atención al cliente y diseños hermosos. La invitación digital fue un éxito total en nuestro baby shower.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
+      },
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Sandra Castillo" },
+        datePublished: "2024-10-22",
+        reviewBody: "Calidad premium a precio increíble. El diseño superó mis expectativas y el proceso fue muy profesional.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
+      },
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Roberto Salinas" },
+        datePublished: "2024-10-05",
+        reviewBody: "Diseño espectacular con QR personalizado. Todos nuestros invitados confirmaron asistencia digital.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
+      },
+      {
+        "@type": "Review",
+        author: { "@type": "Person", name: "Lucia Fernández" },
+        datePublished: "2024-09-18",
+        reviewBody: "¡Me encantó! La invitación para el cumpleaños de mi hijo quedó hermosa. El equipo fue super atento.",
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
+      },
+    ],
   }
 
   // JSON-LD para Service/Product
   const serviceSchema = {
     "@context": "https://schema.org",
     "@type": "Service",
+    "@id": `${SITE_URL}#service`,
+    name: "Diseño de Invitaciones Digitales en Monterrey",
     serviceType: "Diseño de Invitaciones Digitales",
     provider: {
       "@type": "LocalBusiness",
-      name: BUSINESS_NAME,
-      telephone: BUSINESS_PHONE,
+      "@id": `${SITE_URL}#localbusiness`,
     },
     areaServed: {
       "@type": "City",
@@ -215,7 +275,7 @@ export default function RootLayout({
         name: "¿Cuánto cuestan las invitaciones digitales en Monterrey?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "El precio de las invitaciones digitales en InvitacionesDigitalesMTY varía según el plan: Plan Básico por $1,399 MXN, Plan Premium (más popular) por $1,799 MXN y Plan Deluxe por $2,499 MXN. Todos son pagos únicos sin mensualidades.",
+          text: "El precio de las invitaciones digitales en InvitacionesDigitalesMTY varía según el plan: Plan Básico por $1,999 MXN, Plan Premium (más popular) por $2,600 MXN y Plan Deluxe por $3,499 MXN. Todos son pagos únicos sin mensualidades.",
         },
       },
       {
@@ -275,19 +335,17 @@ export default function RootLayout({
     ],
   }
 
-  // WebSite Schema para búsqueda del sitio
+  // WebSite Schema
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": `${SITE_URL}#website`,
     name: BUSINESS_NAME,
     url: SITE_URL,
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: `${SITE_URL}/?s={search_term_string}`,
-      },
-      "query-input": "required name=search_term_string",
+    inLanguage: "es-MX",
+    publisher: {
+      "@type": "LocalBusiness",
+      "@id": `${SITE_URL}#localbusiness`,
     },
   }
 

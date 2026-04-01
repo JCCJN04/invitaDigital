@@ -46,10 +46,10 @@ export function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-8">
-            <Link href="/" className="text-sm font-medium text-gray-900">Home</Link>
+            <Link href="/" className="text-sm font-medium text-gray-900">Inicio</Link>
             <Link href="#galeria" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Demos</Link>
-            <Link href="#precios" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Pricing</Link>
-            <Link href="#faq" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">FAQ</Link>
+            <Link href="#precios" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Precios</Link>
+            <Link href="#faq" className="text-sm font-medium text-gray-500 hover:text-gray-900 transition-colors">Preguntas</Link>
           </nav>
 
           {/* CTA Button */}
@@ -74,10 +74,10 @@ export function Header() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="absolute top-20 inset-x-4 bg-white rounded-2xl shadow-xl border border-gray-100 p-6 flex flex-col gap-4 pointer-events-auto animate-fade-in-up md:hidden">
-            <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-900 py-2">Home</Link>
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-900 py-2">Inicio</Link>
             <Link href="#galeria" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-600 py-2">Demos</Link>
-            <Link href="#precios" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-600 py-2">Pricing</Link>
-            <Link href="#faq" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-600 py-2">FAQ</Link>
+            <Link href="#precios" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-600 py-2">Precios</Link>
+            <Link href="#faq" onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-gray-600 py-2">Preguntas</Link>
             <Button className="bg-primary hover:bg-[#00c050] text-white rounded-full w-full h-12 text-base font-bold mt-4" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 Crear mi invitación

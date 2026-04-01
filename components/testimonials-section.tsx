@@ -63,46 +63,9 @@ const testimonials = [
   },
 ]
 
-// Calcular rating promedio para AggregateRating
 const averageRating = testimonials.reduce((acc, t) => acc + t.rating, 0) / testimonials.length
 
 export function TestimonialsSection() {
-  // Schema de Review para cada testimonio
-  const reviewSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Invitaciones Digitales MTY",
-    image: "https://invitacionesdigitalesmty.com.mx/logo.png",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Monterrey",
-      addressRegion: "Nuevo León",
-      addressCountry: "MX"
-    },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: averageRating.toFixed(1),
-      reviewCount: testimonials.length,
-      bestRating: 5,
-      worstRating: 1
-    },
-    review: testimonials.map((t) => ({
-      "@type": "Review",
-      author: {
-        "@type": "Person",
-        name: t.name
-      },
-      datePublished: t.date,
-      reviewBody: t.comment,
-      reviewRating: {
-        "@type": "Rating",
-        ratingValue: t.rating,
-        bestRating: 5,
-        worstRating: 1
-      }
-    }))
-  }
-
   return (
     <section id="testimonios" className="py-24 bg-[#fdfcfb]">
       <div className="container mx-auto px-6 md:px-10">
@@ -163,11 +126,6 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      {/* Review Schema JSON-LD */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }}
-      />
     </section>
   )
 }

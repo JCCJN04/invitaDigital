@@ -34,7 +34,7 @@ export function GallerySection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 animate-fade-in-up">
           <div>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#111827] mb-2">
-              Explora nuestras plantillas
+              Explora nuestros diseños
             </h2>
             <p className="text-gray-500 font-light text-lg">
               Diseños armados profesionalmente para cada estilo de evento.
@@ -74,7 +74,7 @@ export function GallerySection() {
                 {/* Overlaid transparent button on hover */}
                 <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <div className="bg-white/90 px-4 py-2 rounded-full text-xs font-bold text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                    Ver Plantilla
+                    Ver Diseño
                   </div>
                 </div>
               </div>
