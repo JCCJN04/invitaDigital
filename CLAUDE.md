@@ -37,10 +37,13 @@ The home page renders these sections in order: `Header → Hero → Benefits →
 
 - **`next.config.js` is the active config** — `next.config.mjs` is a leftover. The active config proxies `/citliyamed/*` → `citliyamed.vercel.app` and `/paulaxv/*` → `paula-sage.vercel.app`, serving client invitation sites as sub-paths of the main domain.
 - **JSON-LD schemas live in `app/layout.tsx`** — five schemas are inlined (`LocalBusiness`, `Service`, `FAQPage`, `BreadcrumbList`, `WebSite`). When FAQ content in `components/faq-section.tsx` or pricing in `components/pricing-section.tsx` changes, the corresponding schema objects in `layout.tsx` must be kept in sync manually.
-- **Analytics components** (`components/analytics/google-analytics.tsx`, `components/analytics/facebook-pixel.tsx`) read from `NEXT_PUBLIC_*` env vars and are injected in the layout body.
+- **Analytics** — three trackers are injected in `app/layout.tsx`: `@vercel/analytics` (always on), `GoogleAnalytics` and `FacebookPixel` (both gated on their respective `NEXT_PUBLIC_*` env vars). Their components live in `components/analytics/`.
+- **Hardcoded constants in `layout.tsx`** — `SITE_URL`, `BUSINESS_NAME`, and `BUSINESS_PHONE` are defined directly in the file rather than read from env vars. Changes to the canonical URL or phone number must be updated there, not just in `.env.local`.
+- **`app/sitemap.ts` and `app/robots.ts`** are Next.js route handlers that generate `/sitemap.xml` and `/robots.txt` at runtime. The canonical base URL is hardcoded in both files.
 - **shadcn/ui** (new-york style, Tailwind CSS v4, `cssVariables: true`). Add new UI primitives with `pnpm dlx shadcn@latest add <component>`; they land in `components/ui/`.
 - **Fonts**: `Playfair Display` (`--font-playfair`) + `Montserrat` (`--font-montserrat`) loaded via `next/font/google` in the layout.
 - **`lib/blog-data.ts`** holds static blog/gallery data consumed by section components — there is no CMS or API.
+- **`framer-motion`** is used for scroll-triggered animations in section components. Animations are typically done with `motion.div` + `whileInView`.
 
 ### SEO agent skills
 
