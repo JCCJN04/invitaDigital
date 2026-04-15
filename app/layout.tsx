@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Playfair_Display, Montserrat } from "next/font/google"
 import "./globals.css"
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { GoogleAnalytics } from "@/components/analytics/google-analytics"
 import { FacebookPixel } from "@/components/analytics/facebook-pixel"
 
@@ -368,6 +369,8 @@ export default function RootLayout({
         <GoogleAnalytics />
         <FacebookPixel />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   )
