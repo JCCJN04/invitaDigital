@@ -15,6 +15,14 @@
     {
       "source": "/paulaxv/:path*",
       "destination": "https://paula-sage.vercel.app/:path*"
+    },
+    {
+      "source": "/cumple-edgar/:path*",
+      "destination": "https://cumple-edgar.vercel.app/:path*"
+    },
+    {
+      "source": "/cumple-edgar",
+      "destination": "https://cumple-edgar.vercel.app/"
     }
   ]
 }
