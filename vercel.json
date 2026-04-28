@@ -1,4 +1,11 @@
 {
+  "redirects": [
+    {
+      "source": "/cumple-edgar",
+      "destination": "/cumple-edgar/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/citliyamed/:path*",
@@ -19,10 +26,6 @@
     {
       "source": "/cumple-edgar/:path*",
       "destination": "https://cumple-edgar.vercel.app/:path*"
-    },
-    {
-      "source": "/cumple-edgar",
-      "destination": "https://cumple-edgar.vercel.app/"
     }
   ]
 }
