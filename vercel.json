@@ -1,11 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/cumple-edgar",
-      "destination": "/cumple-edgar/",
-      "permanent": false
-    }
-  ],
   "rewrites": [
     {
       "source": "/citliyamed/:path*",
@@ -22,6 +15,10 @@
     {
       "source": "/paulaxv/:path*",
       "destination": "https://paula-sage.vercel.app/:path*"
+    },
+    {
+      "source": "/cumple-edgar",
+      "destination": "https://cumple-edgar.vercel.app/"
     },
     {
       "source": "/cumple-edgar/:path*",
