@@ -71,7 +71,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Name */}
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="name" className="block text-sm font-serif font-medium text-[#1c1917] mb-2">
             Nombre completo *
           </label>
           <Input
@@ -87,7 +87,7 @@ export function ContactForm() {
 
         {/* Email */}
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="email" className="block text-sm font-serif font-medium text-[#1c1917] mb-2">
             Email *
           </label>
           <Input
@@ -105,7 +105,7 @@ export function ContactForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Phone */}
         <div>
-          <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="phone" className="block text-sm font-serif font-medium text-[#1c1917] mb-2">
             Teléfono / WhatsApp *
           </label>
           <Input
@@ -121,7 +121,7 @@ export function ContactForm() {
 
         {/* Event Type */}
         <div>
-          <label htmlFor="eventType" className="block text-sm font-medium text-gray-700 mb-2">
+          <label htmlFor="eventType" className="block text-sm font-serif font-medium text-[#1c1917] mb-2">
             Tipo de evento *
           </label>
           <Select required value={formData.eventType} onValueChange={(value) => setFormData({ ...formData, eventType: value })}>
@@ -142,7 +142,7 @@ export function ContactForm() {
 
       {/* Event Date */}
       <div>
-        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="date" className="block text-sm font-serif font-medium text-[#1c1917] mb-2">
           Fecha del evento (aproximada)
         </label>
         <Input
@@ -156,7 +156,7 @@ export function ContactForm() {
 
       {/* Message */}
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+        <label htmlFor="message" className="block text-sm font-serif font-medium text-[#1c1917] mb-2">
           Cuéntanos sobre tu evento
         </label>
         <Textarea
@@ -173,7 +173,7 @@ export function ContactForm() {
       <Button
         type="submit"
         disabled={isSubmitting}
-        className="w-full bg-[#1c1917] hover:bg-[#44403c] text-white py-6 rounded-xl font-semibold text-lg transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+        className="w-full bg-[#1c1917] hover:bg-[#44403c] text-white py-6 rounded-xl font-serif font-semibold text-lg transition-all duration-300 shadow-md hover:shadow-lg hover:-translate-y-0.5"
       >
         {isSubmitting ? (
           <span className="flex items-center justify-center gap-2">
@@ -188,7 +188,7 @@ export function ContactForm() {
         )}
       </Button>
 
-      <p className="text-xs text-gray-500 text-center">
+      <p className="text-xs text-gray-500 text-center font-serif">
         Al enviar este formulario, te redirigiremos a WhatsApp para continuar la conversación de forma personalizada.
       </p>
     </form>

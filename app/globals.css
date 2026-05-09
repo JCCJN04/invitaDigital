@@ -12,6 +12,7 @@
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -35,36 +36,35 @@
 }
 
 :root {
-  /* Stitch Design Match - Light Mode */
-  --background: #fafafa;
-  --foreground: #111827;
+  /* Warm Ivory + Deep Mauve — decimal OKLCH (L as 0-1, not %) */
+  --background: oklch(0.985 0.008 55);
+  --foreground: oklch(0.14 0.012 30);
 
-  --card: #ffffff;
-  --card-foreground: #111827;
+  --card: oklch(0.995 0.005 55);
+  --card-foreground: oklch(0.14 0.012 30);
 
-  --popover: #ffffff;
-  --popover-foreground: #111827;
+  --popover: oklch(0.995 0.005 55);
+  --popover-foreground: oklch(0.14 0.012 30);
 
-  /* The Vibrant Green from the Screenshot */
-  --primary: #00d65b;
-  --primary-foreground: #ffffff;
+  --primary: oklch(0.38 0.10 355);
+  --primary-hover: oklch(0.45 0.10 355);
+  --primary-foreground: oklch(0.985 0.008 55);
 
-  --secondary: #f3f4f6;
-  --secondary-foreground: #111827;
+  --secondary: oklch(0.93 0.018 55);
+  --secondary-foreground: oklch(0.14 0.012 30);
 
-  --muted: #f8fafc;
-  --muted-foreground: #64748b;
+  --muted: oklch(0.95 0.014 55);
+  --muted-foreground: oklch(0.45 0.012 30);
 
-  --accent: #e0f8eb;
-  /* Very light green for hover states */
-  --accent-foreground: #008a39;
+  --accent: oklch(0.80 0.07 78);
+  --accent-foreground: oklch(0.30 0.08 78);
 
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
+  --destructive: oklch(0.50 0.20 25);
+  --destructive-foreground: oklch(0.985 0.008 55);
 
-  --border: #e2e8f0;
-  --input: #e2e8f0;
-  --ring: #00d65b;
+  --border: oklch(0.90 0.018 55);
+  --input: oklch(0.90 0.018 55);
+  --ring: oklch(0.38 0.10 355);
 
   --radius: 1rem;
 }
@@ -72,31 +72,24 @@
 .dark {
   --background: #030712;
   --foreground: #f9fafb;
-
   --card: #111827;
   --card-foreground: #f9fafb;
-
   --popover: #111827;
   --popover-foreground: #f9fafb;
-
-  --primary: #00d65b;
-  --primary-foreground: #ffffff;
-
+  --primary: oklch(0.38 0.10 355);
+  --primary-hover: oklch(0.45 0.10 355);
+  --primary-foreground: #f9fafb;
   --secondary: #1f2937;
   --secondary-foreground: #f9fafb;
-
   --muted: #111827;
   --muted-foreground: #9ca3af;
-
   --accent: #1f2937;
   --accent-foreground: #f9fafb;
-
   --destructive: #7f1d1d;
   --destructive-foreground: #f9fafb;
-
   --border: #1f2937;
   --input: #1f2937;
-  --ring: #00d65b;
+  --ring: oklch(0.38 0.10 355);
 }
 
 @layer base {
@@ -105,17 +98,22 @@
   }
 
   body {
+    font-family: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
     @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary;
   }
 }
 
-/* Animations matching Stitch prompt */
+@layer utilities {
+  .font-serif {
+    font-family: var(--font-playfair), ui-serif, Georgia, serif;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -123,15 +121,8 @@
 }
 
 @keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
 }
 
 .animate-fade-in-up {
@@ -142,12 +133,11 @@
   animation: float 6s ease-in-out infinite;
 }
 
-/* Base utility for exactly reproducing the screenshot layout */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(250, 248, 245, 0.92);
   backdrop-filter: blur(12px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(228, 222, 212, 0.6);
 }
 
 html {

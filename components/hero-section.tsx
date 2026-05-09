@@ -1,121 +1,97 @@
-import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 export function HeroSection() {
   const whatsappUrl = "https://wa.me/528111230266?text=Hola%2C%20me%20gustar%C3%ADa%20solicitar%20un%20dise%C3%B1o."
 
   return (
-    <section className="relative overflow-hidden min-h-screen pt-40 pb-20 flex flex-col items-center justify-start bg-gradient-to-b from-[#f8fafc] to-[#ffffff]">
-      {/* Subtle green glow characteristic of the screenshot */}
-      <div className="absolute top-[30%] left-[-10%] w-[600px] h-[600px] bg-primary/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
+    <section className="relative overflow-hidden min-h-screen bg-background pt-28 md:pt-32 pb-0 flex flex-col">
+      <div className="container mx-auto px-6 md:px-10 max-w-7xl flex-1 flex flex-col">
 
-      <div className="container mx-auto px-6 text-center z-10 max-w-5xl">
-        {/* Top badge */}
-        <div className="animate-fade-in-up" style={{ animationDelay: "0ms", opacity: 0 }}>
-          <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-[#e0f8eb] text-[10px] font-bold tracking-[0.2em] text-[#008a39] uppercase">
-            INVITACIONES DIGITALES PREMIUM
-          </div>
+        {/* Editorial label */}
+        <div className="flex items-center gap-3 mb-10 animate-fade-in-up" style={{ animationDelay: "0ms", opacity: 0 }}>
+          <div className="h-px w-10 bg-primary" />
+          <span className="text-[11px] tracking-[0.3em] text-muted-foreground uppercase font-medium">
+            Monterrey, Nuevo León · Invitaciones Digitales
+          </span>
         </div>
 
-        {/* Headline exact copy from screenshot */}
-        <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#111827] mb-6 leading-[1.1] animate-fade-in-up max-w-4xl mx-auto" style={{ animationDelay: "100ms", opacity: 0 }}>
-          <span className="text-primary">Invitaciones Digitales Premium</span><br className="hidden md:block" />
-          para tus momentos más <br className="hidden lg:block"/> importantes
-        </h1>
+        {/* Giant headline */}
+        <div className="animate-fade-in-up" style={{ animationDelay: "80ms", opacity: 0 }}>
+          <h1 className="font-serif font-bold leading-[0.88] tracking-tight text-foreground mb-12"
+            style={{ fontSize: "clamp(3.5rem, 9vw, 7.5rem)" }}>
+            Invitaciones<br />
+            <em className="italic text-primary">que</em> emocionan
+          </h1>
+        </div>
 
-        {/* Subtitle exact copy from screenshot */}
-        <p className="text-base md:text-lg text-gray-500 mb-10 max-w-2xl mx-auto leading-relaxed animate-fade-in-up" style={{ animationDelay: "200ms", opacity: 0 }}>
-          Crea invitaciones digitales premium con RSVP automático, mapas interactivos y confirmación en tiempo real. Sorprende a tus invitados desde el primer clic.
-        </p>
+        {/* Bottom grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 flex-1 items-end">
 
-        <p className="text-sm md:text-base text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in-up" style={{ animationDelay: "250ms", opacity: 0 }}>
-          Servicio especializado en Monterrey, San Pedro y toda el area metropolitana de Nuevo Leon para bodas, XV anos, bautizos y eventos sociales.
-        </p>
+          {/* Left: copy + CTA + stats */}
+          <div className="pb-12 lg:pb-24 animate-fade-in-up" style={{ animationDelay: "160ms", opacity: 0 }}>
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-sm mb-10">
+              Diseños personalizados con RSVP, música y mapas interactivos.
+              Listos en 24 horas para bodas, XV años y eventos especiales.
+            </p>
 
-        {/* Buttons exact copy from screenshot */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: "300ms", opacity: 0 }}>
-          <Button
-            size="lg"
-            className="h-12 px-8 rounded-full bg-primary hover:bg-[#00c050] text-white text-base font-semibold shadow-lg shadow-primary/25 transition-all w-full sm:w-auto"
-            asChild
+            <div className="flex flex-col sm:flex-row items-start gap-4 mb-14">
+              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
+                <button className="bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors">
+                  Cotizar ahora
+                </button>
+              </a>
+              <a
+                href="#galeria"
+                className="inline-flex items-center gap-2 text-sm text-foreground py-4 border-b border-foreground/30 hover:border-primary hover:text-primary transition-colors"
+              >
+                Ver diseños <span aria-hidden="true">→</span>
+              </a>
+            </div>
+
+            {/* Stats */}
+            <div className="flex gap-0 border-t border-border pt-8">
+              <div className="pr-8 md:pr-10">
+                <p className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-none mb-1">+150</p>
+                <p className="text-[11px] text-muted-foreground tracking-[0.2em] uppercase mt-1">Eventos</p>
+              </div>
+              <div className="border-l border-border px-8 md:px-10">
+                <p className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-none mb-1">24h</p>
+                <p className="text-[11px] text-muted-foreground tracking-[0.2em] uppercase mt-1">Entrega</p>
+              </div>
+              <div className="border-l border-border px-8 md:px-10">
+                <p className="font-serif text-3xl md:text-4xl font-bold text-foreground leading-none mb-1">5.0</p>
+                <p className="text-[11px] text-muted-foreground tracking-[0.2em] uppercase mt-1">Calificación</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: editorial image composition */}
+          <div
+            className="relative h-[420px] lg:h-[560px] animate-fade-in-up overflow-hidden rounded-t-[2.5rem]"
+            style={{ animationDelay: "240ms", opacity: 0 }}
           >
-            <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-              Empezar ahora
-            </a>
-          </Button>
-
-          <Button
-            size="lg"
-            variant="outline"
-            className="h-12 px-8 rounded-full bg-white border border-gray-200 text-gray-700 hover:bg-gray-50 text-base font-semibold transition-all shadow-sm w-full sm:w-auto"
-            asChild
-          >
-            <a href="#galeria">
-              Ver demostración
-            </a>
-          </Button>
-        </div>
-
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm animate-fade-in-up" style={{ animationDelay: "340ms", opacity: 0 }}>
-          <a href="#precios" className="text-gray-700 hover:text-primary transition-colors">
-            Ver paquetes y precios
-          </a>
-          <span className="text-gray-300" aria-hidden="true">|</span>
-          <a href="#faq" className="text-gray-700 hover:text-primary transition-colors">
-            Resolver dudas frecuentes
-          </a>
-          <span className="text-gray-300" aria-hidden="true">|</span>
-          <a href="#contacto-form" className="text-gray-700 hover:text-primary transition-colors">
-            Solicitar cotizacion
-          </a>
-        </div>
-
-        {/* Hero Image Mockups Representation from Screenshot */}
-        <div className="mt-16 sm:mt-24 relative mx-auto w-full h-[250px] sm:h-[350px] md:h-[420px] flex items-end justify-center -space-x-8 animate-fade-in-up origin-bottom transform scale-[0.65] sm:scale-90 md:scale-100" style={{ animationDelay: "400ms", opacity: 0 }}>
-
-          {/* Left Mockup */}
-          <div className="relative w-64 h-[320px] bg-[#f9e0db] rounded-[2rem] border-[3px] border-[#111827] z-10 flex flex-col items-center pt-5 px-5 overflow-hidden translate-y-8 md:translate-y-0 md:rounded-b-none md:border-b-0">
-            <div className="w-full flex-1 bg-white rounded-t-2xl md:rounded-b-none rounded-[1.5rem] shadow-inner border border-gray-100 flex items-center justify-center p-4">
-              {/* Internal Mobile Frame */}
-              <div className="w-24 h-48 bg-white border-[3px] border-gray-200 rounded-[1.5rem] shadow-sm flex flex-col p-2 items-center justify-center gap-2">
-                <div className="w-full h-1/2 bg-[#f9e0db]/50 rounded mb-2"></div>
-                <div className="w-full h-1.5 bg-gray-100 rounded-full"></div>
-                <div className="w-2/3 h-1.5 bg-gray-100 rounded-full"></div>
-              </div>
+            {/* Main image — fills most of the panel */}
+            <div className="absolute inset-y-0 right-0 left-[28%] rounded-t-[2.5rem] overflow-hidden shadow-2xl">
+              <Image
+                src="/boda-alma-mauricio.jpg"
+                alt="Invitación digital de boda en Monterrey"
+                fill
+                className="object-cover object-center"
+                priority
+              />
             </div>
-          </div>
-
-          {/* Center Mockup (Taller, Prominent) */}
-          <div className="relative w-80 h-[400px] bg-[#f2e6d8] rounded-[2rem] md:rounded-b-none border-[3px] md:border-b-0 border-[#111827] z-20 flex flex-col items-center pt-6 px-6 shadow-2xl overflow-hidden">
-            <div className="w-full flex-1 bg-white rounded-[1.5rem] md:rounded-b-none shadow-md border border-gray-200 flex flex-col p-1 relative">
-              {/* Simulate a floral real invitation inside */}
-              <div className="w-full h-2/3 bg-gray-50 rounded-lg relative overflow-hidden flex items-center justify-center">
-                <div className="absolute top-2 left-2 text-[#4a5e4b] opacity-20 text-4xl">🌿</div>
-                <div className="w-16 h-16 border-2 border-[#d4a373] rotate-45 opacity-50 absolute"></div>
-                <h3 className="font-serif italic text-lg text-gray-800 z-10">Ana & Luis</h3>
-              </div>
-              <div className="mt-6 px-4 space-y-2">
-                <div className="w-full h-2 bg-gray-100 rounded-full"></div>
-                <div className="w-full h-2 bg-gray-100 rounded-full"></div>
-                <div className="w-3/4 h-2 bg-gray-100 rounded-full"></div>
-              </div>
+            {/* Smaller card — left, offset down to avoid header clash */}
+            <div className="absolute top-10 left-0 w-[36%] h-[70%] rounded-[2rem] overflow-hidden shadow-xl border-4 border-background z-10">
+              <Image
+                src="/paula.png"
+                alt="Invitación digital XV años Monterrey"
+                fill
+                className="object-cover object-top"
+              />
             </div>
+            {/* Champagne accent */}
+            <div className="absolute top-3 right-3 w-12 h-12 rounded-full bg-accent/60 z-20" />
           </div>
-
-          {/* Right Mockup */}
-          <div className="relative w-64 h-[320px] bg-[#e1f5e8] rounded-[2rem] border-[3px] border-[#111827] z-10 flex flex-col items-center pt-5 px-5 overflow-hidden translate-y-8 md:translate-y-0 md:rounded-b-none md:border-b-0">
-            <div className="w-full flex-1 bg-white rounded-[1.5rem] md:rounded-b-none shadow-inner border border-gray-100 flex items-center justify-center p-4">
-              {/* Internal Mobile Frame */}
-              <div className="w-24 h-48 bg-[#fffbfa] border-[3px] border-[#111827] rounded-[1.5rem] shadow-md flex flex-col p-2 items-center">
-                <div className="w-full h-8 bg-[#e1f5e8]/50 rounded-t-xl mb-3"></div>
-                <div className="w-full h-1 bg-gray-200 rounded-full mb-1"></div>
-                <div className="w-2/3 h-1 bg-gray-200 rounded-full mb-3"></div>
-
-                <div className="w-full h-[1px] bg-gray-100 my-2"></div>
-                <div className="w-10 h-10 rounded bg-[#f2e6d8]/50 mt-2"></div>
-              </div>
-            </div>
-          </div>
-
         </div>
       </div>
     </section>

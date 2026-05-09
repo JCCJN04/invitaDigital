@@ -1,131 +1,127 @@
-import { Star, Quote } from "lucide-react"
+import { Star } from "lucide-react"
 
-const testimonials = [
-  {
-    name: "María González",
-    event: "Boda",
-    rating: 5,
-    comment:
-      "¡Increíble servicio! La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda en Monterrey.",
-    image: "/persona1.jpeg?height=80&width=80",
-    location: "San Pedro, NL",
-    date: "2024-12-15",
-  },
+const featured = {
+  name: "María González",
+  event: "Boda · San Pedro, NL",
+  comment:
+    "La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda.",
+  image: "/persona1.jpeg",
+}
+
+const rest = [
   {
     name: "Ana Rodríguez",
-    event: "XV Años",
-    rating: 5,
-    comment:
-      "El proceso fue súper fácil y rápido. En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. ¡Totalmente recomendado! Ahorré mucho comparado con invitaciones impresas.",
-    image: "/persona2.jpeg?height=80&width=80",
-    location: "Monterrey, NL",
-    date: "2024-11-28",
-  },
-  {
-    name: "Carlos Mendoza",
-    event: "Baby Shower",
-    rating: 5,
-    comment:
-      "Excelente atención al cliente y diseños hermosos. La invitación digital fue un éxito total en nuestro baby shower. Pudimos compartirla por WhatsApp al instante.",
-    image: "/persona3.jpeg?height=80&width=80",
-    location: "Guadalupe, NL",
-    date: "2024-11-10",
+    event: "XV Años · Monterrey",
+    comment: "En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. Totalmente recomendado.",
+    image: "/persona2.jpeg",
   },
   {
     name: "Sandra Castillo",
-    event: "XV Años",
-    rating: 5,
-    comment:
-      "Calidad premium a precio increíble. El diseño superó mis expectativas y el proceso fue muy profesional. Las revisiones ilimitadas me encantaron.",
-    image: "/persona4.jpeg?height=80&width=80",
-    location: "Apodaca, NL",
-    date: "2024-10-22",
+    event: "XV Años · Apodaca",
+    comment: "Calidad premium. El diseño superó mis expectativas y el proceso fue muy profesional.",
+    image: "/persona4.jpeg",
+  },
+  {
+    name: "Carlos Mendoza",
+    event: "Baby Shower · Guadalupe",
+    comment: "Excelente atención y diseños hermosos. La compartimos por WhatsApp al instante.",
+    image: "/persona3.jpeg",
   },
   {
     name: "Roberto Salinas",
-    event: "Boda",
-    rating: 5,
-    comment:
-      "Diseño espectacular con QR personalizado. Todos nuestros invitados confirmaron asistencia digital. Ahorramos tiempo y dinero, además de cuidar el medio ambiente.",
-    image: "/placeholder.svg?height=80&width=80",
-    location: "Monterrey, NL",
-    date: "2024-10-05",
+    event: "Boda · Monterrey",
+    comment: "Diseño espectacular con QR personalizado. Todos confirmaron asistencia digital.",
+    image: "/placeholder.svg",
   },
   {
-    name: "Lucia Fernández",
-    event: "Cumpleaños",
-    rating: 5,
-    comment:
-      "¡Me encantó! La invitación para el cumpleaños de mi hijo quedó hermosa. El equipo fue super atento y las animaciones le dieron un toque especial.",
-    image: "/placeholder.svg?height=80&width=80",
-    location: "Santa Catarina, NL",
-    date: "2024-09-18",
+    name: "Lucía Fernández",
+    event: "Cumpleaños · Santa Catarina",
+    comment: "Las animaciones le dieron un toque especial. El equipo fue super atento.",
+    image: "/placeholder.svg",
   },
 ]
-
-const averageRating = testimonials.reduce((acc, t) => acc + t.rating, 0) / testimonials.length
 
 export function TestimonialsSection() {
   return (
     <section id="testimonios" className="py-24 bg-[#fdfcfb]">
-      <div className="container mx-auto px-6 md:px-10">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[#1c1917] mb-6">
-            Historias de Amor
-          </h2>
-          <p className="text-lg text-[#4a4a4a] max-w-2xl mx-auto">
-            Lo que dicen nuestras parejas y clientes en Monterrey
-          </p>
-          {/* Rating summary */}
-          <div className="flex items-center justify-center gap-2 mt-4 bg-white inline-flex px-4 py-2 rounded-full shadow-sm border border-[#f3eee8]">
-            <div className="flex gap-0.5">
+      <div className="container mx-auto px-6 md:px-10 max-w-6xl">
+
+        {/* Section label */}
+        <div className="flex items-center gap-3 mb-16 animate-fade-in-up">
+          <div className="h-px w-10 bg-[#d4a373]" />
+          <span className="text-[11px] tracking-[0.3em] text-[#d4a373] uppercase font-medium">
+            Opiniones
+          </span>
+        </div>
+
+        {/* Featured testimonial */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 animate-fade-in-up" style={{ animationDelay: "80ms", opacity: 0, animationFillMode: "forwards" }}>
+          <div>
+            <div className="flex gap-1 mb-8">
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star key={i} className="w-4 h-4 fill-[#d4a373] text-[#d4a373]" />
               ))}
             </div>
-            <span className="text-[#1c1917] font-semibold text-sm">{averageRating.toFixed(1)}/5 Excellence</span>
+            <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#1c1917] leading-[1.2] mb-10">
+              &ldquo;{featured.comment}&rdquo;
+            </blockquote>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#f3eee8] flex-shrink-0">
+                <img
+                  src={featured.image}
+                  alt={featured.name}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div>
+                <p className="font-serif font-bold text-[#1c1917]">{featured.name}</p>
+                <p className="text-xs text-[#d4a373] uppercase tracking-wider font-medium mt-0.5">{featured.event}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Rating card */}
+          <div className="flex items-center justify-center lg:justify-end">
+            <div className="text-center p-12 border border-[#f3eee8] bg-white rounded-2xl shadow-sm">
+              <p className="font-serif text-7xl font-bold text-[#1c1917] leading-none">5.0</p>
+              <div className="flex justify-center gap-1 my-4">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-5 h-5 fill-[#d4a373] text-[#d4a373]" />
+                ))}
+              </div>
+              <p className="text-sm text-[#4a4a4a]">Calificación promedio</p>
+              <p className="text-xs text-[#d4a373] font-semibold tracking-wider uppercase mt-1">+150 eventos</p>
+            </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
+        {/* Compact strip of remaining testimonials */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 border-t border-[#f3eee8] pt-12">
+          {rest.map((t, index) => (
             <div
               key={index}
-              className="bg-white border border-[#f3eee8] rounded-2xl p-8 hover:border-[#d4a373]/30 hover:shadow-xl transition-all duration-300 relative group"
-              style={{
-                animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`,
-              }}
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${160 + index * 80}ms`, opacity: 0, animationFillMode: "forwards" }}
             >
-              <Quote className="absolute top-6 right-6 w-8 h-8 text-[#f3eee8] group-hover:text-[#d4a373]/20 transition-colors" />
-
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-[#d4a373] text-[#d4a373]" />
+              <div className="flex gap-0.5 mb-3">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-3 h-3 fill-[#d4a373] text-[#d4a373]" />
                 ))}
               </div>
-
-              <p className="text-[#4a4a4a] text-base leading-relaxed mb-8 italic">
-                "{testimonial.comment}"
-              </p>
-
-              <div className="flex items-center gap-4 border-t border-[#f3eee8] pt-6">
-                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-white shadow-md">
-                  <img
-                    src={testimonial.image}
-                    alt={`Opinión sobre Invitaciones Digitales Monterrey - ${testimonial.name}`}
-                    className="w-full h-full object-cover"
-                  />
+              <p className="text-[#4a4a4a] text-sm leading-relaxed mb-4 italic">&ldquo;{t.comment}&rdquo;</p>
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#f3eee8] flex-shrink-0">
+                  <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
                 </div>
                 <div>
-                  <p className="font-serif font-bold text-base text-[#1c1917]">{testimonial.name}</p>
-                  <p className="text-xs text-[#d4a373] font-medium uppercase tracking-wide">{testimonial.event} • {testimonial.location}</p>
+                  <p className="text-xs font-bold text-[#1c1917]">{t.name}</p>
+                  <p className="text-[10px] text-[#d4a373] uppercase tracking-wide font-medium">{t.event}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
-
     </section>
   )
 }

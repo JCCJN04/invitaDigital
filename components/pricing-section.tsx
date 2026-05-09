@@ -1,60 +1,47 @@
 "use client"
 
-import { Button } from "@/components/ui/button"
-import { CheckCircle2 } from "lucide-react"
-
 const plans = [
   {
-    id: "basico",
     name: "Básico",
-    price: 1999,
-    priceDisplay: "$1,999",
-    tagline: "Esencial & Elegante",
-    popular: false,
+    price: "$1,999",
+    tagline: "Pago único · Sin mensualidades",
     features: [
       "Hasta 8 fotos de alta calidad",
-      "Ubicación y Mesa de Regalos",
+      "Ubicación GPS interactiva",
+      "Mesa de regalos",
       "2 rondas de revisión",
-      "Mapa interactivo con GPS",
-      "Enlace único para compartir"
+      "Enlace único para compartir",
     ],
-    ctaText: "Comenzar Básico",
+    popular: false,
   },
   {
-    id: "premium",
     name: "Premium",
-    price: 2600,
-    priceDisplay: "$2,600",
-    tagline: "Más Popular",
-    popular: true,
+    price: "$2,600",
+    tagline: "El más solicitado",
     features: [
       "Todo lo del plan Básico",
-      "Hasta 16 fotos (Historia visual)",
-      "Hasta 5 secciones interactivas",
-      "4 rondas de revisión",
-      "Diseño 100% a medida",
+      "Hasta 16 fotos",
+      "5 secciones interactivas",
       "Animaciones elegantes",
-      "Música envolvente",
-      "Código QR personalizado"
+      "Música personalizada",
+      "Código QR",
+      "4 rondas de revisión",
     ],
-    ctaText: "Quiero el Premium",
+    popular: true,
   },
   {
-    id: "deluxe",
     name: "Deluxe",
-    price: 3499,
-    priceDisplay: "$3,499",
-    tagline: "Lujo Sin Límites",
-    popular: false,
+    price: "$3,499",
+    tagline: "Lujo sin límites",
     features: [
       "Todo lo del plan Premium",
-      "Galería completa (Hasta 40 fotos)",
+      "Galería de hasta 40 fotos",
       "Secciones ilimitadas",
-      "Revisiones ilimitadas",
       "Mix musical (3 canciones)",
-      "Prioridad total en entrega"
+      "Revisiones ilimitadas",
+      "Prioridad en entrega",
     ],
-    ctaText: "Elegir Lujo",
+    popular: false,
   },
 ]
 
@@ -65,79 +52,111 @@ export function PricingSection() {
   }
 
   return (
-    <section id="precios" className="py-24 bg-white relative">
+    <section id="precios" className="py-24 bg-background">
       <div className="container mx-auto px-6 md:px-10 max-w-6xl">
-        <div className="text-center mb-16 animate-fade-in-up">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#111827] mb-4">
-            Planes diseñados para ti
-          </h2>
-          <p className="text-gray-500 font-light text-lg">
-            Precios transparentes sin costos ocultos.
-          </p>
+
+        {/* Header */}
+        <div className="mb-16 animate-fade-in-up">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px w-10 bg-primary" />
+            <span className="text-[11px] tracking-[0.3em] text-muted-foreground uppercase font-medium">
+              Paquetes
+            </span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05] max-w-lg">
+              Planes con precio único
+            </h2>
+            <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
+              Sin mensualidades ni costos ocultos. Pagas una vez, la invitación es tuya para siempre.
+            </p>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+        {/* Plans — boutique menu style */}
+        <div className="divide-y divide-border">
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative rounded-3xl p-8 lg:p-10 flex flex-col h-full transition-all duration-300 animate-fade-in-up
-                ${plan.popular
-                  ? "bg-[#0a0f1c] text-white shadow-2xl md:scale-105 z-20 py-12"
-                  : "bg-white text-gray-900 border border-gray-100 shadow-sm hover:shadow-lg hover:border-gray-200"
-                }
-              `}
-              style={{ animationDelay: `${index * 150}ms`, opacity: 0, animationFillMode: 'forwards' }}
+              className={`py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 animate-fade-in-up ${
+                plan.popular ? "relative" : ""
+              }`}
+              style={{ animationDelay: `${index * 120}ms`, opacity: 0, animationFillMode: "forwards" }}
             >
+              {/* Popular indicator */}
               {plan.popular && (
-                <div className="absolute top-4 right-4">
-                  <span className="bg-primary text-white text-[10px] font-bold tracking-widest uppercase px-3 py-1 rounded-full shadow-lg shadow-primary/20">
-                    POPULAR
-                  </span>
+                <div className="absolute -left-3 top-10 hidden md:flex items-center gap-2">
+                  <div className="w-1.5 h-16 bg-primary rounded-full" />
                 </div>
               )}
 
-              {/* Header */}
-              <div className="mb-6">
-                <h3 className={`text-xl font-bold mb-2 tracking-tight ${plan.popular ? "text-white" : "text-gray-900"}`}>
-                  {plan.name}
-                </h3>
-
-                <div className="flex items-baseline gap-1 mt-4">
-                  <span className={`text-4xl lg:text-5xl font-bold tracking-tighter ${plan.popular ? "text-white" : "text-gray-900"}`}>
-                    {plan.priceDisplay}
-                  </span>
-                  <span className={`text-sm font-medium ${plan.popular ? "text-gray-400" : "text-gray-500"}`}>
-                    {plan.tagline}
-                  </span>
+              <div className="md:pl-6">
+                {/* Plan name + badge */}
+                <div className="flex items-center gap-4 mb-4">
+                  <h3 className="font-serif text-2xl md:text-3xl font-bold text-foreground">
+                    {plan.name}
+                  </h3>
+                  {plan.popular && (
+                    <span className="text-[10px] tracking-[0.2em] uppercase font-bold text-primary border border-primary/40 px-3 py-1 rounded-full">
+                      Recomendado
+                    </span>
+                  )}
                 </div>
+
+                <p className="text-sm text-muted-foreground mb-6">{plan.tagline}</p>
+
+                {/* Features inline */}
+                <ul className="flex flex-wrap gap-x-6 gap-y-2">
+                  {plan.features.map((f, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-muted-foreground">
+                      <span className="w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              {/* Features */}
-              <ul className="space-y-4 mb-10 flex-grow mt-6">
-                {plan.features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center gap-3 text-sm">
-                    <CheckCircle2 className={`w-5 h-5 ${plan.popular ? "text-primary" : "text-primary"}`} />
-                    <span className={`${plan.popular ? "text-gray-300" : "text-gray-600"}`}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* CTA */}
-              <a href={getWhatsappUrl(plan.name)} target="_blank" rel="noopener noreferrer" className="mt-auto block">
-                <Button
-                  className={`w-full h-12 rounded-full text-sm font-bold transition-all duration-300
-                    ${plan.popular
-                      ? "bg-primary hover:bg-[#00c050] text-white shadow-lg shadow-primary/25"
-                      : "bg-white hover:bg-gray-50 text-gray-900 border border-gray-200 shadow-sm"}`}
+              {/* Price + CTA */}
+              <div className="flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center gap-4 md:gap-6 md:min-w-[180px]">
+                <div className="text-right">
+                  <p className="font-serif text-4xl md:text-5xl font-bold text-foreground leading-none">
+                    {plan.price}
+                  </p>
+                  <p className="text-xs text-muted-foreground mt-1">MXN</p>
+                </div>
+                <a
+                  href={getWhatsappUrl(plan.name)}
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  {plan.ctaText}
-                </Button>
-              </a>
+                  <button
+                    className={`px-6 py-3 text-xs font-bold tracking-widest uppercase transition-colors ${
+                      plan.popular
+                        ? "bg-primary text-primary-foreground hover:bg-primary-hover"
+                        : "border border-foreground/30 text-foreground hover:border-primary hover:text-primary"
+                    }`}
+                  >
+                    Elegir
+                  </button>
+                </a>
+              </div>
             </div>
           ))}
         </div>
+
+        {/* Bottom note */}
+        <p className="mt-10 text-center text-sm text-muted-foreground">
+          ¿Tienes dudas? Escríbenos por{" "}
+          <a
+            href="https://wa.me/528111230266"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
+          >
+            WhatsApp
+          </a>{" "}
+          y te asesoramos sin compromiso.
+        </p>
       </div>
     </section>
   )

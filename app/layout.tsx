@@ -364,6 +364,7 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#1c1917" />
+        <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt — AI-readable content" />
       </head>
       <body className="font-sans antialiased">
         <GoogleAnalytics />

@@ -29,11 +29,11 @@ const designs = [
 
 export function GallerySection() {
   return (
-    <section id="galeria" className="py-24 bg-[#fafafa] relative overflow-hidden">
+    <section id="galeria" className="py-24 bg-background relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-10 max-w-7xl">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 animate-fade-in-up">
           <div>
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-[#111827] mb-2">
+            <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-foreground mb-2">
               Explora nuestros diseños
             </h2>
             <p className="text-gray-500 font-light text-lg">
@@ -42,10 +42,10 @@ export function GallerySection() {
           </div>
 
           <div className="flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 hover:text-primary transition-colors text-gray-400">
+            <button className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-muted hover:text-primary transition-colors text-muted-foreground">
               <ChevronLeft className="w-5 h-5" />
             </button>
-            <button className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center hover:bg-gray-50 hover:text-primary transition-colors text-gray-400">
+            <button className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-muted hover:text-primary transition-colors text-muted-foreground">
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>

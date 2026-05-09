@@ -10,11 +10,25 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: ["/api/", "/admin/"],
       },
+      // AI search bots — explicitly allowed to index and cite content
       {
-        userAgent: ["GPTBot", "ChatGPT-User", "ClaudeBot", "PerplexityBot", "OAI-SearchBot"],
+        userAgent: [
+          "GPTBot",           // ChatGPT / OpenAI
+          "ChatGPT-User",     // ChatGPT browsing
+          "OAI-SearchBot",    // OpenAI SearchGPT
+          "ClaudeBot",        // Claude (Anthropic)
+          "anthropic-ai",     // Anthropic crawler
+          "PerplexityBot",    // Perplexity AI
+          "Google-Extended",  // Gemini / Google AI Overviews
+          "Googlebot",        // Google Search
+          "Bingbot",          // Bing / Microsoft Copilot
+          "meta-externalagent", // Meta AI
+          "cohere-ai",        // Cohere AI
+        ],
         allow: "/",
-      }
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   }
 }
