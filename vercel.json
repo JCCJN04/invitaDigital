@@ -1,6 +1,10 @@
 {
   "rewrites": [
     {
+      "source": "/carlayangel/:path*",
+      "destination": "https://boda-carla-y-angel.vercel.app/carlayangel/:path*"
+    },
+    {
       "source": "/citliyamed/:path*",
       "destination": "https://citliyamed.vercel.app/:path*"
     },
