@@ -1,8 +1,16 @@
 {
   "rewrites": [
     {
+      "source": "/carlayangel/_next/:path*",
+      "destination": "https://carla-y-angel-qcbv.vercel.app/_next/:path*"
+    },
+    {
+      "source": "/carlayangel",
+      "destination": "https://carla-y-angel-qcbv.vercel.app/"
+    },
+    {
       "source": "/carlayangel/:path*",
-      "destination": "https://carla-y-angel-qcbv.vercel.app/carlayangel/:path*"
+      "destination": "https://carla-y-angel-qcbv.vercel.app/:path*"
     },
     {
       "source": "/citliyamed/:path*",
