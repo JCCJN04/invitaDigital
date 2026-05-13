@@ -2,7 +2,7 @@
   "rewrites": [
     {
       "source": "/carlayangel/:path*",
-      "destination": "https://boda-carla-y-angel.vercel.app/carlayangel/:path*"
+      "destination": "https://carla-y-angel.vercel.app/carlayangel/:path*"
     },
     {
       "source": "/citliyamed/:path*",
