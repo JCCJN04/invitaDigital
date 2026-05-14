@@ -20,7 +20,8 @@ export function HeroSection() {
           <h1 className="font-serif font-bold leading-[0.88] tracking-tight text-foreground mb-12"
             style={{ fontSize: "clamp(3.5rem, 9vw, 7.5rem)" }}>
             Invitaciones<br />
-            <em className="italic text-primary">que</em> emocionan
+            Digitales<br />
+            <em className="italic text-primary">Monterrey</em>
           </h1>
         </div>
 
@@ -87,6 +88,7 @@ export function HeroSection() {
                 alt="Invitación digital XV años Monterrey"
                 fill
                 className="object-cover object-top"
+                priority
               />
             </div>
             {/* Champagne accent */}

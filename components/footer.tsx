@@ -1,4 +1,4 @@
-import { Twitter, Mail } from "lucide-react"
+import { Instagram, Mail } from "lucide-react"
 import Link from "next/link"
 
 export function Footer() {
@@ -26,7 +26,7 @@ export function Footer() {
           {/* Social Icons */}
           <div className="flex gap-4">
             <a href="https://www.instagram.com/invitacionesdigitalesmty" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Instagram">
-              <Twitter className="w-4 h-4" />
+              <Instagram className="w-4 h-4" />
             </a>
             <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Email">
               <Mail className="w-4 h-4" />

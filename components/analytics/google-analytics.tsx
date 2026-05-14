@@ -4,7 +4,8 @@ import Script from "next/script"
 
 export function GoogleAnalytics() {
   // Reemplaza 'G-XXXXXXXXXX' con tu ID de Google Analytics
-  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX"
+  const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ""
+  if (!GA_MEASUREMENT_ID) return null
 
   return (
     <>

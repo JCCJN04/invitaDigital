@@ -31,13 +31,13 @@ const rest = [
     name: "Roberto Salinas",
     event: "Boda · Monterrey",
     comment: "Diseño espectacular con QR personalizado. Todos confirmaron asistencia digital.",
-    image: "/placeholder.svg",
+    image: "",
   },
   {
     name: "Lucía Fernández",
     event: "Cumpleaños · Santa Catarina",
     comment: "Las animaciones le dieron un toque especial. El equipo fue super atento.",
-    image: "/placeholder.svg",
+    image: "",
   },
 ]
 
@@ -110,8 +110,14 @@ export function TestimonialsSection() {
               </div>
               <p className="text-[#4a4a4a] text-sm leading-relaxed mb-4 italic">&ldquo;{t.comment}&rdquo;</p>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#f3eee8] flex-shrink-0">
-                  <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#f3eee8] flex-shrink-0 bg-[#f3eee8] flex items-center justify-center">
+                  {t.image ? (
+                    <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                  ) : (
+                    <span className="text-[10px] font-bold text-[#d4a373]">
+                      {t.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}
+                    </span>
+                  )}
                 </div>
                 <div>
                   <p className="text-xs font-bold text-[#1c1917]">{t.name}</p>

@@ -90,6 +90,7 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
     languages: {
       "es-MX": SITE_URL,
+      "x-default": SITE_URL,
     },
   },
   category: "business",
@@ -112,7 +113,7 @@ export default function RootLayout({
     image: `${SITE_URL}/boda-alma-mauricio.jpg`,
     logo: `${SITE_URL}/logo.png`,
     telephone: BUSINESS_PHONE,
-    email: "",
+    email: "contacto@invitacionesdigitalesmty.com.mx",
     priceRange: "$$",
     paymentAccepted: "Cash, Credit Card, Bank Transfer",
     currenciesAccepted: "MXN",
@@ -145,15 +146,9 @@ export default function RootLayout({
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
         opens: "09:00",
-        closes: "19:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Saturday"],
-        opens: "10:00",
-        closes: "14:00",
+        closes: "20:00",
       },
     ],
     sameAs: [
@@ -351,7 +346,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang="es" className={`${playfair.variable} ${montserrat.variable}`}>
+    <html lang="es-MX" className={`${playfair.variable} ${montserrat.variable}`}>
       <head>
         <script
           type="application/ld+json"
