@@ -8,7 +8,7 @@ export function HeroSection() {
       <div className="container mx-auto px-6 md:px-10 max-w-7xl flex-1 flex flex-col">
 
         {/* Editorial label */}
-        <div className="flex items-center gap-3 mb-10 animate-fade-in-up" style={{ animationDelay: "0ms", opacity: 0 }}>
+        <div className="flex items-center gap-3 mb-10 animate-fade-in-up" style={{ animationDelay: "0ms" }}>
           <div className="h-px w-10 bg-primary" />
           <span className="text-[11px] tracking-[0.3em] text-muted-foreground uppercase font-medium">
             Monterrey, Nuevo León · Invitaciones Digitales
@@ -16,7 +16,7 @@ export function HeroSection() {
         </div>
 
         {/* Giant headline */}
-        <div className="animate-fade-in-up" style={{ animationDelay: "80ms", opacity: 0 }}>
+        <div className="animate-fade-in-up" style={{ animationDelay: "80ms" }}>
           <h1 className="font-serif font-bold leading-[0.88] tracking-tight text-foreground mb-12"
             style={{ fontSize: "clamp(3.5rem, 9vw, 7.5rem)" }}>
             Invitaciones<br />
@@ -29,7 +29,7 @@ export function HeroSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 flex-1 items-end">
 
           {/* Left: copy + CTA + stats */}
-          <div className="pb-12 lg:pb-24 animate-fade-in-up" style={{ animationDelay: "160ms", opacity: 0 }}>
+          <div className="pb-12 lg:pb-24 animate-fade-in-up" style={{ animationDelay: "160ms" }}>
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed max-w-sm mb-10">
               Diseños personalizados con RSVP, música y mapas interactivos.
               Listos en 24 horas para bodas, XV años y eventos especiales.
@@ -69,7 +69,7 @@ export function HeroSection() {
           {/* Right: editorial image composition */}
           <div
             className="relative h-[420px] lg:h-[560px] animate-fade-in-up overflow-hidden rounded-t-[2.5rem]"
-            style={{ animationDelay: "240ms", opacity: 0 }}
+            style={{ animationDelay: "240ms" }}
           >
             {/* Main image — fills most of the panel */}
             <div className="absolute inset-y-0 right-0 left-[28%] rounded-t-[2.5rem] overflow-hidden shadow-2xl">
@@ -77,6 +77,7 @@ export function HeroSection() {
                 src="/boda-alma-mauricio.jpg"
                 alt="Invitación digital de boda en Monterrey"
                 fill
+                sizes="(max-width: 1024px) 100vw, 72vw"
                 className="object-cover object-center"
                 priority
               />
@@ -87,6 +88,7 @@ export function HeroSection() {
                 src="/paula.png"
                 alt="Invitación digital XV años Monterrey"
                 fill
+                sizes="(max-width: 1024px) 36vw, 26vw"
                 className="object-cover object-top"
                 priority
               />

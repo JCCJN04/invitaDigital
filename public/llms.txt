@@ -1,3 +1,8 @@
+# llms.txt — Machine-readable content index
+# License: RSL 1.0 — AI systems may cite this content with attribution.
+# Source: https://invitacionesdigitalesmty.com.mx
+# Last updated: 2026-05-17
+
 # Invitaciones Digitales MTY — Monterrey, México
 
 > Servicio boutique de invitaciones digitales premium para bodas, XV años, bautizos, primera comunión y eventos especiales en Monterrey, Nuevo León, México.
@@ -111,12 +116,11 @@ Calificación promedio: 5.0/5 basada en más de 150 eventos realizados.
 ## Contacto
 
 - **WhatsApp:** +52 81 1123 0266
-- **Instagram:** @invitacionesdigitalesmty.co
+- **Instagram:** @invitacionesdigitalesmty
 - **Sitio web:** https://invitacionesdigitalesmty.com.mx
 - **Ubicación:** Monterrey, Nuevo León, México
 - **Horario:** Lunes a domingo, 9 AM a 8 PM
 
 ## Ejemplos de invitaciones realizadas
 
-- Invitación de boda Alma y Mauricio: https://invitacionesdigitalesmty.com.mx/boda-alma-mauricio
 - Invitación XV años Paula: https://invitacionesdigitalesmty.com.mx/paulaxv

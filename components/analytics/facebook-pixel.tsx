@@ -3,8 +3,9 @@
 import Script from "next/script"
 
 export function FacebookPixel() {
-  // Reemplaza 'YOUR_PIXEL_ID' con tu Facebook Pixel ID
-  const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID || "YOUR_PIXEL_ID"
+  const FB_PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID || ""
+
+  if (!FB_PIXEL_ID) return null
 
   return (
     <>

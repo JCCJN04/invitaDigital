@@ -9,6 +9,7 @@ import { FacebookPixel } from "@/components/analytics/facebook-pixel"
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
+  weight: ["400", "700"],
   display: "swap",
   variable: "--font-playfair",
 })
@@ -104,7 +105,7 @@ export default function RootLayout({
   // JSON-LD estructurado para LocalBusiness
   const localBusinessSchema = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
+    "@type": ["LocalBusiness", "ProfessionalService"],
     "@id": `${SITE_URL}#localbusiness`,
     name: BUSINESS_NAME,
     description:
@@ -126,8 +127,8 @@ export default function RootLayout({
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: "25.68660",
-      longitude: "-100.31610",
+      latitude: 25.68660,
+      longitude: -100.31610,
     },
     areaServed: [
       {
@@ -155,57 +156,6 @@ export default function RootLayout({
       "https://www.facebook.com/invitacionesdigitalesmty",
       "https://www.instagram.com/invitacionesdigitalesmty",
     ],
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "5.0",
-      reviewCount: 6,
-      bestRating: "5",
-      worstRating: "1",
-    },
-    review: [
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "María González" },
-        datePublished: "2024-12-15",
-        reviewBody: "¡Increíble servicio! La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda en Monterrey.",
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Ana Rodríguez" },
-        datePublished: "2024-11-28",
-        reviewBody: "El proceso fue súper fácil y rápido. En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. ¡Totalmente recomendado!",
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Carlos Mendoza" },
-        datePublished: "2024-11-10",
-        reviewBody: "Excelente atención al cliente y diseños hermosos. La invitación digital fue un éxito total en nuestro baby shower.",
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Sandra Castillo" },
-        datePublished: "2024-10-22",
-        reviewBody: "Calidad premium a precio increíble. El diseño superó mis expectativas y el proceso fue muy profesional.",
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Roberto Salinas" },
-        datePublished: "2024-10-05",
-        reviewBody: "Diseño espectacular con QR personalizado. Todos nuestros invitados confirmaron asistencia digital.",
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-      },
-      {
-        "@type": "Review",
-        author: { "@type": "Person", name: "Lucia Fernández" },
-        datePublished: "2024-09-18",
-        reviewBody: "¡Me encantó! La invitación para el cumpleaños de mi hijo quedó hermosa. El equipo fue super atento.",
-        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5", worstRating: "1" },
-      },
-    ],
   }
 
   // JSON-LD para Service/Product
@@ -219,10 +169,11 @@ export default function RootLayout({
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}#localbusiness`,
     },
-    areaServed: {
-      "@type": "City",
-      name: "Monterrey",
-    },
+    areaServed: [
+      { "@type": "City", name: "Monterrey" },
+      { "@type": "AdministrativeArea", name: "Nuevo León" },
+      { "@type": "Country", name: "México" },
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Invitaciones Digitales",
@@ -236,6 +187,8 @@ export default function RootLayout({
           },
           price: "1999",
           priceCurrency: "MXN",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-12-31",
         },
         {
           "@type": "Offer",
@@ -246,6 +199,8 @@ export default function RootLayout({
           },
           price: "2600",
           priceCurrency: "MXN",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-12-31",
         },
         {
           "@type": "Offer",
@@ -256,6 +211,8 @@ export default function RootLayout({
           },
           price: "3499",
           priceCurrency: "MXN",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2026-12-31",
         },
       ],
     },
@@ -331,6 +288,59 @@ export default function RootLayout({
     ],
   }
 
+  // WebPage Schema
+  const webpageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${SITE_URL}#webpage`,
+    url: SITE_URL,
+    name: "Invitaciones Digitales en Monterrey | Bodas, XV Años y Eventos",
+    isPartOf: { "@id": `${SITE_URL}#website` },
+    about: { "@id": `${SITE_URL}#localbusiness` },
+    inLanguage: "es-MX",
+    dateModified: new Date().toISOString().split("T")[0],
+  }
+
+  // HowTo Schema — proceso de 4 pasos
+  const howToSchema = {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    name: "Cómo pedir tu invitación digital en Monterrey",
+    description: "Proceso de 4 pasos para obtener tu invitación digital personalizada para bodas, XV años y eventos en Monterrey.",
+    totalTime: "PT48H",
+    estimatedCost: {
+      "@type": "MonetaryAmount",
+      currency: "MXN",
+      value: "1999",
+    },
+    step: [
+      {
+        "@type": "HowToStep",
+        position: 1,
+        name: "Cuéntanos tu sueño",
+        text: "Comparte los detalles de tu evento por WhatsApp: fecha, nombres, tema y estilo deseado.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 2,
+        name: "Diseñamos tu invitación",
+        text: "Creamos un diseño personalizado con tus colores, fotos y música favorita en 24-48 horas.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 3,
+        name: "Revisiones y aprobación",
+        text: "Recibes el diseño y solicitas cambios hasta que quede perfecto. No pagas el total hasta aprobar.",
+      },
+      {
+        "@type": "HowToStep",
+        position: 4,
+        name: "Comparte y celebra",
+        text: "Obtienes tu enlace personalizado listo para compartir por WhatsApp con todos tus invitados.",
+      },
+    ],
+  }
+
   // WebSite Schema
   const websiteSchema = {
     "@context": "https://schema.org",
@@ -356,6 +366,8 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webpageSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#1c1917" />
