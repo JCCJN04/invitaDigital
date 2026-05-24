@@ -68,7 +68,7 @@ export function PricingSection() {
               Planes con precio único
             </h2>
             <p className="text-muted-foreground text-sm max-w-xs leading-relaxed">
-              Sin mensualidades ni costos ocultos. Pagas una vez, la invitación es tuya para siempre.
+              Sin mensualidades ni costos ocultos. Pagas una vez, la invitación es tuya para siempre — disponible por 12 meses.
             </p>
           </div>
         </div>
