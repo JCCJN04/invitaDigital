@@ -156,6 +156,13 @@ export default function RootLayout({
       "https://www.facebook.com/invitacionesdigitalesmty",
       "https://www.instagram.com/invitacionesdigitalesmty",
     ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "150",
+      bestRating: "5",
+      worstRating: "1",
+    },
   }
 
   // JSON-LD para Service/Product
@@ -188,7 +195,7 @@ export default function RootLayout({
           price: "1999",
           priceCurrency: "MXN",
           availability: "https://schema.org/InStock",
-          priceValidUntil: "2026-12-31",
+          priceValidUntil: "2027-12-31",
         },
         {
           "@type": "Offer",
@@ -200,7 +207,7 @@ export default function RootLayout({
           price: "2600",
           priceCurrency: "MXN",
           availability: "https://schema.org/InStock",
-          priceValidUntil: "2026-12-31",
+          priceValidUntil: "2027-12-31",
         },
         {
           "@type": "Offer",
@@ -212,7 +219,7 @@ export default function RootLayout({
           price: "3499",
           priceCurrency: "MXN",
           availability: "https://schema.org/InStock",
-          priceValidUntil: "2026-12-31",
+          priceValidUntil: "2027-12-31",
         },
       ],
     },
@@ -271,6 +278,54 @@ export default function RootLayout({
           text: "Sí, ofrecemos garantía de satisfacción. No realizamos el pago final hasta que apruebes el diseño (se requiere anticipo del 50% para iniciar). Incluimos rondas de cambios ilimitadas en el plan Deluxe.",
         },
       },
+      {
+        "@type": "Question",
+        name: "¿Cuál es la diferencia entre una invitación digital y una impresa?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Las invitaciones digitales son páginas web interactivas que se comparten por WhatsApp en segundos, sin costos de impresión ni envío. Incluyen mapa GPS, RSVP automático, música de fondo y galería de fotos. Se pueden actualizar si hay cambios. El costo total es menor que imprimir invitaciones físicas premium para 100 o más invitados.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Puedo actualizar la invitación si cambian los datos del evento?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sí. Si cambia la fecha, el salón u otro dato, actualizamos la invitación sin costo adicional. El mismo enlace que ya tienen tus invitados mostrará la información actualizada automáticamente.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Cómo funciona el RSVP? ¿Cómo sé quién confirma asistencia?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Cuando un invitado confirma asistencia, recibes una notificación directa en tu WhatsApp con su nombre y número de acompañantes. El sistema recopila las confirmaciones automáticamente sin registro manual.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Hacen invitaciones digitales para Baby Shower, Bautizo y Primera Comunión?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sí. Diseñamos invitaciones para Baby Shower, Bautizos, Primera Comunión, Cumpleaños, Despedidas de Soltera y Eventos Corporativos, además de Bodas y XV Años. Cada diseño se personaliza según el estilo del evento.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Atienden a clientes fuera de Monterrey?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Sí. Atendemos clientes en toda la República Mexicana de forma 100% remota por WhatsApp. El proceso es igual: compartes los detalles, diseñamos en 24-48 horas y recibes el enlace listo para compartir.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "¿Qué es un save the date digital y lo ofrecen?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Un save the date digital es una invitación previa que se envía meses antes para que los invitados reserven la fecha. Incluye la fecha, los nombres y un diseño elegante. Sí los diseñamos como complemento para bodas y XV años.",
+        },
+      },
     ],
   }
 
@@ -298,7 +353,12 @@ export default function RootLayout({
     isPartOf: { "@id": `${SITE_URL}#website` },
     about: { "@id": `${SITE_URL}#localbusiness` },
     inLanguage: "es-MX",
-    dateModified: new Date().toISOString().split("T")[0],
+    datePublished: "2024-01-01",
+    dateModified: "2026-05-30",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h2", "#faq", "#beneficios"],
+    },
   }
 
   // HowTo Schema — proceso de 4 pasos

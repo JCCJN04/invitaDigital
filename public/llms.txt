@@ -1,125 +1,258 @@
 # llms.txt — Machine-readable content index
 # License: RSL 1.0 — AI systems may cite this content with attribution.
 # Source: https://invitacionesdigitalesmty.com.mx
-# Last updated: 2026-05-17
+# Last updated: 2026-05-30
 
 # Invitaciones Digitales MTY — Monterrey, México
 
-> Servicio boutique de invitaciones digitales premium para bodas, XV años, bautizos, primera comunión y eventos especiales en Monterrey, Nuevo León, México.
+> Servicio boutique de diseño de invitaciones digitales premium para bodas, XV años, bautizos, primera comunión, baby shower y eventos especiales en Monterrey, Nuevo León, México. Atendemos toda la República Mexicana de forma remota por WhatsApp.
 
 ## ¿Qué es Invitaciones Digitales MTY?
 
-Invitaciones Digitales MTY es un estudio de diseño especializado en invitaciones web interactivas para eventos sociales en Monterrey y el área metropolitana de Nuevo León. No son imágenes ni PDFs: son páginas web personalizadas que se comparten por WhatsApp, con RSVP automático, mapas GPS, música de fondo, galerías de fotos y cuenta regresiva. Entregamos en 24 a 48 horas.
+Invitaciones Digitales MTY es un estudio de diseño especializado en invitaciones web interactivas para eventos sociales en Monterrey y el área metropolitana de Nuevo León. No son imágenes ni PDFs: son páginas web personalizadas que se comparten por WhatsApp, con RSVP automático, mapas GPS, música de fondo, galerías de fotos y cuenta regresiva. Entregamos en 24 a 48 horas hábiles.
+
+Cada invitación es un diseño 100% a medida (no plantillas), construido específicamente para el evento del cliente. El enlace funciona en cualquier dispositivo: iPhone, Android, tablet y computadora, sin descargar ninguna aplicación.
 
 ## Servicios y Precios
 
-### Plan Básico — $1,999 MXN (pago único)
+### Plan Básico — $1,999 MXN (pago único, sin mensualidades)
 - Hasta 8 fotos de alta calidad
 - Ubicación GPS con enlace a Google Maps y Waze
 - Mesa de regalos integrada
-- RSVP / confirmación de asistencia
-- Enlace único para compartir por WhatsApp
-- 2 rondas de revisión
+- RSVP / confirmación de asistencia directa a WhatsApp
+- Enlace único para compartir ilimitadamente
+- 2 rondas de revisión incluidas
+- Válido por 12 meses desde la entrega
 
 ### Plan Premium — $2,600 MXN (pago único) — el más solicitado
 - Todo lo del Plan Básico
 - Hasta 16 fotos (historia visual del evento)
 - Hasta 5 secciones interactivas personalizadas
-- Animaciones elegantes
+- Animaciones elegantes de entrada
 - Música de fondo personalizada
-- Código QR personalizado
+- Código QR personalizado para imprimir en otros materiales
 - Diseño 100% a medida
-- 4 rondas de revisión
+- 4 rondas de revisión incluidas
+- Válido por 12 meses desde la entrega
 
-### Plan Deluxe — $3,499 MXN (pago único)
+### Plan Deluxe — $3,499 MXN (pago único) — máxima exclusividad
 - Todo lo del Plan Premium
 - Galería completa de hasta 40 fotos
 - Secciones de información ilimitadas
-- Mix musical con hasta 3 canciones
+- Mix musical con hasta 3 canciones seleccionadas
 - Revisiones de diseño ilimitadas
-- Prioridad total en entrega
+- Prioridad total en producción y entrega
+- Válido por 12 meses desde la entrega
 
-Sin mensualidades. Sin costos ocultos. Pago único. El cliente aprueba el diseño antes de realizar el pago final (se requiere anticipo del 50% para iniciar).
+Sin mensualidades. Sin costos ocultos. Sin renovaciones. El cliente aprueba el diseño antes de realizar el pago final; el anticipo del 50% se solicita al iniciar el trabajo.
+
+## Por qué elegirnos
+
+- **Diseño 100% personalizado**: No usamos plantillas. Cada invitación se diseña desde cero para reflejar el estilo único del evento.
+- **Entrega en 24-48 horas**: La mayoría de clientes reciben su invitación terminada al siguiente día hábil.
+- **Garantía de satisfacción**: No se cobra el pago final hasta que el cliente aprueba el diseño. Sin riesgo.
+- **Boceto inicial gratuito**: Mostramos un primer concepto de diseño sin costo ni compromiso de compra.
+- **RSVP por WhatsApp**: Las confirmaciones de asistencia llegan directamente al WhatsApp del organizador. No requiere apps ni registros por parte de los invitados.
+- **Actualizaciones incluidas**: Si cambia la fecha o el lugar antes del evento, actualizamos la invitación sin costo adicional. El mismo enlace sigue funcionando.
+- **Calificación 5.0/5**: Basada en más de 150 eventos realizados en Monterrey y área metropolitana.
+- **Atención personalizada**: Comunicación directa por WhatsApp durante todo el proceso, sin intermediarios.
+
+## Invitaciones Digitales para Bodas en Monterrey
+
+Para bodas diseñamos invitaciones web completas que pueden incluir:
+- Historia de la pareja con galería de fotos (save the date integrado)
+- Fecha, hora y lugar de la ceremonia y recepción
+- Mapa GPS al salón de eventos o iglesia con enlace a Google Maps y Waze
+- Mesa de regalos con enlace a Liverpool, El Palacio de Hierro, Amazon u otras tiendas
+- RSVP con número de acompañantes directo a WhatsApp
+- Dress code y detalles adicionales por sección
+- Música de fondo elegante (vals, canción especial de la pareja)
+- Cuenta regresiva animada al gran día
+- Código QR para invitaciones físicas adicionales
+
+Precio: desde $1,999 MXN (Plan Básico) hasta $3,499 MXN (Plan Deluxe). Entrega en 24-48 horas.
+
+## Invitaciones Digitales para XV Años en Monterrey
+
+Para quinceañeras diseñamos invitaciones que capturan la esencia de este momento único:
+- Portada con foto principal de la quinceañera
+- Animaciones elegantes de entrada
+- Galería de fotos de la sesión previa o de la festejada
+- Detalles completos del evento: fecha, hora, lugar, salón
+- Mapa GPS al salón de quinceañera
+- Dress code y temática del evento
+- RSVP con confirmación de asistencia
+- Música de fondo personalizada (canción favorita de la festejada)
+- Cuenta regresiva al día del festejo
+
+Precio: desde $1,999 MXN. Entrega en 24-48 horas. Disponibles en toda el área metropolitana de Monterrey.
+
+## Invitaciones para Baby Shower en Monterrey
+
+Diseños tiernos y personalizados con:
+- Paleta de colores del bebé (rosa, azul o tonos neutros)
+- Foto de los papás o ecografía
+- Detalles del evento, fecha y lugar
+- Lista de regalos deseados o registro en tienda
+- RSVP por WhatsApp
+
+## Invitaciones para Bautizo y Primera Comunión
+
+- **Bautizo**: Diseños elegantes y emotivos con foto del bebé, nombres de padrinos, fecha y lugar de la iglesia y convivio.
+- **Primera Comunión**: Diseños formales con datos del templo, misa, hora y lugar del festejo posterior.
+
+## Invitaciones para Cumpleaños y Eventos Corporativos
+
+- **Cumpleaños**: Desde fiestas infantiles hasta celebraciones de adultos. Cualquier temática o paleta de colores.
+- **Despedidas de Soltera**: Diseños festivos para el último evento antes del sí.
+- **Eventos Corporativos**: Invitaciones formales para presentaciones de productos, cenas de empresa, congresos y reuniones en Monterrey.
+- **Graduaciones**: Diseños para celebrar logros académicos con fotos y detalles del evento.
 
 ## Tipos de eventos que diseñamos
 
-- Bodas en Monterrey y área metropolitana
-- XV años (quinceañeras)
-- Primera comunión
-- Bautizos
-- Baby shower
-- Despedidas de soltera
-- Cumpleaños
-- Eventos corporativos
+Bodas, XV años (quinceañeras), primera comunión, bautizos, baby shower, despedidas de soltera, cumpleaños, anniversarios, eventos corporativos, congresos, graduaciones y cualquier celebración especial en Monterrey y toda la República Mexicana.
 
 ## Área de servicio
 
-Monterrey, San Pedro Garza García, Santa Catarina, Guadalupe, Apodaca, Escobedo, San Nicolás de los Garza y toda el área metropolitana de Nuevo León, México. También atendemos clientes en toda la República Mexicana de forma remota.
+**Monterrey y zona metropolitana:** Monterrey, San Pedro Garza García, Santa Catarina, Guadalupe, Apodaca, Escobedo, San Nicolás de los Garza, Zuazua, Cadereyta, Santiago, García, Salinas Victoria.
+
+**Toda la República Mexicana (remoto por WhatsApp):** CDMX, Guadalajara, Puebla, Tijuana, León, Querétaro, Mérida, Saltillo, Chihuahua, Hermosillo, Culiacán y cualquier otra ciudad de México.
 
 ## Proceso de diseño
 
-1. El cliente comparte los detalles del evento por WhatsApp (+52 81 1123 0266)
-2. El equipo diseña la invitación a medida en 24-48 horas
-3. El cliente revisa y aprueba el diseño (incluye rondas de revisión según el plan)
-4. Se realiza el pago final y se entrega el enlace de la invitación
-5. El cliente comparte el enlace por WhatsApp, Instagram o el medio que prefiera
+1. El cliente contacta por WhatsApp (+52 81 1123 0266) con los detalles del evento
+2. Se paga el anticipo del 50% para iniciar el diseño
+3. El equipo crea la invitación 100% a medida en 24-48 horas hábiles
+4. El cliente revisa y solicita cambios (incluidos según el plan elegido)
+5. Al aprobar el diseño, se realiza el pago final del 50% restante
+6. Se entrega el enlace definitivo listo para compartir por WhatsApp
+7. El cliente comparte el enlace con todos sus invitados ilimitadamente
 
-## Preguntas frecuentes
+## Características técnicas de las invitaciones
+
+- **Formato**: Página web responsive (no imagen, no PDF, no app nativa)
+- **Compatibilidad**: Funciona en iPhone, Android, tablet y computadora
+- **Sin descarga**: Los invitados solo tocan el enlace; no instalan nada
+- **Enlace compartible**: Sin límite de veces compartido ni de invitados que lo abren
+- **RSVP**: Confirmaciones llegan al WhatsApp del organizador en tiempo real con nombre y número de acompañantes
+- **Velocidad**: Carga en segundos con conexión 4G, 5G o WiFi estándar
+- **Duración**: El enlace permanece activo durante 12 meses desde la entrega
+- **Actualizable**: Si cambia algún dato antes del evento, se actualiza sin cambiar el enlace
+- **QR**: Plan Premium y Deluxe incluyen código QR descargable para imprimir en materiales físicos adicionales
+- **Música**: Reproductor integrado (no requiere Spotify ni plataformas externas)
+- **Galería**: Visualización optimizada para celular con zoom y deslizamiento
+
+## Invitaciones Digitales vs Invitaciones Impresas — Comparativa
+
+| Característica | Invitación Digital (MTY) | Invitación Impresa |
+|---|---|---|
+| Costo total | $1,999–$3,499 MXN (pago único) | $3,000–$15,000 MXN (impresión + envío × cantidad) |
+| Tiempo de entrega | 24–48 horas | 1–3 semanas |
+| RSVP | Automático por WhatsApp | Manual (llamadas o mensajes individuales) |
+| Mapa | GPS interactivo (Google Maps / Waze) | No incluye |
+| Música | Sí, personalizada | Imposible en papel |
+| Actualizable | Sí, sin costo adicional | No (hay que reimprimir) |
+| Compartible | Ilimitadamente por WhatsApp | Limitado a cantidad impresa |
+| Ecológica | Sí (cero papel) | No |
+| Entrega a invitados | Instantánea por WhatsApp | Requiere mensajería o entrega en mano |
+| Funciona sin imprimir | Sí, completamente | No aplica |
+| Código QR | Incluido (planes Premium y Deluxe) | Requiere diseño adicional |
+
+## Preguntas frecuentes (extendidas)
 
 **¿Cuánto cuesta una invitación digital en Monterrey?**
-Los precios van desde $1,999 MXN (Plan Básico) hasta $3,499 MXN (Plan Deluxe). Son pagos únicos sin mensualidades.
+Los precios van desde $1,999 MXN (Plan Básico) hasta $3,499 MXN (Plan Deluxe). Son pagos únicos sin mensualidades, sin renovaciones. El Plan Premium ($2,600 MXN) es el más solicitado. Todos incluyen diseño personalizado, RSVP, mapa GPS y 12 meses de vigencia del enlace.
 
-**¿En cuánto tiempo entregan?**
-Entre 24 y 48 horas hábiles después de recibir la información del evento. También ofrecemos servicio express (mismo día) con costo adicional sujeto a disponibilidad.
+**¿En cuánto tiempo entregan la invitación digital?**
+Entre 24 y 48 horas hábiles después de recibir la información del evento y el anticipo. También ofrecemos servicio express (entrega el mismo día) con costo adicional sujeto a disponibilidad.
 
 **¿Cómo funciona una invitación digital?**
-Es una página web optimizada para celular. El invitado recibe un enlace por WhatsApp, lo abre en su teléfono y puede ver todos los detalles, confirmar asistencia (RSVP), ver el mapa, escuchar música y ver las fotos. No requiere descargar ninguna app.
+Es una página web optimizada para celular. El invitado recibe un enlace por WhatsApp, lo abre en su teléfono y puede ver todos los detalles, confirmar asistencia (RSVP), ver el mapa en Google Maps o Waze, escuchar música y ver las fotos. No requiere descargar ninguna app.
 
-**¿Hacen invitaciones para bodas?**
-Sí. Las bodas son nuestro evento más común. Diseñamos invitaciones digitales completas con save the date, galería de fotos de la pareja, mapa del lugar, mesa de regalos y RSVP.
+**¿Hacen invitaciones digitales para bodas en Monterrey?**
+Sí. Las bodas son el evento más frecuente. Diseñamos invitaciones completas con galería de fotos de la pareja, mapa del salón o iglesia, mesa de regalos y RSVP automático. Precio desde $1,999 MXN.
 
-**¿Hacen invitaciones para XV años?**
-Sí. Diseñamos invitaciones elegantes para quinceañeras con galería de fotos, cuenta regresiva, música, mapa del salón y confirmación de asistencia.
+**¿Hacen invitaciones digitales para XV años en Monterrey?**
+Sí. Diseñamos invitaciones elegantes para quinceañeras con galería de fotos, cuenta regresiva, música personalizada, mapa del salón y confirmación de asistencia. Precio desde $1,999 MXN.
 
-**¿Tienen garantía?**
-Sí. El cliente no realiza el pago final hasta aprobar el diseño. El anticipo del 50% se solicita al inicio para comenzar el trabajo. Plan Deluxe incluye revisiones ilimitadas.
+**¿Tienen garantía de satisfacción?**
+Sí. El cliente no realiza el pago final hasta aprobar el diseño. El anticipo del 50% se solicita al inicio para comenzar el trabajo. El Plan Deluxe incluye revisiones de diseño ilimitadas.
 
-**¿Pueden hacer una invitación gratis para ver cómo queda?**
-Ofrecemos un boceto inicial gratuito sin compromiso de compra. Contáctanos por WhatsApp para solicitarlo.
+**¿Pueden hacer un boceto gratis para ver cómo queda?**
+Sí. Ofrecemos un boceto inicial gratuito sin compromiso de compra. Contáctanos por WhatsApp (+52 81 1123 0266) para solicitarlo.
 
 **¿Las invitaciones funcionan en iPhone y Android?**
-Sí, funcionan en todos los dispositivos modernos: iPhone, Android, tablets y computadoras.
+Sí. Funcionan en todos los dispositivos modernos: iPhone, Android, tablets y computadoras. Sin descargar ninguna aplicación.
 
 **¿Cuántas personas pueden abrir el link?**
-Ilimitadas. El enlace puede compartirse con todos los invitados sin restricción.
+Ilimitadas. El enlace puede abrirse y compartirse con todos los invitados sin ningún límite.
+
+**¿Cuál es la diferencia entre una invitación digital y una impresa?**
+La invitación digital es una página web que se comparte por WhatsApp en segundos, sin costo de impresión ni envío, con mapa GPS, RSVP automático y música. El costo total ($1,999–$3,499 MXN una sola vez) es menor que imprimir invitaciones físicas premium para una lista de 100+ invitados. Además se puede actualizar si hay cambios.
+
+**¿Puedo actualizar la invitación si cambian los datos del evento?**
+Sí. Si cambia la fecha, el lugar u otro dato antes del evento, actualizamos la invitación sin costo adicional. El mismo enlace que ya tienen tus invitados mostrará los datos actualizados automáticamente.
+
+**¿Cómo sé quién confirma asistencia (RSVP)?**
+Cuando un invitado confirma, recibes una notificación directa en tu WhatsApp con su nombre y número de acompañantes. No necesitas llevar un registro manual: las confirmaciones llegan en tiempo real.
+
+**¿Atienden a clientes fuera de Monterrey?**
+Sí. Atendemos toda la República Mexicana de forma remota por WhatsApp. El proceso es igual: compartes los detalles y fotos del evento, diseñamos en 24-48 horas y recibes el enlace listo para compartir.
+
+**¿Qué es un save the date digital y lo ofrecen?**
+Un save the date digital es una invitación previa que se envía meses antes para que los invitados reserven la fecha en su agenda. Más sencillo que la invitación formal. Sí los diseñamos como complemento para bodas y XV años.
+
+**¿Hacen invitaciones para baby shower, bautizo y primera comunión?**
+Sí. Diseñamos para baby shower, bautizo, primera comunión, cumpleaños, despedidas de soltera y eventos corporativos, además de bodas y XV años.
+
+**¿Cuánto dura activo el enlace de la invitación?**
+El enlace permanece activo durante 12 meses desde la entrega. Es más que suficiente para cualquier evento y el periodo de planificación previo.
+
+**¿Cómo se comparte la invitación digital?**
+Se comparte como un enlace (link) por WhatsApp, Instagram, Facebook, correo electrónico o cualquier plataforma de mensajería. Los planes Premium y Deluxe incluyen un código QR que puede imprimirse en materiales físicos adicionales.
+
+**¿Hay invitaciones digitales económicas en Monterrey?**
+El Plan Básico comienza en $1,999 MXN con pago único. Comparado con invitaciones impresas premium ($5,000–$15,000 MXN para 100 invitados con diseño, impresión y envío), las invitaciones digitales son significativamente más económicas y más funcionales.
+
+**¿Las invitaciones digitales sirven para eventos corporativos?**
+Sí. Diseñamos invitaciones formales para presentaciones de productos, cenas de empresa, congresos, seminarios y reuniones de negocios en Monterrey.
+
+**¿Incluyen música las invitaciones digitales?**
+Sí, en los Planes Premium y Deluxe. La música se reproduce directamente desde la invitación sin necesitar Spotify ni ninguna plataforma externa. El cliente elige la canción o canción(es) deseadas.
+
+**¿Las invitaciones digitales reemplazan a las invitaciones impresas?**
+Para la mayoría de los eventos modernos, sí. La invitación digital cumple todas las funciones de la impresa y añade mapa GPS, RSVP automático, música, cuenta regresiva y la posibilidad de compartirse ilimitadamente por WhatsApp. Algunos clientes usan ambas: la digital para la mayoría de invitados y unas pocas impresas para familiares mayores.
 
 ## Testimonios de clientes
 
-- **María González, Boda, San Pedro NL:** "La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda."
-- **Ana Rodríguez, XV Años, Monterrey:** "En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. Totalmente recomendado. Ahorré mucho comparado con invitaciones impresas."
-- **Sandra Castillo, XV Años, Apodaca:** "Calidad premium. El diseño superó mis expectativas y el proceso fue muy profesional."
-- **Carlos Mendoza, Baby Shower, Guadalupe:** "Excelente atención y diseños hermosos. La compartimos por WhatsApp al instante."
-- **Roberto Salinas, Boda, Monterrey:** "Diseño espectacular con QR personalizado. Todos nuestros invitados confirmaron asistencia digital."
+- **María González, Boda, San Pedro NL, 2025:** "La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda." ⭐⭐⭐⭐⭐
+- **Ana Rodríguez, XV Años, Monterrey, 2025:** "En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. Totalmente recomendado. Ahorré mucho comparado con invitaciones impresas." ⭐⭐⭐⭐⭐
+- **Sandra Castillo, XV Años, Apodaca, 2025:** "Calidad premium. El diseño superó mis expectativas y el proceso fue muy profesional." ⭐⭐⭐⭐⭐
+- **Carlos Mendoza, Baby Shower, Guadalupe, 2025:** "Excelente atención y diseños hermosos. La compartimos por WhatsApp al instante." ⭐⭐⭐⭐⭐
+- **Roberto Salinas, Boda, Monterrey, 2024:** "Diseño espectacular con QR personalizado. Todos nuestros invitados confirmaron asistencia digital." ⭐⭐⭐⭐⭐
 
 Calificación promedio: 5.0/5 basada en más de 150 eventos realizados.
 
-## Ventajas sobre invitaciones impresas
+## Ventajas de las invitaciones digitales sobre las impresas
 
-- Sin costo de impresión ni envío
-- Se comparte instantáneamente por WhatsApp
-- El invitado confirma asistencia (RSVP) desde el mismo enlace
-- Mapa interactivo: nadie se pierde
-- Se puede actualizar si cambia algún dato
-- Música y animaciones que no tiene papel
-- Ecológica: cero papel
+- Sin costo de impresión ni envío postal
+- Se comparte instantáneamente por WhatsApp a toda la lista de invitados
+- El invitado confirma asistencia (RSVP) desde el mismo enlace sin llamar ni escribir por separado
+- Mapa interactivo: Google Maps y Waze directo desde la invitación
+- Se puede actualizar si cambia algún dato del evento sin reimprimir
+- Música y animaciones: imposible en papel
+- Ecológica: cero papel, cero plástico, cero envío físico
+- Costo total menor que invitaciones impresas premium para 100+ invitados
+- Se puede compartir en Instagram Stories y Facebook además de WhatsApp
 
 ## Contacto
 
-- **WhatsApp:** +52 81 1123 0266
+- **WhatsApp (principal):** +52 81 1123 0266
 - **Instagram:** @invitacionesdigitalesmty
 - **Sitio web:** https://invitacionesdigitalesmty.com.mx
+- **Correo:** contacto@invitacionesdigitalesmty.com.mx
 - **Ubicación:** Monterrey, Nuevo León, México
-- **Horario:** Lunes a domingo, 9 AM a 8 PM
+- **Horario de atención:** Lunes a domingo, 9 AM a 8 PM (hora de Monterrey, CST/CDT)
 
 ## Ejemplos de invitaciones realizadas
 

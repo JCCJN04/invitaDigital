@@ -31,6 +31,36 @@ const faqs = [
     answer:
       "Sí, ofrecemos garantía de satisfacción. No realizamos el pago final hasta que apruebes el diseño (se requiere anticipo del 50% para iniciar). Incluimos rondas de cambios ilimitadas en el plan Deluxe.",
   },
+  {
+    question: "¿Cuál es la diferencia entre una invitación digital y una impresa?",
+    answer:
+      "Las invitaciones digitales son páginas web interactivas que se comparten por WhatsApp en segundos, sin costos de impresión ni envío. A diferencia del papel, incluyen mapa GPS con Google Maps o Waze, RSVP automático, música de fondo, cuenta regresiva animada y galería de fotos. Además se pueden actualizar si hay cambios de fecha o lugar sin reimprimir nada. El costo total es considerablemente menor que imprimir y distribuir invitaciones físicas premium para una lista de 100 o más invitados.",
+  },
+  {
+    question: "¿Puedo actualizar la invitación si cambian los datos del evento?",
+    answer:
+      "Sí. Si cambia la fecha, el salón u otro dato importante, actualizamos la invitación sin costo adicional. El mismo enlace que ya tienen tus invitados mostrará la información actualizada automáticamente. No es necesario reenviar un link diferente.",
+  },
+  {
+    question: "¿Cómo funciona el RSVP? ¿Cómo sé quién confirma asistencia?",
+    answer:
+      "Cuando un invitado confirma su asistencia, recibes una notificación directa en tu WhatsApp con su nombre y el número de acompañantes. El sistema recopila las confirmaciones automáticamente sin que necesites llevar un registro manual. Es rápido y sencillo tanto para ti como para tus invitados.",
+  },
+  {
+    question: "¿Hacen invitaciones digitales para Baby Shower, Bautizo y Primera Comunión?",
+    answer:
+      "Sí. Diseñamos invitaciones para todo tipo de celebraciones: Baby Shower, Bautizos, Primera Comunión, Cumpleaños, Despedidas de Soltera y Eventos Corporativos, además de Bodas y XV Años. Cada diseño se personaliza completamente según el estilo y colores del evento.",
+  },
+  {
+    question: "¿Atienden a clientes fuera de Monterrey?",
+    answer:
+      "Sí. Aunque estamos basados en Monterrey, Nuevo León, atendemos clientes en toda la República Mexicana de forma 100% remota por WhatsApp. El proceso es igual: compartes los detalles de tu evento, diseñamos en 24-48 horas y recibes el enlace listo para compartir.",
+  },
+  {
+    question: "¿Qué es un save the date digital y lo ofrecen?",
+    answer:
+      "Un save the date digital es una invitación previa que se envía con meses de anticipación para que los invitados reserven la fecha en su agenda. Es más sencilla que la invitación formal: incluye la fecha tentativa, los nombres y un diseño elegante para crear expectativa. Sí los diseñamos como complemento para bodas y XV años.",
+  },
 ]
 
 export function FAQSection() {

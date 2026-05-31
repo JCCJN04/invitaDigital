@@ -36,10 +36,13 @@ export function HeroSection() {
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-4 mb-14">
-              <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                <button className="bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors">
-                  Cotizar ahora
-                </button>
+              <a
+                href={whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors"
+              >
+                Cotizar ahora
               </a>
               <a
                 href="#galeria"

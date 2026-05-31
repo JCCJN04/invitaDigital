@@ -1,86 +1,246 @@
 "use client"
 
-import { ChevronLeft, ChevronRight } from "lucide-react"
+import { useState } from "react"
 import Image from "next/image"
+
+type Category = "todas" | "bodas" | "xv" | "otros"
 
 const designs = [
   {
-    id: "classic-rose",
-    title: "Classic Rose",
-    image: "/prueba.jpg", // Using existing placeholder images
-    url: "https://invitacionesemmaypau.vercel.app/",
-    bg: "bg-[#fdecea]"
-  },
-  {
     id: "golden-geo",
-    title: "Golden Geo",
+    title: "Alma & Mauricio",
+    subtitle: "Boda",
+    tag: "Estilo Romántico",
+    category: "bodas" as Category,
     image: "/boda-alma-mauricio.jpg",
     url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
-    bg: "bg-[#cfc8b3]"
+    bg: "bg-[#cfc8b3]",
+  },
+  {
+    id: "citliyamed",
+    title: "Citli & Yamed",
+    subtitle: "Boda",
+    tag: "Estilo Moderno",
+    category: "bodas" as Category,
+    image: "/boda-citliyamed.png",
+    url: "https://www.invitacionesdigitalesmty.com.mx/citliyamed",
+    bg: "bg-[#e8e0d5]",
+  },
+  {
+    id: "carlayangel",
+    title: "Carla & Ángel",
+    subtitle: "Boda",
+    tag: "",
+    category: "bodas" as Category,
+    image: "/boda-carlayangel.png",
+    url: "https://www.invitacionesdigitalesmty.com.mx/carlayangel",
+    bg: "bg-[#e8ddd5]",
+  },
+  {
+    id: "classic-rose",
+    title: "Emma & Pau",
+    subtitle: "XV Años",
+    tag: "Estilo Jardín",
+    category: "xv" as Category,
+    image: "/xv-emmaypau.png",
+    url: "https://invitacionesemmaypau.vercel.app/",
+    bg: "bg-[#fdecea]",
+  },
+  {
+    id: "primera-comunion-victoria",
+    title: "Victoria",
+    subtitle: "Primera Comunión",
+    tag: "",
+    category: "otros" as Category,
+    image: "/primera-comunion-victoria.png",
+    url: "https://www.invitacionesdigitalesmty.com.mx/primera-comunion-victoria",
+    bg: "bg-[#ede8f5]",
+  },
+  {
+    id: "cumple-edgar",
+    title: "Edgar",
+    subtitle: "Cumpleaños",
+    tag: "",
+    category: "otros" as Category,
+    image: "/cumple-edgar.png",
+    url: "https://invitacionesdigitalesmty.com.mx/cumple-edgar",
+    bg: "bg-[#d8e8d4]",
   },
   {
     id: "paula-xv",
-    title: "Paula XV",
-    image: "/paula.png",
+    title: "Paula",
+    subtitle: "XV Años",
+    tag: "Estilo Elegante",
+    category: "xv" as Category,
+    image: "/xv-paula.png",
     url: "https://www.invitacionesdigitalesmty.com.mx/paulaxv",
-    bg: "bg-[#e9d9d1]"
+    bg: "bg-[#e9d9d1]",
   },
 ]
 
+const tabs: { key: Category; label: string }[] = [
+  { key: "todas", label: "Todos los diseños" },
+  { key: "bodas", label: "Bodas" },
+  { key: "xv", label: "XV Años" },
+  { key: "otros", label: "Otros eventos" },
+]
+
+const whatsappUrls: Record<Category, string> = {
+  todas:
+    "https://wa.me/528111230266?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20y%20me%20gustar%C3%ADa%20ver%20un%20boceto%20gratis%20para%20mi%20evento.",
+  bodas:
+    "https://wa.me/528111230266?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20boda%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20mi%20boda.",
+  xv: "https://wa.me/528111230266?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20XV%20a%C3%B1os%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20los%20XV%20a%C3%B1os.",
+  otros:
+    "https://wa.me/528111230266?text=Hola%2C%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20mi%20evento.",
+}
+
+const ctaText: Record<Category, string> = {
+  todas: "Quiero mi invitación",
+  bodas: "Quiero invitación de boda",
+  xv: "Quiero invitación XV años",
+  otros: "Quiero cotizar mi evento",
+}
+
 export function GallerySection() {
+  const [activeTab, setActiveTab] = useState<Category>("todas")
+
+  const filtered =
+    activeTab === "todas"
+      ? designs
+      : designs.filter((d) => d.category === activeTab)
+
   return (
-    <section id="galeria" className="py-24 bg-background relative overflow-hidden">
+    <section id="galeria" className="py-24 bg-background">
       <div className="container mx-auto px-6 md:px-10 max-w-7xl">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8 animate-fade-in-up">
-          <div>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold tracking-tight text-foreground mb-2">
-              Explora nuestros diseños
+
+        {/* Header */}
+        <div className="mb-12 animate-fade-in-up">
+          <div className="flex items-center gap-3 mb-8">
+            <div className="h-px w-10 bg-primary" />
+            <span className="text-[11px] tracking-[0.3em] text-muted-foreground uppercase font-medium">
+              Portafolio
+            </span>
+          </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-[1.05]">
+              Explora nuestros<br />
+              <em className="italic text-primary">diseños reales</em>
             </h2>
-            <p className="text-gray-500 font-light text-lg">
-              Diseños armados profesionalmente para cada estilo de evento.
+            <p className="text-muted-foreground max-w-xs text-sm leading-relaxed">
+              Cada invitación es única, creada desde cero para reflejar el estilo de cada cliente.
             </p>
           </div>
-
-          <div className="flex items-center gap-3">
-            <button className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-muted hover:text-primary transition-colors text-muted-foreground">
-              <ChevronLeft className="w-5 h-5" />
-            </button>
-            <button className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center hover:bg-muted hover:text-primary transition-colors text-muted-foreground">
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
         </div>
 
-        {/* Gallery Horizontal Scroll layout */}
-        <div className="flex gap-6 overflow-x-auto pb-8 snap-x scrollbar-hide" style={{ scrollbarWidth: "none" }}>
-          {designs.map((design) => (
-            <a
-              key={design.id}
-              href={design.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative flex-none w-[280px] md:w-[320px] aspect-[4/6] rounded-[2rem] overflow-hidden snap-center transition-transform hover:scale-[1.02] shadow-sm hover:shadow-xl"
+        {/* Tabs */}
+        <div className="flex gap-2 mb-12 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
+          {tabs.map((tab) => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              className={`px-5 py-2.5 text-sm font-medium tracking-wide transition-all whitespace-nowrap rounded-full border ${
+                activeTab === tab.key
+                  ? "bg-foreground text-background border-foreground"
+                  : "bg-transparent text-muted-foreground border-border hover:border-foreground/40 hover:text-foreground"
+              }`}
             >
-              <div className={`absolute inset-0 ${design.bg}`}></div>
-              {/* Inner card representing the digital invitation */}
-              <div className="absolute inset-x-8 top-12 bottom-0 bg-white rounded-t-xl shadow-2xl overflow-hidden border border-gray-100">
-                <Image
-                  src={design.image}
-                  alt={`Invitación digital diseño ${design.title}`}
-                  className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  fill
-                  sizes="(max-width: 768px) 100vw, 320px"
-                />
-                {/* Overlaid transparent button on hover */}
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                  <div className="bg-white/90 px-4 py-2 rounded-full text-xs font-bold text-gray-900 shadow-lg transform translate-y-4 group-hover:translate-y-0 transition-transform">
-                    Ver Diseño
-                  </div>
-                </div>
-              </div>
-            </a>
+              {tab.label}
+            </button>
           ))}
         </div>
+
+        {/* Empty state for "otros" */}
+        {filtered.length === 0 && (
+          <div className="flex flex-col items-center justify-center py-24 text-center border border-dashed border-border rounded-3xl">
+            <p className="font-serif text-2xl font-bold text-foreground mb-3">
+              Próximamente
+            </p>
+            <p className="text-muted-foreground text-sm max-w-xs mb-8">
+              Estamos cargando ejemplos de este tipo de evento. Mientras tanto, cotiza directo por WhatsApp.
+            </p>
+            <a
+              href={whatsappUrls[activeTab]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors"
+            >
+              {ctaText[activeTab]}
+            </a>
+          </div>
+        )}
+
+        {/* Grid */}
+        {filtered.length > 0 && (
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-8 md:gap-x-6 md:gap-y-12 items-start">
+            {filtered.map((design) => (
+              <div key={design.id} className="group">
+                <a
+                  href={design.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Ver invitación digital: ${design.title} — ${design.subtitle} en Monterrey`}
+                  className="relative block overflow-hidden"
+                >
+                  {/* Image — full natural dimensions */}
+                  <Image
+                    src={design.image}
+                    alt={`Invitación digital de ${design.subtitle} en Monterrey — ${design.title}`}
+                    width={400}
+                    height={700}
+                    className="w-full h-auto block"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
+                  />
+
+                  {/* Fade bottom into page background */}
+                  <div
+                    className="absolute inset-x-0 bottom-0 h-24 pointer-events-none z-10"
+                    style={{ background: "linear-gradient(to top, hsl(var(--background)) 20%, transparent)" }}
+                  />
+
+                  {/* Hover CTA — desktop */}
+                  <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                    <span className="bg-white text-foreground text-[10px] md:text-[11px] font-bold tracking-widest uppercase px-4 md:px-6 py-2.5 rounded-full shadow-lg">
+                      Ver invitación
+                    </span>
+                  </div>
+                </a>
+
+                {/* Title below image */}
+                <div className="pt-2 px-1">
+                  <p className="font-serif font-semibold text-sm md:text-base text-foreground leading-tight">
+                    {design.title}
+                  </p>
+                  <p className="text-[10px] md:text-xs text-muted-foreground tracking-widest uppercase mt-0.5">
+                    {design.subtitle}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* CTA band */}
+        {filtered.length > 0 && (
+          <div className="mt-16 flex flex-col sm:flex-row items-center justify-between gap-6 border-t border-border pt-10 animate-fade-in-up">
+            <div>
+              <p className="font-serif text-2xl md:text-3xl font-bold text-foreground">
+                ¿Te gustó algún estilo?
+              </p>
+              <p className="text-muted-foreground text-sm mt-1">
+                Diseñamos algo similar o completamente a tu medida. Boceto gratis, sin compromiso.
+              </p>
+            </div>
+            <a
+              href={whatsappUrls[activeTab]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors whitespace-nowrap"
+            >
+              {ctaText[activeTab]}
+            </a>
+          </div>
+        )}
       </div>
     </section>
   )

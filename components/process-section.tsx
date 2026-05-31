@@ -48,11 +48,14 @@ export function ProcessSection() {
               Tu invitación en 4 pasos
             </h2>
           </div>
-          <a href={whatsappQuoteUrl} target="_blank" rel="noopener noreferrer" className="shrink-0">
-            <button className="flex items-center gap-3 bg-[#1c1917] text-white px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-[#2c2520] transition-colors">
-              <MessageSquare className="w-4 h-4" />
-              Iniciar ahora
-            </button>
+          <a
+            href={whatsappQuoteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 inline-flex items-center gap-3 bg-[#1c1917] text-white px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-[#2c2520] transition-colors"
+          >
+            <MessageSquare className="w-4 h-4" />
+            Iniciar ahora
           </a>
         </div>
 
@@ -94,10 +97,13 @@ export function ProcessSection() {
               Sin compromiso de compra. Te mostramos cómo quedaría antes de pagar.
             </p>
           </div>
-          <a href={whatsappQuoteUrl} target="_blank" rel="noopener noreferrer">
-            <button className="bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors whitespace-nowrap">
-              Ver mi boceto gratis
-            </button>
+          <a
+            href={whatsappQuoteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors whitespace-nowrap"
+          >
+            Ver mi boceto gratis
           </a>
         </div>
       </div>

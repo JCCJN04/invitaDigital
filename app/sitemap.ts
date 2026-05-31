@@ -10,5 +10,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1.0,
     },
+    {
+      url: `${baseUrl}/terminos`,
+      lastModified: "2025-05-01",
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+    {
+      url: `${baseUrl}/privacidad`,
+      lastModified: "2025-05-01",
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+    {
+      url: `${baseUrl}/cookies`,
+      lastModified: "2025-05-01",
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
   ]
 }
