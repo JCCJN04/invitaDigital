@@ -88,7 +88,7 @@ export function HeroSection() {
             {/* Smaller card — left, offset down to avoid header clash */}
             <div className="absolute top-10 left-0 w-[36%] h-[70%] rounded-[2rem] overflow-hidden shadow-xl border-4 border-background z-10">
               <Image
-                src="/paula.png"
+                src="/xv-paula.png"
                 alt="Invitación digital XV años Monterrey"
                 fill
                 sizes="(max-width: 1024px) 36vw, 26vw"
