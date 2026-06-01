@@ -39,7 +39,7 @@ export function BenefitsSection() {
             </span>
           </div>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-[1.05] max-w-lg">
-            Todo lo que tu evento en Monterrey necesita
+            Todo lo que tu evento necesita
           </h2>
         </div>
 
