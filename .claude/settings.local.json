@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "Bash(pnpm add:*)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Skill(impeccable)",
+      "Bash(node:*)",
+      "Bash(npx next:*)",
+      "Bash(rm:*)",
+      "Bash(pnpm dev:*)",
+      "WebFetch(domain:github.com)",
+      "Skill(seo-audit)",
+      "Bash(git add:*)",
+      "Bash(git commit -m ':*)",
+      "WebFetch(domain:invitacionesdigitalesmty.com.mx)",
+      "Bash(pnpm tsc:*)",
+      "Skill(seo)",
+      "WebFetch(domain:www.invitapp.mx)"
     ]
   }
 }
