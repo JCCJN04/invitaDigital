@@ -1,4 +1,16 @@
 {
+  "redirects": [
+    {
+      "source": "/bautizo-mateo",
+      "destination": "/bautizo-mateo/",
+      "statusCode": 308
+    },
+    {
+      "source": "/babyshower-liam",
+      "destination": "/babyshower-liam/",
+      "statusCode": 308
+    }
+  ],
   "rewrites": [
     {
       "source": "/carlayangel",
