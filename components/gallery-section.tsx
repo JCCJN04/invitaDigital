@@ -76,6 +76,26 @@ const designs = [
     url: "https://www.invitacionesdigitalesmty.com.mx/paulaxv",
     bg: "bg-[#e9d9d1]",
   },
+  {
+    id: "bautizo-mateo",
+    title: "Mateo",
+    subtitle: "Bautizo",
+    tag: "Estilo Clásico",
+    category: "otros" as Category,
+    image: "/bautizo-mateo.png",
+    url: "https://invitacionesdigitalesmty.com.mx/bautizo-mateo",
+    bg: "bg-[#edf5ed]",
+  },
+  {
+    id: "babyshower-liam",
+    title: "Liam",
+    subtitle: "Baby Shower",
+    tag: "Estilo Boho Chic",
+    category: "otros" as Category,
+    image: "/babyshower-liam.png",
+    url: "https://invitacionesdigitalesmty.com.mx/babyshower-liam",
+    bg: "bg-[#f5edf0]",
+  },
 ]
 
 const tabs: { key: Category; label: string }[] = [

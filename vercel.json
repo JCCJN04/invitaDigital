@@ -31,6 +31,22 @@
     {
       "source": "/cumple-edgar/:path*",
       "destination": "https://cumple-edgar.vercel.app/:path*"
+    },
+    {
+      "source": "/bautizo-mateo",
+      "destination": "https://bautizo-mateo.vercel.app/"
+    },
+    {
+      "source": "/bautizo-mateo/:path*",
+      "destination": "https://bautizo-mateo.vercel.app/:path*"
+    },
+    {
+      "source": "/babyshower-liam",
+      "destination": "https://babyshower-liam.vercel.app/"
+    },
+    {
+      "source": "/babyshower-liam/:path*",
+      "destination": "https://babyshower-liam.vercel.app/:path*"
     }
   ]
 }
