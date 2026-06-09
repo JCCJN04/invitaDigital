@@ -4,7 +4,7 @@ const plans = [
   {
     name: "Básico",
     price: "$1,999",
-    tagline: "Pago único · Sin mensualidades",
+    tagline: "Todo lo esencial para impresionar",
     features: [
       "Hasta 8 fotos de alta calidad",
       "Ubicación GPS interactiva",
@@ -17,7 +17,7 @@ const plans = [
   {
     name: "Premium",
     price: "$2,600",
-    tagline: "El más solicitado",
+    tagline: "El favorito — elegido por 7 de cada 10 clientes",
     features: [
       "Todo lo del plan Básico",
       "Hasta 16 fotos",
@@ -32,7 +32,7 @@ const plans = [
   {
     name: "Deluxe",
     price: "$3,499",
-    tagline: "Lujo sin límites",
+    tagline: "Para el evento que merece lo mejor",
     features: [
       "Todo lo del plan Premium",
       "Galería de hasta 40 fotos",
@@ -145,18 +145,23 @@ export function PricingSection() {
         </div>
 
         {/* Bottom note */}
-        <p className="mt-10 text-center text-sm text-muted-foreground">
-          ¿Tienes dudas? Escríbenos por{" "}
-          <a
-            href="https://wa.me/528111230266"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
-          >
-            WhatsApp
-          </a>{" "}
-          y te asesoramos sin compromiso.
-        </p>
+        <div className="mt-10 flex flex-col items-center gap-3">
+          <p className="text-center text-sm text-muted-foreground">
+            Pagas 50% para iniciar, el resto hasta que apruebes el diseño. Sin riesgo.
+          </p>
+          <p className="text-center text-sm text-muted-foreground">
+            ¿Tienes dudas? Escríbenos por{" "}
+            <a
+              href="https://wa.me/528111230266"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"
+            >
+              WhatsApp
+            </a>{" "}
+            y te asesoramos gratis.
+          </p>
+        </div>
       </div>
     </section>
   )

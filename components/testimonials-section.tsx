@@ -4,7 +4,7 @@ const featured = {
   name: "María González",
   event: "Boda · San Pedro, NL",
   comment:
-    "La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda.",
+    "Teníamos 180 invitados y todos confirmaron por el RSVP — no tuve que llamar a nadie. El diseño era exactamente lo que soñé y lo entregaron en menos de 24 horas. Vale cada peso.",
   image: "/persona1.jpeg",
 }
 
@@ -12,7 +12,7 @@ const rest = [
   {
     name: "Ana Rodríguez",
     event: "XV Años · Monterrey",
-    comment: "En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. Totalmente recomendado.",
+    comment: "A las 5pm mandé los detalles y al día siguiente tenía mi invitación lista. Las animaciones hicieron que mis amigas preguntaran cómo la habían hecho.",
     image: "/persona2.jpeg",
   },
   {
@@ -24,7 +24,7 @@ const rest = [
   {
     name: "Carlos Mendoza",
     event: "Baby Shower · Guadalupe",
-    comment: "Excelente atención y diseños hermosos. La compartimos por WhatsApp al instante.",
+    comment: "La mandamos por WhatsApp y en 10 minutos ya teníamos confirmaciones llegando. Nunca pensé que una invitación digital pudiera verse tan bien.",
     image: "/persona3.jpeg",
   },
   {
