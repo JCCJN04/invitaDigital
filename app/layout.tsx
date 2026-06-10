@@ -354,51 +354,11 @@ export default function RootLayout({
     about: { "@id": `${SITE_URL}#localbusiness` },
     inLanguage: "es-MX",
     datePublished: "2024-01-01",
-    dateModified: "2026-05-30",
+    dateModified: "2026-06-09",
     speakable: {
       "@type": "SpeakableSpecification",
       cssSelector: ["h1", "h2", "#faq", "#beneficios"],
     },
-  }
-
-  // HowTo Schema — proceso de 4 pasos
-  const howToSchema = {
-    "@context": "https://schema.org",
-    "@type": "HowTo",
-    name: "Cómo pedir tu invitación digital en Monterrey",
-    description: "Proceso de 4 pasos para obtener tu invitación digital personalizada para bodas, XV años y eventos en Monterrey.",
-    totalTime: "PT48H",
-    estimatedCost: {
-      "@type": "MonetaryAmount",
-      currency: "MXN",
-      value: "1999",
-    },
-    step: [
-      {
-        "@type": "HowToStep",
-        position: 1,
-        name: "Cuéntanos tu sueño",
-        text: "Comparte los detalles de tu evento por WhatsApp: fecha, nombres, tema y estilo deseado.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 2,
-        name: "Diseñamos tu invitación",
-        text: "Creamos un diseño personalizado con tus colores, fotos y música favorita en 24-48 horas.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 3,
-        name: "Revisiones y aprobación",
-        text: "Recibes el diseño y solicitas cambios hasta que quede perfecto. No pagas el total hasta aprobar.",
-      },
-      {
-        "@type": "HowToStep",
-        position: 4,
-        name: "Comparte y celebra",
-        text: "Obtienes tu enlace personalizado listo para compartir por WhatsApp con todos tus invitados.",
-      },
-    ],
   }
 
   // WebSite Schema
@@ -427,7 +387,6 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(webpageSchema) }} />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }} />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#1c1917" />

@@ -50,6 +50,7 @@ export function Header() {
             <Link href="#galeria" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Demos</Link>
             <Link href="#precios" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Precios</Link>
             <Link href="#faq" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Preguntas</Link>
+            <Link href="/blog" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
           </nav>
 
           {/* CTA Button */}
@@ -78,6 +79,7 @@ export function Header() {
             <Link href="#galeria" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Demos</Link>
             <Link href="#precios" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Precios</Link>
             <Link href="#faq" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Preguntas</Link>
+            <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Blog</Link>
             <Button className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-full w-full h-12 text-base font-serif font-bold mt-4" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
                 Crear mi invitación

@@ -1,7 +1,16 @@
 import { MetadataRoute } from "next"
+import { getAllPosts } from "@/lib/blog-data"
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://invitacionesdigitalesmty.com.mx"
+  const posts = getAllPosts()
+
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
+    url: `${baseUrl}/blog/${post.id}`,
+    lastModified: post.date,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }))
 
   return [
     {
@@ -10,6 +19,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 1.0,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "weekly",
+      priority: 0.8,
+    },
+    ...blogRoutes,
     {
       url: `${baseUrl}/terminos`,
       lastModified: "2025-05-01",
