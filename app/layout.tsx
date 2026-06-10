@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s | ${BUSINESS_NAME}`,
   },
   description:
-    "Invitaciones digitales premium en Monterrey para bodas, XV años y eventos especiales. Diseños personalizados con RSVP, mapa y confirmación por WhatsApp.",
+    "Invitaciones digitales para bodas y XV años en Monterrey. Diseño personalizado, RSVP automático por WhatsApp y entrega en 24 h. Boceto gratis sin compromiso.",
   keywords: [
     "invitaciones digitales monterrey",
     "invitaciones de boda monterrey",
