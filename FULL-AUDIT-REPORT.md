@@ -221,7 +221,7 @@ GBP es el factor #1 de ranking local (Whitespark 2026).
 - Nombre: "Invitaciones Digitales MTY"
 - Categoría primaria: "Graphic Design Service" o categoría de eventos más cercana en MX
 - Tipo: SAB (ocultar dirección física, definir área de servicio: Monterrey + NL)
-- Teléfono: +52 81 1123 0266
+- Teléfono: +52 81 8083 6435
 - Sitio: https://invitacionesdigitalesmty.com.mx
 - Horario: 9AM–8PM, lunes a domingo
 

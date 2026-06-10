@@ -36,7 +36,7 @@ export function ContactForm() {
 📅 Fecha del evento: ${formData.date}
 📝 Mensaje: ${formData.message}`
 
-    const whatsappUrl = `https://wa.me/528111230266?text=${encodeURIComponent(whatsappMessage)}`
+    const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(whatsappMessage)}`
     window.open(whatsappUrl, "_blank")
 
     setIsSuccess(true)

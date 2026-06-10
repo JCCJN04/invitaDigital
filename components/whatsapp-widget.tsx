@@ -14,7 +14,7 @@ function WhatsAppIcon({ className }: { className?: string }) {
 export function WhatsAppWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
-  const phoneNumber = "8111230266"
+  const phoneNumber = "8180836435"
   const message = "Hola, me interesa una invitación digital. ¿Me pueden ayudar?"
 
   useEffect(() => {

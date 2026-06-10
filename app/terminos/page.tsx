@@ -35,7 +35,7 @@ export default function TerminosPage() {
           <p>El anticipo no es reembolsable una vez iniciado el diseño. Si el cliente no aprueba el boceto final dentro de 30 días, el proyecto se cierra sin devolución.</p>
 
           <h2 className="font-serif text-xl font-bold text-[#1c1917]">7. Contacto</h2>
-          <p>Para dudas sobre estos términos: <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="text-[#d4a373] hover:underline">contacto@invitacionesdigitalesmty.com.mx</a> o WhatsApp <a href="tel:+528111230266" className="text-[#d4a373] hover:underline">+52 81 1123 0266</a>.</p>
+          <p>Para dudas sobre estos términos: <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="text-[#d4a373] hover:underline">contacto@invitacionesdigitalesmty.com.mx</a> o WhatsApp <a href="tel:+528180836435" className="text-[#d4a373] hover:underline">+52 81 8083 6435</a>.</p>
         </div>
       </div>
     </main>

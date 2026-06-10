@@ -107,12 +107,12 @@ const tabs: { key: Category; label: string }[] = [
 
 const whatsappUrls: Record<Category, string> = {
   todas:
-    "https://wa.me/528111230266?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20y%20me%20gustar%C3%ADa%20ver%20un%20boceto%20gratis%20para%20mi%20evento.",
+    "https://wa.me/528180836435?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20y%20me%20gustar%C3%ADa%20ver%20un%20boceto%20gratis%20para%20mi%20evento.",
   bodas:
-    "https://wa.me/528111230266?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20boda%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20mi%20boda.",
-  xv: "https://wa.me/528111230266?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20XV%20a%C3%B1os%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20los%20XV%20a%C3%B1os.",
+    "https://wa.me/528180836435?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20boda%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20mi%20boda.",
+  xv: "https://wa.me/528180836435?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20XV%20a%C3%B1os%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20los%20XV%20a%C3%B1os.",
   otros:
-    "https://wa.me/528111230266?text=Hola%2C%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20mi%20evento.",
+    "https://wa.me/528180836435?text=Hola%2C%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20mi%20evento.",
 }
 
 const ctaText: Record<Category, string> = {

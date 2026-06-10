@@ -27,8 +27,8 @@ export function ContactSection() {
               <div className="space-y-6">
                 <div>
                   <p className="text-xs text-[#d4a373] uppercase tracking-wider font-serif font-semibold mb-1">WhatsApp / Teléfono</p>
-                  <a href="tel:+528111230266" className="text-xl font-serif font-medium text-[#1c1917] hover:text-[#d4a373] transition-colors">
-                    +52 81 1123 0266
+                  <a href="tel:+528180836435" className="text-xl font-serif font-medium text-[#1c1917] hover:text-[#d4a373] transition-colors">
+                    +52 81 8083 6435
                   </a>
                 </div>
 

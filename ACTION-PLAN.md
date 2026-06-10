@@ -12,7 +12,7 @@
 - Nombre exacto: "Invitaciones Digitales MTY"
 - Tipo: SAB (Service Area Business) — ocultar dirección, área: Monterrey + Nuevo León
 - Categoría primaria: "Graphic Design Service" (o la más cercana a eventos/bodas disponible en MX)
-- Teléfono: +52 81 1123 0266
+- Teléfono: +52 81 8083 6435
 - Web: https://invitacionesdigitalesmty.com.mx
 - Horario: lun-dom 9:00–20:00
 - Subir logo + 8–10 fotos de invitaciones terminadas
@@ -104,7 +104,7 @@ Solo `next.config.js` debe existir (per CLAUDE.md).
 ### A6. Construir citas en directorios mexicanos
 **Impacto:** Visibilidad en ChatGPT/Perplexity + señal de autoridad local
 **Esfuerzo:** 2-3 horas
-NAP a usar en todos: "Invitaciones Digitales MTY" | +52 81 1123 0266 | https://invitacionesdigitalesmty.com.mx
+NAP a usar en todos: "Invitaciones Digitales MTY" | +52 81 8083 6435 | https://invitacionesdigitalesmty.com.mx
 
 Prioridad:
 1. Sección Amarilla (seccionamarilla.com.mx)

@@ -27,7 +27,7 @@ const steps = [
 ]
 
 const whatsappQuoteUrl =
-  "https://wa.me/528111230266?text=Hola%2C%20me%20gustar%C3%ADa%20ver%20mi%20boceto%20gratis%20de%20invitaci%C3%B3n%20digital.%20%C2%BFC%C3%B3mo%20empezamos%3F"
+  "https://wa.me/528180836435?text=Hola%2C%20me%20gustar%C3%ADa%20ver%20mi%20boceto%20gratis%20de%20invitaci%C3%B3n%20digital.%20%C2%BFC%C3%B3mo%20empezamos%3F"
 
 export function ProcessSection() {
   return (

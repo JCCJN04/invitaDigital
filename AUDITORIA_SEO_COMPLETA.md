@@ -193,7 +193,7 @@ const playfair = Playfair_Display({
 {
   "@type": "LocalBusiness",
   "name": "InvitacionesDigitalesmty",
-  "telephone": "+52 81 1123 0266",
+  "telephone": "+52 81 8083 6435",
   "address": { "addressLocality": "Monterrey" },
   "aggregateRating": { "ratingValue": "5.0", "reviewCount": "120" }
 }

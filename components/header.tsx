@@ -9,7 +9,7 @@ export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
 
-  const whatsappUrl = "https://wa.me/528111230266?text=Hola%2C%20me%20gustar%C3%ADa%20contactar%20con%20ustedes."
+  const whatsappUrl = "https://wa.me/528180836435?text=Hola%2C%20me%20gustar%C3%ADa%20contactar%20con%20ustedes."
 
   useEffect(() => {
     const handleScroll = () => {

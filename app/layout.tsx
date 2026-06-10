@@ -22,7 +22,7 @@ const montserrat = Montserrat({
 
 const SITE_URL = "https://invitacionesdigitalesmty.com.mx"
 const BUSINESS_NAME = "Invitaciones Digitales MTY"
-const BUSINESS_PHONE = "+52 81 1123 0266"
+const BUSINESS_PHONE = "+52 81 8083 6435"
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

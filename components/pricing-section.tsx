@@ -48,7 +48,7 @@ const plans = [
 export function PricingSection() {
   const getWhatsappUrl = (planName: string) => {
     const message = `Hola, me interesa el plan *${planName}*. ¿Podrían darme más detalles?`
-    return `https://wa.me/528111230266?text=${encodeURIComponent(message)}`
+    return `https://wa.me/528180836435?text=${encodeURIComponent(message)}`
   }
 
   return (
@@ -152,7 +152,7 @@ export function PricingSection() {
           <p className="text-center text-sm text-muted-foreground">
             ¿Tienes dudas? Escríbenos por{" "}
             <a
-              href="https://wa.me/528111230266"
+              href="https://wa.me/528180836435"
               target="_blank"
               rel="noopener noreferrer"
               className="text-foreground underline underline-offset-2 hover:text-primary transition-colors"

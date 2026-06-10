@@ -20,7 +20,7 @@ export function Footer() {
             <Link href="/terminos" className="hover:text-primary transition-colors">Términos</Link>
             <Link href="/privacidad" className="hover:text-primary transition-colors">Privacidad</Link>
             <Link href="/cookies" className="hover:text-primary transition-colors">Cookies</Link>
-            <a href="https://wa.me/528111230266?text=Hola%2C%20necesito%20soporte." target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Soporte</a>
+            <a href="https://wa.me/528180836435?text=Hola%2C%20necesito%20soporte." target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Soporte</a>
           </div>
 
           {/* Social Icons */}
