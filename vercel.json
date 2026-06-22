@@ -47,6 +47,14 @@
     {
       "source": "/babyshower-liam/:path*",
       "destination": "https://babyshower-liam.vercel.app/:path*"
+    },
+    {
+      "source": "/xv-elisa",
+      "destination": "https://xv-elisa.vercel.app/"
+    },
+    {
+      "source": "/xv-elisa/:path*",
+      "destination": "https://xv-elisa.vercel.app/:path*"
     }
   ]
 }
