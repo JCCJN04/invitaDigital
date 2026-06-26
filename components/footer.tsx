@@ -5,6 +5,18 @@ export function Footer() {
   return (
     <footer className="bg-card text-foreground overflow-hidden border-t border-border">
       <div className="container mx-auto px-6 md:px-10 py-12 pb-8 max-w-6xl">
+        {/* Event links */}
+        <div className="mb-10">
+          <p className="text-[10px] tracking-[0.25em] text-muted-foreground uppercase font-medium mb-4">Invitaciones por evento</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground font-serif">
+            <Link href="/invitaciones-baby-shower" className="hover:text-primary transition-colors">Baby Shower</Link>
+            <Link href="/invitaciones-bautizo" className="hover:text-primary transition-colors">Bautizo</Link>
+            <Link href="/invitaciones-cumpleanos" className="hover:text-primary transition-colors">Cumpleaños</Link>
+            <Link href="/invitaciones-primera-comunion" className="hover:text-primary transition-colors">Primera Comunión</Link>
+            <Link href="/invitaciones-corporativas" className="hover:text-primary transition-colors">Eventos Corporativos</Link>
+          </div>
+        </div>
+
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
 
           {/* Brand */}

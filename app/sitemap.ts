@@ -25,6 +25,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "weekly",
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/invitaciones-baby-shower`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/invitaciones-bautizo`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/invitaciones-cumpleanos`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/invitaciones-primera-comunion`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/invitaciones-corporativas`,
+      lastModified: new Date().toISOString().split("T")[0],
+      changeFrequency: "monthly" as const,
+      priority: 0.9,
+    },
     ...blogRoutes,
     {
       url: `${baseUrl}/terminos`,
