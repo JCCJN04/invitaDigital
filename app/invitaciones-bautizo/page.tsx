@@ -17,9 +17,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales para Bautizo en Monterrey | RSVP y GPS",
+  title: "Invitaciones Digitales para Bautizo | RSVP y GPS | Todo México",
   description:
-    "Invitaciones digitales para bautizo en Monterrey. Diseño elegante con RSVP, mapa GPS a la iglesia y recepción, y entrega en 24 h. Boceto gratis.",
+    "Invitaciones digitales para bautizo en todo México. Diseño elegante con RSVP, mapa GPS a la iglesia y recepción, y entrega en 24 h. Servicio en línea. Boceto gratis.",
   keywords: [
     "invitaciones bautizo digital monterrey",
     "invitaciones para bautizo con rsvp",
@@ -104,7 +104,10 @@ const serviceSchema = {
       addressCountry: "MX",
     },
   },
-  areaServed: { "@type": "City", name: "Monterrey" },
+  areaServed: [
+    { "@type": "Country", name: "México" },
+    { "@type": "City", name: "Monterrey" },
+  ],
   description:
     "Invitaciones digitales para bautizo en Monterrey con RSVP automático, GPS de iglesia y recepción, y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-bautizo",

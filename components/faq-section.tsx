@@ -54,7 +54,7 @@ const faqs = [
   {
     question: "¿Atienden a clientes fuera de Monterrey?",
     answer:
-      "Sí. Aunque estamos basados en Monterrey, Nuevo León, atendemos clientes en toda la República Mexicana de forma 100% remota por WhatsApp. El proceso es igual: compartes los detalles de tu evento, diseñamos en 24-48 horas y recibes el enlace listo para compartir.",
+      "Sí. Atendemos clientes en toda la República Mexicana: CDMX, Guadalajara, Puebla, Querétaro, Mérida, Tijuana, León, Cancún, San Luis Potosí, Saltillo y cualquier otra ciudad. El proceso es 100% remoto por WhatsApp: compartes los detalles de tu evento, diseñamos en 24-48 horas y recibes el enlace listo para compartir.",
   },
   {
     question: "¿Qué es un save the date digital y lo ofrecen?",

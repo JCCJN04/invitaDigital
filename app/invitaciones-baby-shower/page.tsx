@@ -17,16 +17,17 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Baby Shower Monterrey | Con RSVP y Música",
+  title: "Invitaciones Digitales Baby Shower | Con RSVP y Música | Todo México",
   description:
-    "Invitaciones digitales para baby shower en Monterrey. Diseño tierno personalizado, RSVP por WhatsApp, mesa de regalos y entrega en 24 h. Boceto gratis sin compromiso.",
+    "Invitaciones digitales para baby shower en todo México. Diseño tierno personalizado, RSVP por WhatsApp, mesa de regalos y entrega en 24 h. Servicio 100% en línea. Boceto gratis.",
   keywords: [
+    "invitaciones baby shower digital",
     "invitaciones baby shower digital monterrey",
     "invitaciones baby shower con rsvp",
-    "invitaciones digitales baby shower",
+    "invitaciones digitales baby shower mexico",
     "invitacion baby shower whatsapp",
-    "baby shower digital monterrey",
     "invitacion digital baby shower precio",
+    "invitaciones baby shower online",
   ],
   alternates: {
     canonical: "https://invitacionesdigitalesmty.com.mx/invitaciones-baby-shower",
@@ -104,7 +105,10 @@ const serviceSchema = {
       addressCountry: "MX",
     },
   },
-  areaServed: { "@type": "City", name: "Monterrey" },
+  areaServed: [
+    { "@type": "Country", name: "México" },
+    { "@type": "City", name: "Monterrey" },
+  ],
   description:
     "Invitaciones digitales para baby shower en Monterrey con RSVP automático, mesa de regalos y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-baby-shower",

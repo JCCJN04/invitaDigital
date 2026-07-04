@@ -8,71 +8,68 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${baseUrl}/blog/${post.id}`,
     lastModified: post.date,
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
+  }))
+
+  const cities = [
+    "cdmx",
+    "guadalajara",
+    "puebla",
+    "queretaro",
+    "merida",
+    "tijuana",
+    "leon",
+    "cancun",
+    "san-luis-potosi",
+    "saltillo",
+  ]
+
+  const cityRoutes: MetadataRoute.Sitemap = cities.map((city) => ({
+    url: `${baseUrl}/${city}`,
+    lastModified: "2026-07-01",
   }))
 
   return [
     {
       url: baseUrl,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "weekly",
-      priority: 1.0,
+      lastModified: "2026-07-01",
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "weekly",
-      priority: 0.8,
+      lastModified: "2026-07-01",
     },
     {
       url: `${baseUrl}/invitaciones-baby-shower`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
+      lastModified: "2026-06-01",
     },
     {
       url: `${baseUrl}/invitaciones-bautizo`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
+      lastModified: "2026-06-01",
     },
     {
       url: `${baseUrl}/invitaciones-cumpleanos`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
+      lastModified: "2026-06-01",
     },
     {
       url: `${baseUrl}/invitaciones-primera-comunion`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
+      lastModified: "2026-06-01",
     },
     {
       url: `${baseUrl}/invitaciones-corporativas`,
-      lastModified: new Date().toISOString().split("T")[0],
-      changeFrequency: "monthly" as const,
-      priority: 0.9,
+      lastModified: "2026-06-01",
     },
+    ...cityRoutes,
     ...blogRoutes,
     {
       url: `${baseUrl}/terminos`,
       lastModified: "2025-05-01",
-      changeFrequency: "yearly",
-      priority: 0.2,
     },
     {
       url: `${baseUrl}/privacidad`,
       lastModified: "2025-05-01",
-      changeFrequency: "yearly",
-      priority: 0.2,
     },
     {
       url: `${baseUrl}/cookies`,
       lastModified: "2025-05-01",
-      changeFrequency: "yearly",
-      priority: 0.2,
     },
   ]
 }

@@ -17,9 +17,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales para Eventos Corporativos Monterrey",
+  title: "Invitaciones Digitales Eventos Corporativos | Todo México",
   description:
-    "Invitaciones digitales para eventos corporativos y empresariales en Monterrey. Diseño profesional, RSVP, confirmación de asistencia y entrega en 24 h.",
+    "Invitaciones digitales para eventos corporativos y empresariales en todo México. Diseño profesional, RSVP, confirmación de asistencia y entrega en 24 h. Servicio en línea.",
   keywords: [
     "invitaciones eventos corporativos monterrey",
     "invitaciones digitales empresas monterrey",
@@ -104,7 +104,10 @@ const serviceSchema = {
       addressCountry: "MX",
     },
   },
-  areaServed: { "@type": "City", name: "Monterrey" },
+  areaServed: [
+    { "@type": "Country", name: "México" },
+    { "@type": "City", name: "Monterrey" },
+  ],
   description:
     "Invitaciones digitales para eventos corporativos en Monterrey con imagen de marca, control de asistencia, agenda del evento y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-corporativas",

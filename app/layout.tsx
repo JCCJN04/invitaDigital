@@ -27,22 +27,26 @@ const BUSINESS_PHONE = "+52 81 8083 6435"
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Invitaciones Digitales en Monterrey | Bodas, XV Años y Eventos",
+    default: "Invitaciones Digitales México | Bodas, XV Años y Eventos",
     template: `%s | ${BUSINESS_NAME}`,
   },
   description:
-    "Invitaciones digitales para bodas y XV años en Monterrey. Diseño personalizado, RSVP automático por WhatsApp y entrega en 24 h. Boceto gratis sin compromiso.",
+    "Invitaciones digitales para bodas, XV años y eventos en todo México. Diseño personalizado, RSVP automático por WhatsApp y entrega en 24 h. Boceto gratis.",
   keywords: [
-    "invitaciones digitales monterrey",
-    "invitaciones de boda monterrey",
-    "invitaciones xv años elegantes",
-    "diseño de invitaciones premium",
-    "save the date digital",
-    "invitaciones web boda",
-    "wedding invitations digital",
-    "invitaciones interactivas",
     "invitaciones digitales mexico",
-    "invitaciones para eventos monterrey",
+    "invitaciones digitales monterrey",
+    "invitaciones digitales boda",
+    "invitaciones digitales xv años",
+    "invitaciones de boda digitales",
+    "invitaciones digitales cdmx",
+    "invitaciones digitales guadalajara",
+    "invitaciones digitales puebla",
+    "invitaciones digitales online",
+    "save the date digital mexico",
+    "invitaciones web boda",
+    "invitaciones interactivas whatsapp",
+    "diseño de invitaciones premium",
+    "invitaciones digitales para eventos",
   ],
   authors: [{ name: BUSINESS_NAME, url: SITE_URL }],
   creator: BUSINESS_NAME,
@@ -57,9 +61,9 @@ export const metadata: Metadata = {
     locale: "es_MX",
     url: SITE_URL,
     siteName: BUSINESS_NAME,
-    title: "Invitaciones Digitales en Monterrey | Diseños Premium",
+    title: "Invitaciones Digitales México | Bodas, XV Años y Eventos Premium",
     description:
-      "Invitaciones digitales premium para bodas, XV años, bautizos y eventos en Monterrey. Diseños personalizados listos para compartir.",
+      "Invitaciones digitales premium para bodas, XV años, bautizos y eventos en todo México. Servicio 100% en línea con entrega en 24 h.",
     images: [
       {
         url: `${SITE_URL}/boda-alma-mauricio.jpg`,
@@ -71,9 +75,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Invitaciones Digitales en Monterrey | Diseños Premium",
+    title: "Invitaciones Digitales México | Bodas, XV Años y Eventos Premium",
     description:
-      "Invitaciones digitales premium para bodas, XV años y eventos especiales en Monterrey.",
+      "Invitaciones digitales premium para bodas, XV años y eventos en todo México. Servicio en línea desde Monterrey.",
     images: [`${SITE_URL}/boda-alma-mauricio.jpg`],
   },
   robots: {
@@ -109,7 +113,7 @@ export default function RootLayout({
     "@id": `${SITE_URL}#localbusiness`,
     name: BUSINESS_NAME,
     description:
-      "Diseño de invitaciones digitales premium para bodas, XV años, baby showers y eventos especiales en Monterrey, NL.",
+      "Diseño de invitaciones digitales premium para bodas, XV años, baby showers y eventos especiales. Servicio 100% en línea desde Monterrey para todo México.",
     url: SITE_URL,
     image: `${SITE_URL}/boda-alma-mauricio.jpg`,
     logo: `${SITE_URL}/logo.png`,
@@ -132,16 +136,48 @@ export default function RootLayout({
     },
     areaServed: [
       {
+        "@type": "Country",
+        name: "México",
+      },
+      {
         "@type": "City",
         name: "Monterrey",
       },
       {
-        "@type": "AdministrativeArea",
-        name: "Nuevo León",
+        "@type": "City",
+        name: "Ciudad de México",
       },
       {
-        "@type": "Country",
-        name: "México",
+        "@type": "City",
+        name: "Guadalajara",
+      },
+      {
+        "@type": "City",
+        name: "Puebla",
+      },
+      {
+        "@type": "City",
+        name: "Querétaro",
+      },
+      {
+        "@type": "City",
+        name: "Mérida",
+      },
+      {
+        "@type": "City",
+        name: "Tijuana",
+      },
+      {
+        "@type": "City",
+        name: "León",
+      },
+      {
+        "@type": "City",
+        name: "Cancún",
+      },
+      {
+        "@type": "City",
+        name: "San Luis Potosí",
       },
     ],
     openingHoursSpecification: [
@@ -170,17 +206,16 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Service",
     "@id": `${SITE_URL}#service`,
-    name: "Diseño de Invitaciones Digitales en Monterrey",
+    name: "Diseño de Invitaciones Digitales en México",
     serviceType: "Diseño de Invitaciones Digitales",
     provider: {
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}#localbusiness`,
     },
-    areaServed: [
-      { "@type": "City", name: "Monterrey" },
-      { "@type": "AdministrativeArea", name: "Nuevo León" },
-      { "@type": "Country", name: "México" },
-    ],
+    areaServed: {
+      "@type": "Country",
+      name: "México",
+    },
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Invitaciones Digitales",
@@ -315,7 +350,7 @@ export default function RootLayout({
         name: "¿Atienden a clientes fuera de Monterrey?",
         acceptedAnswer: {
           "@type": "Answer",
-          text: "Sí. Atendemos clientes en toda la República Mexicana de forma 100% remota por WhatsApp. El proceso es igual: compartes los detalles, diseñamos en 24-48 horas y recibes el enlace listo para compartir.",
+          text: "Sí. Atendemos clientes en toda la República Mexicana: CDMX, Guadalajara, Puebla, Querétaro, Mérida, Tijuana, León, Cancún, San Luis Potosí, Saltillo y cualquier otra ciudad. El proceso es 100% remoto por WhatsApp: compartes los detalles de tu evento, diseñamos en 24-48 horas y recibes el enlace listo para compartir.",
         },
       },
       {
@@ -349,7 +384,7 @@ export default function RootLayout({
     "@type": "WebPage",
     "@id": `${SITE_URL}#webpage`,
     url: SITE_URL,
-    name: "Invitaciones Digitales en Monterrey | Bodas, XV Años y Eventos",
+    name: "Invitaciones Digitales México | Bodas, XV Años y Eventos",
     isPartOf: { "@id": `${SITE_URL}#website` },
     about: { "@id": `${SITE_URL}#localbusiness` },
     inLanguage: "es-MX",

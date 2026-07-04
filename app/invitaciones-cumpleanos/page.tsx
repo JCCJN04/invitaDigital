@@ -17,9 +17,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Cumpleaños Monterrey | RSVP y Animaciones",
+  title: "Invitaciones Digitales Cumpleaños | RSVP y Animaciones | Todo México",
   description:
-    "Invitaciones digitales para cumpleaños en Monterrey. Diseño divertido personalizado, RSVP automático por WhatsApp y entrega en 24 h. Boceto gratis.",
+    "Invitaciones digitales para cumpleaños en todo México. Diseño divertido personalizado, RSVP automático por WhatsApp y entrega en 24 h. Servicio en línea. Boceto gratis.",
   keywords: [
     "invitaciones cumpleaños digital monterrey",
     "invitaciones digitales fiesta monterrey",
@@ -104,7 +104,10 @@ const serviceSchema = {
       addressCountry: "MX",
     },
   },
-  areaServed: { "@type": "City", name: "Monterrey" },
+  areaServed: [
+    { "@type": "Country", name: "México" },
+    { "@type": "City", name: "Monterrey" },
+  ],
   description:
     "Invitaciones digitales para cumpleaños en Monterrey con diseño temático, RSVP automático, cuenta regresiva y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-cumpleanos",

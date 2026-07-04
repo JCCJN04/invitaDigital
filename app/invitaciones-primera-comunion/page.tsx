@@ -17,9 +17,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Primera Comunión Monterrey | Elegantes",
+  title: "Invitaciones Digitales Primera Comunión | Elegantes | Todo México",
   description:
-    "Invitaciones digitales para primera comunión en Monterrey. Diseño elegante y religioso, RSVP automático, GPS iglesia y recepción. Boceto gratis.",
+    "Invitaciones digitales para primera comunión en todo México. Diseño elegante y religioso, RSVP automático, GPS iglesia y recepción. Servicio en línea. Boceto gratis.",
   keywords: [
     "invitaciones primera comunion digital monterrey",
     "invitaciones digitales primera comunion",
@@ -104,7 +104,10 @@ const serviceSchema = {
       addressCountry: "MX",
     },
   },
-  areaServed: { "@type": "City", name: "Monterrey" },
+  areaServed: [
+    { "@type": "Country", name: "México" },
+    { "@type": "City", name: "Monterrey" },
+  ],
   description:
     "Invitaciones digitales para primera comunión en Monterrey con diseño religioso, RSVP automático, GPS doble y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-primera-comunion",

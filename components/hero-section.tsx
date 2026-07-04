@@ -9,7 +9,7 @@ export function HeroSection() {
         <div className="flex items-center gap-3 mb-10 animate-fade-in-up" style={{ animationDelay: "0ms" }}>
           <div className="h-px w-10 bg-primary" />
           <span className="text-[11px] tracking-[0.3em] text-muted-foreground uppercase font-medium">
-            Monterrey, Nuevo León · Invitaciones Digitales
+            Invitaciones Digitales
           </span>
         </div>
 
@@ -29,7 +29,7 @@ export function HeroSection() {
           {/* Copy + CTAs */}
           <div className="flex flex-col gap-8 max-w-md">
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Sorprende a tus invitados desde el primer mensaje. Diseñamos tu invitación digital con RSVP automático, música y animaciones — lista en 24 horas. Boceto inicial gratis, sin compromiso.
+              Sorprende a tus invitados desde el primer mensaje. Diseñamos tu invitación digital con RSVP automático, música y animaciones — lista en 24 horas. Servicio 100% en línea para todo México. Boceto gratis, sin compromiso.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <a
