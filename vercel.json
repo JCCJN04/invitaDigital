@@ -55,6 +55,14 @@
     {
       "source": "/xv-elisa/:path*",
       "destination": "https://xv-elisa.vercel.app/:path*"
+    },
+    {
+      "source": "/babyshower-sarah",
+      "destination": "https://babyshower-sarah.vercel.app/"
+    },
+    {
+      "source": "/babyshower-sarah/:path*",
+      "destination": "https://babyshower-sarah.vercel.app/:path*"
     }
   ]
 }
