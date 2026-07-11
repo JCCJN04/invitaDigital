@@ -15,7 +15,10 @@
       "WebFetch(domain:invitacionesdigitalesmty.com.mx)",
       "Bash(pnpm tsc:*)",
       "Skill(seo)",
-      "WebFetch(domain:www.invitapp.mx)"
+      "WebFetch(domain:www.invitapp.mx)",
+      "WebFetch(domain:invitapp.mx)",
+      "WebFetch(domain:www.shesaidweb.com)",
+      "WebFetch(domain:invitio.events)"
     ]
   }
 }

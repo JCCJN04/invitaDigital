@@ -58,11 +58,11 @@
     },
     {
       "source": "/babyshower-sarah",
-      "destination": "https://babyshower-sarah.vercel.app/"
+      "destination": "https://babyshower-sarah-iota.vercel.app/"
     },
     {
       "source": "/babyshower-sarah/:path*",
-      "destination": "https://babyshower-sarah.vercel.app/:path*"
+      "destination": "https://babyshower-sarah-iota.vercel.app/:path*"
     }
   ]
 }
