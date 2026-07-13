@@ -18,16 +18,16 @@ module.exports = {
   async headers() {
     const csp = [
       "default-src 'self'",
-      // Next.js hydration + JSON-LD inline scripts + GA/FB/Instagram/Vercel + proxied invitations
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.instagram.com https://va.vercel-scripts.com https://*.vercel.app",
+      // Next.js hydration + JSON-LD inline scripts + GA/FB/Instagram/Vercel + proxied invitations + Tally RSVP
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.instagram.com https://va.vercel-scripts.com https://*.vercel.app https://tally.so",
       // Tailwind inline styles + Google Fonts + proxied invitations
       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.vercel.app",
       // Google Fonts files + proxied invitations
       "font-src 'self' https://fonts.gstatic.com https://*.vercel.app",
       // Images: own domain + Instagram CDN + Facebook + Google + proxied invitations
       "img-src 'self' data: blob: https://www.instagram.com https://*.cdninstagram.com https://www.facebook.com https://www.google-analytics.com https://www.googletagmanager.com https://*.vercel.app",
-      // Instagram Reel embed iframe + Facebook + proxied invitations
-      "frame-src https://www.instagram.com https://www.facebook.com https://*.vercel.app",
+      // Instagram Reel embed iframe + Facebook + proxied invitations + Tally RSVP forms
+      "frame-src https://www.instagram.com https://www.facebook.com https://*.vercel.app https://tally.so",
       // Analytics beacons + proxied invitations
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://connect.facebook.net https://*.vercel.app",
       // Instagram video in embed + proxied invitations
