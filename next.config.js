@@ -18,20 +18,20 @@ module.exports = {
   async headers() {
     const csp = [
       "default-src 'self'",
-      // Next.js hydration + JSON-LD inline scripts + GA/FB/Instagram/Vercel
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.instagram.com https://va.vercel-scripts.com",
-      // Tailwind inline styles + Google Fonts
-      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-      // Google Fonts files
-      "font-src 'self' https://fonts.gstatic.com",
-      // Images: own domain + Instagram CDN + Facebook + Google
-      "img-src 'self' data: blob: https://www.instagram.com https://*.cdninstagram.com https://www.facebook.com https://www.google-analytics.com https://www.googletagmanager.com",
-      // Instagram Reel embed iframe + Facebook
-      "frame-src https://www.instagram.com https://www.facebook.com",
-      // Analytics beacons
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://connect.facebook.net",
-      // Instagram video in embed
-      "media-src 'self' https://www.instagram.com https://*.cdninstagram.com",
+      // Next.js hydration + JSON-LD inline scripts + GA/FB/Instagram/Vercel + proxied invitations
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net https://www.instagram.com https://va.vercel-scripts.com https://*.vercel.app",
+      // Tailwind inline styles + Google Fonts + proxied invitations
+      "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://*.vercel.app",
+      // Google Fonts files + proxied invitations
+      "font-src 'self' https://fonts.gstatic.com https://*.vercel.app",
+      // Images: own domain + Instagram CDN + Facebook + Google + proxied invitations
+      "img-src 'self' data: blob: https://www.instagram.com https://*.cdninstagram.com https://www.facebook.com https://www.google-analytics.com https://www.googletagmanager.com https://*.vercel.app",
+      // Instagram Reel embed iframe + Facebook + proxied invitations
+      "frame-src https://www.instagram.com https://www.facebook.com https://*.vercel.app",
+      // Analytics beacons + proxied invitations
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://connect.facebook.net https://*.vercel.app",
+      // Instagram video in embed + proxied invitations
+      "media-src 'self' https://www.instagram.com https://*.cdninstagram.com https://*.vercel.app",
       "object-src 'none'",
       "base-uri 'self'",
       "form-action 'self'",
