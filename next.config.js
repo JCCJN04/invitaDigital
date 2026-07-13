@@ -26,8 +26,8 @@ module.exports = {
       "font-src 'self' https://fonts.gstatic.com https://*.vercel.app https://cdnjs.cloudflare.com",
       // Images: own domain + Instagram CDN + Facebook + Google + proxied invitations + texture CDN
       "img-src 'self' data: blob: https://www.instagram.com https://*.cdninstagram.com https://www.facebook.com https://www.google-analytics.com https://www.googletagmanager.com https://*.vercel.app https://www.transparenttextures.com",
-      // Instagram embed + Facebook + proxied invitations + Tally RSVP + Google Maps
-      "frame-src https://www.instagram.com https://www.facebook.com https://*.vercel.app https://tally.so https://maps.google.com",
+      // Instagram embed + Facebook + proxied invitations + Tally RSVP + Google Maps (both domains)
+      "frame-src https://www.instagram.com https://www.facebook.com https://*.vercel.app https://tally.so https://maps.google.com https://www.google.com",
       // Analytics beacons + proxied invitations
       "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://connect.facebook.net https://*.vercel.app",
       // Instagram video in embed + proxied invitations
