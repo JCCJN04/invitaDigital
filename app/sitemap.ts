@@ -38,6 +38,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: "2026-07-01",
     },
     {
+      url: `${baseUrl}/invitaciones-xv-años`,
+      lastModified: "2026-07-12",
+    },
+    {
       url: `${baseUrl}/invitaciones-baby-shower`,
       lastModified: "2026-06-01",
     },

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Guadalajara | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales Guadalajara | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en Guadalajara. Servicio 100% en línea con entrega en 24 h. Diseño personalizado con estilo tapatío y boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower guadalajara",
     "invitaciones eventos guadalajara jalisco",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/guadalajara",
-  },
+  alternates: buildAlternates("/guadalajara"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Hacen invitaciones para eventos en Guadalajara y zona metropolitana?",
     answer:
-      "Sí, atendemos toda la zona metropolitana de Guadalajara incluyendo Zapopan, Tlaquepaque, Tonalá y Tlajomulco. Nuestro servicio es 100% en línea, así que no importa en qué colonia estés — te atendemos por WhatsApp con la misma rapidez.",
+      "Sí, atendemos toda la zona metropolitana de Guadalajara incluyendo Zapopan, Tlaquepaque, Tonalá, Tlajomulco, El Salto y Tonalá. Nuestro servicio es 100% en línea por WhatsApp, así que no importa en qué colonia o municipio estés — te atendemos con la misma rapidez y calidad. Nos escribes, te enviamos un boceto gratis en menos de 5 minutos y en 24 horas tienes tu invitación lista para compartir. No hay diferencia de precio ni de calidad entre Guadalajara y cualquier otra ciudad donde operamos.",
   },
   {
     question: "¿Cuánto cuesta una invitación digital en Guadalajara?",
     answer:
-      "Nuestros planes son de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. No hay cobros mensuales ni comisiones por invitado. El precio es el mismo para Guadalajara que para cualquier otra ciudad porque el servicio es digital.",
+      "Nuestros planes son de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. No hay cobros mensuales ni comisiones por invitado ni por confirmación recibida. El plan Básico incluye diseño personalizado, RSVP automático, mapa GPS, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora mesa de regalos y secciones adicionales. El precio es el mismo para Guadalajara que para cualquier otra ciudad porque el servicio es completamente digital.",
   },
   {
     question: "¿Pueden incluir mapa de ubicación del salón de eventos?",
     answer:
-      "Por supuesto. Integramos un mapa GPS interactivo con la ubicación exacta de tu evento en Guadalajara. Tus invitados solo tienen que tocarlo para abrir la navegación directa en Google Maps o Waze.",
+      "Por supuesto. Integramos un mapa GPS interactivo con la ubicación exacta de tu evento en Guadalajara o cualquier municipio de la zona metropolitana. Tus invitados solo tienen que tocar el mapa para abrir la navegación directa en Google Maps o Waze desde su celular, con la dirección ya precargada. Si tu evento tiene dos ubicaciones — por ejemplo una ceremonia religiosa y una recepción en salón distinto — incluimos ambos mapas con sus respectivos horarios, claramente diferenciados dentro de la invitación.",
   },
   {
     question: "¿En cuánto tiempo entregan la invitación?",
     answer:
-      "En 24 horas hábiles desde que nos envías todos los datos. Te mandamos la invitación terminada por WhatsApp para que la revises, apruebes y comiences a compartir con tus invitados.",
+      "Entregamos en 24 horas hábiles desde que nos envías todos los datos necesarios: nombres de los festejados, fecha y hora del evento, dirección del lugar, estilo o colores que prefieres y cualquier foto que quieras incluir. Antes de la versión final te mandamos un boceto gratis en menos de 5 minutos para que apruebes el diseño sin pagar nada. Una vez aprobado y realizado el pago, recibes la invitación definitiva al siguiente día hábil lista para compartir con todos tus invitados de Guadalajara y cualquier otra ciudad.",
   },
   {
     question: "¿Puedo solicitar un diseño con temática de hacienda o mexicano?",
     answer:
-      "Claro. Tenemos experiencia diseñando invitaciones con motivos de hacienda jalisciense, estilo ranchero elegante, temática mexicana con papel picado y cualquier otro concepto que tengas en mente. Cuéntanos tu idea y la hacemos realidad.",
+      "Claro, es uno de los estilos más solicitados para eventos en Jalisco. Tenemos experiencia diseñando invitaciones con motivos de hacienda jalisciense — tezontle, arcos coloniales, palmas, tonos terracota y dorado — así como estilo ranchero elegante para bodas de campo, temática mexicana con papel picado y flores de cempasúchil, o cualquier otro concepto regional que tengas en mente. También hacemos versiones más modernas inspiradas en la arquitectura tapatía contemporánea. Cuéntanos tu idea, compártenos referencias y la hacemos realidad.",
   },
   {
     question: "¿Cómo les envío los datos de mi evento?",
     answer:
-      "Solo escríbenos por WhatsApp. Te pedimos fecha, hora, lugar, nombre(s) del festejado(a) y cualquier detalle especial. Con eso diseñamos tu boceto gratis en menos de 5 minutos para que veas cómo quedará.",
+      "Solo escríbenos por WhatsApp al número que aparece en esta página. Te hacemos unas preguntas básicas: fecha y hora del evento, dirección del lugar o lugares, nombre o nombres de los festejados, el tipo de celebración y cualquier detalle especial como código de vestimenta o itinerario. Con esa información diseñamos tu boceto gratis en menos de 5 minutos para que veas exactamente cómo quedará antes de comprometerte a nada. Es el primer paso y no tiene ningún costo.",
   },
 ]
 

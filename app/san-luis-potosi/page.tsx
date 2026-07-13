@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales San Luis Potosí | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales San Luis Potosí | Bodas" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en San Luis Potosí. Servicio 100% en línea con entrega en 24 h. Diseño personalizado con esencia potosina y boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower san luis potosi",
     "invitaciones eventos san luis potosi",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/san-luis-potosi",
-  },
+  alternates: buildAlternates("/san-luis-potosi"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Atienden clientes en San Luis Potosí?",
     answer:
-      "Sí, nuestro servicio es completamente en línea y atendemos toda la zona de San Luis Potosí, Soledad de Graciano Sánchez, Ciudad Valles y la región Huasteca. Te comunicamos por WhatsApp y entregamos tu invitación digitalmente en 24 horas.",
+      "Sí, nuestro servicio es completamente en línea y atendemos toda la zona de San Luis Potosí, Soledad de Graciano Sánchez, Ciudad Valles, Matehuala y la región Huasteca. Trabajamos por WhatsApp y entregamos tu invitación digitalmente en 24 horas. Nos escribes con los datos básicos del evento — fecha, lugar, tipo de celebración y estilo que prefieres — y en menos de 5 minutos tienes un boceto gratis personalizado para ver el resultado antes de comprometerte. Todo el proceso es en línea sin citas presenciales ni desplazamientos.",
   },
   {
-    question: "¿Cuánto cuesta una invitación digital en SLP?",
+    question: "¿Cuánto cuesta una invitación digital en San Luis Potosí?",
     answer:
-      "Manejamos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Incluyen diseño personalizado, RSVP automático, cuenta regresiva, mapa GPS y entrega en 24 horas. Escríbenos por WhatsApp para tu boceto gratis.",
+      "Manejamos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, cuenta regresiva animada, mapa GPS interactivo y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora mesa de regalos integrada y secciones adicionales. El precio es el mismo para San Luis Potosí que para cualquier otra ciudad. Escríbenos por WhatsApp para tu boceto gratis sin compromiso.",
   },
   {
     question: "¿Pueden integrar temática de la Huasteca Potosina?",
     answer:
-      "Claro que sí. Si tu evento tiene inspiración huasteca — cascadas, selva, colores vibrantes — lo integramos en el diseño. También hacemos estilos coloniales inspirados en el centro histórico de SLP o cualquier concepto que tengas en mente.",
+      "Claro que sí. Si tu evento tiene inspiración huasteca podemos integrar elementos visuales característicos de la región: las cascadas de Tamul y Micos, la exuberante selva verde, el río Tampaón, los colores vibrantes del huipil huasteco, motivos florales tropicales y la paleta natural de la sierra. También hacemos estilos coloniales inspirados en la arquitectura barroca del centro histórico de San Luis Potosí, con cantera rosa y detalles dorados. O cualquier otro concepto que tengas en mente — nos dices tu visión y la diseñamos.",
   },
   {
     question: "¿Qué incluye cada plan de invitación?",
     answer:
-      "Todos los planes incluyen diseño personalizado, RSVP automático por WhatsApp, cuenta regresiva animada, mapa GPS interactivo, enlace compartible y entrega en 24 horas. Los planes Premium y Deluxe agregan música de fondo, galería de fotos y mesa de regalos integrada.",
+      "Todos los planes incluyen diseño personalizado desde cero — no plantillas —, RSVP automático por WhatsApp donde cada confirmación llega directo a tu teléfono, cuenta regresiva animada en tiempo real, mapa GPS interactivo con botón para abrir en Google Maps o Waze, enlace web compartible ilimitadamente y entrega en 24 horas. El plan Premium añade música de fondo elegida por ti y galería de fotos. El plan Deluxe agrega mesa de regalos integrada con botones a las tiendas que elijas, secciones adicionales de itinerario o información extra y rondas ilimitadas de cambios.",
   },
   {
     question: "¿Cuántos invitados pueden recibir la invitación?",
     answer:
-      "No hay límite de invitados. La invitación es un enlace web que puedes compartir con cuantas personas quieras — 50, 500 o 5,000. No cobramos por número de visualizaciones ni de confirmaciones.",
+      "No hay límite de invitados. La invitación es un enlace web que puedes compartir con cuantas personas quieras — 50, 200 o 1,000 invitados. Todos abren el mismo link y ven exactamente la misma invitación. No cobramos por número de visualizaciones, por número de veces que se comparte el link ni por número de confirmaciones de asistencia recibidas. El costo es único y fijo desde el principio, sin sorpresas ni cobros adicionales por uso.",
   },
   {
     question: "¿Puedo ver un ejemplo antes de contratar?",
     answer:
-      "Sí, te enviamos un boceto gratis personalizado con los datos de tu evento en menos de 5 minutos. Lo ves, lo evalúas y solo si te convence avanzamos con el pago. Cero riesgo.",
+      "Sí, siempre enviamos un boceto gratis personalizado antes de cualquier pago. Solo escríbenos por WhatsApp con los datos básicos de tu evento — fecha, tipo de celebración, nombres y el estilo o colores que tienes en mente — y en menos de 5 minutos recibes una propuesta visual real con los elementos de tu evento específico. No es una invitación de muestra genérica sino un boceto diseñado para ti. Lo ves, lo evalúas con calma y solo si te convence completamente avanzamos con el pago. Si no te convence, no pagas nada.",
   },
 ]
 

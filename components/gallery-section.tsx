@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
+import Script from "next/script"
 
 type Category = "todas" | "bodas" | "xv" | "otros"
 
@@ -242,6 +243,54 @@ export function GallerySection() {
             ))}
           </div>
         )}
+
+        {/* Instagram Reel */}
+        <div className="mt-16 mb-4 flex flex-col items-center gap-6">
+          <div className="flex items-center gap-3">
+            <div className="h-px w-10 bg-primary" />
+            <span className="text-[11px] tracking-[0.3em] text-muted-foreground uppercase font-medium">
+              Síguenos en Instagram
+            </span>
+            <div className="h-px w-10 bg-primary" />
+          </div>
+          <div className="w-full max-w-sm mx-auto">
+            <blockquote
+              className="instagram-media"
+              data-instgrm-captioned
+              data-instgrm-permalink="https://www.instagram.com/reel/DaCBijaRKTs/?utm_source=ig_embed&utm_campaign=loading"
+              data-instgrm-version="14"
+              style={{
+                background: "#FFF",
+                border: 0,
+                borderRadius: "3px",
+                boxShadow: "0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15)",
+                margin: "0 auto",
+                maxWidth: "400px",
+                minWidth: "326px",
+                padding: 0,
+                width: "100%",
+              }}
+            >
+              <a
+                href="https://www.instagram.com/reel/DaCBijaRKTs/?utm_source=ig_embed&utm_campaign=loading"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ display: "block", padding: "16px", textAlign: "center" }}
+              >
+                Ver este reel en Instagram
+              </a>
+            </blockquote>
+          </div>
+          <a
+            href="https://www.instagram.com/invitacionesdigitalesmty.co"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm text-muted-foreground hover:text-foreground transition-colors tracking-wide"
+          >
+            @invitacionesdigitalesmty.co
+          </a>
+        </div>
+        <Script src="https://www.instagram.com/embed.js" strategy="lazyOnload" />
 
         {/* CTA band */}
         {filtered.length > 0 && (

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Eventos Corporativos | Todo México",
+  title: {
+    absolute: "Invitaciones Corporativas Digitales | RSVP | Todo México",
+  },
   description:
     "Invitaciones digitales para eventos corporativos y empresariales en todo México. Diseño profesional, RSVP, confirmación de asistencia y entrega en 24 h. Servicio en línea.",
   keywords: [
@@ -28,9 +31,7 @@ export const metadata: Metadata = {
     "invitacion digital profesional empresa",
     "eventos empresariales monterrey invitaciones",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/invitaciones-corporativas",
-  },
+  alternates: buildAlternates("/invitaciones-corporativas"),
 }
 
 const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
@@ -60,54 +61,45 @@ const faqs = [
   {
     question: "¿Cuánto cuesta una invitación digital para un evento corporativo?",
     answer:
-      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño con identidad de tu empresa, confirmación de asistencia y entrega en 24 horas. Escríbenos por WhatsApp con los detalles de tu evento.",
+      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño con la identidad visual de tu empresa, confirmación de asistencia con nombre y cargo del invitado, mapa GPS de la sede y entrega en 24 horas. El plan Premium añade agenda del evento con horarios y música o video corporativo de fondo. El plan Deluxe incorpora agenda multi-día, sección de ponentes o directivos y confirmación con campo de empresa. Emitimos factura CFDI para empresas que la requieran. Escríbenos por WhatsApp con los detalles de tu evento y te enviamos una propuesta sin compromiso.",
   },
   {
     question: "¿Pueden incluir el logotipo y los colores de mi empresa?",
     answer:
-      "Sí, es parte esencial de nuestro servicio corporativo. Aplicamos tu manual de marca — colores, tipografía, logotipo y estilo visual — para que la invitación sea 100% coherente con la imagen de tu organización.",
+      "Sí, es parte esencial de nuestro servicio corporativo. Aplicamos tu manual de marca — colores exactos en código hexadecimal o Pantone, tipografías corporativas, logotipo en alta resolución y el estilo visual que define a tu organización — para que la invitación sea completamente coherente con la imagen de tu empresa. No usamos plantillas genéricas; diseñamos desde cero respetando cada elemento de tu identidad visual. Si tienes un manual de marca o brand guidelines, compártenos el PDF y nos aseguramos de seguirlo al pie de la letra. El resultado es una invitación que cualquier colaborador reconocería inmediatamente como parte de tu empresa.",
   },
   {
     question: "¿Cómo funciona el control de asistencia con nombre y empresa?",
     answer:
-      "El formulario de RSVP solicita el nombre completo y la empresa del asistente. Tú recibes cada confirmación por WhatsApp y al final te entregamos un resumen consolidado de todos los confirmados.",
+      "El formulario de RSVP integrado en la invitación solicita al invitado su nombre completo, empresa y cargo. Al confirmar su asistencia, recibes una notificación inmediata en tu WhatsApp con sus datos. No necesitas hacer seguimiento manual ni revisar formularios externos. Al finalizar el período de confirmaciones, te entregamos un resumen consolidado en formato de lista con todos los asistentes confirmados, sus empresas y cargos — útil para preparar gafetes, asignación de mesas o registro de entrada al evento. Este sistema funciona sin límite de invitados y las respuestas llegan en tiempo real.",
   },
   {
     question: "¿Hacen invitaciones para congresos y convenciones?",
     answer:
-      "Sí, tenemos experiencia con eventos de gran formato: congresos, convenciones, cenas de gala, lanzamientos de producto y reuniones de consejo. Podemos incluir agenda multi-día, datos de ponentes y links de acceso.",
+      "Sí, tenemos experiencia con eventos corporativos de gran formato: congresos, convenciones, cenas de gala, lanzamientos de producto, reuniones de consejo directivo y eventos de reconocimiento. Para este tipo de eventos podemos incluir agenda detallada multi-día con horarios por sesión, perfiles de ponentes o conferencistas con foto y bio, links de acceso a transmisión en vivo o plataforma virtual, información de hospedaje para eventos foráneos, y mapa GPS con indicaciones de estacionamiento. El plan Deluxe está especialmente diseñado para estos casos donde la invitación necesita funcionar como un mini-sitio del evento.",
   },
   {
     question: "¿En cuánto tiempo me entregan la invitación?",
     answer:
-      "En 24 horas hábiles para eventos estándar. Para eventos de mayor complejidad con agenda detallada o múltiples sedes, el tiempo puede ser de 48 horas. Coordinamos el calendario contigo desde el primer mensaje.",
+      "Para eventos corporativos estándar entregamos en 24 horas hábiles a partir de que nos envíes todos los elementos necesarios: brief del evento, logotipo en alta resolución, colores de marca, fecha y sede, lista de información a incluir y cualquier material visual de referencia. Para eventos de mayor complejidad con agenda detallada, múltiples sedes o sección de ponentes, el tiempo puede extenderse a 48 horas. Antes de la versión final siempre te enviamos un boceto para aprobación. Coordinamos el calendario contigo desde el primer mensaje de WhatsApp para asegurar que la invitación esté lista mucho antes de tu fecha límite de envío.",
   },
   {
     question: "¿Emiten factura por el servicio?",
     answer:
-      "Sí, emitimos factura fiscal electrónica (CFDI) para empresas que la requieran. Solo necesitamos tu RFC y datos fiscales al momento de la cotización.",
+      "Sí, emitimos factura fiscal electrónica CFDI 4.0 para empresas y personas morales que la requieran. El comprobante cumple con todos los requisitos del SAT para deducibilidad de gastos. Solo necesitamos tu RFC, razón social, régimen fiscal, domicilio fiscal y correo electrónico para la emisión. La factura se envía en formato PDF y XML al correo que nos indiques dentro de los 3 días hábiles posteriores al pago. Si necesitas la factura con algún concepto o uso específico de CFDI, indícanos y lo configuramos correctamente desde el inicio.",
   },
 ]
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Invitaciones Digitales Corporativas Monterrey",
+  "@id": "https://invitacionesdigitalesmty.com.mx/invitaciones-corporativas#service",
+  name: "Invitaciones Digitales Corporativas",
   provider: {
     "@type": "LocalBusiness",
-    name: "Invitaciones Digitales MTY",
-    telephone: "+52 81 8083 6435",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Monterrey",
-      addressRegion: "Nuevo León",
-      addressCountry: "MX",
-    },
+    "@id": "https://invitacionesdigitalesmty.com.mx#localbusiness",
   },
-  areaServed: [
-    { "@type": "Country", name: "México" },
-    { "@type": "City", name: "Monterrey" },
-  ],
+  areaServed: { "@type": "Country", name: "México" },
   description:
     "Invitaciones digitales para eventos corporativos en Monterrey con imagen de marca, control de asistencia, agenda del evento y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-corporativas",

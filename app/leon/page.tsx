@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales León | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales León | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en León, Guanajuato. Servicio 100% en línea con entrega en 24 h. Diseño personalizado y boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower leon",
     "invitaciones eventos leon gto",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/leon",
-  },
+  alternates: buildAlternates("/leon"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Pueden hacer invitaciones para eventos en León, Guanajuato?",
     answer:
-      "Sí, atendemos toda la zona metropolitana de León incluyendo Silao, Irapuato, Guanajuato capital y San Miguel de Allende. Nuestro servicio es digital, así que trabajamos por WhatsApp con la misma agilidad sin importar dónde estés.",
+      "Sí, atendemos toda la zona metropolitana de León incluyendo Silao, Irapuato, Guanajuato capital, San Miguel de Allende y municipios aledaños. Nuestro servicio es 100% digital y trabajamos por WhatsApp con la misma agilidad sin importar dónde estés. Nos escribes, en menos de 5 minutos tienes un boceto gratis personalizado con los datos de tu evento y en 24 horas la invitación definitiva lista para compartir. No hay diferencia de precio ni de proceso entre León y cualquier otra ciudad — todo fluye en línea sin citas presenciales.",
   },
   {
     question: "¿Cuánto cuesta una invitación digital en León?",
     answer:
-      "Ofrecemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño personalizado, RSVP automático, mapa GPS y entrega en 24 horas. Te mandamos un boceto gratis para que veas el resultado.",
+      "Ofrecemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado desde cero, RSVP automático con notificaciones a tu WhatsApp, mapa GPS interactivo, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos del festejado. El plan Deluxe incorpora mesa de regalos integrada y secciones adicionales. Antes de cualquier pago te mandamos un boceto gratis para que veas el resultado exacto sin ningún compromiso.",
   },
   {
     question: "¿Tienen diseños para XV años con temática regional?",
     answer:
-      "Absolutamente. Podemos integrar elementos del Bajío como motivos de San Miguel de Allende, colores de la Feria de León o un estilo hacienda que es muy popular en Guanajuato. Nos cuentas tu idea y la diseñamos a tu medida.",
+      "Absolutamente. Podemos integrar elementos del Bajío en el diseño de la invitación de XV años: motivos inspirados en la arquitectura colonial de San Miguel de Allende, los colores de la Feria de León — rojo, verde y dorado — el estilo hacienda con arcos y cantera que es muy popular en Guanajuato, o elementos de la artesanía local. También hacemos versiones más contemporáneas y elegantes que combinan lo regional con el diseño moderno. Nos cuentas tu idea, compartes referencias y la diseñamos exactamente a tu medida.",
   },
   {
     question: "¿Cómo es el proceso de inicio a fin?",
     answer:
-      "Es muy simple: 1) Nos escribes por WhatsApp, 2) Te pedimos los datos del evento, 3) En menos de 5 minutos recibes un boceto gratis, 4) Si te gusta, haces el pago, 5) En 24 horas tienes tu invitación final lista para compartir.",
+      "Es muy simple y rápido. Primero nos escribes por WhatsApp y te pedimos los datos básicos del evento: nombres, fecha, hora, lugar y el estilo o colores que tienes en mente. En menos de 5 minutos recibes un boceto gratis personalizado para que veas cómo quedará antes de comprometerte. Si te convence, haces el pago — el 100% al inicio — y en 24 horas hábiles tienes tu invitación final lista para compartir. Si necesitas ajustes al boceto, los hacemos hasta que quede perfecto antes del pago.",
   },
   {
     question: "¿Mis invitados necesitan internet para ver la invitación?",
     answer:
-      "Necesitan conexión a internet solo al abrir el enlace, ya que la invitación es una página web. Una vez cargada, pueden verla sin conexión. No necesitan descargar ninguna aplicación.",
+      "Necesitan conexión a internet solo al abrir el enlace por primera vez, ya que la invitación es una página web que carga desde nuestros servidores. Una vez cargada completamente, pueden desplazarse por toda la invitación aunque la conexión se interrumpa. No necesitan descargar ninguna aplicación ni crear ninguna cuenta. La invitación está optimizada para cargar rápido incluso con señal débil o conexiones de datos móviles lentas, lo cual es importante para invitados que la abren desde zonas con cobertura limitada.",
   },
   {
     question: "¿Puedo incluir código de vestimenta en la invitación?",
     answer:
-      "Por supuesto. Podemos agregar una sección de dress code con íconos ilustrativos, paleta de colores sugerida e incluso enlaces a inspiración de outfits. Es un detalle que tus invitados agradecerán.",
+      "Por supuesto. Podemos agregar una sección de dress code con íconos ilustrativos que muestren el nivel de formalidad esperado — casual, semi-formal, formal o de etiqueta — junto con una paleta de colores sugerida para coordinar entre los invitados, y si lo deseas, incluso frases o ejemplos de outfits de referencia. Es un detalle muy valorado especialmente en bodas, XV años y eventos corporativos donde los anfitriones quieren que todos lleguen coordinados. No tiene costo adicional incluirlo en la invitación.",
   },
 ]
 

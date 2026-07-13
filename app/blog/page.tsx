@@ -3,16 +3,15 @@ import Link from "next/link"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { getAllPosts } from "@/lib/blog-data"
+import { buildAlternates } from "@/lib/seo"
 
 const SITE_URL = "https://invitacionesdigitalesmty.com.mx"
 
 export const metadata: Metadata = {
-  title: "Blog de Invitaciones Digitales en Monterrey | Consejos y Tendencias",
+  title: "Blog de Invitaciones Digitales | Consejos y Tendencias",
   description:
     "Guías, tendencias y consejos para bodas, XV años y eventos en Monterrey. Aprende a elegir la mejor invitación digital para tu celebración.",
-  alternates: {
-    canonical: `${SITE_URL}/blog`,
-  },
+  alternates: buildAlternates("/blog"),
   openGraph: {
     title: "Blog de Invitaciones Digitales MTY",
     description:
@@ -46,15 +45,18 @@ export default function BlogPage() {
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}#localbusiness`,
     },
+    inLanguage: "es-MX",
     blogPost: posts.map((p) => ({
       "@type": "BlogPosting",
       headline: p.title,
       description: p.excerpt,
       url: `${SITE_URL}/blog/${p.id}`,
       datePublished: p.date,
+      image: p.image ? { "@type": "ImageObject", url: `${SITE_URL}${p.image}` } : undefined,
       author: {
         "@type": "Organization",
-        name: p.author,
+        name: "Invitaciones Digitales MTY",
+        url: SITE_URL,
       },
     })),
   }

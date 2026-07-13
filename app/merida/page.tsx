@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Mérida | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales Mérida | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en Mérida, Yucatán. Servicio 100% en línea con entrega en 24 h. Diseños con encanto yucateco y boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower merida",
     "invitaciones eventos merida",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/merida",
-  },
+  alternates: buildAlternates("/merida"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Atienden eventos en Mérida aunque estén en Monterrey?",
     answer:
-      "Sí, nuestro servicio es completamente digital. Atendemos clientes en toda la Península de Yucatán — Mérida, Progreso, Valladolid, Izamal y alrededores. La comunicación es por WhatsApp y la entrega es en línea, así que la distancia no afecta ni la calidad ni los tiempos.",
+      "Sí, nuestro servicio es completamente digital y atendemos clientes en toda la Península de Yucatán — Mérida, Progreso, Valladolid, Izamal, Campeche y alrededores. La comunicación es por WhatsApp y la entrega es en línea, así que la distancia no afecta ni la calidad del diseño ni los tiempos de entrega. Nos escribes, en menos de 5 minutos tienes un boceto gratis personalizado con los datos de tu evento y en 24 horas la invitación lista para compartir con todos tus invitados de Mérida y de cualquier otra ciudad.",
   },
   {
     question: "¿Cuál es el costo de una invitación digital en Mérida?",
     answer:
-      "Manejamos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Incluyen diseño personalizado, RSVP automático, cuenta regresiva y mapa GPS. El precio es el mismo para todas las ciudades.",
+      "Manejamos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, cuenta regresiva animada, mapa GPS interactivo y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora mesa de regalos integrada, sección de hospedaje para invitados foráneos y secciones adicionales. El precio es el mismo para Mérida que para cualquier otra ciudad. Escríbenos para tu boceto gratis.",
   },
   {
     question: "¿Pueden hacer invitaciones con estilo maya o yucateco?",
     answer:
-      "Claro. Tenemos experiencia diseñando invitaciones con motivos mayas, paletas tropicales inspiradas en la vegetación yucateca y detalles que evocan las haciendas de la región. Nos dices tu visión y la plasmamos.",
+      "Claro. Tenemos experiencia diseñando invitaciones con motivos mayas — ceibas, quetzales, grecas y cenotes — paletas tropicales inspiradas en la vegetación yucateca con verdes selva, azul turquesa y dorado, y detalles que evocan las haciendas henequeneras de la región. También podemos diseñar en un estilo más contemporáneo inspirado en la arquitectura del centro histórico de Mérida o en el blanco y colores pasteles que caracterizan las casas coloniales. Nos dices tu visión, compartes referencias y la plasmamos en un diseño único.",
   },
   {
     question: "¿En cuánto tiempo me entregan la invitación?",
     answer:
-      "En 24 horas hábiles después de recibir los datos completos de tu evento. Primero te mandamos un boceto gratis en menos de 5 minutos para que apruebes el concepto.",
+      "Entregamos en 24 horas hábiles después de recibir los datos completos de tu evento: nombres de los festejados, fecha y hora, lugar o lugares con dirección exacta, estilo o colores que prefieres y cualquier foto que quieras incluir. Antes de la versión final te mandamos un boceto gratis en menos de 5 minutos para que apruebes el concepto sin pagar nada. Una vez aprobado y realizado el pago, la invitación definitiva estará lista al siguiente día hábil lista para compartir por WhatsApp con todos tus invitados.",
   },
   {
     question: "¿La invitación funciona bien con internet lento?",
     answer:
-      "Sí, nuestras invitaciones están optimizadas para cargar rápido incluso con conexiones lentas. Son páginas web ligeras que se adaptan a cualquier dispositivo sin necesidad de descargar aplicaciones.",
+      "Sí, nuestras invitaciones están optimizadas para cargar rápido incluso con conexiones de internet lentas o inestables. Son páginas web ligeras construidas con rendimiento en mente — las imágenes se comprimen sin perder calidad visual y el código se minimiza para que el tiempo de carga sea el mínimo posible. Funcionan en cualquier dispositivo — iPhone, Android, tablet o computadora — sin necesidad de descargar ninguna aplicación. Esto es importante en Mérida y la Península donde la cobertura puede variar en zonas rurales o venues alejados de la ciudad.",
   },
   {
     question: "¿Puedo incluir información de hospedaje para invitados foráneos?",
     answer:
-      "Por supuesto. Podemos agregar una sección con recomendaciones de hoteles, direcciones y enlaces de reserva. Es muy útil para bodas destino en Mérida donde varios invitados viajan desde otras ciudades.",
+      "Por supuesto, es una de las secciones más valoradas en bodas y eventos en Mérida. Podemos agregar una sección dedicada con hoteles recomendados cercanos al venue, sus precios aproximados, enlaces directos para hacer la reserva en línea, y opciones de transporte desde el aeropuerto internacional Manuel Crescencio Rejón. También agregamos información sobre cómo llegar al venue desde el hotel, con el tiempo estimado de traslado. Esto facilita enormemente la logística para los invitados que viajan desde CDMX, Monterrey o el extranjero.",
   },
 ]
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Tijuana | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales Tijuana | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en Tijuana. Servicio 100% en línea con entrega en 24 h. Diseño moderno fronterizo y boceto gratis sin compromiso.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower tijuana",
     "invitaciones eventos tijuana",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/tijuana",
-  },
+  alternates: buildAlternates("/tijuana"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Hacen invitaciones para eventos en Tijuana?",
     answer:
-      "Sí, atendemos toda la zona de Tijuana, Rosarito, Tecate y Ensenada. Nuestro servicio es 100% en línea por WhatsApp, así que no importa la diferencia de horario ni la distancia — te respondemos al momento y entregamos en 24 horas.",
+      "Sí, atendemos toda la zona de Tijuana, Rosarito, Tecate, Ensenada y municipios de Baja California. Nuestro servicio es 100% en línea por WhatsApp, así que no importa la diferencia de horario ni la distancia. Nos escribes, en menos de 5 minutos tienes un boceto gratis personalizado con los datos de tu evento y en 24 horas la invitación lista para compartir. El proceso es exactamente igual al que tenemos con clientes en Monterrey o CDMX — todo fluye por WhatsApp sin citas presenciales ni complicaciones.",
   },
   {
-    question: "¿Cuánto cuesta una invitación digital?",
+    question: "¿Cuánto cuesta una invitación digital en Tijuana?",
     answer:
-      "Tenemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Incluyen diseño personalizado, RSVP automático, cuenta regresiva y mapa. El precio es igual para todo México.",
+      "Tenemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, cuenta regresiva animada, mapa GPS interactivo y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora mesa de regalos y secciones adicionales. El precio es igual para todo México — Tijuana, Monterrey o cualquier otra ciudad. Escríbenos para tu boceto gratis.",
   },
   {
     question: "¿Pueden hacer la invitación en inglés y español?",
     answer:
-      "Claro que sí. Entendemos que en la frontera muchos invitados hablan inglés. Podemos diseñar tu invitación bilingüe o en el idioma que prefieras sin costo adicional.",
+      "Claro que sí. Entendemos perfectamente que en la frontera muchos invitados hablan inglés como primera lengua o son de San Diego y no dominan el español. Podemos diseñar tu invitación completamente bilingüe con los dos idiomas dentro del mismo enlace, solo en inglés, o con el idioma principal que prefieras. El diseño bilingüe no tiene costo adicional. También podemos usar términos que sean naturales en ambas culturas para que la invitación se sienta auténtica tanto para tus invitados del lado mexicano como del americano.",
   },
   {
     question: "¿Cómo funciona el RSVP automático?",
     answer:
-      "Cada invitado ve un botón de confirmación en la invitación. Al tocarlo, te llega un mensaje directo a tu WhatsApp con su nombre y si asistirá. No tienes que hacer seguimiento manual — las respuestas se acumulan solas.",
+      "El RSVP funciona mediante un botón de confirmación visible dentro de la invitación digital. Cuando un invitado lo toca, puede indicar si asistirá o no y cuántas personas lo acompañarán. Al enviar su respuesta, tú recibes inmediatamente una notificación en tu WhatsApp con su nombre y su confirmación. No tienes que hacer seguimiento manual ni revisar ningún panel externo — las respuestas se acumulan automáticamente. El sistema funciona sin límite de invitados y sin costos adicionales por confirmaciones recibidas. También funciona perfectamente para invitados que usan WhatsApp en versión estadounidense.",
   },
   {
     question: "¿Puedo incluir dos ubicaciones (civil y fiesta)?",
     answer:
-      "Sí, incluimos tantas ubicaciones como necesites con mapa GPS independiente para cada una. Es común en Tijuana que la ceremonia y la recepción sean en lugares distintos, y nuestra invitación lo resuelve con secciones separadas.",
+      "Sí, incluimos tantas ubicaciones como necesites con mapa GPS independiente para cada una. Es muy común en Tijuana que el registro civil, la ceremonia religiosa y la recepción sean en lugares distintos. Nuestra invitación resuelve esto con secciones claramente separadas, cada una con su dirección exacta, horario y botón de navegación directa a Google Maps o Waze. Tus invitados saben exactamente a dónde ir en cada momento sin confusiones ni preguntas de último minuto.",
   },
   {
     question: "¿En qué horario atienden?",
     answer:
-      "Estamos disponibles de lunes a sábado de 9:00 a.m. a 9:00 p.m. hora del centro. Aunque hay una hora de diferencia con Tijuana, respondemos mensajes de WhatsApp durante todo ese horario y generalmente contestamos en minutos.",
+      "Estamos disponibles de lunes a sábado de 9:00 a.m. a 9:00 p.m. hora del centro de México. Hay una hora de diferencia con Tijuana — cuando son las 9 am en Monterrey, en Tijuana son las 8 am — pero respondemos mensajes de WhatsApp durante todo ese horario y generalmente contestamos en minutos, no en horas. Si nos escribes fuera de horario, respondemos a primera hora del siguiente día hábil. Nuestro tiempo de entrega de 24 horas hábiles aplica desde que tenemos todos los datos de tu evento, independientemente de la zona horaria.",
   },
 ]
 

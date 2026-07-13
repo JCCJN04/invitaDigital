@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Saltillo | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales Saltillo | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en Saltillo, Coahuila. Servicio 100% en línea con entrega en 24 h. Diseño personalizado desde Monterrey, tu vecino del noreste. Boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower saltillo",
     "invitaciones eventos saltillo coahuila",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/saltillo",
-  },
+  alternates: buildAlternates("/saltillo"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Atienden en Saltillo siendo de Monterrey?",
     answer:
-      "Sí, y somos prácticamente vecinos. Saltillo está a solo una hora de Monterrey y compartimos la misma zona horaria y cultura norteña. Nuestro servicio es 100% en línea por WhatsApp, así que la atención es igual de rápida y personalizada que si fuéramos de tu misma ciudad.",
+      "Sí, y somos prácticamente vecinos. Saltillo está a solo una hora de Monterrey y compartimos la misma zona horaria, la misma cultura norteña y el mismo estilo de celebrar. Nuestro servicio es 100% en línea por WhatsApp, así que la atención es igual de rápida y personalizada que si fuéramos de tu misma ciudad. Nos escribes, en menos de 5 minutos tienes un boceto gratis con los datos de tu evento y en 24 horas la invitación definitiva. No hay diferencia de precio ni de servicio entre Saltillo y Monterrey.",
   },
   {
     question: "¿Cuánto cuesta una invitación digital en Saltillo?",
     answer:
-      "Ofrecemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Incluyen diseño personalizado, RSVP automático, mapa GPS y entrega en 24 horas. El precio es el mismo para Saltillo, Monterrey y cualquier otra ciudad.",
+      "Ofrecemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, mapa GPS interactivo, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora mesa de regalos integrada y secciones adicionales. El precio es el mismo para Saltillo, Monterrey y cualquier otra ciudad de México — el servicio es digital y no tiene costos de desplazamiento.",
   },
   {
     question: "¿Pueden hacer invitaciones para bodas en quintas o jardines de Saltillo?",
     answer:
-      "Claro que sí. Conocemos las quintas y salones populares de Saltillo y Arteaga. Diseñamos invitaciones que se adaptan al estilo del venue — rústico, elegante, campestre o moderno. Tú eliges el concepto y nosotros lo materializamos.",
+      "Claro que sí. Conocemos el estilo de los venues de Saltillo, Arteaga y la región serrana de Coahuila — quintas campestres, jardines con vista a la sierra, haciendas rústicas y salones de eventos en la ciudad. Diseñamos invitaciones que se adaptan al ambiente del lugar: rústico y natural para quintas en Arteaga, elegante clásico para salones del centro de Saltillo, o campestre sofisticado para eventos en los alrededores. Tú eliges el concepto, compartes referencias y nosotros lo materializamos con un diseño único.",
   },
   {
     question: "¿En cuánto tiempo recibo mi invitación?",
     answer:
-      "En 24 horas hábiles después de enviarnos todos los datos. Antes de eso, te mandamos un boceto gratis en menos de 5 minutos para que apruebes el diseño y los colores.",
+      "En 24 horas hábiles después de enviarnos todos los datos necesarios: nombres de los festejados, fecha y hora del evento, dirección del lugar o lugares, estilo o colores que prefieres y cualquier foto que quieras incluir. Antes de la versión final te mandamos un boceto gratis en menos de 5 minutos para que apruebes el diseño y los colores sin pagar nada. Una vez que lo apruebas y realizas el pago, la invitación definitiva estará lista al día siguiente hábil lista para compartir por WhatsApp con todos tus invitados.",
   },
   {
     question: "¿Para qué tipos de evento diseñan invitaciones?",
     answer:
-      "Bodas, XV años, baby showers, bautizos, primera comunión, cumpleaños y eventos corporativos. Cualquier celebración que necesite una invitación digital profesional y funcional.",
+      "Diseñamos invitaciones digitales para cualquier tipo de celebración: bodas en salón o jardín, XV años con cualquier temática, baby showers de niño, niña o género neutro, bautizos con estilo religioso o moderno, primera comunión y confirmación, cumpleaños infantiles y de adultos, graduaciones, despedidas de soltera y eventos corporativos como cenas de gala, lanzamientos de producto y convenciones. Cualquier celebración que necesite una invitación digital profesional, funcional y verdaderamente personalizada.",
   },
   {
     question: "¿Cómo les envío las fotos y datos de mi evento?",
     answer:
-      "Todo por WhatsApp. Nos mandas las fotos que quieras incluir, los datos del evento (fecha, hora, lugar, nombres) y cualquier referencia de estilo que te guste. Con eso trabajamos tu diseño personalizado.",
+      "Todo por WhatsApp, sin formularios ni correos complicados. Nos mandas las fotos que quieras incluir en la invitación — de la pareja, del festejado, del bebé o del lugar — junto con los datos del evento: fecha, hora, dirección del lugar o lugares, nombres y cualquier referencia de estilo que te guste como colores, mood board o invitaciones que hayas visto y admirado. Con esa información trabajamos tu boceto gratis en menos de 5 minutos para que veas exactamente cómo va a quedar antes de comprometerte.",
   },
 ]
 

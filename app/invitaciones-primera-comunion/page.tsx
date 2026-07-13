@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Primera Comunión | Elegantes | Todo México",
+  title: {
+    absolute: "Invitaciones Primera Comunión Digital | GPS | Todo México",
+  },
   description:
     "Invitaciones digitales para primera comunión en todo México. Diseño elegante y religioso, RSVP automático, GPS iglesia y recepción. Servicio en línea. Boceto gratis.",
   keywords: [
@@ -28,9 +31,7 @@ export const metadata: Metadata = {
     "invitacion digital primera comunion precio",
     "invitaciones comunion whatsapp",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/invitaciones-primera-comunion",
-  },
+  alternates: buildAlternates("/invitaciones-primera-comunion"),
 }
 
 const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
@@ -60,54 +61,45 @@ const faqs = [
   {
     question: "¿Cuánto cuesta una invitación digital para primera comunión?",
     answer:
-      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño personalizado, RSVP y entrega en 24 horas. Escríbenos por WhatsApp para un boceto gratis sin compromiso.",
+      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño religioso personalizado, RSVP automático con notificaciones a tu WhatsApp, mapa GPS de la iglesia y la recepción, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música litúrgica o de fondo y galería de fotos del niño o la niña. El plan Deluxe incorpora también mesa de regalos integrada y secciones adicionales. Antes de cualquier pago te enviamos un boceto gratis personalizado para que apruebes el diseño sin compromiso. Escríbenos por WhatsApp con los datos básicos del evento.",
   },
   {
     question: "¿Qué incluye la invitación digital de primera comunión?",
     answer:
-      "Incluye diseño religioso personalizado, RSVP automático con notificaciones a tu WhatsApp, mapa GPS de la iglesia y la recepción, datos del niño o la niña, música litúrgica opcional y cuenta regresiva.",
+      "La invitación incluye diseño religioso completamente personalizado con los colores, el estilo y los elementos sagrados que prefieras, RSVP automático que envía las confirmaciones directo a tu WhatsApp sin que tengas que hacer seguimiento manual, mapa GPS con las ubicaciones de la iglesia y del salón de recepción con botón directo a Google Maps o Waze, datos del niño o la niña con foto opcional, música litúrgica o clásica de fondo, y cuenta regresiva animada hasta el día del evento. Todo en un enlace compartible por WhatsApp que los invitados abren desde su celular sin descargar ninguna aplicación ni crear ninguna cuenta.",
   },
   {
     question: "¿Qué estilos religiosos tienen disponibles?",
     answer:
-      "Tenemos diseños clásicos con cruz y paloma, estilo acuarela con florales blancos y dorados, minimalista moderno, y versiones más elaboradas con ángeles y cáliz. Adaptamos cualquier estilo a tus preferencias.",
+      "Tenemos una amplia variedad de estilos para primera comunión. El estilo clásico incluye motivos como cáliz, hostia, paloma del Espíritu Santo y cruz con detalles dorados o plateados. El estilo acuarela combina florales blancos y rosas con toques dorados para una estética más delicada y moderna. El estilo minimalista usa líneas limpias con un solo elemento religioso sutil y tipografía elegante. También hacemos versiones más elaboradas con ángeles, guirnaldas de flores y texturas de mármol. Si tienes referencias de lo que imaginas, compártelas y adaptamos el diseño exactamente a tus preferencias.",
   },
   {
     question: "¿Pueden incluir la foto del niño o la niña?",
     answer:
-      "Sí, es una de las opciones más solicitadas. Integramos la foto de manera elegante dentro del diseño de la invitación, haciéndola aún más personal y memorable.",
+      "Sí, es una de las opciones más solicitadas en invitaciones de primera comunión. Integramos la foto del niño o la niña de manera elegante dentro del diseño, ya sea como elemento central o como parte de la composición visual de la invitación. Puedes enviarnos la foto que prefieras: una portrait formal, una foto espontánea o incluso una imagen ya vestido con el traje de comunión. En los planes Premium y Deluxe también puedes incluir una pequeña galería con varias fotos. Este detalle hace la invitación mucho más personal y memorable para quienes la reciben.",
   },
   {
     question: "¿En cuánto tiempo me entregan la invitación?",
     answer:
-      "En 24 horas hábiles. Solo necesitamos el nombre del niño o la niña, la fecha, la iglesia y el salón — y al día siguiente tienes la invitación lista para compartir.",
+      "Entregamos en 24 horas hábiles a partir de que nos envíes todos los datos necesarios: nombre del niño o la niña, fecha y hora de la misa, nombre de la parroquia o iglesia con dirección, nombre del salón de recepción con dirección y horario, foto si deseas incluirla, y el estilo o colores que prefieres. Antes de la versión final te mandamos un boceto gratis en menos de 5 minutos para que veas el resultado y lo apruebes sin pagar nada. Una vez aprobado y realizado el pago, la invitación definitiva estará lista al siguiente día hábil.",
   },
   {
     question: "¿Pueden actualizarla si cambia el salón de recepción?",
     answer:
-      "Sí, el link de la invitación permanece igual. Si cambia algún detalle como el salón, el horario o la dirección, lo actualizamos en la misma invitación y todos los invitados verán la información correcta automáticamente.",
+      "Sí, el enlace de la invitación permanece exactamente igual aunque hagamos cambios en el contenido. Si después de compartir la invitación cambia algún detalle — el salón, el horario, la dirección o cualquier otra información — lo actualizamos de inmediato en la misma invitación. Todos los invitados que ya tienen el link verán la información correcta y actualizada automáticamente la próxima vez que lo abran, sin que tengas que reenviar nada ni aclarar nada. Esto es especialmente útil cuando los cambios ocurren cercanos a la fecha del evento y ya tienes la invitación ampliamente distribuida.",
   },
 ]
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Invitaciones Digitales Primera Comunión Monterrey",
+  "@id": "https://invitacionesdigitalesmty.com.mx/invitaciones-primera-comunion#service",
+  name: "Invitaciones Digitales Primera Comunión",
   provider: {
     "@type": "LocalBusiness",
-    name: "Invitaciones Digitales MTY",
-    telephone: "+52 81 8083 6435",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Monterrey",
-      addressRegion: "Nuevo León",
-      addressCountry: "MX",
-    },
+    "@id": "https://invitacionesdigitalesmty.com.mx#localbusiness",
   },
-  areaServed: [
-    { "@type": "Country", name: "México" },
-    { "@type": "City", name: "Monterrey" },
-  ],
+  areaServed: { "@type": "Country", name: "México" },
   description:
     "Invitaciones digitales para primera comunión en Monterrey con diseño religioso, RSVP automático, GPS doble y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-primera-comunion",

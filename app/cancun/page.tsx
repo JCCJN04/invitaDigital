@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Cancún | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales Cancún | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas destino, XV años y eventos en Cancún y Riviera Maya. Servicio 100% en línea con entrega en 24 h. Diseño tropical y boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones xv años cancun",
     "invitaciones eventos cancun playa del carmen",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/cancun",
-  },
+  alternates: buildAlternates("/cancun"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Hacen invitaciones para bodas destino en Cancún?",
     answer:
-      "Sí, es una de nuestras especialidades. Diseñamos invitaciones para bodas destino en Cancún, Playa del Carmen, Tulum, Isla Mujeres y toda la Riviera Maya. Incluimos secciones para itinerario, hospedaje, transporte y cualquier información extra que necesiten tus invitados.",
+      "Sí, es una de nuestras especialidades. Diseñamos invitaciones para bodas destino en Cancún, Playa del Carmen, Tulum, Isla Mujeres, Holbox y toda la Riviera Maya. Cuando tus invitados vienen de distintas ciudades del país o del extranjero, la invitación digital es la herramienta perfecta: incluimos secciones para el itinerario completo de la celebración, opciones de hospedaje con enlaces de reserva, información de transporte desde el aeropuerto, mapa GPS de cada venue y confirmación de asistencia automática. Todo en un solo enlace que tus invitados pueden abrir desde cualquier país.",
   },
   {
     question: "¿Cuánto cuesta una invitación digital para mi evento en Cancún?",
     answer:
-      "Nuestros planes son de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño personalizado, RSVP automático, mapa GPS y entrega en 24 horas. Te enviamos un boceto gratis antes de que te comprometas.",
+      "Nuestros planes son de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado con la vibra tropical o elegante que elijas, RSVP automático, mapa GPS y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora itinerario multi-día, sección de hospedaje, mesa de regalos y secciones adicionales — ideal para bodas destino con varios eventos. Te enviamos un boceto gratis antes de cualquier compromiso de pago.",
   },
   {
     question: "¿Pueden incluir itinerario de varios días para una boda destino?",
     answer:
-      "Por supuesto. Podemos agregar un itinerario día por día con horarios, ubicaciones y descripciones de cada actividad — bienvenida, ceremonia, recepción, brunch de despedida y cualquier otro evento que incluya tu celebración.",
+      "Por supuesto, es una de las secciones más valoradas en bodas destino en Cancún y la Riviera Maya. Podemos agregar un itinerario día por día con horarios exactos, ubicaciones con mapa GPS para cada actividad y descripciones detalladas de cada evento: cóctel de bienvenida, ensayo de waltz, ceremonia en la playa, recepción en el salón, brunch de despedida y cualquier otro evento que forme parte de tu celebración. Cada actividad tiene su propia sección con toda la información necesaria para que tus invitados lleguen al lugar correcto en el momento correcto.",
   },
   {
     question: "¿La invitación se puede compartir por mensaje de texto además de WhatsApp?",
     answer:
-      "Sí, la invitación es un enlace web que puedes compartir por cualquier medio: WhatsApp, mensaje de texto, correo, Instagram, Facebook o incluso imprimirlo en un código QR. Ideal cuando tienes invitados internacionales que no usan WhatsApp.",
+      "Sí, la invitación es un enlace web estándar que funciona en cualquier plataforma y medio de comunicación. Puedes compartirlo por WhatsApp, mensaje de texto SMS, correo electrónico, Instagram, Facebook o cualquier otra app de mensajería. También puedes convertirlo en código QR para incluirlo en una tarjeta física o papelería. Esto es especialmente útil cuando tienes invitados internacionales — de Estados Unidos, Europa o cualquier otro país — que no usan WhatsApp o prefieren otros medios de comunicación.",
   },
   {
     question: "¿En cuánto tiempo entregan la invitación?",
     answer:
-      "En 24 horas hábiles desde que nos envías los datos completos. Primero te mandamos un boceto gratis en minutos para que apruebes el estilo y los colores antes de la versión final.",
+      "Entregamos en 24 horas hábiles desde que nos envías los datos completos del evento: nombres de los novios o festejados, fecha y lugar de cada actividad, estilo o colores que prefieres y cualquier información extra que quieras incluir. Antes de la versión final te mandamos un boceto gratis en menos de 5 minutos para que apruebes el diseño y los colores sin pagar nada. Una vez aprobado y realizado el pago, la invitación definitiva estará lista al día siguiente lista para compartir con todos tus invitados de México y el extranjero.",
   },
   {
     question: "¿Puedo incluir recomendaciones de hoteles y transporte?",
     answer:
-      "Claro. Agregamos una sección con hoteles recomendados cerca de tu venue, enlaces de reserva, opciones de transporte desde el aeropuerto y cualquier otro dato útil para que tus invitados planeen su viaje sin complicaciones.",
+      "Claro. Agregamos una sección dedicada con hoteles recomendados cercanos a tu venue en Cancún o la Riviera Maya, con sus precios aproximados y enlaces directos para hacer la reserva en línea. También incluimos opciones de transporte desde el aeropuerto internacional de Cancún — traslados privados, shuttles o renta de auto — con enlaces o datos de contacto. Si tu boda es en Tulum o Playa del Carmen, también agregamos las opciones de transporte entre ciudades. Este detalle es fundamental para que tus invitados planeen su viaje sin tener que preguntarte por separado.",
   },
 ]
 

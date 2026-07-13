@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Querétaro | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales Querétaro | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en Querétaro. Servicio 100% en línea con entrega en 24 h. Diseños personalizados para la ciudad colonial más pujante de México. Boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower queretaro",
     "invitaciones eventos queretaro",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/queretaro",
-  },
+  alternates: buildAlternates("/queretaro"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Trabajan con clientes en Querétaro?",
     answer:
-      "Sí, atendemos a clientes en toda la zona metropolitana de Querétaro incluyendo Juriquilla, El Marqués, Corregidora y San Juan del Río. Nuestro proceso es 100% en línea vía WhatsApp, así que la distancia no es un factor — recibes la misma calidad y rapidez.",
+      "Sí, atendemos a clientes en toda la zona metropolitana de Querétaro incluyendo Juriquilla, El Marqués, Corregidora, San Juan del Río y municipios aledaños. Nuestro proceso es 100% en línea vía WhatsApp, así que la distancia no es un factor — recibes la misma calidad de diseño y los mismos tiempos de entrega que un cliente en Monterrey o CDMX. Nos escribes, en menos de 5 minutos tienes un boceto gratis personalizado con los datos de tu evento y en 24 horas la invitación definitiva lista para compartir.",
   },
   {
-    question: "¿Cuánto cuestan sus invitaciones digitales?",
+    question: "¿Cuánto cuestan sus invitaciones digitales en Querétaro?",
     answer:
-      "Tenemos tres paquetes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Cada uno incluye diseño personalizado, RSVP automático y entrega en 24 horas. El precio es igual para todas las ciudades porque el servicio es digital.",
+      "Tenemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, mapa GPS interactivo, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora mesa de regalos integrada y secciones adicionales. El precio es igual para todas las ciudades porque el servicio es completamente digital. Escríbenos para tu boceto gratis sin compromiso.",
   },
   {
     question: "¿Pueden diseñar invitaciones para boda en viñedo o hacienda?",
     answer:
-      "Por supuesto. Querétaro es famoso por sus viñedos y haciendas coloniales, y tenemos amplia experiencia diseñando invitaciones con esa estética: tonos vino, detalles rústicos elegantes y tipografía que evoca la región vinícola.",
+      "Por supuesto, es uno de los estilos más solicitados para eventos en Querétaro. El estado es famoso por sus viñedos en la Ruta del Vino y sus haciendas coloniales en el centro histórico, y tenemos amplia experiencia diseñando invitaciones que capturan esa estética: tonos vino, borgona y dorado, detalles de viña con hojas y uvas, tipografía que evoca la tradición vinícola, y texturas que recuerdan el adobe y la cantera. También hacemos estilos de hacienda más clásicos con arcos coloniales. Compártenos la dirección o nombre del venue y adaptamos el diseño a su entorno.",
   },
   {
     question: "¿Cómo recibo mi invitación terminada?",
     answer:
-      "Te enviamos un enlace por WhatsApp. Ese enlace es tu invitación — una página web que puedes compartir con tus invitados por WhatsApp, redes sociales, correo o cualquier medio digital.",
+      "Te enviamos un enlace por WhatsApp. Ese enlace es tu invitación — una página web optimizada para celulares que puedes compartir con todos tus invitados por WhatsApp, mensaje de texto, Instagram, Facebook, correo electrónico o cualquier otro medio digital. No hay archivos adjuntos pesados ni descargas. Un solo link llega a todos tus invitados de Querétaro y de cualquier otra ciudad, y todos lo ven perfectamente en su dispositivo sin importar si es iPhone o Android.",
   },
   {
     question: "¿Incluyen cuenta regresiva y mapa del evento?",
     answer:
-      "Sí, todas nuestras invitaciones incluyen cuenta regresiva animada hasta la fecha del evento y un mapa GPS interactivo con la ubicación del lugar. Tus invitados pueden abrir la navegación con un solo toque.",
+      "Sí, todas nuestras invitaciones incluyen cuenta regresiva animada en tiempo real hasta el momento exacto del evento y un mapa GPS interactivo con la ubicación del lugar. Tus invitados pueden abrir la navegación directa en Google Maps o Waze con un solo toque desde la invitación, sin necesidad de copiar y pegar direcciones. Si tu evento tiene dos ubicaciones — ceremonia y recepción en sitios distintos — incluimos ambos mapas con sus respectivos horarios claramente indicados.",
   },
   {
     question: "¿Puedo agregar mesa de regalos?",
     answer:
-      "Claro. Integramos botones directos a tu lista de regalos en Amazon, Liverpool, El Palacio de Hierro o cualquier otra tienda. También podemos incluir datos bancarios para transferencia si lo prefieres.",
+      "Claro. Integramos botones directos a tu lista de regalos en Amazon México, Liverpool, El Palacio de Hierro, Coppel, Walmart o cualquier otra tienda en línea. También podemos incluir datos bancarios para transferencia si prefieres esa opción para tus invitados. Si tienes listas en varias tiendas, agregamos todos los botones necesarios. Este elemento es especialmente útil para bodas y baby showers donde los invitados quieren saber exactamente qué regalar sin tener que preguntar.",
   },
 ]
 

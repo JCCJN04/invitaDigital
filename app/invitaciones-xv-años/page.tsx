@@ -19,91 +19,114 @@ const WhatsAppWidget = dynamic(() =>
 
 export const metadata: Metadata = {
   title: {
-    absolute: "Invitaciones Baby Shower Digital | RSVP y Mesa de Regalos",
+    absolute: "Invitaciones XV Años Digital | RSVP y Chambelanes | México",
   },
   description:
-    "Invitaciones digitales para baby shower en todo México. Diseño tierno personalizado, RSVP por WhatsApp, mesa de regalos y entrega en 24 h. Servicio 100% en línea. Boceto gratis.",
+    "Invitaciones digitales para XV años en todo México. Diseño personalizado con el tema que elijas, RSVP automático, cuenta regresiva y waltz integrado. Entrega en 24 h. Boceto gratis.",
   keywords: [
-    "invitaciones baby shower digital",
-    "invitaciones baby shower digital monterrey",
-    "invitaciones baby shower con rsvp",
-    "invitaciones digitales baby shower mexico",
-    "invitacion baby shower whatsapp",
-    "invitacion digital baby shower precio",
-    "invitaciones baby shower online",
+    "invitaciones xv años digital",
+    "invitaciones digitales xv años",
+    "invitaciones quinceañera digital",
+    "invitaciones 15 años digital",
+    "invitaciones xv años monterrey",
+    "invitaciones xv años whatsapp",
+    "invitaciones quince años online",
+    "invitaciones xv años con rsvp",
+    "invitaciones digitales quinceañera mexico",
+    "diseño invitacion xv años",
   ],
-  alternates: buildAlternates("/invitaciones-baby-shower"),
+  alternates: buildAlternates("/invitaciones-xv-años"),
 }
 
 const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
-  "Hola, quiero cotizar mi invitación digital. ¿Puedo ver un boceto gratis?"
+  "Hola, quiero cotizar una invitación digital para XV años. ¿Puedo ver un boceto gratis?"
 )}`
 
 const benefits = [
   {
-    title: "Mesa de regalos sin incomodidad",
-    desc: "Incluimos un enlace directo a tu lista de Amazon, Liverpool o El Palacio de Hierro para que los invitados regalen exactamente lo que necesitas.",
+    title: "El tema que ella sueña",
+    desc: "Paris, Disney, jardín, boho, moderna, vintage, glamour — diseñamos la invitación alrededor del tema que la quinceañera eligió. Colores exactos, tipografía elegante y cada detalle que hace única su celebración.",
   },
   {
-    title: "RSVP en segundos",
-    desc: "Los invitados confirman con un toque y las respuestas llegan directamente a tu WhatsApp, sin hojas de cálculo ni seguimientos incómodos.",
+    title: "Waltz, chambelanes y agenda completa",
+    desc: "Incluimos secciones para el itinerario completo: misa, presentación, recepción, primera pieza y vals. Si quieres la lista de chambelanes o el orden del baile, también va dentro de la invitación.",
   },
   {
-    title: "Cuenta regresiva animada",
-    desc: "Una cuenta regresiva en tiempo real genera expectativa y recuerda a todos que el gran día se acerca, sin que tengas que mandar recordatorios.",
+    title: "RSVP sin perseguir a nadie",
+    desc: "Los invitados confirman con un toque en la invitación y tú recibes la respuesta al instante en tu WhatsApp. Sin llamadas, sin cadenas de mensajes, sin hojas de cálculo — todo llega solo.",
   },
   {
-    title: "Actualizable al instante",
-    desc: "Si cambia la fecha, el lugar o cualquier detalle, actualizamos la invitación y todos los que ya tienen el link ven la versión correcta sin reenvíos.",
+    title: "Dos o más ubicaciones en un solo enlace",
+    desc: "Iglesia y salón en el mismo link con mapas GPS independientes. Tus invitados saben exactamente a dónde ir para cada parte del evento sin confusión ni preguntas de último minuto.",
   },
 ]
 
 const faqs = [
   {
-    question: "¿Cuánto cuesta una invitación digital para baby shower?",
+    question: "¿Cuánto cuesta una invitación digital para XV años?",
     answer:
-      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado con el tema y colores que elijas, RSVP automático con notificaciones a tu WhatsApp, enlace a mesa de regalos, mapa GPS del lugar y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora secciones adicionales como datos del bebé y cuenta regresiva al nacimiento. Antes de cualquier pago te enviamos un boceto gratis para que apruebes el diseño sin compromiso. Contáctanos por WhatsApp con los datos básicos de tu evento.",
+      "Manejamos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático, cuenta regresiva animada, mapa GPS y entrega en 24 horas. Los planes Premium y Deluxe añaden música de fondo, galería de fotos, mesa de regalos integrada y secciones adicionales como lista de chambelanes o itinerario del evento. Antes de cualquier pago, te enviamos un boceto gratis para que veas el resultado.",
   },
   {
-    question: "¿Qué incluye la invitación digital de baby shower?",
+    question: "¿Pueden hacer el diseño con el tema de mis XV años?",
     answer:
-      "La invitación incluye diseño personalizado con la paleta de colores y el tema que elijas — ya sea niño, niña o género neutro — RSVP automático que lleva las confirmaciones directamente a tu WhatsApp sin que tengas que perseguir a nadie, cuenta regresiva animada hasta el día del shower, música de fondo opcional, enlace directo a tu mesa de regalos en Amazon, Liverpool, El Palacio de Hierro o cualquier otra tienda, y mapa GPS interactivo del lugar. Todo en un solo enlace que los invitados abren desde su celular sin descargar aplicaciones. Los planes Premium y Deluxe añaden galería de fotos y secciones personalizadas adicionales.",
+      "Sí, diseñamos con cualquier tema que elijas. Paris, Disney, jardín inglés, boho, elegancia clásica, glamour dorado, acuarela, minimalista moderno o cualquier concepto personalizado. Solo compártenos tus referencias de estilo — colores, mood board o ejemplos que te gusten — y lo adaptamos desde cero. No usamos plantillas genéricas: cada invitación se construye alrededor de la quinceañera y su celebración específica.",
   },
   {
-    question: "¿En cuánto tiempo me entregan la invitación?",
+    question: "¿La invitación puede incluir misa y salón en la misma página?",
     answer:
-      "Entregamos en 24 horas hábiles a partir de que nos envíes todos los datos necesarios: fecha y hora del baby shower, nombre o apodo con el que se referirán al bebé si ya lo tienen, tema o paleta de colores que quieren, dirección del lugar con indicaciones especiales si las hay, y el link de la mesa de regalos si ya lo tienen configurado. Antes de la versión final te mandamos un boceto gratis en menos de 5 minutos para que apruebes el diseño y los colores sin pagar nada. Una vez aprobado y realizado el pago, la invitación definitiva estará lista al día siguiente hábil.",
+      "Por supuesto. Incluimos todas las ubicaciones que necesites con su mapa GPS individual: la parroquia o iglesia para la misa de XV años y el salón o quinta para la recepción. También podemos agregar el ensayo o cualquier otro evento previo. Cada ubicación tiene su horario, dirección exacta y botón para abrir en Google Maps o Waze directamente desde el celular del invitado.",
   },
   {
-    question: "¿Cómo funciona el RSVP automático?",
+    question: "¿Pueden agregar lista de chambelanes o el orden del vals?",
     answer:
-      "El RSVP funciona mediante un botón de confirmación que aparece de forma visible dentro de la invitación digital. Cuando un invitado toca ese botón, puede indicar si asistirá o no y cuántas personas lo acompañarán. Al enviar su respuesta, tú recibes inmediatamente una notificación en tu WhatsApp con su nombre, su respuesta y el número de acompañantes. No necesitas hacer seguimiento manual ni revisar ningún panel externo. Las confirmaciones se acumulan automáticamente y en cualquier momento puedes ver un resumen de quién confirmó y quién no. Este sistema funciona sin límite de invitados y sin costos adicionales por confirmaciones recibidas.",
+      "Sí, lo agregamos como una sección adicional en la invitación. Podemos incluir los nombres de chambelanes con foto, el orden del baile sorpresa, el itinerario completo de la noche o cualquier información que quieras compartir con tus invitados. Es muy popular agregar también el código de vestimenta con paleta de colores para que todos lleguen coordinados.",
   },
   {
-    question: "¿Hacen diseños de niño, niña y género neutro?",
+    question: "¿Cuántos invitados pueden recibir la invitación?",
     answer:
-      "Sí, diseñamos para las tres opciones con estilos completamente diferenciados. Para niño tenemos diseños en azules marino y cielo, motivos náuticos, osos polares, estrellas y paletas más neutras como azul con madera. Para niña ofrecemos rosas desde el más suave hasta el fucsia, florales, princesas, unicornios, mariposas y estéticas más modernas como rosa con negro. Para género neutro o sorpresa manejamos paletas en verde salvia, amarillo limón, beige, lavanda y terracota con motivos como nubes, arcoíris, animales del bosque y elementos boho. También hacemos temáticas específicas como Safari, Tropical, Celestial o cualquier concepto que tengas en mente.",
+      "No hay límite de invitados. La invitación es un enlace web que puedes compartir por WhatsApp, mensaje de texto, Instagram o cualquier otro medio. No importa si son 50 o 500 personas — el link funciona igual para todos. Tampoco cobramos por número de visualizaciones ni de confirmaciones de asistencia. Una vez que tienes la invitación, es tuya para compartir con quien quieras.",
   },
   {
-    question: "¿Pueden incluir el enlace a mi mesa de regalos de Liverpool o Amazon?",
+    question: "¿Puedo ver un ejemplo antes de contratar?",
     answer:
-      "Por supuesto, es uno de los elementos más valorados de nuestras invitaciones de baby shower. Solo compártenos el link de tu lista de regalos — de Liverpool, Amazon México, El Palacio de Hierro, Coppel, Walmart, Sears o cualquier otra tienda — y lo integramos con un botón visible y elegante dentro de la invitación. Tus invitados podrán ver exactamente qué necesitas con un toque, sin tener que buscar la lista por su cuenta. Si tienes mesa de regalos en más de una tienda, también podemos incluir múltiples links. Este detalle facilita enormemente la experiencia de los invitados y aumenta la probabilidad de que regalen algo de tu lista.",
+      "Sí. Escríbenos por WhatsApp con los datos básicos de tu evento — nombre de la quinceañera, fecha, tema o colores que tienes en mente — y en menos de 5 minutos te mandamos un boceto gratis personalizado. No es una plantilla genérica sino una propuesta real con los elementos de tu celebración. Sin pago adelantado, sin compromiso. Si el boceto te convence, avanzamos. Si no, no hay ningún costo.",
   },
 ]
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": "https://invitacionesdigitalesmty.com.mx/invitaciones-baby-shower#service",
-  name: "Invitaciones Digitales Baby Shower",
+  "@id": "https://invitacionesdigitalesmty.com.mx/invitaciones-xv-años#service",
+  name: "Invitaciones Digitales XV Años",
   provider: {
     "@type": "LocalBusiness",
     "@id": "https://invitacionesdigitalesmty.com.mx#localbusiness",
   },
   areaServed: { "@type": "Country", name: "México" },
   description:
-    "Invitaciones digitales para baby shower en México con RSVP automático, mesa de regalos y entrega en 24 horas.",
-  url: "https://invitacionesdigitalesmty.com.mx/invitaciones-baby-shower",
+    "Invitaciones digitales para XV años en México con diseño personalizado por tema, RSVP automático, chambelanes, múltiples ubicaciones y entrega en 24 horas.",
+  url: "https://invitacionesdigitalesmty.com.mx/invitaciones-xv-años",
+  offers: [
+    {
+      "@type": "Offer",
+      name: "Plan Básico XV Años",
+      price: 1999,
+      priceCurrency: "MXN",
+    },
+    {
+      "@type": "Offer",
+      name: "Plan Premium XV Años",
+      price: 2600,
+      priceCurrency: "MXN",
+    },
+    {
+      "@type": "Offer",
+      name: "Plan Deluxe XV Años",
+      price: 3499,
+      priceCurrency: "MXN",
+    },
+  ],
 }
 
 const faqSchema = {
@@ -116,7 +139,7 @@ const faqSchema = {
   })),
 }
 
-export default function BabyShowerPage() {
+export default function InvitacionesXVAnosPage() {
   return (
     <>
       <script
@@ -136,7 +159,7 @@ export default function BabyShowerPage() {
             <div className="flex items-center gap-3 mb-10">
               <div className="h-px w-10 bg-primary" />
               <span className="text-[11px] tracking-[0.3em] text-muted-foreground uppercase font-medium">
-                Monterrey, Nuevo León · Invitaciones Digitales
+                Invitaciones Digitales · Todo México
               </span>
             </div>
 
@@ -145,14 +168,14 @@ export default function BabyShowerPage() {
               style={{ fontSize: "clamp(3.5rem, 11vw, 9rem)" }}
             >
               Invitaciones<br />
-              Baby Shower<br />
-              <em className="italic text-primary">Monterrey</em>
+              Digitales<br />
+              <em className="italic text-primary">XV Años</em>
             </h1>
 
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 border-t border-border pt-10">
               <div className="flex flex-col gap-8 max-w-md">
                 <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                  Celebra la llegada del bebé con una invitación que enamora desde el celular. Diseño tierno personalizado, mesa de regalos integrada y RSVP automático — lista en 24 horas.
+                  Sus XV años merecen una invitación tan especial como ella. Diseñamos con el tema que eligió — Paris, Disney, jardín, boho o cualquier concepto — con RSVP automático, chambelanes, mapa GPS y cuenta regresiva. Te atendemos por WhatsApp y la entregamos en 24 horas. El boceto va por nuestra cuenta.
                 </p>
                 <div className="flex flex-col sm:flex-row items-start gap-4">
                   <a
@@ -164,7 +187,7 @@ export default function BabyShowerPage() {
                     <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current flex-shrink-0" xmlns="http://www.w3.org/2000/svg">
                       <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                     </svg>
-                    Cotizar gratis — 5 min
+                    Ver boceto gratis — 5 min
                   </a>
                 </div>
               </div>
@@ -191,7 +214,7 @@ export default function BabyShowerPage() {
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-6 md:px-10 max-w-7xl">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-16">
-              Todo lo que tu baby shower merece
+              Una invitación tan única como sus XV años
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {benefits.map((b, i) => (
@@ -241,10 +264,10 @@ export default function BabyShowerPage() {
         <section className="py-24 bg-muted/30">
           <div className="container mx-auto px-6 md:px-10 max-w-7xl text-center">
             <h2 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6">
-              ¿Lista para el baby shower?
+              Sus XV años, su invitación, su momento
             </h2>
             <p className="text-muted-foreground text-lg mb-10 max-w-xl mx-auto">
-              Cuéntanos el tema y la fecha — te mandamos un boceto gratis en menos de 5 minutos.
+              Cuéntanos el tema y la fecha — te mandamos un boceto personalizado gratis en menos de 5 minutos. Sin adelantos, sin compromiso.
             </p>
             <a
               href={whatsappUrl}
@@ -252,7 +275,7 @@ export default function BabyShowerPage() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-4 text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-colors"
             >
-              Cotizar gratis — 5 min
+              Quiero el boceto gratis
             </a>
           </div>
         </section>

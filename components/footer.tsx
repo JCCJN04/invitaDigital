@@ -1,4 +1,4 @@
-import { Instagram, Mail } from "lucide-react"
+import { Instagram, Mail, Phone } from "lucide-react"
 import Link from "next/link"
 
 export function Footer() {
@@ -9,6 +9,7 @@ export function Footer() {
         <div className="mb-10">
           <p className="text-[10px] tracking-[0.25em] text-muted-foreground uppercase font-medium mb-4">Invitaciones por evento</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground font-serif">
+            <Link href="/invitaciones-xv-años" className="hover:text-primary transition-colors">XV Años</Link>
             <Link href="/invitaciones-baby-shower" className="hover:text-primary transition-colors">Baby Shower</Link>
             <Link href="/invitaciones-bautizo" className="hover:text-primary transition-colors">Bautizo</Link>
             <Link href="/invitaciones-cumpleanos" className="hover:text-primary transition-colors">Cumpleaños</Link>
@@ -37,11 +38,14 @@ export function Footer() {
 
           {/* Social Icons */}
           <div className="flex gap-4">
-            <a href="https://www.instagram.com/invitacionesdigitalesmty" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Instagram">
+            <a href="https://www.instagram.com/invitacionesdigitalesmty.co" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Instagram">
               <Instagram className="w-4 h-4" />
             </a>
             <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Email">
               <Mail className="w-4 h-4" />
+            </a>
+            <a href="tel:+528180836435" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Llamar">
+              <Phone className="w-4 h-4" />
             </a>
           </div>
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales para Bautizo | RSVP y GPS | Todo México",
+  title: {
+    absolute: "Invitaciones Bautizo Digital | GPS Iglesia y Salón | MTY",
+  },
   description:
     "Invitaciones digitales para bautizo en todo México. Diseño elegante con RSVP, mapa GPS a la iglesia y recepción, y entrega en 24 h. Servicio en línea. Boceto gratis.",
   keywords: [
@@ -28,9 +31,7 @@ export const metadata: Metadata = {
     "invitacion bautizo whatsapp",
     "invitaciones bautizo precio",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/invitaciones-bautizo",
-  },
+  alternates: buildAlternates("/invitaciones-bautizo"),
 }
 
 const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
@@ -60,56 +61,47 @@ const faqs = [
   {
     question: "¿Cuánto cuesta una invitación digital para bautizo?",
     answer:
-      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño personalizado, RSVP y entrega en 24 horas. Escríbenos por WhatsApp para un boceto gratis sin compromiso.",
+      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, mapa GPS de la iglesia y del salón, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos del bebé. El plan Deluxe incorpora también mesa de regalos integrada y secciones adicionales. Antes de cualquier pago te enviamos un boceto gratis para que apruebes el diseño. Escríbenos por WhatsApp y en menos de 5 minutos tienes tu propuesta personalizada sin ningún compromiso de compra.",
   },
   {
     question: "¿Qué incluye la invitación digital de bautizo?",
     answer:
-      "Incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, GPS de la iglesia y del salón de recepción, música opcional, cuenta regresiva y datos de los padrinos si lo deseas.",
+      "La invitación incluye diseño personalizado con los colores y el estilo que elijas, RSVP automático que lleva las confirmaciones directamente a tu WhatsApp sin que tengas que perseguir a nadie, mapa GPS con la ubicación exacta de la iglesia y del salón de recepción por separado, cuenta regresiva animada hasta el día del evento, música de fondo opcional, y sección con los datos del padrino y la madrina si lo deseas. En los planes Premium y Deluxe también incluimos galería de fotos del bebé y mesa de regalos. Todo en un solo enlace que los invitados abren desde su celular sin descargar ninguna aplicación.",
   },
   {
     question: "¿Pueden poner el mapa de dos lugares: iglesia y salón?",
     answer:
-      "Sí, es uno de nuestros elementos más pedidos en bautizos. Ponemos ambas ubicaciones claramente diferenciadas para que los invitados sepan a dónde ir en cada momento del día.",
+      "Sí, es uno de los elementos más solicitados en invitaciones de bautizo. Incluimos ambas ubicaciones con mapas GPS independientes: uno para la iglesia o parroquia donde se celebra el sacramento y otro para el salón o quinta donde continúa la celebración. Cada mapa tiene botón directo para abrir en Google Maps o Waze desde el celular del invitado, con la dirección exacta y el horario correspondiente. Esto evita confusiones de último minuto y las preguntas de '¿a dónde vamos después?'. Además, si hay un tercer lugar como un desayuno o comida familiar, también lo agregamos sin costo adicional.",
   },
   {
     question: "¿En cuánto tiempo me entregan la invitación?",
     answer:
-      "En 24 horas hábiles a partir de que nos envíes los datos del bebé, la fecha, la iglesia, el salón y el estilo que prefieras.",
+      "Entregamos en 24 horas hábiles a partir de que nos envíes todos los datos del evento: nombre del bebé, fecha y hora del bautizo, nombre de la iglesia con dirección, nombre del salón de recepción con dirección, nombres del padrino y la madrina, y cualquier foto que quieras incluir. Antes de la versión final, te enviamos un boceto gratis en menos de 5 minutos para que apruebes el diseño y los colores. Una vez que lo apruebas y realizas el pago, la invitación definitiva estará lista al día siguiente. Todo el proceso se hace por WhatsApp sin citas presenciales.",
   },
   {
     question: "¿Hacen diseños con estilo religioso clásico?",
     answer:
-      "Claro que sí. Tenemos plantillas con cruces, paloma del Espíritu Santo, ángeles y detalles dorados que dan un tono sacro y elegante, perfecto para la ocasión.",
+      "Sí, tenemos una amplia variedad de estilos religiosos para bautizo. Podemos diseñar con motivos clásicos como paloma del Espíritu Santo, cruces, ángeles querubines y detalles dorados que le dan un tono sacro y elegante a la invitación. También ofrecemos versiones más modernas y minimalistas con elementos religiosos sutiles, o diseños acuarela con flores blancas y toques dorados que se ven muy sofisticados. Si tienes una imagen de referencia, mood board o colores específicos en mente, compártenos y lo adaptamos exactamente a lo que imaginas para la celebración de tu bebé.",
   },
   {
     question: "¿Pueden incluir los datos del padrino y la madrina?",
     answer:
-      "Sí, lo agregamos sin costo adicional. Muchas familias en Monterrey aprecian reconocer a los padrinos en la invitación y nosotros lo hacemos con gusto.",
+      "Sí, lo incluimos sin costo adicional. Muchas familias aprecian reconocer a los padrinos en la invitación y nosotros lo hacemos con gusto. Podemos agregar sus nombres de forma elegante dentro del diseño, ya sea en una sección dedicada a los padrinos o integrado en el texto principal de la invitación. Si además quieres incluir una foto de los padrinos junto al bebé, también es posible. Este detalle hace la invitación mucho más personalizada y especial, y los padrinos siempre lo agradecen. Cuéntanos cómo prefieres presentarlo y lo diseñamos a tu medida.",
   },
 ]
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Invitaciones Digitales Bautizo Monterrey",
+  "@id": "https://invitacionesdigitalesmty.com.mx/invitaciones-bautizo#service",
+  name: "Invitaciones Digitales Bautizo",
   provider: {
     "@type": "LocalBusiness",
-    name: "Invitaciones Digitales MTY",
-    telephone: "+52 81 8083 6435",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Monterrey",
-      addressRegion: "Nuevo León",
-      addressCountry: "MX",
-    },
+    "@id": "https://invitacionesdigitalesmty.com.mx#localbusiness",
   },
-  areaServed: [
-    { "@type": "Country", name: "México" },
-    { "@type": "City", name: "Monterrey" },
-  ],
+  areaServed: { "@type": "Country", name: "México" },
   description:
-    "Invitaciones digitales para bautizo en Monterrey con RSVP automático, GPS de iglesia y recepción, y entrega en 24 horas.",
+    "Invitaciones digitales para bautizo en México con RSVP automático, GPS de iglesia y recepción, y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-bautizo",
 }
 

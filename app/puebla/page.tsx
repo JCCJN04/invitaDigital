@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Puebla | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales Puebla | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años y eventos en Puebla. Servicio 100% en línea con entrega en 24 h. Diseños elegantes inspirados en la tradición poblana. Boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower puebla",
     "invitaciones eventos puebla",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/puebla",
-  },
+  alternates: buildAlternates("/puebla"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Ofrecen servicio de invitaciones digitales en Puebla?",
     answer:
-      "Sí, nuestro servicio es completamente en línea y cubre toda la zona metropolitana de Puebla incluyendo Cholula, Atlixco, San Andrés y alrededores. Te atendemos por WhatsApp con la misma calidad y rapidez que a nuestros clientes locales en Monterrey.",
+      "Sí, nuestro servicio es completamente en línea y cubre toda la zona metropolitana de Puebla incluyendo San Andrés Cholula, San Pedro Cholula, Atlixco, Tehuacán y alrededores. Te atendemos por WhatsApp con la misma calidad y rapidez que a nuestros clientes en Monterrey o CDMX. Nos escribes, en menos de 5 minutos tienes un boceto gratis personalizado y en 24 horas la invitación definitiva. No hay diferencia de precio ni de proceso entre Puebla y cualquier otra ciudad — todo es digital y sin citas presenciales.",
   },
   {
-    question: "¿Cuál es el precio de una invitación digital?",
+    question: "¿Cuál es el precio de una invitación digital en Puebla?",
     answer:
-      "Ofrecemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño personalizado, RSVP automático, mapa GPS y entrega en 24 horas. Escríbenos para recibir un boceto gratis.",
+      "Ofrecemos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño personalizado desde cero, RSVP automático con notificaciones a tu WhatsApp, mapa GPS interactivo del lugar, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incluye también mesa de regalos integrada. Antes de cualquier pago te enviamos un boceto gratis para que apruebes el resultado. Escríbenos por WhatsApp con los datos básicos de tu evento.",
   },
   {
     question: "¿Pueden hacer diseños con talavera o temática poblana?",
     answer:
-      "Claro que sí. Tenemos experiencia integrando elementos de talavera, arquitectura colonial y patrones artesanales poblanos en las invitaciones. Nos cuentas tu visión y la materializamos con un diseño único.",
+      "Claro que sí. Tenemos experiencia integrando elementos de talavera, arquitectura colonial poblana y patrones artesanales en las invitaciones. Podemos diseñar con los colores azul y blanco de la talavera tradicional, motivos de la catedral o el zócalo de Puebla, o simplemente usar una paleta inspirada en los chiles en nogada y los colores de la gastronomía poblana. También hacemos estilos más contemporáneos que mezclan lo regional con el diseño moderno. Nos cuentas tu visión, compartes referencias y la materializamos con un diseño único.",
   },
   {
     question: "¿Cómo es el proceso para ordenar?",
     answer:
-      "Muy sencillo: nos escribes por WhatsApp, compartes los datos del evento (fecha, hora, lugar, nombre del festejado) y en menos de 5 minutos te enviamos un boceto gratis. Si te gusta, haces el pago y en 24 horas tienes la versión final.",
+      "Es muy sencillo y rápido. Primero nos escribes por WhatsApp y compartes los datos básicos del evento: fecha, hora, lugar o lugares, nombre del festejado o los festejados y el estilo o colores que tienes en mente. En menos de 5 minutos te enviamos un boceto gratis personalizado para que veas cómo quedará antes de comprometerte. Si te convence, haces el pago y en 24 horas hábiles recibes la versión final lista para compartir. Si necesitas cambios en el boceto, los hacemos antes del pago sin costo adicional.",
   },
   {
     question: "¿Incluyen música de fondo en la invitación?",
     answer:
-      "Sí, en los planes Premium y Deluxe puedes elegir una canción de fondo que suena cuando tus invitados abren la invitación. Puede ser cualquier canción que nos compartas.",
+      "Sí, en los planes Premium y Deluxe puedes elegir una canción de fondo que suena automáticamente cuando tus invitados abren la invitación desde su celular. Puede ser cualquier canción que nos compartas — la primera pieza del vals, la canción favorita de la pareja, una pieza clásica o cualquier tema que tenga significado para ti. La música añade emoción al primer contacto que el invitado tiene con tu celebración y hace la experiencia mucho más memorable.",
   },
   {
     question: "¿Mis invitados necesitan descargar alguna aplicación?",
     answer:
-      "No, la invitación es una página web que se abre directamente desde el enlace que les compartes. Funciona en cualquier celular, tablet o computadora sin necesidad de instalar nada.",
+      "No, la invitación es una página web que se abre directamente desde el enlace que les compartes. No requiere descargar ninguna aplicación, crear ninguna cuenta ni tener un teléfono específico. Funciona en cualquier smartphone — iPhone o Android — así como en tablets y computadoras. Tus invitados solo tocan el link que les mandas por WhatsApp y la invitación abre al instante, igual que cualquier página web. Está optimizada para cargar rápido incluso con conexiones de internet lentas.",
   },
 ]
 

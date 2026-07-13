@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,7 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Ciudad de México (CDMX) | Bodas, XV Años y Eventos",
+  title: { absolute: "Invitaciones Digitales CDMX | Bodas y XV Años" },
   description:
     "Invitaciones digitales para bodas, XV años, baby showers y eventos en Ciudad de México. Servicio 100% en línea con entrega en 24 h. Diseño personalizado y boceto gratis.",
   keywords: [
@@ -28,9 +29,7 @@ export const metadata: Metadata = {
     "invitaciones baby shower cdmx",
     "invitaciones eventos cdmx",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/cdmx",
-  },
+  alternates: buildAlternates("/cdmx"),
 }
 
 const whatsappUrl =
@@ -59,32 +58,32 @@ const faqs = [
   {
     question: "¿Atienden en Ciudad de México aunque estén en Monterrey?",
     answer:
-      "Sí, nuestro servicio es 100% en línea. Trabajamos por WhatsApp y correo, así que atendemos a clientes en toda la CDMX y área metropolitana exactamente igual que si estuviéramos ahí. Ya hemos entregado invitaciones para eventos en Condesa, Santa Fe, Satélite y muchas otras zonas.",
+      "Sí, nuestro servicio es 100% en línea y atendemos toda la CDMX y área metropolitana exactamente igual que si estuviéramos ahí. Trabajamos por WhatsApp — nos escribes, te enviamos un boceto gratis en menos de 5 minutos y en 24 horas tienes tu invitación lista. Ya hemos entregado invitaciones para eventos en Condesa, Roma, Santa Fe, Polanco, Satélite, Interlomas, Coyoacán y muchas otras alcaldías y municipios del Estado de México. La distancia no afecta ni la calidad del diseño ni los tiempos de entrega.",
   },
   {
     question: "¿Cuánto cuesta una invitación digital en CDMX?",
     answer:
-      "Manejamos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Incluyen diseño personalizado, RSVP automático y entrega en 24 horas. Escríbenos por WhatsApp para un boceto gratis sin compromiso.",
+      "Manejamos tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado, RSVP automático con notificaciones a tu WhatsApp, mapa GPS interactivo, cuenta regresiva animada y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos. El plan Deluxe incorpora mesa de regalos y secciones adicionales. El precio es el mismo para CDMX que para cualquier otra ciudad — el servicio es digital y no tiene costos de desplazamiento. Escríbenos por WhatsApp para tu boceto gratis sin compromiso.",
   },
   {
     question: "¿Qué tipo de eventos cubren?",
     answer:
-      "Diseñamos invitaciones para bodas, XV años, baby showers, bautizos, primera comunión, cumpleaños y eventos corporativos. Cualquier celebración que necesite una invitación elegante y funcional.",
+      "Diseñamos invitaciones para cualquier tipo de celebración: bodas, XV años, baby showers, bautizos, primera comunión, confirmaciones, cumpleaños infantiles y de adultos, despedidas de soltera, graduaciones y eventos corporativos como lanzamientos, cenas de gala y congresos. Cada diseño se personaliza desde cero según el estilo del evento y las preferencias del cliente. No usamos plantillas genéricas — si tienes una idea específica, una referencia visual o un concepto en mente, lo desarrollamos a tu medida.",
   },
   {
     question: "¿En cuánto tiempo entregan la invitación?",
     answer:
-      "En 24 horas hábiles a partir de que nos envías todos los datos de tu evento. Te mandamos tu invitación lista para compartir por WhatsApp, redes sociales o correo.",
+      "Entregamos en 24 horas hábiles a partir de que nos envías todos los datos necesarios: nombres, fecha, hora, lugar, estilo o colores que prefieres y cualquier foto que quieras incluir. Antes de la versión final te mandamos un boceto gratis en menos de 5 minutos para que apruebes el diseño sin pagar nada. Una vez aprobado y realizado el pago, la invitación definitiva estará lista al día siguiente hábil. Todo el proceso ocurre por WhatsApp — sin citas, sin formularios, sin esperas innecesarias.",
   },
   {
     question: "¿Puedo ver un boceto antes de pagar?",
     answer:
-      "Por supuesto. Te enviamos un boceto gratis y sin compromiso en menos de 5 minutos después de que nos escribas. Si te gusta, avanzamos; si no, no pagas nada.",
+      "Sí, siempre enviamos un boceto gratis antes de cualquier pago. Solo escríbenos por WhatsApp con los datos básicos de tu evento — fecha, tipo de celebración y el estilo o colores que tienes en mente — y en menos de 5 minutos recibes una propuesta visual personalizada. No es una plantilla genérica sino un boceto real con los elementos de tu evento. Si te convence, avanzamos con el pago. Si no, no hay ningún costo ni compromiso. Este proceso nos permite asegurarnos de que el resultado final es exactamente lo que imaginabas.",
   },
   {
     question: "¿La invitación funciona en cualquier celular?",
     answer:
-      "Sí, nuestras invitaciones son páginas web optimizadas que se ven perfectas en cualquier smartphone, tablet o computadora. No requieren descargar ninguna app — tus invitados solo abren el enlace.",
+      "Sí, nuestras invitaciones son páginas web optimizadas para móviles que se ven perfectas en cualquier dispositivo: iPhone, Android, tablet o computadora. No requieren descargar ninguna aplicación ni crear ninguna cuenta — tus invitados simplemente abren el enlace y la invitación carga al instante. Están diseñadas para funcionar bien incluso con conexiones de internet lentas o inestables. El mismo enlace se puede compartir por WhatsApp, mensaje de texto, Instagram, correo electrónico o cualquier otro medio sin perder calidad visual.",
   },
 ]
 

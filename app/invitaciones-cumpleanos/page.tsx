@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -17,7 +18,9 @@ const WhatsAppWidget = dynamic(() =>
 )
 
 export const metadata: Metadata = {
-  title: "Invitaciones Digitales Cumpleaños | RSVP y Animaciones | Todo México",
+  title: {
+    absolute: "Invitaciones Cumpleaños Digital | RSVP | Todo México",
+  },
   description:
     "Invitaciones digitales para cumpleaños en todo México. Diseño divertido personalizado, RSVP automático por WhatsApp y entrega en 24 h. Servicio en línea. Boceto gratis.",
   keywords: [
@@ -28,9 +31,7 @@ export const metadata: Metadata = {
     "invitacion digital cumpleaños niños",
     "invitaciones digitales fiesta tematica",
   ],
-  alternates: {
-    canonical: "https://invitacionesdigitalesmty.com.mx/invitaciones-cumpleanos",
-  },
+  alternates: buildAlternates("/invitaciones-cumpleanos"),
 }
 
 const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
@@ -60,54 +61,45 @@ const faqs = [
   {
     question: "¿Cuánto cuesta una invitación digital para cumpleaños?",
     answer:
-      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. Todos incluyen diseño personalizado, RSVP automático y entrega en 24 horas. Contáctanos para un boceto gratis sin compromiso.",
+      "Contamos con tres planes de pago único: Básico $1,999 MXN, Premium $2,600 MXN y Deluxe $3,499 MXN. El plan Básico incluye diseño personalizado con el tema elegido, RSVP automático con notificaciones a tu WhatsApp, cuenta regresiva animada, mapa GPS del lugar y entrega en 24 horas. El plan Premium añade música de fondo y galería de fotos del festejado. El plan Deluxe incluye además mesa de regalos integrada y secciones personalizadas adicionales. Antes de cualquier pago te enviamos un boceto gratis para que veas el resultado. Solo necesitamos el nombre del festejado, la fecha, el tema y el lugar — escríbenos por WhatsApp y en minutos tienes tu propuesta.",
   },
   {
     question: "¿Qué incluye la invitación digital de cumpleaños?",
     answer:
-      "Incluye diseño temático personalizado, RSVP automático con notificaciones a tu WhatsApp, cuenta regresiva animada, GPS del lugar, música de fondo opcional y la posibilidad de agregar fotos del festejado.",
+      "La invitación incluye diseño temático completamente personalizado con los colores y el concepto que elijas, RSVP automático que lleva las confirmaciones directo a tu WhatsApp sin seguimientos manuales, cuenta regresiva animada hasta el día de la fiesta, mapa GPS interactivo del lugar con botón para abrir en Google Maps o Waze, música de fondo opcional que se activa al abrir la invitación, y galería de fotos del festejado en los planes superiores. Todo en un enlace que los invitados abren desde su celular sin descargar ninguna aplicación. También puedes agregar código de vestimenta, itinerario del evento y mesa de regalos según el plan que elijas.",
   },
   {
     question: "¿Hacen invitaciones tanto para niños como para adultos?",
     answer:
-      "Sí, para todas las edades. Para niños tenemos diseños vibrantes con personajes y temáticas populares. Para adultos ofrecemos estilos más sofisticados: botánico, gatsby, neón, minimalista y más.",
+      "Sí, diseñamos para todas las edades y ocasiones. Para cumpleaños infantiles tenemos diseños vibrantes con los personajes y temáticas más populares del momento: dinosaurios, unicornios, superhéroes, princesas, Bluey, PAW Patrol y cualquier otro que el niño o la niña elija. Para adultos ofrecemos estilos más sofisticados que van desde el glamour Gatsby y el neón vibrante para fiestas de noche, hasta opciones elegantes en estilo botánico, minimalista, oscuro o vintage. Sin importar la edad del festejado, siempre partimos del concepto que él o ella tiene en mente para construir el diseño desde cero.",
   },
   {
     question: "¿Qué temas o estilos tienen disponibles?",
     answer:
-      "Tenemos una biblioteca amplia que incluye: dinosaurios, unicornios, personajes de moda, deportes, flores, vintage, tropical, neón, oscuro elegante y muchos más. O diseñamos algo completamente personalizado para ti.",
+      "Tenemos diseños para prácticamente cualquier concepto. Para niños: dinosaurios, unicornios, personajes de caricatura, deportes, espacio, animales, safari y más. Para adultos y teens: Gatsby, neón discoteca, tropical, oscuro elegante, floral acuarela, minimalista moderno, vintage retro, Barbie, Taylor Swift, Harry Potter y muchos otros temas de cultura pop. Si tienes un concepto específico que no mencionamos, también lo hacemos — solo compártenos referencias visuales o describe la idea y construimos el diseño desde cero. No usamos plantillas genéricas; cada invitación se crea de forma única para el festejado.",
   },
   {
     question: "¿En cuánto tiempo me entregan la invitación?",
     answer:
-      "En 24 horas hábiles. Solo necesitamos el nombre del festejado, la fecha, el lugar y el tema — y al día siguiente tienes la invitación lista para compartir.",
+      "Entregamos en 24 horas hábiles desde que nos envías todos los datos necesarios: nombre del festejado, edad que cumple, fecha y hora de la fiesta, dirección del lugar y tema o estilo que prefieres. Antes de la versión final, te mandamos un boceto gratis en menos de 5 minutos para que apruebes el diseño y los colores sin pagar nada. Una vez que lo apruebas y realizas el pago, la invitación definitiva estará lista al día siguiente. Todo el proceso se maneja por WhatsApp — sin citas, sin formularios complicados, sin esperas innecesarias.",
   },
   {
     question: "¿Puedo compartirla en redes sociales o solo por WhatsApp?",
     answer:
-      "La invitación es un link que funciona en cualquier plataforma: WhatsApp, Instagram, Facebook, email o cualquier app de mensajería. Se ve perfecta en todos los dispositivos.",
+      "La invitación es un enlace web que funciona en cualquier plataforma y medio de comunicación. Puedes compartirla por WhatsApp individualmente o en grupos, publicarla como story o post en Instagram y Facebook, enviarla por correo electrónico, mensaje de texto SMS, o incluso generar un código QR para imprimir en una invitación física. El link se ve perfectamente en todos los dispositivos: iPhone, Android, tablet o computadora. No importa cómo llegue la invitación al invitado — siempre abrirá correctamente sin necesidad de descargar ninguna aplicación ni crear ninguna cuenta.",
   },
 ]
 
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "Invitaciones Digitales Cumpleaños Monterrey",
+  "@id": "https://invitacionesdigitalesmty.com.mx/invitaciones-cumpleanos#service",
+  name: "Invitaciones Digitales Cumpleaños",
   provider: {
     "@type": "LocalBusiness",
-    name: "Invitaciones Digitales MTY",
-    telephone: "+52 81 8083 6435",
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Monterrey",
-      addressRegion: "Nuevo León",
-      addressCountry: "MX",
-    },
+    "@id": "https://invitacionesdigitalesmty.com.mx#localbusiness",
   },
-  areaServed: [
-    { "@type": "Country", name: "México" },
-    { "@type": "City", name: "Monterrey" },
-  ],
+  areaServed: { "@type": "Country", name: "México" },
   description:
     "Invitaciones digitales para cumpleaños en Monterrey con diseño temático, RSVP automático, cuenta regresiva y entrega en 24 horas.",
   url: "https://invitacionesdigitalesmty.com.mx/invitaciones-cumpleanos",

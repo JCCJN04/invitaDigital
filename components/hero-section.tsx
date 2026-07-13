@@ -14,14 +14,12 @@ export function HeroSection() {
         </div>
 
         {/* Giant headline */}
-        <div className="animate-fade-in-up" style={{ animationDelay: "80ms" }}>
-          <h1 className="font-serif font-bold leading-[0.88] tracking-tight text-foreground mb-12"
-            style={{ fontSize: "clamp(3.5rem, 11vw, 9rem)" }}>
-            Invitaciones<br />
-            Digitales<br />
-            <em className="italic text-primary">Monterrey</em>
-          </h1>
-        </div>
+        <h1 className="font-serif font-bold leading-[0.88] tracking-tight text-foreground mb-12"
+          style={{ fontSize: "clamp(3.5rem, 11vw, 9rem)" }}>
+          Invitaciones<br />
+          Digitales<br />
+          <em className="italic text-primary">Monterrey</em>
+        </h1>
 
         {/* Bottom row: copy + CTA left, stats right */}
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-12 animate-fade-in-up border-t border-border pt-10" style={{ animationDelay: "160ms" }}>
