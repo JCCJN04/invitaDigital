@@ -63,6 +63,14 @@
     {
       "source": "/babyshower-sarah/:path*",
       "destination": "https://babyshower-sarah-iota.vercel.app/:path*"
+    },
+    {
+      "source": "/cumple-paulina",
+      "destination": "https://cumple-paulina.vercel.app/"
+    },
+    {
+      "source": "/cumple-paulina/:path*",
+      "destination": "https://cumple-paulina.vercel.app/:path*"
     }
   ]
 }
