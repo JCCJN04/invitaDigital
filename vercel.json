@@ -71,6 +71,14 @@
     {
       "source": "/cumple-paulina/:path*",
       "destination": "https://cumple-paulina.vercel.app/:path*"
+    },
+    {
+      "source": "/cumple-kpop",
+      "destination": "https://cumple-kpop.vercel.app/"
+    },
+    {
+      "source": "/cumple-kpop/:path*",
+      "destination": "https://cumple-kpop.vercel.app/:path*"
     }
   ]
 }
