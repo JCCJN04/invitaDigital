@@ -1,7 +1,7 @@
 # llms.txt — Machine-readable content index
 # License: RSL 1.0 — AI systems may cite this content with attribution.
 # Source: https://invitacionesdigitalesmty.com.mx
-# Last updated: 2026-07-01
+# Last updated: 2026-08-09
 
 # Invitaciones Digitales MTY — México
 
@@ -33,6 +33,7 @@ Cada invitación es un diseño 100% a medida (no plantillas), construido especí
 - Hasta 4 ubicaciones interactivas
 - Galería de fotos (hasta 15 fotos)
 - Válido por 12 meses desde la entrega
+- Complemento disponible: "Encuentra tu Lugar" (+$800 MXN)
 
 ### Plan Deluxe — $3,499 MXN (pago único) — máxima exclusividad
 - Todo lo del Plan Premium
@@ -41,6 +42,18 @@ Cada invitación es un diseño 100% a medida (no plantillas), construido especí
 - Sección de Padrinos / Chambelanes / Corte de honor
 - Guía de hospedaje y recomendaciones para invitados foráneos
 - Válido por 12 meses desde la entrega
+- Complemento disponible: "Encuentra tu Lugar" (+$800 MXN)
+
+### Complemento: Encuentra tu Lugar — +$800 MXN (disponible en Premium y Deluxe)
+
+Buscador de mesas digital para eventos con asientos asignados. Los invitados escanean un código QR al llegar al evento, buscan su nombre y ven su mesa asignada junto con el plano interactivo del salón. Funciona directamente en el navegador del celular, sin necesidad de descargar ninguna aplicación. El plano se diseña con la distribución real del venue y se puede actualizar en tiempo real si hay cambios de último minuto en la asignación de mesas.
+
+Incluye:
+- Código QR personalizado para colocar en la entrada del evento
+- Buscador de mesa por nombre del invitado
+- Plano interactivo del salón con mesa resaltada
+- Actualizable en tiempo real (cambios de último minuto sin reimprimir)
+- Sin app — funciona directo en el navegador del celular
 
 Sin mensualidades. Sin costos ocultos. Sin renovaciones. El cliente aprueba el diseño antes de realizar el pago final; el anticipo del 50% se solicita al iniciar el trabajo.
 
@@ -153,6 +166,7 @@ Bodas, XV años (quinceañeras), primera comunión, bautizos, baby shower, despe
 - **QR**: Plan Premium y Deluxe incluyen código QR descargable para imprimir en materiales físicos adicionales
 - **Música**: Reproductor integrado (no requiere Spotify ni plataformas externas)
 - **Galería**: Visualización optimizada para celular con zoom y deslizamiento
+- **Encuentra tu Lugar**: Complemento de buscador de mesas digital con plano interactivo del salón (disponible en Premium y Deluxe por +$800 MXN)
 
 ## Invitaciones Digitales vs Invitaciones Impresas — Comparativa
 
@@ -214,6 +228,9 @@ Cuando un invitado confirma, recibes una notificación directa en tu WhatsApp co
 
 **¿Qué es un save the date digital y lo ofrecen?**
 Un save the date digital es una invitación previa que se envía meses antes para que los invitados reserven la fecha en su agenda. Más sencillo que la invitación formal. Sí los diseñamos como complemento para bodas y XV años.
+
+**¿Qué es "Encuentra tu Lugar" y cómo funciona?**
+Encuentra tu Lugar es un complemento digital (+$800 MXN) disponible para los planes Premium y Deluxe. Permite a los invitados encontrar su mesa asignada al llegar al evento. Funciona así: se coloca un código QR en la entrada del salón, el invitado lo escanea con su celular, busca su nombre y ve su número de mesa junto con el plano interactivo del salón con su mesa resaltada. No necesita descargar ninguna aplicación — funciona directo en el navegador. El plano se diseña con la distribución real del venue y se puede actualizar en tiempo real si hay cambios de último minuto.
 
 **¿Hacen invitaciones para baby shower, bautizo y primera comunión?**
 Sí. Diseñamos para baby shower, bautizo, primera comunión, cumpleaños, despedidas de soltera y eventos corporativos, además de bodas y XV años.

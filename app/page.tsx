@@ -6,6 +6,7 @@ import { GallerySection } from "@/components/gallery-section"
 import { ProcessSection } from "@/components/process-section"
 import { TestimonialsSection } from "@/components/testimonials-section"
 import { PricingSection } from "@/components/pricing-section"
+import { SeatingSection } from "@/components/seating-section"
 import { FAQSection } from "@/components/faq-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
@@ -138,6 +139,14 @@ const faqSchema = {
         text: "Un save the date digital es una invitación previa que se envía meses antes para que los invitados reserven la fecha. Incluye la fecha, los nombres y un diseño elegante. Sí los diseñamos como complemento para bodas y XV años.",
       },
     },
+    {
+      "@type": "Question",
+      name: "¿Qué es Encuentra tu Lugar y cómo funciona?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Encuentra tu Lugar es un complemento digital para tu invitación que permite a tus invitados encontrar su mesa asignada al llegar al evento. Funciona así: colocas un código QR en la entrada, el invitado lo escanea con su celular, busca su nombre y ve su número de mesa junto con el plano interactivo del salón. No necesita descargar ninguna app. Está disponible como add-on (+$800 MXN) para los planes Premium y Deluxe.",
+      },
+    },
   ],
 }
 
@@ -214,6 +223,7 @@ export default function HomePage() {
         <GallerySection />
         <ProcessSection />
         <PricingSection />
+        <SeatingSection />
         <TestimonialsSection />
 
         <FAQSection />

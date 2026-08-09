@@ -260,6 +260,20 @@ export default function RootLayout({
           url: `${SITE_URL}/#precios`,
           seller: { "@type": "LocalBusiness", "@id": `${SITE_URL}#localbusiness` },
         },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Complemento Encuentra tu Lugar - Buscador de Mesas Digital",
+            description: "Buscador de mesas digital con código QR y plano interactivo del salón. Los invitados escanean el QR al llegar, buscan su nombre y ven su mesa asignada. Disponible como complemento de los planes Premium y Deluxe.",
+          },
+          price: 800,
+          priceCurrency: "MXN",
+          availability: "https://schema.org/InStock",
+          priceValidUntil: "2027-12-31",
+          url: `${SITE_URL}/#encuentra-tu-lugar`,
+          seller: { "@type": "LocalBusiness", "@id": `${SITE_URL}#localbusiness` },
+        },
       ],
     },
   }
