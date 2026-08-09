@@ -4,12 +4,12 @@ const faqs = [
   {
     question: "¿Cuánto cuestan las invitaciones digitales en Monterrey?",
     answer:
-      "Una invitación digital web es una experiencia interactiva diseñada para sorprender a tus invitados desde su celular. El precio de las invitaciones digitales web premium en InvitacionesDigitalesMTY (Monterrey) varía según el nivel de personalización y las funcionalidades interactivas deseadas. Contamos con tres opciones principales de pago único (sin mensualidades). El Plan Básico tiene un costo de $1,999 MXN e incluye hasta 8 fotografías, confirmación de asistencia (RSVP), y enlace de ubicación GPS Google Maps. Nuestro paquete más solicitado es el Plan Premium por $2,600 MXN, el cual eleva la experiencia añadiendo música de fondo personalizada, animaciones sutiles a medida, 5 secciones de información detallada de tu Boda o XV Años, y hasta 16 fotografías. Finalmente, contamos con el exclusivo Plan Deluxe por $3,499 MXN, ideal para todo tipo de eventos que buscan el máximo lujo, incluyendo una galería inmersiva de hasta 40 fotos, múltiples pistas musicales, enlaces ilimitados a mesas de regalos, y el beneficio único de contar con revisiones de diseño ilimitadas hasta alcanzar la perfección absoluta.",
+      "Una invitación digital web es una experiencia interactiva diseñada para sorprender a tus invitados desde su celular. El precio de las invitaciones digitales web premium en InvitacionesDigitalesMTY (Monterrey) varía según el nivel de personalización y las funcionalidades interactivas deseadas. Contamos con tres opciones principales de pago único (sin mensualidades). El Plan Básico tiene un costo de $1,999 MXN e incluye hasta 6 fotografías, ubicación GPS con Google Maps y Waze, mesa de regalos y código de vestimenta. Nuestro paquete más solicitado es el Plan Premium por $2,600 MXN, el cual eleva la experiencia añadiendo música de fondo personalizada, confirmación RSVP interactiva con control de pases, itinerario por horas, paleta de colores para invitados y hasta 15 fotografías. Finalmente, contamos con el exclusivo Plan Deluxe por $3,499 MXN, ideal para todo tipo de eventos que buscan el máximo lujo, incluyendo una galería de fotos ilimitada con video de portada, mix musical de 3 canciones, sección de corte de honor/chambelanes y guía turística/hospedaje para invitados foráneos.",
   },
   {
     question: "¿Qué incluyen las invitaciones digitales?",
     answer:
-      "Todas nuestras invitaciones incluyen: diseño personalizado, enlace web único, ubicación con Google Maps, confirmación de asistencia (RSVP), cuenta regresiva y galería de fotos. Los planes Premium agregan música y animaciones.",
+      "Todas nuestras invitaciones incluyen: diseño personalizado, enlace web único, ubicación con Google Maps, cuenta regresiva y galería de fotos. Los planes Premium agregan confirmación RSVP interactiva, música de fondo e itinerario del evento.",
   },
   {
     question: "¿Cuál es el tiempo de entrega?",
@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "¿Tienen garantía de satisfacción?",
     answer:
-      "Sí, ofrecemos garantía de satisfacción. No realizamos el pago final hasta que apruebes el diseño (se requiere anticipo del 50% para iniciar). Incluimos rondas de cambios ilimitadas en el plan Deluxe.",
+      "Sí, ofrecemos garantía de satisfacción. No realizamos el pago final hasta que apruebes el diseño (se requiere anticipo del 50% para iniciar).",
   },
   {
     question: "¿Cuál es la diferencia entre una invitación digital y una impresa?",

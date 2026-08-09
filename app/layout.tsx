@@ -223,7 +223,7 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Plan Básico - Invitación Digital",
-            description: "Hasta 8 fotos, ubicación, mesa de regalos, 2 revisiones",
+            description: "Hasta 6 fotos, ubicación GPS interactiva, mesa de regalos, código de vestimenta, enlace único",
           },
           price: 1999,
           priceCurrency: "MXN",
@@ -237,7 +237,7 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Plan Premium - Invitación Digital",
-            description: "Hasta 16 fotos, 5 secciones, 4 revisiones, diseño a medida, animaciones",
+            description: "Música de fondo, confirmación RSVP interactiva con pases, itinerario por horas, paleta de colores, hasta 15 fotos",
           },
           price: 2600,
           priceCurrency: "MXN",
@@ -251,7 +251,7 @@ export default function RootLayout({
           itemOffered: {
             "@type": "Service",
             name: "Plan Deluxe - Invitación Digital",
-            description: "Galería completa (40 fotos), enlaces ilimitados, revisiones ilimitadas, 3 canciones",
+            description: "Galería ilimitada con video de portada, mix musical de 3 canciones, sección de corte de honor/chambelanes, guía de hospedaje foráneos",
           },
           price: 3499,
           priceCurrency: "MXN",

@@ -4,12 +4,14 @@ const plans = [
   {
     name: "Básico",
     price: "$1,999",
-    tagline: "Todo lo esencial para impresionar",
+    tagline: "Todo lo esencial para un evento elegante",
     features: [
-      "Hasta 8 fotos de alta calidad",
-      "Ubicación GPS interactiva",
-      "Mesa de regalos",
-      "2 rondas de revisión",
+      "Diseño personalizado (colores y concepto)",
+      "Cuenta regresiva animada",
+      "Ubicación GPS interactiva (hasta 2 mapas)",
+      "Código de vestimenta (dress code)",
+      "Mesa de regalos (links o datos bancarios)",
+      "Galería de fotos (hasta 6 fotos)",
       "Enlace único para compartir",
     ],
     popular: false,
@@ -20,12 +22,12 @@ const plans = [
     tagline: "El favorito — elegido por 7 de cada 10 clientes",
     features: [
       "Todo lo del plan Básico",
-      "Hasta 16 fotos",
-      "5 secciones interactivas",
-      "Animaciones elegantes",
-      "Música personalizada",
-      "Código QR",
-      "4 rondas de revisión",
+      "Música de fondo personalizada",
+      "Confirmación RSVP interactiva",
+      "Itinerario del evento detallado por horas",
+      "Paleta de colores visual para invitados",
+      "Hasta 4 ubicaciones interactivas",
+      "Galería de fotos (hasta 15 fotos)",
     ],
     popular: true,
   },
@@ -35,11 +37,10 @@ const plans = [
     tagline: "Para el evento que merece lo mejor",
     features: [
       "Todo lo del plan Premium",
-      "Galería de hasta 40 fotos",
-      "Secciones ilimitadas",
-      "Mix musical (3 canciones)",
-      "Revisiones ilimitadas",
-      "Prioridad en entrega",
+      "Mix musical personalizado (hasta 3 canciones)",
+      "Galería ilimitada de fotos + Video de portada",
+      "Sección de Padrinos / Chambelanes / Corte de honor",
+      "Guía de hospedaje y recomendaciones para foráneos",
     ],
     popular: false,
   },
@@ -78,9 +79,8 @@ export function PricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 animate-fade-in-up ${
-                plan.popular ? "relative" : ""
-              }`}
+              className={`py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 animate-fade-in-up ${plan.popular ? "relative" : ""
+                }`}
               style={{ animationDelay: `${index * 120}ms`, opacity: 0, animationFillMode: "forwards" }}
             >
               {/* Popular indicator */}
@@ -130,11 +130,10 @@ export function PricingSection() {
                   rel="noopener noreferrer"
                 >
                   <button
-                    className={`px-6 py-3 text-xs font-bold tracking-widest uppercase transition-colors ${
-                      plan.popular
+                    className={`px-6 py-3 text-xs font-bold tracking-widest uppercase transition-colors ${plan.popular
                         ? "bg-primary text-primary-foreground hover:bg-primary-hover"
                         : "border border-foreground/30 text-foreground hover:border-primary hover:text-primary"
-                    }`}
+                      }`}
                   >
                     Quiero este plan
                   </button>
