@@ -9,8 +9,20 @@
       "destination": "https://carla-y-angel-qcbv.vercel.app/carlayangel/:path*"
     },
     {
+      "source": "/citliyamed/public",
+      "destination": "https://citliyamed.vercel.app/public.html"
+    },
+    {
+      "source": "/citliyamed",
+      "destination": "https://citliyamed.vercel.app/"
+    },
+    {
       "source": "/citliyamed/:path*",
       "destination": "https://citliyamed.vercel.app/:path*"
+    },
+    {
+      "source": "/primera-comunion-victoria",
+      "destination": "https://primera-comunion-victoria.vercel.app/"
     },
     {
       "source": "/primera-comunion-victoria/:path*",
