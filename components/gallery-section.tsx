@@ -8,14 +8,14 @@ type Category = "todas" | "bodas" | "xv" | "otros"
 
 const designs = [
   {
-    id: "golden-geo",
-    title: "Alma & Mauricio",
+    id: "carlayangel",
+    title: "Carla & Ángel",
     subtitle: "Boda",
-    tag: "Estilo Romántico",
+    tag: "Estilo Elegante",
     category: "bodas" as Category,
-    image: "/boda-alma-mauricio.jpg",
-    url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
-    bg: "bg-[#cfc8b3]",
+    image: "/boda-carlayangel.png",
+    url: "https://www.invitacionesdigitalesmty.com.mx/carlayangel",
+    bg: "bg-[#e8ddd5]",
   },
   {
     id: "citliyamed",
@@ -28,14 +28,14 @@ const designs = [
     bg: "bg-[#e8e0d5]",
   },
   {
-    id: "carlayangel",
-    title: "Carla & Ángel",
+    id: "golden-geo",
+    title: "Alma & Mauricio",
     subtitle: "Boda",
-    tag: "",
+    tag: "Estilo Romántico",
     category: "bodas" as Category,
-    image: "/boda-carlayangel.png",
-    url: "https://www.invitacionesdigitalesmty.com.mx/carlayangel",
-    bg: "bg-[#e8ddd5]",
+    image: "/boda-alma-mauricio.jpg",
+    url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
+    bg: "bg-[#cfc8b3]",
   },
   {
     id: "classic-rose",

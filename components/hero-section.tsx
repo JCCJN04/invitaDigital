@@ -27,7 +27,7 @@ export function HeroSection() {
           {/* Copy + CTAs */}
           <div className="flex flex-col gap-8 max-w-md">
             <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-              Sorprende a tus invitados desde el primer mensaje. Diseñamos tu invitación digital con RSVP automático, música y animaciones — lista en 24 horas. Servicio 100% en línea para todo México. Boceto gratis, sin compromiso.
+              Sorprende a tus invitados desde el primer mensaje. Diseños 100% personalizados y hechos a la medida para cada cliente, con RSVP automático, música y animaciones — lista en 24 horas. Servicio 100% en línea para todo México. Boceto gratis, sin compromiso.
             </p>
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <a
