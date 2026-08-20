@@ -18,10 +18,10 @@ export function WhatsAppWidget() {
   const message = "Hola, me interesa una invitación digital. ¿Me pueden ayudar?"
 
   useEffect(() => {
-    // Show widget after 3 seconds
+    // Show widget fast (800ms) so visitors don't bounce before seeing it
     const timer = setTimeout(() => {
       setIsVisible(true)
-    }, 3000)
+    }, 800)
 
     return () => clearTimeout(timer)
   }, [])
@@ -32,17 +32,29 @@ export function WhatsAppWidget() {
 
   return (
     <>
-      {/* Widget Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      {/* Widget Button + Tooltip Bubble */}
+      <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3">
+        
+        {/* Floating invitation pill tooltip */}
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
-            className="group relative bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full p-4 shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl"
+            className="hidden sm:flex items-center gap-2 bg-white text-[#2C2925] px-4 py-2 rounded-full shadow-lg border border-border text-xs font-serif font-bold hover:bg-secondary transition-all transform hover:scale-105 cursor-pointer animate-in fade-in slide-in-from-right-4"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span>¿Cotizar boceto gratis?</span>
+          </button>
+        )}
+
+        {!isOpen && (
+          <button
+            onClick={() => setIsOpen(true)}
+            className="group relative bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full p-3.5 sm:p-4 shadow-xl transition-all duration-300 transform hover:scale-110 hover:shadow-2xl cursor-pointer"
             aria-label="Abrir chat de WhatsApp"
           >
-            <WhatsAppIcon className="w-7 h-7" />
+            <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7" />
             {/* Pulse effect */}
-            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-75"></span>
+            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-60"></span>
 
             {/* Notification Badge */}
             <span className="absolute -top-1 -right-1 bg-[#ef4444] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm animate-bounce">

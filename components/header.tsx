@@ -53,23 +53,32 @@ export function Header() {
             <Link href="/blog" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
           </nav>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <Button className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-full px-6 py-2 h-10 text-sm font-serif font-bold shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30" asChild>
+          {/* CTA Button Desktop & Mobile */}
+          <div className="flex items-center gap-2">
+            <Button className="hidden md:inline-flex bg-primary hover:bg-primary-hover text-primary-foreground rounded-full px-6 py-2 h-10 text-sm font-serif font-bold shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                Crear mi invitación
+                Pedir boceto gratis
               </a>
             </Button>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-gray-900"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
-          >
-            {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="md:hidden bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-full px-3.5 py-1.5 text-xs font-serif font-bold shadow-sm inline-flex items-center gap-1.5"
+            >
+              <span>WhatsApp</span>
+            </a>
+
+            {/* Mobile Menu Button */}
+            <button
+              className="md:hidden p-2 text-gray-900"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Cerrar menú" : "Abrir menú"}
+            >
+              {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </header>
 
         {/* Mobile Menu */}

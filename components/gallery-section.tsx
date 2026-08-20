@@ -259,14 +259,29 @@ export function GallerySection() {
                   </div>
                 </a>
 
-                {/* Title below image */}
-                <div className="pt-2 px-1">
-                  <p className="font-serif font-semibold text-sm md:text-base text-foreground leading-tight">
-                    {design.title}
-                  </p>
-                  <p className="text-[10px] md:text-xs text-muted-foreground tracking-widest uppercase mt-0.5">
-                    {design.subtitle}
-                  </p>
+                {/* Title and Direct WhatsApp action below image */}
+                <div className="pt-2.5 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+                  <div>
+                    <p className="font-serif font-semibold text-sm md:text-base text-foreground leading-tight">
+                      {design.title}
+                    </p>
+                    <p className="text-[10px] md:text-xs text-muted-foreground tracking-widest uppercase mt-0.5">
+                      {design.subtitle}
+                    </p>
+                  </div>
+
+                  <a
+                    href={`https://wa.me/528180836435?text=${encodeURIComponent(
+                      `Hola, me gustó mucho el diseño de "${design.title}" (${design.subtitle}). ¿Me pueden cotizar uno personalizado para mi evento?`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-[11px] font-serif font-bold text-primary hover:text-primary-hover hover:underline transition-colors mt-1 sm:mt-0"
+                    title={`Cotizar diseño similar a ${design.title}`}
+                  >
+                    <span>Cotizar este modelo</span>
+                    <span aria-hidden="true">→</span>
+                  </a>
                 </div>
               </div>
             ))}
