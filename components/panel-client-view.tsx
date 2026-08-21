@@ -134,6 +134,7 @@ export function PanelClientView({
   const [newName, setNewName] = useState("")
   const [newPhone, setNewPhone] = useState("")
   const [newPasses, setNewPasses] = useState(2)
+  const [newChildren, setNewChildren] = useState(0)
   const [newTable, setNewTable] = useState("")
   const [addingGuest, setAddingGuest] = useState(false)
   const [detailGuest, setDetailGuest] = useState<Guest | null>(null)
@@ -608,10 +609,12 @@ export function PanelClientView({
 
     setAddingGuest(true)
     try {
+      const totalPasses = newPasses + newChildren
       const res = await addGuestAction(event.id, slug, {
         name: newName.trim(),
         phone: newPhone.trim() || null,
-        passes_assigned: newPasses,
+        passes_assigned: totalPasses,
+        children_count: newChildren,
         table_assigned: newTable.trim() || null,
       })
 
@@ -627,6 +630,7 @@ export function PanelClientView({
       setNewName("")
       setNewPhone("")
       setNewPasses(2)
+      setNewChildren(0)
       setNewTable("")
     } catch (err: any) {
       console.error("Error adding guest:", err)
@@ -648,7 +652,7 @@ export function PanelClientView({
   )
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-foreground font-sans selection:bg-primary/20 pb-20">
+    <div className="min-h-screen bg-[#FAF8F5] text-foreground font-sans selection:bg-primary/20 pb-20 overflow-x-hidden">
       
       {/* Top Floating Luxury Header matching main site */}
       <div className="sticky top-0 z-40 w-full backdrop-blur-md bg-[#FAF8F5]/90 border-b border-border/60 transition-all">
@@ -1302,19 +1306,49 @@ export function PanelClientView({
                 />
               </div>
 
+              {/* Pases Adultos */}
               <div>
                 <label className="block text-xs font-serif font-bold text-foreground mb-1.5">
-                  Pases Asignados *
+                  Pases de Adulto *
                 </label>
-                <input
-                  type="number"
-                  min={1}
-                  max={20}
-                  required
-                  value={newPasses}
-                  onChange={(e) => setNewPasses(parseInt(e.target.value) || 1)}
-                  className="w-full px-4 py-3 rounded-2xl border border-border bg-background text-sm font-serif focus:outline-none focus:ring-2 focus:ring-primary/40"
-                />
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setNewPasses(Math.max(1, newPasses - 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >−</button>
+                  <span className="flex-1 text-center font-serif font-bold text-lg">{newPasses}</span>
+                  <button
+                    type="button"
+                    onClick={() => setNewPasses(Math.min(20, newPasses + 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >+</button>
+                </div>
+              </div>
+
+              {/* Pases Niños */}
+              <div>
+                <label className="block text-xs font-serif font-bold text-foreground mb-1.5">
+                  Pases para Niño <span className="text-muted-foreground font-normal">(opcional)</span>
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setNewChildren(Math.max(0, newChildren - 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >−</button>
+                  <span className="flex-1 text-center font-serif font-bold text-lg">{newChildren}</span>
+                  <button
+                    type="button"
+                    onClick={() => setNewChildren(Math.min(10, newChildren + 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >+</button>
+                </div>
+                {newChildren > 0 && (
+                  <p className="text-[11px] text-muted-foreground mt-1.5 font-serif">
+                    Total: {newPasses + newChildren} pases ({newPasses} adulto{newPasses !== 1 ? 's' : ''} + {newChildren} niño{newChildren !== 1 ? 's' : ''})
+                  </p>
+                )}
               </div>
 
               <div className="pt-3 flex gap-3">

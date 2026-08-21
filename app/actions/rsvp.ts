@@ -103,11 +103,14 @@ export async function addGuestAction(
     name: string
     phone?: string | null
     passes_assigned: number
+    children_count?: number
     table_assigned?: string | null
   }
 ) {
   try {
     const generatedToken = "g_" + Math.random().toString(36).substring(2, 10)
+    const children = Math.max(0, Number(guestData.children_count) || 0)
+    const totalPasses = Math.max(1, Number(guestData.passes_assigned) || 2)
     const { data, error } = await supabase
       .from("guests")
       .insert({
@@ -115,7 +118,8 @@ export async function addGuestAction(
         token: generatedToken,
         name: guestData.name.trim(),
         phone: guestData.phone?.trim() || null,
-        passes_assigned: Math.max(1, Number(guestData.passes_assigned) || 2),
+        passes_assigned: totalPasses,
+        children_count: children,
         passes_confirmed: 0,
         rsvp_status: "pending",
         table_assigned: guestData.table_assigned?.trim() || null,
