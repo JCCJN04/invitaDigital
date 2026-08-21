@@ -36,6 +36,7 @@ export type Guest = {
   name: string
   phone?: string | null
   passes_assigned: number
+  children_count?: number | null
   passes_confirmed: number
   rsvp_status: "pending" | "confirmed" | "declined"
   table_assigned?: string | null

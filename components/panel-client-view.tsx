@@ -1027,7 +1027,17 @@ export function PanelClientView({
                             </div>
                           ) : (
                             <span className="font-serif font-bold text-foreground">
-                              {guest.passes_confirmed > 0 ? `${guest.passes_confirmed} confirmados de ${guest.passes_assigned}` : `${guest.passes_assigned} pases`}
+                              {(() => {
+                                const kids = guest.children_count ?? 0
+                                const adults = guest.passes_assigned - kids
+                                if (guest.passes_confirmed > 0) {
+                                  return `${guest.passes_confirmed} confirmados de ${guest.passes_assigned}`
+                                }
+                                if (kids > 0) {
+                                  return `${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''}`
+                                }
+                                return `${guest.passes_assigned} pases`
+                              })()}
                             </span>
                           )}
                         </div>
@@ -1116,7 +1126,12 @@ export function PanelClientView({
                                     {guest.passes_confirmed} {guest.passes_confirmed === 1 ? "pase confirmado" : "pases confirmados"}
                                   </span>
                                   <span className="text-[10px] text-muted-foreground">
-                                    (de {guest.passes_assigned} asignados)
+                                    {(() => {
+                                      const kids = guest.children_count ?? 0
+                                      const adults = guest.passes_assigned - kids
+                                      if (kids > 0) return `de ${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''} asignados`
+                                      return `(de ${guest.passes_assigned} asignados)`
+                                    })()}
                                   </span>
                                 </div>
                               ) : isPending ? (
@@ -1139,7 +1154,12 @@ export function PanelClientView({
                                 </div>
                               ) : (
                                 <span className="text-muted-foreground text-xs">
-                                  {guest.passes_assigned} pases (Cancelado)
+                                  {(() => {
+                                    const kids = guest.children_count ?? 0
+                                    const adults = guest.passes_assigned - kids
+                                    if (kids > 0) return `${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''} (Cancelado)`
+                                    return `${guest.passes_assigned} pases (Cancelado)`
+                                  })()}
                                 </span>
                               )}
                             </td>
