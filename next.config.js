@@ -128,8 +128,8 @@ module.exports = {
       "img-src 'self' data: blob: https://www.instagram.com https://*.cdninstagram.com https://www.facebook.com https://www.google-analytics.com https://www.googletagmanager.com https://*.vercel.app https://www.transparenttextures.com",
       // Instagram embed + Facebook + proxied invitations + Tally RSVP + Google Maps (both domains)
       "frame-src https://www.instagram.com https://www.facebook.com https://*.vercel.app https://tally.so https://maps.google.com https://www.google.com",
-      // Analytics beacons + proxied invitations
-      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://connect.facebook.net https://*.vercel.app",
+      // Analytics beacons + proxied invitations + Supabase (guest RSVP data)
+      "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://www.googletagmanager.com https://vitals.vercel-insights.com https://va.vercel-scripts.com https://connect.facebook.net https://*.vercel.app https://*.supabase.co https://*.supabase.in",
       // Instagram video in embed + proxied invitations
       "media-src 'self' https://www.instagram.com https://*.cdninstagram.com https://*.vercel.app",
       "object-src 'none'",
