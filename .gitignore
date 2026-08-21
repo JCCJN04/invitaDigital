@@ -29,3 +29,6 @@ next-env.d.ts
 # claude code
 .claude/settings.local.json
 graphify-out/
+# Excel files
+*.xlsx
+*.xls

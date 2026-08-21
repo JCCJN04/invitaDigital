@@ -94,6 +94,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
+  icons: {
+    icon: [
+      { url: "/favicon.png" },
+      { url: "/logo%20invitaciones%20digitales%20mty.png" },
+    ],
+    shortcut: "/favicon.png",
+    apple: "/favicon.png",
+  },
   category: "business",
 }
 
