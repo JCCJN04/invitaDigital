@@ -6,6 +6,7 @@ import {
   addGuestAction,
   updateGuestTableAction,
   updateGuestPassesAction,
+  updateGuestInfoAction,
   batchImportGuestsAction,
   type RawImportGuest,
 } from "@/app/actions/rsvp"
@@ -138,6 +139,14 @@ export function PanelClientView({
   const [newTable, setNewTable] = useState("")
   const [addingGuest, setAddingGuest] = useState(false)
   const [detailGuest, setDetailGuest] = useState<Guest | null>(null)
+
+  // Edit guest modal state
+  const [editingGuest, setEditingGuest] = useState<Guest | null>(null)
+  const [editName, setEditName] = useState("")
+  const [editPhone, setEditPhone] = useState("")
+  const [editAdults, setEditAdults] = useState(2)
+  const [editKids, setEditKids] = useState(0)
+  const [savingEdit, setSavingEdit] = useState(false)
 
   // Realtime subscription for live updates
   useEffect(() => {
@@ -640,6 +649,51 @@ export function PanelClientView({
     }
   }
 
+  // Open Edit Guest Modal
+  const handleOpenEditGuest = (guest: Guest) => {
+    setEditingGuest(guest)
+    setEditName(guest.name)
+    setEditPhone(guest.phone || "")
+    const kids = guest.children_count ?? 0
+    const adults = Math.max(1, guest.passes_assigned - kids)
+    setEditKids(kids)
+    setEditAdults(adults)
+  }
+
+  // Save Edit Guest
+  const handleSaveEditGuest = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!editingGuest || !editName.trim()) return
+
+    setSavingEdit(true)
+    try {
+      const totalPasses = editAdults + editKids
+      const res = await updateGuestInfoAction(editingGuest.id, slug, {
+        name: editName.trim(),
+        phone: editPhone.trim() || null,
+        passes_assigned: totalPasses,
+        children_count: editKids,
+      })
+
+      if (!res.success) {
+        throw new Error(res.error || "Error al actualizar invitado.")
+      }
+
+      if (res.guest) {
+        setGuests((prev) =>
+          prev.map((g) => (g.id === res.guest!.id ? res.guest! : g))
+        )
+      }
+
+      setEditingGuest(null)
+    } catch (err: any) {
+      console.error("Error editing guest:", err)
+      alert(err.message || "Error al actualizar invitado.")
+    } finally {
+      setSavingEdit(false)
+    }
+  }
+
   const selectedTableObj = floorTables.find((t) => t.id === selectedTable) || {
     id: selectedTable,
     label: selectedTable,
@@ -948,9 +1002,20 @@ export function PanelClientView({
                             </div>
 
                             <div className="min-w-0 flex-1">
-                              <h4 className="font-serif font-bold text-sm text-foreground leading-snug break-words">
-                                {guest.name}
-                              </h4>
+                              <div className="flex items-start justify-between gap-2">
+                                <h4 className="font-serif font-bold text-sm text-foreground leading-snug break-words flex-1">
+                                  {guest.name}
+                                </h4>
+                                <button
+                                  type="button"
+                                  onClick={() => handleOpenEditGuest(guest)}
+                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-serif font-bold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
+                                  title="Editar nombre y pases del invitado"
+                                >
+                                  <Edit2 className="w-3 h-3" />
+                                  <span>Editar</span>
+                                </button>
+                              </div>
                               {guest.phone && (
                                 <p className="text-[11px] text-muted-foreground font-mono mt-0.5">
                                   {guest.phone}
@@ -1018,7 +1083,7 @@ export function PanelClientView({
                               <select
                                 value={guest.passes_assigned}
                                 onChange={(e) => handleUpdateGuestPasses(guest.id, parseInt(e.target.value))}
-                                className="bg-background font-serif font-bold text-xs text-foreground px-2 py-0.5 rounded-lg border border-border focus:outline-none cursor-pointer"
+                                className="bg-background font-serif font-bold text-xs text-foreground px-2 py-1 rounded-lg border border-border focus:outline-none cursor-pointer"
                                 title="Cambiar pases asignados"
                               >
                                 {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20].map((num) => (
@@ -1027,7 +1092,6 @@ export function PanelClientView({
                                   </option>
                                 ))}
                               </select>
-                              <span className="text-[9px] text-amber-700 bg-amber-500/10 px-1.5 py-0.2 rounded font-serif font-bold uppercase">Editar</span>
                             </div>
                           ) : (
                             <span className="font-serif font-bold text-foreground">
@@ -1114,12 +1178,25 @@ export function PanelClientView({
                             className="hover:bg-muted/20 transition-colors group"
                           >
                             <td className="py-4 px-6">
-                              <p className="font-serif font-bold text-sm text-foreground">{guest.name}</p>
-                              {guest.phone && (
-                                <p className="text-[11px] text-muted-foreground font-mono">
-                                  {guest.phone}
-                                </p>
-                              )}
+                              <div className="flex items-center justify-between gap-3">
+                                <div className="min-w-0">
+                                  <p className="font-serif font-bold text-sm text-foreground leading-snug">{guest.name}</p>
+                                  {guest.phone && (
+                                    <p className="text-[11px] text-muted-foreground font-mono mt-0.5">
+                                      {guest.phone}
+                                    </p>
+                                  )}
+                                </div>
+                                <button
+                                  type="button"
+                                  onClick={() => handleOpenEditGuest(guest)}
+                                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-serif font-bold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
+                                  title="Editar nombre y pases del invitado"
+                                >
+                                  <Edit2 className="w-3 h-3" />
+                                  <span>Editar</span>
+                                </button>
+                              </div>
                             </td>
 
                             <td className="py-4 px-4 whitespace-nowrap font-serif">
@@ -1152,9 +1229,6 @@ export function PanelClientView({
                                       </option>
                                     ))}
                                   </select>
-                                  <span className="text-[10px] text-amber-700 bg-amber-500/10 px-2 py-0.5 rounded-full font-medium border border-amber-500/20">
-                                    Editable
-                                  </span>
                                 </div>
                               ) : (
                                 <span className="text-muted-foreground text-xs">
@@ -1371,6 +1445,125 @@ export function PanelClientView({
           </div>
         </div>
       )}
+
+      {/* MODAL: EDITAR INVITADO */}
+      {editingGuest && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="relative w-full max-w-md bg-card text-card-foreground rounded-3xl shadow-2xl border border-border overflow-hidden p-6 sm:p-8 space-y-5">
+            <div className="flex items-center justify-between border-b border-border pb-4">
+              <div>
+                <h3 className="font-serif text-2xl font-bold text-foreground">
+                  Editar Invitado
+                </h3>
+                <p className="text-xs text-muted-foreground font-serif mt-0.5">
+                  Los cambios se reflejarán inmediatamente en la invitación.
+                </p>
+              </div>
+              <button
+                onClick={() => setEditingGuest(null)}
+                className="w-8 h-8 rounded-full bg-secondary flex items-center justify-center text-muted-foreground hover:text-foreground cursor-pointer"
+              >
+                ✕
+              </button>
+            </div>
+
+            <form onSubmit={handleSaveEditGuest} className="space-y-4">
+              <div>
+                <label className="block text-xs font-serif font-bold text-foreground mb-1.5">
+                  Nombre de la Familia / Invitado *
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={editName}
+                  onChange={(e) => setEditName(e.target.value)}
+                  placeholder="Ej. Carlos Mendoza & María Gómez"
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-background text-sm font-serif focus:outline-none focus:ring-2 focus:ring-primary/40"
+                />
+                <p className="text-[10px] text-muted-foreground mt-1 font-serif">
+                  Tip: Para parejas, separa los nombres con <strong className="text-primary">&amp;</strong> para mostrarlos en dos líneas centradas.
+                </p>
+              </div>
+
+              <div>
+                <label className="block text-xs font-serif font-bold text-foreground mb-1.5">
+                  Teléfono / WhatsApp (Opcional)
+                </label>
+                <input
+                  type="tel"
+                  value={editPhone}
+                  onChange={(e) => setEditPhone(e.target.value)}
+                  placeholder="Ej. +52 81 1234 5678"
+                  className="w-full px-4 py-3 rounded-2xl border border-border bg-background text-sm font-serif focus:outline-none focus:ring-2 focus:ring-primary/40"
+                />
+              </div>
+
+              {/* Pases Adultos */}
+              <div>
+                <label className="block text-xs font-serif font-bold text-foreground mb-1.5">
+                  Pases de Adulto *
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setEditAdults(Math.max(1, editAdults - 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >−</button>
+                  <span className="flex-1 text-center font-serif font-bold text-lg">{editAdults}</span>
+                  <button
+                    type="button"
+                    onClick={() => setEditAdults(Math.min(20, editAdults + 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >+</button>
+                </div>
+              </div>
+
+              {/* Pases Niños */}
+              <div>
+                <label className="block text-xs font-serif font-bold text-foreground mb-1.5">
+                  Pases para Niño <span className="text-muted-foreground font-normal">(opcional)</span>
+                </label>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setEditKids(Math.max(0, editKids - 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >−</button>
+                  <span className="flex-1 text-center font-serif font-bold text-lg">{editKids}</span>
+                  <button
+                    type="button"
+                    onClick={() => setEditKids(Math.min(10, editKids + 1))}
+                    className="w-10 h-10 rounded-xl border border-border bg-secondary text-lg font-bold flex items-center justify-center cursor-pointer hover:bg-muted transition-colors"
+                  >+</button>
+                </div>
+                {editKids > 0 && (
+                  <p className="text-[11px] text-muted-foreground mt-1.5 font-serif">
+                    Total: {editAdults + editKids} pases ({editAdults} adulto{editAdults !== 1 ? 's' : ''} + {editKids} niño{editKids !== 1 ? 's' : ''})
+                  </p>
+                )}
+              </div>
+
+              <div className="pt-3 flex gap-3">
+                <button
+                  type="button"
+                  onClick={() => setEditingGuest(null)}
+                  className="w-full py-3 rounded-full border border-border text-xs font-serif font-bold text-muted-foreground hover:text-foreground cursor-pointer"
+                >
+                  Cancelar
+                </button>
+                <button
+                  type="submit"
+                  disabled={savingEdit}
+                  className="w-full py-3 rounded-full bg-primary hover:bg-primary-hover text-primary-foreground text-xs font-serif font-bold uppercase tracking-wider cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2 shadow-md shadow-primary/20"
+                >
+                  {savingEdit ? <Loader2 className="w-4 h-4 animate-spin" /> : "Guardar Cambios"}
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
+
       {/* MODAL: DETALLE COMPLETO DE RESPUESTAS DEL FORMULARIO */}
       {detailGuest && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">

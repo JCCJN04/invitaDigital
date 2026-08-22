@@ -215,6 +215,56 @@ export async function updateGuestPassesAction(
   }
 }
 
+export async function updateGuestInfoAction(
+  guestId: string,
+  eventSlug: string,
+  updates: {
+    name: string
+    phone?: string | null
+    passes_assigned?: number
+    children_count?: number
+  }
+) {
+  try {
+    const trimmedName = updates.name.trim()
+    if (!trimmedName) {
+      return { success: false, error: "El nombre del invitado no puede estar vacío." }
+    }
+
+    const payload: any = {
+      name: trimmedName,
+      phone: updates.phone?.trim() || null,
+    }
+
+    if (updates.passes_assigned !== undefined) {
+      payload.passes_assigned = Math.max(1, Math.min(20, Number(updates.passes_assigned) || 1))
+    }
+
+    if (updates.children_count !== undefined) {
+      payload.children_count = Math.max(0, Math.min(10, Number(updates.children_count) || 0))
+    }
+
+    const { data, error } = await supabase
+      .from("guests")
+      .update(payload)
+      .eq("id", guestId)
+      .select()
+      .single()
+
+    if (error) {
+      console.error("Error updating guest info:", error)
+      return { success: false, error: error.message }
+    }
+
+    revalidatePath(`/boda/${eventSlug}`)
+    revalidatePath(`/panel/${eventSlug}`)
+    return { success: true, guest: data as Guest }
+  } catch (err: any) {
+    console.error("Error in updateGuestInfoAction:", err)
+    return { success: false, error: err.message || "Error al actualizar el invitado." }
+  }
+}
+
 export interface RawImportGuest {
   name: string
   phone?: string | null
