@@ -30,10 +30,10 @@ export function HeroSection() {
         </div>
 
         {/* 2-Column Responsive Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12 items-center">
           
           {/* Left Column: Headline, Copy & Action CTAs */}
-          <div className="lg:col-span-7 flex flex-col space-y-6 sm:space-y-8 animate-fade-in-up">
+          <div className="md:col-span-7 flex flex-col space-y-6 sm:space-y-8 animate-fade-in-up">
             
             {/* Giant Editorial Headline */}
             <h1
@@ -52,15 +52,20 @@ export function HeroSection() {
 
             {/* Action Buttons */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 pt-1">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-all shadow-sm hover:shadow-md cursor-pointer text-center"
-              >
-                <WhatsAppIcon className="w-4 h-4 fill-current flex-shrink-0" />
-                <span>Pedir boceto gratis</span>
-              </a>
+              <div className="flex flex-col items-stretch sm:items-start">
+                <a
+                  href={whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-all shadow-sm hover:shadow-md cursor-pointer text-center"
+                >
+                  <WhatsAppIcon className="w-4 h-4 fill-current flex-shrink-0" />
+                  <span>Pedir mi boceto gratis</span>
+                </a>
+                <span className="text-[10px] sm:text-[11px] text-muted-foreground mt-2 text-center sm:text-left tracking-wide">
+                  Respuesta en menos de 5 min · Sin compromiso
+                </span>
+              </div>
 
               <a
                 href="#galeria"
@@ -87,36 +92,52 @@ export function HeroSection() {
               </div>
             </div>
 
+            {/* Trust Badges */}
+            <div className="flex flex-wrap items-center gap-4 sm:gap-6 pt-2">
+              <div className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                <span className="text-[10px] sm:text-[11px] text-muted-foreground tracking-wide">Pago seguro</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838a.5.5 0 0 1-.62-.62l.838-2.872a2 2 0 0 1 .506-.854z"/></svg>
+                <span className="text-[10px] sm:text-[11px] text-muted-foreground tracking-wide">Diseño a tu medida</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-primary"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <span className="text-[10px] sm:text-[11px] text-muted-foreground tracking-wide">Entrega garantizada</span>
+              </div>
+            </div>
+
           </div>
 
-          {/* Right Column: Clean Phone Showcase (Visible on all devices without any 'demo' tag) */}
-          <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-in-up mt-6 lg:mt-0" style={{ animationDelay: "120ms" }}>
+          {/* Right Column: Clean Phone Showcase */}
+          <div className="md:col-span-5 flex justify-center md:justify-end animate-fade-in-up mt-6 md:mt-0" style={{ animationDelay: "120ms" }}>
             <Link
               href="/carlayangel"
               target="_blank"
-              className="group relative block w-full max-w-[270px] sm:max-w-[290px] rounded-3xl p-3 bg-card border border-border/80 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_60px_rgba(140,58,90,0.15)] hover:border-primary/50 transition-all duration-500 transform hover:-translate-y-1 cursor-pointer"
+              className="group relative block w-[270px] sm:w-[290px] rounded-3xl p-3 bg-card border border-border/80 shadow-[0_20px_50px_rgba(0,0,0,0.06)] hover:shadow-[0_25px_60px_rgba(140,58,90,0.15)] hover:border-primary/50 transition-all duration-500 transform hover:-translate-y-1 cursor-pointer"
               title="Haz clic para ver la invitación de Carla & Ángel"
             >
               {/* Preview Image Frame */}
-              <div className="relative aspect-[9/16] rounded-2xl overflow-hidden bg-muted">
-                <Image
-                  src="/boda-carlayangel.png"
-                  alt="Invitación digital Carla y Ángel"
-                  fill
-                  priority
-                  sizes="(max-width: 640px) 270px, 290px"
-                  className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                />
+                <div className="relative w-full h-[480px] sm:h-[515px] rounded-2xl overflow-hidden bg-muted">
+                  <Image
+                    src="/boda-carlayangel.png"
+                    alt="Invitación digital Carla y Ángel"
+                    fill
+                    priority
+                    sizes="(max-width: 640px) 270px, 290px"
+                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  />
 
-                {/* Clean Bottom Overlay */}
-                <div className="absolute inset-x-3 bottom-3 bg-background/95 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-border/60 text-center text-foreground shadow-sm group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
-                  <p className="font-serif font-bold text-xs flex items-center justify-center gap-1.5">
-                    <span>Boda Carla & Ángel</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </p>
+                  {/* Clean Bottom Overlay */}
+                  <div className="absolute inset-x-3 bottom-3 bg-background/95 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-border/60 text-center text-foreground shadow-sm group-hover:bg-primary group-hover:text-primary-foreground group-hover:border-primary transition-colors">
+                    <p className="font-serif font-bold text-xs flex items-center justify-center gap-1.5">
+                      <span>Boda Carla & Ángel</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
           </div>
 
         </div>

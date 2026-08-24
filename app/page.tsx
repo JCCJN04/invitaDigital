@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Header } from "@/components/header"
 import { HeroSection } from "@/components/hero-section"
+import { SocialProofStrip } from "@/components/social-proof-strip"
 import { BenefitsSection } from "@/components/benefits-section"
 import { GallerySection } from "@/components/gallery-section"
 import { ProcessSection } from "@/components/process-section"
@@ -15,6 +16,8 @@ import { buildAlternates } from "@/lib/seo"
 import dynamic from "next/dynamic"
 
 const WhatsAppWidget = dynamic(() => import("@/components/whatsapp-widget").then((mod) => mod.WhatsAppWidget))
+const ExitIntentPopup = dynamic(() => import("@/components/exit-intent-popup").then((mod) => mod.ExitIntentPopup))
+const StickyCTABar = dynamic(() => import("@/components/sticky-cta-bar").then((mod) => mod.StickyCTABar))
 
 const SITE_URL = "https://invitacionesdigitalesmty.com.mx"
 
@@ -219,6 +222,7 @@ export default function HomePage() {
       <main className="min-h-screen">
         <Header />
         <HeroSection />
+        <SocialProofStrip />
         <BenefitsSection />
         <GallerySection />
         <ProcessSection />
@@ -230,6 +234,8 @@ export default function HomePage() {
         <ContactSection />
         <Footer />
         <WhatsAppWidget />
+        <ExitIntentPopup />
+        <StickyCTABar />
       </main>
     </>
   )

@@ -16,6 +16,7 @@ const designs = [
     image: "/boda-carlayangel.png",
     url: "https://www.invitacionesdigitalesmty.com.mx/carlayangel",
     bg: "bg-[#e8ddd5]",
+    recent: false,
   },
   {
     id: "citliyamed",
@@ -26,6 +27,7 @@ const designs = [
     image: "/boda-citliyamed.png",
     url: "https://www.invitacionesdigitalesmty.com.mx/citliyamed/public.html",
     bg: "bg-[#e8e0d5]",
+    recent: false,
   },
   {
     id: "golden-geo",
@@ -36,6 +38,7 @@ const designs = [
     image: "/boda-alma-mauricio.jpg",
     url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
     bg: "bg-[#cfc8b3]",
+    recent: false,
   },
   {
     id: "classic-rose",
@@ -46,6 +49,7 @@ const designs = [
     image: "/xv-emmaypau.png",
     url: "https://invitacionesemmaypau.vercel.app/",
     bg: "bg-[#fdecea]",
+    recent: false,
   },
   {
     id: "xv-elisa",
@@ -56,6 +60,7 @@ const designs = [
     image: "/xv-elisa.png",
     url: "https://invitacionesdigitalesmty.com.mx/xv-elisa",
     bg: "bg-[#e9d9d1]",
+    recent: false,
   },
   {
     id: "primera-comunion-victoria",
@@ -66,6 +71,7 @@ const designs = [
     image: "/primera-comunion-victoria.png",
     url: "https://www.invitacionesdigitalesmty.com.mx/primera-comunion-victoria",
     bg: "bg-[#ede8f5]",
+    recent: false,
   },
   {
     id: "cumple-edgar",
@@ -76,16 +82,18 @@ const designs = [
     image: "/cumple-edgar.png",
     url: "https://invitacionesdigitalesmty.com.mx/cumple-edgar",
     bg: "bg-[#d8e8d4]",
+    recent: false,
   },
   {
     id: "cumple-paulina",
     title: "Paulina",
     subtitle: "Cumpleaños",
-    tag: "",
+    tag: "Recién entregado",
     category: "otros" as Category,
     image: "/cumple-paulina.png",
     url: "https://invitacionesdigitalesmty.com.mx/cumple-paulina",
     bg: "bg-[#d8e8d4]",
+    recent: true,
   },
   {
     id: "paula-xv",
@@ -96,6 +104,7 @@ const designs = [
     image: "/xv-paula.png",
     url: "https://www.invitacionesdigitalesmty.com.mx/paulaxv",
     bg: "bg-[#e9d9d1]",
+    recent: false,
   },
   {
     id: "bautizo-mateo",
@@ -106,6 +115,7 @@ const designs = [
     image: "/bautizo-mateo.png",
     url: "https://invitacionesdigitalesmty.com.mx/bautizo-mateo",
     bg: "bg-[#edf5ed]",
+    recent: false,
   },
   {
     id: "babyshower-liam",
@@ -116,6 +126,7 @@ const designs = [
     image: "/babyshower-liam.png",
     url: "https://invitacionesdigitalesmty.com.mx/babyshower-liam",
     bg: "bg-[#f5edf0]",
+    recent: false,
   },
   {
     id: "babyshower-sarah",
@@ -126,6 +137,7 @@ const designs = [
     image: "/babyshower-sarah.png",
     url: "https://invitacionesdigitalesmty.com.mx/babyshower-sarah",
     bg: "bg-[#f5edf0]",
+    recent: false,
   },
 ]
 
@@ -235,6 +247,13 @@ export function GallerySection() {
                   aria-label={`Ver invitación digital: ${design.title} — ${design.subtitle} en Monterrey`}
                   className="relative block overflow-hidden"
                 >
+                  {/* Recent badge */}
+                  {design.recent && (
+                    <div className="absolute top-2 left-2 z-30 bg-primary text-primary-foreground text-[9px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full shadow-md">
+                      ✨ {design.tag}
+                    </div>
+                  )}
+
                   {/* Image — full natural dimensions */}
                   <Image
                     src={design.image}
@@ -254,14 +273,14 @@ export function GallerySection() {
                   {/* Hover CTA — desktop */}
                   <div className="absolute inset-0 bg-black/25 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
                     <span className="bg-white text-foreground text-[10px] md:text-[11px] font-bold tracking-widest uppercase px-4 md:px-6 py-2.5 rounded-full shadow-lg">
-                      Ver invitación
+                      Ver invitación en vivo
                     </span>
                   </div>
                 </a>
 
                 {/* Title and Direct WhatsApp action below image */}
-                <div className="pt-2.5 px-1 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
-                  <div>
+                <div className="pt-2.5 px-1">
+                  <div className="mb-2">
                     <p className="font-serif font-semibold text-sm md:text-base text-foreground leading-tight">
                       {design.title}
                     </p>
@@ -276,7 +295,7 @@ export function GallerySection() {
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-[11px] font-serif font-bold text-primary hover:text-primary-hover hover:underline transition-colors mt-1 sm:mt-0"
+                    className="inline-flex items-center justify-center gap-2 w-full bg-primary/10 hover:bg-primary hover:text-primary-foreground text-primary border border-primary/20 hover:border-primary px-4 py-2.5 rounded-lg text-[11px] font-bold tracking-widest uppercase transition-all"
                     title={`Cotizar diseño similar a ${design.title}`}
                   >
                     <span>Cotizar este modelo</span>

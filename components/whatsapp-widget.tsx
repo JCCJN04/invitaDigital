@@ -18,7 +18,7 @@ export function WhatsAppWidget() {
   const message = "Hola, me interesa una invitación digital. ¿Me pueden ayudar?"
 
   useEffect(() => {
-    // Show widget fast (800ms) so visitors don't bounce before seeing it
+    // Show widget after a brief delay
     const timer = setTimeout(() => {
       setIsVisible(true)
     }, 800)
@@ -32,8 +32,8 @@ export function WhatsAppWidget() {
 
   return (
     <>
-      {/* Widget Button + Tooltip Bubble */}
-      <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3">
+      {/* Widget Button + Tooltip Bubble — hidden on mobile since StickyCTABar handles it */}
+      <div className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-50 hidden sm:flex items-center gap-3">
         
         {/* Floating invitation pill tooltip */}
         {!isOpen && (
@@ -41,7 +41,7 @@ export function WhatsAppWidget() {
             onClick={() => setIsOpen(true)}
             className="hidden sm:flex items-center gap-2 bg-white text-[#2C2925] px-4 py-2 rounded-full shadow-lg border border-border text-xs font-serif font-bold hover:bg-secondary transition-all transform hover:scale-105 cursor-pointer animate-in fade-in slide-in-from-right-4"
           >
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-emerald-500" />
             <span>¿Cotizar boceto gratis?</span>
           </button>
         )}
@@ -53,13 +53,6 @@ export function WhatsAppWidget() {
             aria-label="Abrir chat de WhatsApp"
           >
             <WhatsAppIcon className="w-6 h-6 sm:w-7 sm:h-7" />
-            {/* Pulse effect */}
-            <span className="absolute inset-0 rounded-full bg-[#25D366] animate-ping opacity-60"></span>
-
-            {/* Notification Badge */}
-            <span className="absolute -top-1 -right-1 bg-[#ef4444] text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full shadow-sm animate-bounce">
-              1
-            </span>
           </button>
         )}
 
@@ -79,8 +72,8 @@ export function WhatsAppWidget() {
                   <div>
                     <h3 className="font-semibold text-sm">Invitaciones MTY</h3>
                     <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 bg-[#25D366] rounded-full animate-pulse"></span>
-                      <p className="text-[10px] opacity-90 font-medium tracking-wide">Línea Directa</p>
+                      <span className="w-2 h-2 bg-[#25D366] rounded-full" />
+                      <p className="text-[10px] opacity-90 font-medium tracking-wide">En línea ahora</p>
                     </div>
                   </div>
                 </div>
@@ -101,7 +94,7 @@ export function WhatsAppWidget() {
                   ¡Hola! 👋 Bienvenido a <span className="font-semibold text-[#075e54]">Invitaciones MTY</span>
                   <br />
                   <br />
-                  ¿Te gustaría una cotización rápida o ver nuestros diseños premium?
+                  ¿Te gustaría una cotización rápida o ver un boceto gratis para tu evento?
                 </p>
                 <div className="text-[10px] text-gray-400 mt-2 text-right">Justo ahora</div>
               </div>

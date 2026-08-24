@@ -1,14 +1,23 @@
 import { Star } from "lucide-react"
 
 const featured = {
-  name: "María González",
-  event: "Boda · San Pedro, NL",
+  name: "Cumple Paulina",
+  event: "Cumpleaños · Agosto 2026",
   comment:
-    "Teníamos 180 invitados y todos confirmaron por el RSVP — no tuve que llamar a nadie. El diseño era exactamente lo que soñé y lo entregaron en menos de 24 horas. Vale cada peso.",
-  image: "/persona1.jpeg",
+    "Quedó hermosa la invitación, superó mis expectativas. El diseño fue exactamente lo que pedí y la entregaron rapidísimo. Mis invitados quedaron encantados con las animaciones.",
+  image: "/cumple-paulina.png",
+  url: "https://invitacionesdigitalesmty.com.mx/cumple-paulina",
+  isReal: true,
 }
 
 const rest = [
+  {
+    name: "María González",
+    event: "Boda · San Pedro, NL",
+    comment:
+      "Teníamos 180 invitados y todos confirmaron por el RSVP — no tuve que llamar a nadie. El diseño era exactamente lo que soñé y lo entregaron en menos de 24 horas. Vale cada peso.",
+    image: "/persona1.jpeg",
+  },
   {
     name: "Ana Rodríguez",
     event: "XV Años · Monterrey",
@@ -33,12 +42,6 @@ const rest = [
     comment: "Diseño espectacular con QR personalizado. Todos confirmaron asistencia digital.",
     image: "",
   },
-  {
-    name: "Lucía Fernández",
-    event: "Cumpleaños · Santa Catarina",
-    comment: "Las animaciones le dieron un toque especial. El equipo fue super atento.",
-    image: "",
-  },
 ]
 
 export function TestimonialsSection() {
@@ -57,10 +60,17 @@ export function TestimonialsSection() {
         {/* Featured testimonial */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20 animate-fade-in-up" style={{ animationDelay: "80ms", opacity: 0, animationFillMode: "forwards" }}>
           <div>
-            <div className="flex gap-1 mb-8">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="w-4 h-4 fill-[#d4a373] text-[#d4a373]" />
-              ))}
+            <div className="flex items-center gap-3 mb-8">
+              <div className="flex gap-1">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-[#d4a373] text-[#d4a373]" />
+                ))}
+              </div>
+              {featured.isReal && (
+                <span className="text-[9px] tracking-[0.2em] uppercase font-bold text-white bg-primary px-2.5 py-1 rounded-full">
+                  ✨ Caso real
+                </span>
+              )}
             </div>
             <blockquote className="font-serif text-2xl md:text-3xl lg:text-4xl font-bold text-[#1c1917] leading-[1.2] mb-10">
               &ldquo;{featured.comment}&rdquo;
@@ -78,6 +88,17 @@ export function TestimonialsSection() {
                 <p className="text-xs text-[#d4a373] uppercase tracking-wider font-medium mt-0.5">{featured.event}</p>
               </div>
             </div>
+            {featured.url && (
+              <a
+                href={featured.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 mt-6 text-xs font-semibold text-primary hover:text-primary-hover transition-colors tracking-wide uppercase"
+              >
+                <span>Ver la invitación real</span>
+                <span aria-hidden="true">→</span>
+              </a>
+            )}
           </div>
 
           {/* Rating card */}

@@ -111,9 +111,12 @@ export function PanelClientView({
   const [event, setEvent] = useState<Event>(initialEvent)
   const [guests, setGuests] = useState<Guest[]>(initialGuests)
   const [activeTab, setActiveTab] = useState<"guests" | "seating">("guests")
+  const [viewMode, setViewMode] = useState<"cards" | "excel">("cards")
   const [searchTerm, setSearchTerm] = useState("")
-  const [statusFilter, setStatusFilter] = useState<"all" | "confirmed" | "pending" | "declined">("all")
+  const [statusFilter, setStatusFilter] = useState<"all" | "confirmed" | "pending" | "declined" | "allergies" | "messages">("all")
+  const [mobileResponsesLayout, setMobileResponsesLayout] = useState<"cards" | "excel">("cards")
   const [copiedToken, setCopiedToken] = useState<string | null>(null)
+  const [copiedTable, setCopiedTable] = useState(false)
 
   // Import modal state
   const [isImportModalOpen, setIsImportModalOpen] = useState(false)
@@ -267,16 +270,160 @@ export function PanelClientView({
     }
   }, [guests])
 
-  // Filtered guests for list view
-  const filteredGuests = guests.filter((g) => {
-    const matchesSearch =
-      g.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      (g.phone ? g.phone.includes(searchTerm) : false)
+  // Parse custom questions & notes from RSVP form
+  const parseGuestResponses = (notes?: string | null) => {
+    if (!notes) return { allergies: "—", message: "—", other: "—", hasResponses: false }
+    let allergies = ""
+    let message = ""
+    let other = ""
 
-    const matchesStatus = statusFilter === "all" ? true : g.rsvp_status === statusFilter
+    if (notes.includes("Alergias:") || notes.includes("Mensaje:")) {
+      const parts = notes.split(" | ").map((p) => p.trim())
+      for (const part of parts) {
+        if (part.toLowerCase().startsWith("alergias:")) {
+          allergies = part.replace(/^alergias:\s*/i, "").trim()
+        } else if (part.toLowerCase().startsWith("mensaje:")) {
+          message = part.replace(/^mensaje:\s*/i, "").trim()
+        } else {
+          other = other ? `${other} | ${part}` : part
+        }
+      }
+    } else {
+      message = notes
+    }
+
+    return {
+      allergies: allergies || "—",
+      message: message || "—",
+      other: other || "—",
+      hasResponses: Boolean(allergies || (message && message !== "—") || (other && other !== "—")),
+    }
+  }
+
+  // Question response filter counts
+  const allergiesGuestsCount = guests.filter((g) => parseGuestResponses(g.notes).allergies !== "—").length
+  const messagesGuestsCount = guests.filter((g) => parseGuestResponses(g.notes).message !== "—").length
+
+  // Filtered guests for list view & Excel spreadsheet
+  const filteredGuests = guests.filter((g) => {
+    const term = searchTerm.toLowerCase().trim()
+    const matchesSearch =
+      !term ||
+      g.name.toLowerCase().includes(term) ||
+      (g.phone ? g.phone.includes(term) : false) ||
+      (g.notes ? g.notes.toLowerCase().includes(term) : false) ||
+      (g.table_assigned ? g.table_assigned.toLowerCase().includes(term) : false)
+
+    const matchesStatus =
+      statusFilter === "all"
+        ? true
+        : statusFilter === "allergies"
+        ? parseGuestResponses(g.notes).allergies !== "—"
+        : statusFilter === "messages"
+        ? parseGuestResponses(g.notes).message !== "—"
+        : g.rsvp_status === statusFilter
 
     return matchesSearch && matchesStatus
   })
+
+  // Export to Real Excel CSV with UTF-8 BOM (Solo respuestas del formulario)
+  const handleExportExcelCSV = () => {
+    const headers = [
+      "#",
+      "Invitado / Familia",
+      "¿Asistirá al Evento?",
+      "Personas que Asistirán",
+      "Alergias o Restricciones Alimenticias",
+      "Mensaje para los Festejados",
+      "Fecha y Hora de Respuesta",
+    ]
+
+    const rows = filteredGuests.map((g, idx) => {
+      const { allergies, message } = parseGuestResponses(g.notes)
+      const statusLabel =
+        g.rsvp_status === "confirmed"
+          ? "Sí, asistirá"
+          : g.rsvp_status === "declined"
+          ? "No podrá asistir"
+          : "Pendiente de responder"
+      const attendeesCount =
+        g.rsvp_status === "confirmed"
+          ? (g.passes_confirmed > 0 ? g.passes_confirmed : g.passes_assigned)
+          : g.rsvp_status === "declined"
+          ? 0
+          : "—"
+      const confirmedDate = g.confirmed_at
+        ? new Date(g.confirmed_at).toLocaleString("es-MX")
+        : "Sin respuesta aún"
+
+      return [
+        idx + 1,
+        `"${(g.name || "").replace(/"/g, '""')}"`,
+        `"${statusLabel}"`,
+        attendeesCount,
+        `"${allergies.replace(/"/g, '""')}"`,
+        `"${message.replace(/"/g, '""')}"`,
+        `"${confirmedDate}"`,
+      ].join(",")
+    })
+
+    const csvContent = "\uFEFF" + [headers.join(","), ...rows].join("\n")
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement("a")
+    link.setAttribute("href", url)
+    link.setAttribute("download", `Respuestas_Formulario_${event.slug}_${new Date().toISOString().slice(0, 10)}.csv`)
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+  }
+
+  // Copy TSV to Clipboard for direct Ctrl+V in Excel / Google Sheets
+  const handleCopyTableToClipboard = () => {
+    const headers = [
+      "#",
+      "Invitado / Familia",
+      "¿Asistirá al Evento?",
+      "Personas que Asistirán",
+      "Alergias o Restricciones Alimenticias",
+      "Mensaje para los Festejados",
+      "Fecha y Hora de Respuesta",
+    ]
+
+    const rows = filteredGuests.map((g, idx) => {
+      const { allergies, message } = parseGuestResponses(g.notes)
+      const statusLabel =
+        g.rsvp_status === "confirmed"
+          ? "Sí, asistirá"
+          : g.rsvp_status === "declined"
+          ? "No podrá asistir"
+          : "Pendiente"
+      const attendeesCount =
+        g.rsvp_status === "confirmed"
+          ? (g.passes_confirmed > 0 ? g.passes_confirmed : g.passes_assigned)
+          : g.rsvp_status === "declined"
+          ? 0
+          : "—"
+      const confirmedDate = g.confirmed_at
+        ? new Date(g.confirmed_at).toLocaleString("es-MX")
+        : "Sin respuesta aún"
+
+      return [
+        idx + 1,
+        g.name,
+        statusLabel,
+        attendeesCount,
+        allergies,
+        message,
+        confirmedDate,
+      ].join("\t")
+    })
+
+    const tsvContent = [headers.join("\t"), ...rows].join("\n")
+    navigator.clipboard.writeText(tsvContent)
+    setCopiedTable(true)
+    setTimeout(() => setCopiedTable(false), 2500)
+  }
 
   // Copy personalized link to clipboard
   const handleCopyLink = (guestToken: string) => {
@@ -783,25 +930,15 @@ export function PanelClientView({
             </p>
           </div>
 
-          {/* Action Buttons: PDF & + Nuevo Invitado (Mobile First 2-col grid) */}
-          <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
-            {/* Export PDF Document */}
-            <button
-              onClick={handleExportPDF}
-              className="w-full sm:w-auto px-3.5 sm:px-5 py-2.5 rounded-full border border-border bg-card hover:bg-secondary text-xs font-serif font-bold text-foreground flex items-center justify-center gap-1.5 transition-all cursor-pointer shadow-xs hover:shadow"
-              title="Descargar Reporte en PDF"
-            >
-              <FileText className="w-4 h-4 text-primary shrink-0" strokeWidth={1.5} />
-              <span>Descargar PDF</span>
-            </button>
-
+          {/* Action Button: + Nuevo Invitado */}
+          <div className="flex items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
             {/* Add Guest Button */}
             <button
               onClick={() => setIsAddModalOpen(true)}
-              className="w-full sm:w-auto px-3.5 sm:px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-primary-foreground text-xs font-serif font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 cursor-pointer"
+              className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-primary-foreground text-xs font-serif font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 cursor-pointer"
             >
               <UserPlus className="w-4 h-4 shrink-0" strokeWidth={1.5} />
-              <span>+ Nuevo</span>
+              <span>+ Nuevo Invitado</span>
             </button>
           </div>
         </div>
@@ -939,233 +1076,506 @@ export function PanelClientView({
             {/* List & Table Wrapper */}
             <div className="bg-card rounded-3xl border border-border shadow-[0_8px_30px_rgba(0,0,0,0.03)] overflow-hidden">
               
-              {/* Search & Filters */}
-              <div className="p-4 sm:p-6 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              {/* View Switcher & Toolbar Header */}
+              <div className="p-3.5 sm:p-6 border-b border-border bg-muted/20 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+                
+                {/* View Mode Toggle */}
+                <div className="w-full sm:w-auto">
+                  <div className="grid grid-cols-2 sm:inline-flex p-1 bg-secondary/80 rounded-2xl border border-border w-full sm:w-auto">
+                    <button
+                      onClick={() => setViewMode("cards")}
+                      className={`px-3 py-2 sm:px-3.5 sm:py-1.5 rounded-xl text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                        viewMode === "cards"
+                          ? "bg-card text-foreground shadow-xs border border-border"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      title="Vista estándar de tarjetas y gestión"
+                    >
+                      <LayoutGrid className="w-3.5 h-3.5 shrink-0" />
+                      <span>Vista Tarjetas</span>
+                    </button>
+
+                    <button
+                      onClick={() => setViewMode("excel")}
+                      className={`px-3 py-2 sm:px-3.5 sm:py-1.5 rounded-xl text-xs font-serif font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                        viewMode === "excel"
+                          ? "bg-emerald-600 text-white shadow-xs font-bold"
+                          : "text-muted-foreground hover:text-foreground"
+                      }`}
+                      title="Vista con preguntas y respuestas del formulario"
+                    >
+                      <FileSpreadsheet className="w-3.5 h-3.5 shrink-0" />
+                      <span>📊 Respuestas Formulario</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Search & Filters Bar */}
+              <div className="p-3.5 sm:p-6 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
                 <div className="relative w-full sm:max-w-xs">
                   <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-muted-foreground" strokeWidth={1.5} />
                   <input
                     type="text"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    placeholder="Buscar por nombre..."
+                    placeholder="Buscar por nombre, nota o alergia..."
                     className="w-full pl-9 pr-4 py-2.5 text-xs rounded-full border border-border bg-background focus:outline-none focus:ring-2 focus:ring-primary/40 font-serif"
                   />
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5 sm:gap-2 w-full sm:w-auto">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 w-full lg:w-auto">
                   {[
                     { id: "all", label: "Todos", count: guests.length },
                     { id: "confirmed", label: "Confirmados", count: confirmedGuestsCount },
                     { id: "pending", label: "Pendientes", count: pendingGuestsCount },
                     { id: "declined", label: "Cancelados", count: declinedGuestsCount },
-                  ].map((tab) => (
-                    <button
-                      key={tab.id}
-                      onClick={() => setStatusFilter(tab.id as any)}
-                      className={`w-full px-3 py-2 sm:px-3.5 sm:py-1.5 rounded-xl sm:rounded-full text-xs font-serif font-semibold transition-all cursor-pointer flex items-center justify-between sm:justify-center gap-1.5 ${
-                        statusFilter === tab.id
-                          ? "bg-primary text-primary-foreground shadow-xs font-bold"
-                          : "bg-secondary/70 text-muted-foreground hover:text-foreground hover:bg-secondary"
-                      }`}
-                    >
-                      <span className="truncate">{tab.label}</span>
-                      <span className={`text-[10px] px-1.5 py-0.5 rounded-full font-sans font-bold shrink-0 ${statusFilter === tab.id ? "bg-white/20 text-white" : "bg-muted text-muted-foreground"}`}>
-                        {tab.count}
-                      </span>
-                    </button>
-                  ))}
+                    { id: "allergies", label: "⚠️ Con Alergias", count: allergiesGuestsCount, highlight: "amber" },
+                    { id: "messages", label: "💌 Con Mensajes", count: messagesGuestsCount, highlight: "primary" },
+                  ].map((tab) => {
+                    const isActive = statusFilter === tab.id
+                    return (
+                      <button
+                        key={tab.id}
+                        onClick={() => setStatusFilter(tab.id as any)}
+                        className={`px-3 py-2 sm:px-3.5 sm:py-1.5 rounded-xl sm:rounded-full text-xs font-serif font-semibold transition-all cursor-pointer flex items-center justify-between sm:justify-center gap-1.5 ${
+                          isActive
+                            ? tab.highlight === "amber"
+                              ? "bg-amber-600 text-white shadow-xs font-bold"
+                              : "bg-primary text-primary-foreground shadow-xs font-bold"
+                            : tab.highlight === "amber" && tab.count > 0
+                            ? "bg-amber-500/10 text-amber-800 dark:text-amber-300 hover:bg-amber-500/20 border border-amber-500/20"
+                            : "bg-secondary/70 text-muted-foreground hover:text-foreground hover:bg-secondary border border-transparent"
+                        }`}
+                      >
+                        <span className="truncate">{tab.label}</span>
+                        <span
+                          className={`text-[10px] px-1.5 py-0.5 rounded-full font-sans font-bold shrink-0 ${
+                            isActive
+                              ? "bg-white/20 text-white"
+                              : tab.highlight === "amber" && tab.count > 0
+                              ? "bg-amber-500/20 text-amber-800 dark:text-amber-200"
+                              : "bg-muted text-muted-foreground"
+                          }`}
+                        >
+                          {tab.count}
+                        </span>
+                      </button>
+                    )
+                  })}
                 </div>
               </div>
 
-              {/* MOBILE GUEST LIST VIEW (< md screens) — Luxury App-Like Contact Cards */}
-              <div className="block md:hidden divide-y divide-border/60">
-                {filteredGuests.length === 0 ? (
-                  <div className="py-12 text-center text-muted-foreground font-serif text-xs px-4">
-                    No se encontraron invitados con los filtros seleccionados.
+              {/* ========================================================= */}
+              {/* VISTA 1: HOJA DE RESPUESTAS (MOBILE-FIRST) */}
+              {/* ========================================================= */}
+              {viewMode === "excel" ? (
+                <div className="animate-in fade-in duration-200">
+                  {/* Mini Stats Ribbon (Interactive Clickable Filters) */}
+                  <div className="grid grid-cols-2 sm:grid-cols-4 border-b border-border divide-x divide-y sm:divide-y-0 divide-border bg-muted/10 text-xs font-serif">
+                    <button
+                      onClick={() => setStatusFilter("all")}
+                      className={`p-3 sm:px-4 text-center sm:text-left transition-colors cursor-pointer hover:bg-muted/30 ${
+                        statusFilter === "all" ? "bg-muted/40 font-bold" : ""
+                      }`}
+                      title="Ver todos los invitados"
+                    >
+                      <span className="text-[10px] uppercase text-muted-foreground font-bold block">Filas Mostradas</span>
+                      <span className="font-bold text-sm text-foreground">{filteredGuests.length} de {guests.length}</span>
+                    </button>
+
+                    <button
+                      onClick={() => setStatusFilter(statusFilter === "confirmed" ? "all" : "confirmed")}
+                      className={`p-3 sm:px-4 text-center sm:text-left transition-colors cursor-pointer hover:bg-emerald-500/10 ${
+                        statusFilter === "confirmed" ? "bg-emerald-500/15 font-bold" : ""
+                      }`}
+                      title="Filtrar por confirmados"
+                    >
+                      <span className="text-[10px] uppercase text-emerald-700 font-bold block">Pases Confirmados</span>
+                      <span className="font-bold text-sm text-emerald-600">{confirmedPasses} personas</span>
+                    </button>
+
+                    <button
+                      onClick={() => setStatusFilter(statusFilter === "allergies" ? "all" : "allergies")}
+                      className={`p-3 sm:px-4 text-center sm:text-left transition-colors cursor-pointer hover:bg-amber-500/10 ${
+                        statusFilter === "allergies" ? "bg-amber-500/15 font-bold ring-1 ring-amber-500/30" : ""
+                      }`}
+                      title="Click para filtrar solo los que tienen alergias o dietas especiales"
+                    >
+                      <span className="text-[10px] uppercase text-amber-700 font-bold block flex items-center justify-center sm:justify-start gap-1">
+                        <span>⚠️ Con Alergias</span>
+                        {statusFilter === "allergies" && <span className="text-[9px] font-sans font-bold bg-amber-600 text-white px-1 rounded">Activo</span>}
+                      </span>
+                      <span className="font-bold text-sm text-amber-600">
+                        {allergiesGuestsCount} {allergiesGuestsCount === 1 ? "invitado" : "invitados"}
+                      </span>
+                    </button>
+
+                    <button
+                      onClick={() => setStatusFilter(statusFilter === "messages" ? "all" : "messages")}
+                      className={`p-3 sm:px-4 text-center sm:text-left transition-colors cursor-pointer hover:bg-primary/10 ${
+                        statusFilter === "messages" ? "bg-primary/15 font-bold ring-1 ring-primary/30" : ""
+                      }`}
+                      title="Click para filtrar solo los que dejaron mensaje o dedicatoria"
+                    >
+                      <span className="text-[10px] uppercase text-primary font-bold block flex items-center justify-center sm:justify-start gap-1">
+                        <span>💌 Con Mensajes</span>
+                        {statusFilter === "messages" && <span className="text-[9px] font-sans font-bold bg-primary text-primary-foreground px-1 rounded">Activo</span>}
+                      </span>
+                      <span className="font-bold text-sm text-primary">
+                        {messagesGuestsCount} {messagesGuestsCount === 1 ? "nota" : "notas"}
+                      </span>
+                    </button>
                   </div>
-                ) : (
-                  filteredGuests.map((guest) => {
-                    const isConfirmed = guest.rsvp_status === "confirmed"
-                    const isDeclined = guest.rsvp_status === "declined"
-                    const isPending = guest.rsvp_status === "pending"
 
-                    return (
-                      <div
-                        key={guest.id}
-                        className="p-4 bg-card hover:bg-secondary/15 transition-colors space-y-3"
+                  {/* Mobile Format Switcher (Tarjetas vs Tabla Excel) */}
+                  <div className="flex md:hidden items-center justify-between p-3 bg-secondary/30 border-b border-border text-xs font-serif">
+                    <span className="text-muted-foreground font-semibold text-[11px] flex items-center gap-1">
+                      <span>Formato en celular:</span>
+                    </span>
+                    <div className="inline-flex p-0.5 bg-background rounded-xl border border-border shadow-2xs">
+                      <button
+                        onClick={() => setMobileResponsesLayout("cards")}
+                        className={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                          mobileResponsesLayout === "cards"
+                            ? "bg-primary text-primary-foreground shadow-2xs font-bold"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                        title="Ver formato en tarjetas verticales para móvil"
                       >
-                        {/* Header: Avatar + Guest Name + RSVP Badge */}
-                        <div className="flex items-start justify-between gap-2.5">
-                          <div className="flex items-start gap-3 min-w-0 flex-1">
-                            <div className="w-10 h-10 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-serif font-bold text-sm shrink-0 border border-primary/20 shadow-2xs mt-0.5">
-                              {guest.name.charAt(0).toUpperCase()}
-                            </div>
+                        <LayoutGrid className="w-3 h-3" />
+                        <span>📱 Tarjetas</span>
+                      </button>
+                      <button
+                        onClick={() => setMobileResponsesLayout("excel")}
+                        className={`px-3 py-1.5 rounded-lg text-[11px] font-bold transition-all cursor-pointer flex items-center gap-1.5 ${
+                          mobileResponsesLayout === "excel"
+                            ? "bg-emerald-600 text-white shadow-2xs font-bold"
+                            : "text-muted-foreground hover:text-foreground"
+                        }`}
+                        title="Ver cuadrícula tipo Excel con columna de invitado fija"
+                      >
+                        <Table className="w-3 h-3" />
+                        <span>📊 Tabla Excel</span>
+                      </button>
+                    </div>
+                  </div>
 
-                            <div className="min-w-0 flex-1">
-                              <div className="flex items-start justify-between gap-2">
-                                <h4 className="font-serif font-bold text-sm text-foreground leading-snug break-words flex-1">
-                                  {guest.name}
-                                </h4>
-                                <button
-                                  type="button"
-                                  onClick={() => handleOpenEditGuest(guest)}
-                                  className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-serif font-bold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
-                                  title="Editar nombre y pases del invitado"
-                                >
-                                  <Edit2 className="w-3 h-3" />
-                                  <span>Editar</span>
-                                </button>
+                  {/* 1. MOBILE VIEW A: Questionnaire Response Cards (When mobileResponsesLayout === "cards") */}
+                  {mobileResponsesLayout === "cards" && (
+                    <div className="block md:hidden divide-y divide-border/60">
+                      {filteredGuests.length === 0 ? (
+                        <div className="py-12 text-center text-muted-foreground font-serif text-xs px-4">
+                          No se encontraron respuestas con los filtros seleccionados.
+                        </div>
+                      ) : (
+                        filteredGuests.map((guest, idx) => {
+                          const isConfirmed = guest.rsvp_status === "confirmed"
+                          const isDeclined = guest.rsvp_status === "declined"
+                          const { allergies, message } = parseGuestResponses(guest.notes)
+                          const attendeesCount =
+                            isConfirmed
+                              ? (guest.passes_confirmed > 0 ? guest.passes_confirmed : guest.passes_assigned)
+                              : isDeclined
+                              ? 0
+                              : null
+
+                          return (
+                            <div
+                              key={guest.id}
+                              className="p-4 bg-card hover:bg-secondary/15 transition-colors space-y-3"
+                            >
+                              {/* Card Top: Number + Guest Name + Attendance Badge */}
+                              <div className="flex items-start justify-between gap-2.5">
+                                <div className="flex items-start gap-2.5 min-w-0 flex-1">
+                                  <span className="w-6 h-6 rounded-full bg-muted font-mono font-bold text-[10px] text-muted-foreground flex items-center justify-center shrink-0 mt-0.5">
+                                    #{idx + 1}
+                                  </span>
+                                  <div className="min-w-0 flex-1">
+                                    <h4 className="font-serif font-bold text-sm text-foreground leading-snug break-words">
+                                      {guest.name}
+                                    </h4>
+                                  </div>
+                                </div>
+
+                                {/* Attendance Status */}
+                                <div className="shrink-0">
+                                  {isConfirmed ? (
+                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 shadow-2xs">
+                                      <CheckCheck className="w-3 h-3 text-emerald-600" />
+                                      Sí Asistirá
+                                    </span>
+                                  ) : isDeclined ? (
+                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-destructive/10 text-destructive border border-destructive/20 shadow-2xs">
+                                      <UserMinus className="w-3 h-3 text-destructive" />
+                                      No Podrá
+                                    </span>
+                                  ) : (
+                                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-amber-500/10 text-amber-700 border border-amber-500/20 shadow-2xs">
+                                      <Hourglass className="w-3 h-3 text-amber-600" />
+                                      Sin Responder
+                                    </span>
+                                  )}
+                                </div>
                               </div>
-                              {guest.phone && (
-                                <p className="text-[11px] text-muted-foreground font-mono mt-0.5">
-                                  {guest.phone}
-                                </p>
-                              )}
+
+                              {/* Question 2: Asistentes Confirmados */}
+                              <div className="flex items-center justify-between text-xs bg-secondary/30 rounded-xl px-3 py-2 border border-border/40 font-serif">
+                                <span className="text-muted-foreground text-[11px]">
+                                  ¿Cuántas personas asistirán?:
+                                </span>
+                                <span className="font-bold text-foreground">
+                                  {isConfirmed
+                                    ? `${attendeesCount} ${attendeesCount === 1 ? 'persona' : 'personas'}`
+                                    : isDeclined
+                                    ? '0 personas'
+                                    : 'Pendiente'}
+                                </span>
+                              </div>
+
+                              {/* Question 3: Alergias o Restricciones */}
+                              {allergies !== "—" ? (
+                                <div className="bg-amber-500/10 border border-amber-500/25 p-2.5 rounded-xl text-amber-900 dark:text-amber-200 text-xs">
+                                  <span className="font-bold text-[10px] uppercase text-amber-700 block tracking-wider mb-0.5">
+                                    ⚠️ Alergia / Dieta declarada:
+                                  </span>
+                                  <p className="font-medium leading-snug">{allergies}</p>
+                                </div>
+                              ) : isConfirmed ? (
+                                <div className="text-[11px] text-muted-foreground font-serif px-1 flex items-center gap-1.5">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500/50" />
+                                  <span>Sin restricciones alimenticias indicadas</span>
+                                </div>
+                              ) : null}
+
+                              {/* Question 4: Mensaje para los Festejados */}
+                              {message !== "—" ? (
+                                <div className="bg-primary/5 border border-primary/20 p-2.5 rounded-xl text-foreground font-serif italic text-xs leading-relaxed">
+                                  <span className="font-sans font-bold text-[10px] uppercase text-primary not-italic block tracking-wider mb-0.5">
+                                    💌 Mensaje a los Festejados:
+                                  </span>
+                                  &ldquo;{message}&rdquo;
+                                </div>
+                              ) : null}
+
+                              {/* Card Footer: Timestamp */}
+                              <div className="flex items-center gap-1.5 pt-1.5 border-t border-border/40 text-[10px] text-muted-foreground font-mono">
+                                <Clock className="w-3 h-3 text-primary shrink-0" />
+                                <span>
+                                  {guest.confirmed_at
+                                    ? new Date(guest.confirmed_at).toLocaleString("es-MX", {
+                                        day: "2-digit",
+                                        month: "short",
+                                        hour: "2-digit",
+                                        minute: "2-digit",
+                                        hour12: true,
+                                      })
+                                    : "Sin responder aún"}
+                                </span>
+                              </div>
                             </div>
-                          </div>
+                          )
+                        })
+                      )}
+                    </div>
+                  )}
 
-                          {/* Status Badge with Live Timestamp */}
-                          <div className="shrink-0 flex flex-col items-end">
-                            {isConfirmed && (
-                              <>
-                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20 shadow-2xs">
-                                  <CheckCheck className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.5} />
-                                  Confirmado
-                                </span>
-                                {guest.confirmed_at && (
-                                  <span className="text-[9px] text-muted-foreground font-mono mt-1 text-right">
-                                    {new Date(guest.confirmed_at).toLocaleString("es-MX", {
-                                      day: "2-digit",
-                                      month: "2-digit",
-                                      hour: "2-digit",
-                                      minute: "2-digit",
-                                      second: "2-digit",
-                                      hour12: true,
-                                    })}
-                                  </span>
-                                )}
-                              </>
-                            )}
-                            {isPending && (
-                              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-amber-500/10 text-amber-700 border border-amber-500/25 shadow-2xs">
-                                <Hourglass className="w-3 h-3 text-amber-600 shrink-0" strokeWidth={1.5} />
-                                Pendiente
-                              </span>
-                            )}
-                            {isDeclined && (
-                              <>
-                                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-destructive/10 text-destructive border border-destructive/20 shadow-2xs">
-                                  <UserMinus className="w-3.5 h-3.5 text-destructive" strokeWidth={1.5} />
-                                  No asistirá
-                                </span>
-                                {guest.confirmed_at && (
-                                  <span className="text-[9px] text-muted-foreground font-mono mt-1 text-right">
-                                    {new Date(guest.confirmed_at).toLocaleString("es-MX", {
-                                      day: "2-digit",
-                                      month: "2-digit",
-                                      hour: "2-digit",
-                                      minute: "2-digit",
-                                      second: "2-digit",
-                                      hour12: true,
-                                    })}
-                                  </span>
-                                )}
-                              </>
-                            )}
-                          </div>
-                        </div>
+                  {/* 2. SPREADSHEET MATRIX VIEW (Visible on Desktop OR when Mobile user selects 'Tabla Excel') */}
+                  <div className={`${mobileResponsesLayout === "excel" ? "block" : "hidden md:block"} overflow-x-auto select-none touch-pan-x`}>
+                    {/* Mobile Hint Banner */}
+                    <div className="md:hidden bg-emerald-500/10 border-b border-emerald-500/20 px-3.5 py-2 text-[11px] font-serif text-emerald-900 dark:text-emerald-200 flex items-center justify-between">
+                      <span className="flex items-center gap-1.5 font-bold">
+                        <Table className="w-3.5 h-3.5 text-emerald-600" />
+                        <span>Columna de invitado fija</span>
+                      </span>
+                      <span className="text-[10px] font-mono text-emerald-700 dark:text-emerald-300 bg-emerald-500/20 px-2 py-0.5 rounded-full font-bold">
+                        Desliza ➔
+                      </span>
+                    </div>
 
-                        {/* Mid Row: Passes Info / Editor */}
-                        <div className="flex items-center justify-between text-xs bg-secondary/30 px-3 py-2 rounded-xl border border-border/40">
-                          <span className="text-muted-foreground font-serif">Pases asignados:</span>
-                          {isPending ? (
-                            <div className="flex items-center gap-1.5">
-                              <select
-                                value={guest.passes_assigned}
-                                onChange={(e) => handleUpdateGuestPasses(guest.id, parseInt(e.target.value))}
-                                className="bg-background font-serif font-bold text-xs text-foreground px-2 py-1 rounded-lg border border-border focus:outline-none cursor-pointer"
-                                title="Cambiar pases asignados"
+                    <table className="w-full text-left text-xs border-collapse min-w-[780px] sm:min-w-[950px]">
+                      {/* Excel Column Letters Header */}
+                      <thead className="bg-muted/70 text-muted-foreground font-mono text-[9px] uppercase tracking-wider border-b border-border/80 sticky top-0 z-30">
+                        <tr>
+                          <th className="py-1 px-2 border-r border-border/60 text-center w-10 font-semibold sticky left-0 bg-muted z-30">A</th>
+                          <th className="py-1 px-3 border-r border-border/60 font-semibold sticky left-10 bg-muted z-30 min-w-[130px] max-w-[170px]">B</th>
+                          <th className="py-1 px-3 border-r border-border/60 text-center font-semibold">C</th>
+                          <th className="py-1 px-3 border-r border-border/60 text-center font-semibold">D</th>
+                          <th className="py-1 px-4 border-r border-border/60 font-semibold">E</th>
+                          <th className="py-1 px-4 border-r border-border/60 font-semibold">F</th>
+                          <th className="py-1 px-3 font-semibold">G</th>
+                        </tr>
+                      </thead>
+
+                      {/* Question Column Headers */}
+                      <thead className="bg-muted/50 text-foreground font-serif text-[10px] uppercase tracking-wider border-b-2 border-primary/20 sticky top-5 z-20 shadow-xs">
+                        <tr>
+                          <th className="py-3 px-2 border-r border-border text-center font-bold w-10 text-muted-foreground sticky left-0 bg-muted/95 z-20">#</th>
+                          <th className="py-3 px-3 border-r-2 border-primary/30 font-bold min-w-[130px] max-w-[170px] sticky left-10 bg-muted/95 z-20 shadow-[3px_0_6px_-2px_rgba(0,0,0,0.06)]">
+                            Invitado / Familia
+                          </th>
+                          <th className="py-3 px-3 border-r border-border text-center font-bold min-w-[120px]">Pregunta 1: ¿Asistirá?</th>
+                          <th className="py-3 px-3 border-r border-border text-center font-bold min-w-[120px]">Pregunta 2: ¿Cuántos?</th>
+                          <th className="py-3 px-4 border-r border-border font-bold min-w-[220px] bg-amber-500/5 text-amber-900 dark:text-amber-300">
+                            Pregunta 3: ¿Alergias?
+                          </th>
+                          <th className="py-3 px-4 border-r border-border font-bold min-w-[240px] bg-primary/5 text-primary">
+                            Pregunta 4: Mensaje
+                          </th>
+                          <th className="py-3 px-3 font-bold min-w-[140px]">Fecha de Respuesta</th>
+                        </tr>
+                      </thead>
+
+                      {/* Spreadsheet Rows */}
+                      <tbody className="divide-y divide-border/80 font-sans">
+                        {filteredGuests.length === 0 ? (
+                          <tr>
+                            <td colSpan={7} className="py-16 text-center text-muted-foreground font-serif">
+                              No se encontraron registros con los filtros seleccionados.
+                            </td>
+                          </tr>
+                        ) : (
+                          filteredGuests.map((guest, idx) => {
+                            const isConfirmed = guest.rsvp_status === "confirmed"
+                            const isDeclined = guest.rsvp_status === "declined"
+                            const { allergies, message } = parseGuestResponses(guest.notes)
+                            const attendeesCount =
+                              isConfirmed
+                                ? (guest.passes_confirmed > 0 ? guest.passes_confirmed : guest.passes_assigned)
+                                : isDeclined
+                                ? 0
+                                : null
+
+                            return (
+                              <tr
+                                key={guest.id}
+                                className={`transition-colors hover:bg-primary/5 ${
+                                  idx % 2 === 0 ? "bg-card" : "bg-muted/15"
+                                }`}
                               >
-                                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20].map((num) => (
-                                  <option key={num} value={num}>
-                                    {num} {num === 1 ? "pase" : "pases"}
-                                  </option>
-                                ))}
-                              </select>
-                            </div>
-                          ) : (
-                            <span className="font-serif font-bold text-foreground">
-                              {(() => {
-                                const kids = guest.children_count ?? 0
-                                const adults = guest.passes_assigned - kids
-                                if (guest.passes_confirmed > 0) {
-                                  return `${guest.passes_confirmed} confirmados de ${guest.passes_assigned}`
-                                }
-                                if (kids > 0) {
-                                  return `${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''}`
-                                }
-                                return `${guest.passes_assigned} pases`
-                              })()}
-                            </span>
-                          )}
-                        </div>
+                                {/* A: Row Number (Sticky Left) */}
+                                <td className="py-2.5 px-2 border-r border-border text-center font-mono font-bold text-[10px] text-muted-foreground sticky left-0 bg-card z-10 select-none">
+                                  {idx + 1}
+                                </td>
 
-                        {/* Form Responses (if guest submitted details) */}
-                        {guest.notes && (
-                          <button
-                            onClick={() => setDetailGuest(guest)}
-                            className="w-full text-left bg-primary/5 hover:bg-primary/10 transition-all rounded-xl p-2.5 border border-primary/20 flex items-center justify-between gap-2 cursor-pointer shadow-2xs group"
-                          >
-                            <div className="flex items-center gap-2 min-w-0">
-                              <MessageSquareQuote className="w-4 h-4 text-primary shrink-0 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
-                              <span className="font-serif font-bold text-xs text-primary truncate">
-                                Ver Respuestas del Cuestionario
-                              </span>
-                            </div>
-                            <span className="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded-full font-serif font-bold uppercase tracking-wider shrink-0">
-                              Ver Detalle →
-                            </span>
-                          </button>
+                                {/* B: Guest / Family Name (Sticky Left with shadow) */}
+                                <td className="py-2.5 px-3 border-r-2 border-primary/30 font-serif font-bold text-xs text-foreground sticky left-10 bg-card z-10 shadow-[3px_0_6px_-2px_rgba(0,0,0,0.06)] min-w-[130px] max-w-[170px]">
+                                  <div className="flex items-center justify-between gap-1.5">
+                                    <span className="leading-snug truncate">{guest.name}</span>
+                                    <button
+                                      onClick={() => handleOpenEditGuest(guest)}
+                                      className="text-[10px] text-primary/70 hover:text-primary shrink-0 cursor-pointer p-0.5"
+                                      title="Editar invitado"
+                                    >
+                                      <Edit2 className="w-2.5 h-2.5" />
+                                    </button>
+                                  </div>
+                                </td>
+
+                                {/* C: Question 1 - Attendance */}
+                                <td className="py-2.5 px-3 border-r border-border text-center whitespace-nowrap">
+                                  {isConfirmed ? (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-serif font-bold bg-emerald-500/10 text-emerald-700 border border-emerald-500/20">
+                                      <CheckCheck className="w-3 h-3 text-emerald-600" />
+                                      Sí Asiste
+                                    </span>
+                                  ) : isDeclined ? (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-serif font-bold bg-destructive/10 text-destructive border border-destructive/20">
+                                      <UserMinus className="w-3 h-3 text-destructive" />
+                                      No Podrá
+                                    </span>
+                                  ) : (
+                                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-serif font-bold bg-amber-500/10 text-amber-700 border border-amber-500/20">
+                                      <Hourglass className="w-3 h-3 text-amber-600" />
+                                      Sin responder
+                                    </span>
+                                  )}
+                                </td>
+
+                                {/* D: Question 2 - Confirmed People Count */}
+                                <td className="py-2.5 px-3 border-r border-border text-center font-mono font-bold text-xs whitespace-nowrap">
+                                  {isConfirmed ? (
+                                    <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                                      {attendeesCount} {attendeesCount === 1 ? "persona" : "personas"}
+                                    </span>
+                                  ) : isDeclined ? (
+                                    <span className="text-destructive font-mono text-[11px]">0 personas</span>
+                                  ) : (
+                                    <span className="text-muted-foreground italic font-serif text-[11px]">Pendiente</span>
+                                  )}
+                                </td>
+
+                                {/* E: Question 3 - Allergies / Dietary */}
+                                <td className="py-2.5 px-4 border-r border-border text-xs min-w-[200px] max-w-[260px]">
+                                  {allergies !== "—" ? (
+                                    <div className="bg-amber-500/10 border border-amber-500/25 p-2 rounded-xl text-amber-900 dark:text-amber-200 font-medium leading-tight text-[11px]">
+                                      <span className="font-bold text-[9px] uppercase text-amber-700 block tracking-wider mb-0.5">
+                                        ⚠️ Alergia declarada:
+                                      </span>
+                                      {allergies}
+                                    </div>
+                                  ) : isConfirmed ? (
+                                    <span className="text-muted-foreground font-serif text-[11px] italic">Ninguna / No indicó</span>
+                                  ) : (
+                                    <span className="text-muted-foreground font-serif text-[11px]">—</span>
+                                  )}
+                                </td>
+
+                                {/* F: Question 4 - Message / Dedication */}
+                                <td className="py-2.5 px-4 border-r border-border text-xs min-w-[220px] max-w-[280px]">
+                                  {message !== "—" ? (
+                                    <div className="bg-primary/5 border border-primary/20 p-2 rounded-xl text-foreground font-serif italic text-xs leading-relaxed">
+                                      &ldquo;{message}&rdquo;
+                                    </div>
+                                  ) : isConfirmed ? (
+                                    <span className="text-muted-foreground font-serif text-[11px] italic">Sin mensaje</span>
+                                  ) : (
+                                    <span className="text-muted-foreground font-serif text-[11px]">—</span>
+                                  )}
+                                </td>
+
+                                {/* G: Response Date & Time */}
+                                <td className="py-2.5 px-3 font-mono text-[10px] text-muted-foreground whitespace-nowrap">
+                                  {guest.confirmed_at ? (
+                                    <div className="flex flex-col">
+                                      <span className="font-bold text-foreground">
+                                        {new Date(guest.confirmed_at).toLocaleDateString("es-MX", {
+                                          day: "2-digit",
+                                          month: "short",
+                                          year: "numeric",
+                                        })}
+                                      </span>
+                                      <span className="text-[10px] text-muted-foreground">
+                                        {new Date(guest.confirmed_at).toLocaleTimeString("es-MX", {
+                                          hour: "2-digit",
+                                          minute: "2-digit",
+                                          hour12: true,
+                                        })}
+                                      </span>
+                                    </div>
+                                  ) : (
+                                    <span className="italic font-serif text-[11px] text-muted-foreground">Sin responder</span>
+                                  )}
+                                </td>
+                              </tr>
+                            )
+                          })
                         )}
-
-                        {/* Bottom Row: Copy Personalized Invitation Link */}
-                        <button
-                          onClick={() => handleCopyLink(guest.token)}
-                          className={`w-full py-2.5 rounded-full border text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs active:scale-[0.98] ${
-                            copiedToken === guest.token
-                              ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                              : "bg-background hover:bg-secondary text-foreground border-border"
-                          }`}
-                          title="Copiar enlace personalizado del invitado"
-                        >
-                          <Copy className="w-3.5 h-3.5" strokeWidth={1.5} />
-                          <span>{copiedToken === guest.token ? "¡Enlace Copiado al Portapapeles!" : "Copiar Enlace Personal"}</span>
-                        </button>
-                      </div>
-                    )
-                  })
-                )}
-              </div>
-
-              {/* DESKTOP / TABLET TABLE VIEW (hidden on mobile) */}
-              <div className="hidden md:block overflow-x-auto">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-muted/40 text-muted-foreground uppercase text-[10px] tracking-wider border-b border-border font-serif">
-                    <tr>
-                      <th className="py-3.5 px-6 font-bold">Invitado</th>
-                      <th className="py-3.5 px-4 font-bold">Pases Asignados</th>
-                      <th className="py-3.5 px-4 font-bold">Estatus RSVP</th>
-                      <th className="py-3.5 px-4 font-bold">Notas / Respuestas</th>
-                      <th className="py-3.5 px-6 font-bold text-right">Enlace Personal</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-border">
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              ) : (
+                /* ========================================================= */
+                /* VISTA 2: TARJETAS Y GESTIÓN TRADICIONAL */
+                /* ========================================================= */
+                <>
+                  {/* MOBILE GUEST LIST VIEW (< md screens) — Luxury App-Like Contact Cards */}
+                  <div className="block md:hidden divide-y divide-border/60">
                     {filteredGuests.length === 0 ? (
-                      <tr>
-                        <td colSpan={7} className="py-12 text-center text-muted-foreground font-serif">
-                          No se encontraron invitados con los filtros seleccionados.
-                        </td>
-                      </tr>
+                      <div className="py-12 text-center text-muted-foreground font-serif text-xs px-4">
+                        No se encontraron invitados con los filtros seleccionados.
+                      </div>
                     ) : (
                       filteredGuests.map((guest) => {
                         const isConfirmed = guest.rsvp_status === "confirmed"
@@ -1173,55 +1583,74 @@ export function PanelClientView({
                         const isPending = guest.rsvp_status === "pending"
 
                         return (
-                          <tr
+                          <div
                             key={guest.id}
-                            className="hover:bg-muted/20 transition-colors group"
+                            className="p-4 bg-card hover:bg-secondary/15 transition-colors space-y-3"
                           >
-                            <td className="py-4 px-6">
-                              <div className="flex items-center justify-between gap-3">
-                                <div className="min-w-0">
-                                  <p className="font-serif font-bold text-sm text-foreground leading-snug">{guest.name}</p>
+                            {/* Header: Avatar + Guest Name + RSVP Badge */}
+                            <div className="flex items-start justify-between gap-2.5">
+                              <div className="flex items-start gap-3 min-w-0 flex-1">
+                                <div className="w-10 h-10 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-serif font-bold text-sm shrink-0 border border-primary/20 shadow-2xs mt-0.5">
+                                  {guest.name.charAt(0).toUpperCase()}
+                                </div>
+
+                                <div className="min-w-0 flex-1">
+                                  <div className="flex items-start justify-between gap-2">
+                                    <h4 className="font-serif font-bold text-sm text-foreground leading-snug break-words flex-1">
+                                      {guest.name}
+                                    </h4>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleOpenEditGuest(guest)}
+                                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-serif font-bold bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all cursor-pointer shrink-0"
+                                      title="Editar invitado"
+                                    >
+                                      <Edit2 className="w-2.5 h-2.5" />
+                                      <span>Editar</span>
+                                    </button>
+                                  </div>
+
                                   {guest.phone && (
                                     <p className="text-[11px] text-muted-foreground font-mono mt-0.5">
                                       {guest.phone}
                                     </p>
                                   )}
                                 </div>
-                                <button
-                                  type="button"
-                                  onClick={() => handleOpenEditGuest(guest)}
-                                  className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-serif font-bold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
-                                  title="Editar nombre y pases del invitado"
-                                >
-                                  <Edit2 className="w-3 h-3" />
-                                  <span>Editar</span>
-                                </button>
                               </div>
-                            </td>
 
-                            <td className="py-4 px-4 whitespace-nowrap font-serif">
-                              {isConfirmed ? (
-                                <div className="flex flex-col">
-                                  <span className="font-bold text-emerald-600 flex items-center gap-1">
-                                    <CheckCheck className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.5} />
-                                    {guest.passes_confirmed} {guest.passes_confirmed === 1 ? "pase confirmado" : "pases confirmados"}
+                              {/* RSVP Status Badge */}
+                              <div className="shrink-0">
+                                {isConfirmed ? (
+                                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 shadow-2xs">
+                                    <CheckCheck className="w-3 h-3" strokeWidth={1.5} />
+                                    Confirmado
                                   </span>
-                                  <span className="text-[10px] text-muted-foreground">
-                                    {(() => {
-                                      const kids = guest.children_count ?? 0
-                                      const adults = guest.passes_assigned - kids
-                                      if (kids > 0) return `de ${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''} asignados`
-                                      return `(de ${guest.passes_assigned} asignados)`
-                                    })()}
+                                ) : isPending ? (
+                                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-amber-500/10 text-amber-600 border border-amber-500/20 shadow-2xs">
+                                    <Hourglass className="w-3 h-3" strokeWidth={1.5} />
+                                    Pendiente
                                   </span>
-                                </div>
-                              ) : isPending ? (
-                                <div className="flex items-center gap-2">
+                                ) : (
+                                  <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-serif font-bold bg-destructive/10 text-destructive border border-destructive/20 shadow-2xs">
+                                    <UserMinus className="w-3 h-3" strokeWidth={1.5} />
+                                    Cancelado
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+
+                            {/* Middle Row: Assigned vs Confirmed Passes + Table assignment */}
+                            <div className="flex items-center justify-between text-xs font-serif bg-secondary/30 rounded-2xl px-3.5 py-2 border border-border/50 gap-2">
+                              <span className="text-muted-foreground text-[11px]">
+                                Pases:
+                              </span>
+                              {isPending ? (
+                                <div className="flex items-center gap-1.5">
+                                  <span className="text-[10px] text-muted-foreground font-sans">Asignados:</span>
                                   <select
                                     value={guest.passes_assigned}
                                     onChange={(e) => handleUpdateGuestPasses(guest.id, parseInt(e.target.value))}
-                                    className="text-xs border border-border/80 rounded-xl bg-background px-2.5 py-1.5 font-serif font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer hover:border-primary/50 transition-colors shadow-2xs"
-                                    title="Cambiar pases asignados para este invitado pendiente"
+                                    className="text-xs font-bold border border-border rounded-lg bg-background px-2 py-0.5 focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer"
                                   >
                                     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20].map((num) => (
                                       <option key={num} value={num}>
@@ -1231,107 +1660,244 @@ export function PanelClientView({
                                   </select>
                                 </div>
                               ) : (
-                                <span className="text-muted-foreground text-xs">
+                                <span className="font-bold text-foreground">
                                   {(() => {
                                     const kids = guest.children_count ?? 0
                                     const adults = guest.passes_assigned - kids
-                                    if (kids > 0) return `${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''} (Cancelado)`
-                                    return `${guest.passes_assigned} pases (Cancelado)`
+                                    if (guest.passes_confirmed > 0) {
+                                      return `${guest.passes_confirmed} confirmados de ${guest.passes_assigned}`
+                                    }
+                                    if (kids > 0) {
+                                      return `${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''}`
+                                    }
+                                    return `${guest.passes_assigned} pases`
                                   })()}
                                 </span>
                               )}
-                            </td>
+                            </div>
 
-                            <td className="py-4 px-4 whitespace-nowrap">
-                              {isConfirmed && (
-                                <div className="flex flex-col">
-                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-serif font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 w-fit">
-                                    <CheckCheck className="w-3.5 h-3.5" strokeWidth={1.5} />
-                                    Confirmado
+                            {/* Form Responses (if guest submitted details) */}
+                            {guest.notes && (
+                              <button
+                                onClick={() => setDetailGuest(guest)}
+                                className="w-full text-left bg-primary/5 hover:bg-primary/10 transition-all rounded-xl p-2.5 border border-primary/20 flex items-center justify-between gap-2 cursor-pointer shadow-2xs group"
+                              >
+                                <div className="flex items-center gap-2 min-w-0">
+                                  <MessageSquareQuote className="w-4 h-4 text-primary shrink-0 group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+                                  <span className="font-serif font-bold text-xs text-primary truncate">
+                                    Ver Respuestas del Cuestionario
                                   </span>
-                                  {guest.confirmed_at && (
-                                    <span className="text-[10px] text-muted-foreground font-mono mt-1 flex items-center gap-1">
-                                      <Clock className="w-3 h-3 text-emerald-600 shrink-0" />
-                                      {new Date(guest.confirmed_at).toLocaleString("es-MX", {
-                                        day: "2-digit",
-                                        month: "2-digit",
-                                        year: "numeric",
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                        second: "2-digit",
-                                        hour12: true,
-                                      })}
-                                    </span>
-                                  )}
                                 </div>
-                              )}
-                              {isPending && (
-                                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-serif font-bold bg-amber-500/10 text-amber-600 border border-amber-500/20">
-                                  <Hourglass className="w-3.5 h-3.5" strokeWidth={1.5} />
-                                  Pendiente
+                                <span className="text-[10px] text-primary bg-primary/10 px-2 py-0.5 rounded-full font-serif font-bold uppercase tracking-wider shrink-0">
+                                  Ver Detalle →
                                 </span>
-                              )}
-                              {isDeclined && (
-                                <div className="flex flex-col">
-                                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-serif font-bold bg-destructive/10 text-destructive border border-destructive/20 w-fit">
-                                    <UserMinus className="w-3.5 h-3.5" strokeWidth={1.5} />
-                                    No asistirá
-                                  </span>
-                                  {guest.confirmed_at && (
-                                    <span className="text-[10px] text-muted-foreground font-mono mt-1 flex items-center gap-1">
-                                      <Clock className="w-3 h-3 text-destructive shrink-0" />
-                                      {new Date(guest.confirmed_at).toLocaleString("es-MX", {
-                                        day: "2-digit",
-                                        month: "2-digit",
-                                        year: "numeric",
-                                        hour: "2-digit",
-                                        minute: "2-digit",
-                                        second: "2-digit",
-                                        hour12: true,
-                                      })}
-                                    </span>
-                                  )}
-                                </div>
-                              )}
-                            </td>
+                              </button>
+                            )}
 
-
-
-                            <td className="py-4 px-4 whitespace-nowrap">
-                              {guest.notes ? (
-                                <button
-                                  onClick={() => setDetailGuest(guest)}
-                                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 transition-all text-xs font-serif font-semibold cursor-pointer shadow-2xs group"
-                                  title="Ver respuestas completas del formulario"
-                                >
-                                  <MessageSquareQuote className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform shrink-0" />
-                                  <span>Ver Respuestas</span>
-                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                </button>
-                              ) : (
-                                <span className="text-muted-foreground">—</span>
-                              )}
-                            </td>
-
-                            <td className="py-4 px-6 text-right whitespace-nowrap">
-                              <div className="flex items-center justify-end">
-                                <button
-                                  onClick={() => handleCopyLink(guest.token)}
-                                  className="px-3.5 py-1.5 rounded-full border border-border bg-background hover:bg-secondary text-[11px] font-serif font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs hover:border-primary/40"
-                                  title="Copiar enlace personalizado"
-                                >
-                                  <Copy className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
-                                  <span>{copiedToken === guest.token ? "¡Copiado!" : "Copiar Link"}</span>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
+                            {/* Bottom Row: Copy Personalized Invitation Link */}
+                            <button
+                              onClick={() => handleCopyLink(guest.token)}
+                              className={`w-full py-2.5 rounded-full border text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs active:scale-[0.98] ${
+                                copiedToken === guest.token
+                                  ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
+                                  : "bg-background hover:bg-secondary text-foreground border-border"
+                              }`}
+                              title="Copiar enlace personalizado del invitado"
+                            >
+                              <Copy className="w-3.5 h-3.5" strokeWidth={1.5} />
+                              <span>{copiedToken === guest.token ? "¡Enlace Copiado al Portapapeles!" : "Copiar Enlace Personal"}</span>
+                            </button>
+                          </div>
                         )
                       })
                     )}
-                  </tbody>
-                </table>
-              </div>
+                  </div>
+
+                  {/* DESKTOP / TABLET TABLE VIEW (hidden on mobile) */}
+                  <div className="hidden md:block overflow-x-auto">
+                    <table className="w-full text-left text-xs">
+                      <thead className="bg-muted/40 text-muted-foreground uppercase text-[10px] tracking-wider border-b border-border font-serif">
+                        <tr>
+                          <th className="py-3.5 px-6 font-bold">Invitado</th>
+                          <th className="py-3.5 px-4 font-bold">Pases Asignados</th>
+                          <th className="py-3.5 px-4 font-bold">Estatus RSVP</th>
+                          <th className="py-3.5 px-4 font-bold">Notas / Respuestas</th>
+                          <th className="py-3.5 px-6 font-bold text-right">Enlace Personal</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border">
+                        {filteredGuests.length === 0 ? (
+                          <tr>
+                            <td colSpan={7} className="py-12 text-center text-muted-foreground font-serif">
+                              No se encontraron invitados con los filtros seleccionados.
+                            </td>
+                          </tr>
+                        ) : (
+                          filteredGuests.map((guest) => {
+                            const isConfirmed = guest.rsvp_status === "confirmed"
+                            const isDeclined = guest.rsvp_status === "declined"
+                            const isPending = guest.rsvp_status === "pending"
+
+                            return (
+                              <tr
+                                key={guest.id}
+                                className="hover:bg-muted/20 transition-colors group"
+                              >
+                                <td className="py-4 px-6">
+                                  <div className="flex items-center justify-between gap-3">
+                                    <div className="min-w-0">
+                                      <p className="font-serif font-bold text-sm text-foreground leading-snug">{guest.name}</p>
+                                      {guest.phone && (
+                                        <p className="text-[11px] text-muted-foreground font-mono mt-0.5">
+                                          {guest.phone}
+                                        </p>
+                                      )}
+                                    </div>
+                                    <button
+                                      type="button"
+                                      onClick={() => handleOpenEditGuest(guest)}
+                                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-serif font-bold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
+                                      title="Editar nombre y pases del invitado"
+                                    >
+                                      <Edit2 className="w-3 h-3" />
+                                      <span>Editar</span>
+                                    </button>
+                                  </div>
+                                </td>
+
+                                <td className="py-4 px-4 whitespace-nowrap font-serif">
+                                  {isConfirmed ? (
+                                    <div className="flex flex-col">
+                                      <span className="font-bold text-emerald-600 flex items-center gap-1">
+                                        <CheckCheck className="w-3.5 h-3.5 text-emerald-600" strokeWidth={1.5} />
+                                        {guest.passes_confirmed} {guest.passes_confirmed === 1 ? "pase confirmado" : "pases confirmados"}
+                                      </span>
+                                      <span className="text-[10px] text-muted-foreground">
+                                        {(() => {
+                                          const kids = guest.children_count ?? 0
+                                          const adults = guest.passes_assigned - kids
+                                          if (kids > 0) return `de ${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''} asignados`
+                                          return `(de ${guest.passes_assigned} asignados)`
+                                        })()}
+                                      </span>
+                                    </div>
+                                  ) : isPending ? (
+                                    <div className="flex items-center gap-2">
+                                      <select
+                                        value={guest.passes_assigned}
+                                        onChange={(e) => handleUpdateGuestPasses(guest.id, parseInt(e.target.value))}
+                                        className="text-xs border border-border/80 rounded-xl bg-background px-2.5 py-1.5 font-serif font-bold text-foreground focus:outline-none focus:ring-1 focus:ring-primary cursor-pointer hover:border-primary/50 transition-colors shadow-2xs"
+                                        title="Cambiar pases asignados para este invitado pendiente"
+                                      >
+                                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15, 20].map((num) => (
+                                          <option key={num} value={num}>
+                                            {num} {num === 1 ? "pase" : "pases"}
+                                          </option>
+                                        ))}
+                                      </select>
+                                    </div>
+                                  ) : (
+                                    <span className="text-muted-foreground text-xs">
+                                      {(() => {
+                                        const kids = guest.children_count ?? 0
+                                        const adults = guest.passes_assigned - kids
+                                        if (kids > 0) return `${adults} adulto${adults !== 1 ? 's' : ''} + ${kids} niño${kids !== 1 ? 's' : ''} (Cancelado)`
+                                        return `${guest.passes_assigned} pases (Cancelado)`
+                                      })()}
+                                    </span>
+                                  )}
+                                </td>
+
+                                <td className="py-4 px-4 whitespace-nowrap">
+                                  {isConfirmed && (
+                                    <div className="flex flex-col">
+                                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-serif font-bold bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 w-fit">
+                                        <CheckCheck className="w-3.5 h-3.5" strokeWidth={1.5} />
+                                        Confirmado
+                                      </span>
+                                      {guest.confirmed_at && (
+                                        <span className="text-[10px] text-muted-foreground font-mono mt-1 flex items-center gap-1">
+                                          <Clock className="w-3 h-3 text-emerald-600 shrink-0" />
+                                          {new Date(guest.confirmed_at).toLocaleString("es-MX", {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                            second: "2-digit",
+                                            hour12: true,
+                                          })}
+                                        </span>
+                                      )}
+                                    </div>
+                                  )}
+                                  {isPending && (
+                                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-serif font-bold bg-amber-500/10 text-amber-600 border border-amber-500/20">
+                                      <Hourglass className="w-3.5 h-3.5" strokeWidth={1.5} />
+                                      Pendiente
+                                    </span>
+                                  )}
+                                  {isDeclined && (
+                                    <div className="flex flex-col">
+                                      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-serif font-bold bg-destructive/10 text-destructive border border-destructive/20 w-fit">
+                                        <UserMinus className="w-3.5 h-3.5" strokeWidth={1.5} />
+                                        No asistirá
+                                      </span>
+                                      {guest.confirmed_at && (
+                                        <span className="text-[10px] text-muted-foreground font-mono mt-1 flex items-center gap-1">
+                                          <Clock className="w-3 h-3 text-destructive shrink-0" />
+                                          {new Date(guest.confirmed_at).toLocaleString("es-MX", {
+                                            day: "2-digit",
+                                            month: "2-digit",
+                                            year: "numeric",
+                                            hour: "2-digit",
+                                            minute: "2-digit",
+                                            second: "2-digit",
+                                            hour12: true,
+                                          })}
+                                        </span>
+                                      )}
+                                    </div>
+                                  )}
+                                </td>
+
+                                <td className="py-4 px-4 whitespace-nowrap">
+                                  {guest.notes ? (
+                                    <button
+                                      onClick={() => setDetailGuest(guest)}
+                                      className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20 transition-all text-xs font-serif font-semibold cursor-pointer shadow-2xs group"
+                                      title="Ver respuestas completas del formulario"
+                                    >
+                                      <MessageSquareQuote className="w-3.5 h-3.5 text-primary group-hover:scale-110 transition-transform shrink-0" />
+                                      <span>Ver Respuestas</span>
+                                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                                    </button>
+                                  ) : (
+                                    <span className="text-muted-foreground">—</span>
+                                  )}
+                                </td>
+
+                                <td className="py-4 px-6 text-right whitespace-nowrap">
+                                  <div className="flex items-center justify-end">
+                                    <button
+                                      onClick={() => handleCopyLink(guest.token)}
+                                      className="px-3.5 py-1.5 rounded-full border border-border bg-background hover:bg-secondary text-[11px] font-serif font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs hover:border-primary/40"
+                                      title="Copiar enlace personalizado"
+                                    >
+                                      <Copy className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
+                                      <span>{copiedToken === guest.token ? "¡Copiado!" : "Copiar Link"}</span>
+                                    </button>
+                                  </div>
+                                </td>
+                              </tr>
+                            )
+                          })
+                        )}
+                      </tbody>
+                    </table>
+                  </div>
+                </>
+              )}
             </div>
           </div>
         </div>

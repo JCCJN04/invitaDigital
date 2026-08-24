@@ -84,6 +84,16 @@ export function PricingSection() {
               Sin mensualidades ni costos ocultos. Pagas una vez, la invitación es tuya para siempre — disponible por 12 meses.
             </p>
           </div>
+
+          {/* Price comparison callout */}
+          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="flex items-center gap-3 bg-secondary/50 border border-border rounded-lg px-4 py-3">
+              <span className="text-muted-foreground text-sm line-through">100 invitaciones impresas: ~$5,000</span>
+            </div>
+            <div className="flex items-center gap-3 bg-primary/10 border border-primary/20 rounded-lg px-4 py-3">
+              <span className="text-foreground text-sm font-semibold">Tu invitación digital premium: desde $1,999 — envíos ilimitados</span>
+            </div>
+          </div>
         </div>
 
         {/* Plans — boutique menu style */}
@@ -91,7 +101,7 @@ export function PricingSection() {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 animate-fade-in-up ${plan.popular ? "relative" : ""
+              className={`py-10 md:py-12 grid grid-cols-1 md:grid-cols-[1fr_auto] gap-8 md:gap-16 animate-fade-in-up ${plan.popular ? "relative bg-primary/[0.03] -mx-4 px-4 md:-mx-6 md:px-6 rounded-xl" : ""
                 }`}
               style={{ animationDelay: `${index * 120}ms`, opacity: 0, animationFillMode: "forwards" }}
             >
@@ -121,7 +131,10 @@ export function PricingSection() {
                   )}
                 </div>
 
-                <p className="text-sm text-muted-foreground mb-6">{plan.tagline}</p>
+                <p className="text-sm text-muted-foreground mb-2">{plan.tagline}</p>
+                {plan.popular && (
+                  <p className="text-xs text-primary font-medium mb-4 italic">“El favorito de nuestros clientes — 7 de cada 10 lo eligen.”</p>
+                )}
 
                 {/* Features inline */}
                 <ul className="flex flex-wrap gap-x-6 gap-y-2">
