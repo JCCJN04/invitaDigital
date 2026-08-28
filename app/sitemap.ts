@@ -31,11 +31,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     {
       url: baseUrl,
-      lastModified: "2026-07-01",
+      lastModified: "2026-08-27",
     },
     {
       url: `${baseUrl}/blog`,
-      lastModified: "2026-07-01",
+      lastModified: "2026-08-27",
+    },
+    {
+      url: `${baseUrl}/invitaciones-boda`,
+      lastModified: "2026-08-27",
     },
     {
       url: `${baseUrl}/invitaciones-xv-años`,

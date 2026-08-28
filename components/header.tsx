@@ -45,11 +45,12 @@ export function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-7">
             <Link href="/" className="text-sm font-serif font-medium text-foreground">Inicio</Link>
-            <Link href="#galeria" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Demos</Link>
-            <Link href="#precios" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Precios</Link>
-            <Link href="#faq" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Preguntas</Link>
+            <Link href="/invitaciones-boda" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Bodas</Link>
+            <Link href="/invitaciones-xv-años" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">XV Años</Link>
+            <Link href="/#galeria" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Demos</Link>
+            <Link href="/#precios" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Precios</Link>
             <Link href="/blog" className="text-sm font-serif font-medium text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
           </nav>
 
@@ -83,15 +84,17 @@ export function Header() {
 
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="absolute top-20 inset-x-4 bg-white rounded-2xl shadow-xl border border-gray-100 p-6 flex flex-col gap-4 pointer-events-auto animate-fade-in-up md:hidden">
-            <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-foreground py-2">Inicio</Link>
-            <Link href="#galeria" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Demos</Link>
-            <Link href="#precios" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Precios</Link>
-            <Link href="#faq" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Preguntas</Link>
-            <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="text-lg font-serif font-medium text-muted-foreground py-2">Blog</Link>
-            <Button className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-full w-full h-12 text-base font-serif font-bold mt-4" asChild>
+          <div className="absolute top-20 inset-x-4 bg-white rounded-2xl shadow-xl border border-gray-100 p-6 flex flex-col gap-3 pointer-events-auto animate-fade-in-up md:hidden">
+            <Link href="/" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-foreground py-1.5">Inicio</Link>
+            <Link href="/invitaciones-boda" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-primary py-1.5">💍 Invitaciones de Boda</Link>
+            <Link href="/invitaciones-xv-años" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-primary py-1.5">👑 Invitaciones de XV Años</Link>
+            <Link href="/#galeria" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-muted-foreground py-1.5">Demos</Link>
+            <Link href="/#precios" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-muted-foreground py-1.5">Precios</Link>
+            <Link href="/#faq" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-muted-foreground py-1.5">Preguntas</Link>
+            <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-muted-foreground py-1.5">Blog</Link>
+            <Button className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-full w-full h-12 text-base font-serif font-bold mt-2" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                Crear mi invitación
+                Pedir boceto gratis
               </a>
             </Button>
           </div>

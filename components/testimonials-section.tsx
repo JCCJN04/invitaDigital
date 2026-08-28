@@ -1,4 +1,5 @@
 import { Star } from "lucide-react"
+import Image from "next/image"
 
 const featured = {
   name: "Cumple Paulina",
@@ -76,10 +77,12 @@ export function TestimonialsSection() {
               &ldquo;{featured.comment}&rdquo;
             </blockquote>
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#f3eee8] flex-shrink-0">
-                <img
+              <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-[#f3eee8] flex-shrink-0 relative">
+                <Image
                   src={featured.image}
                   alt={featured.name}
+                  width={48}
+                  height={48}
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -131,9 +134,9 @@ export function TestimonialsSection() {
               </div>
               <p className="text-[#4a4a4a] text-sm leading-relaxed mb-4 italic">&ldquo;{t.comment}&rdquo;</p>
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#f3eee8] flex-shrink-0 bg-[#f3eee8] flex items-center justify-center">
+                <div className="w-8 h-8 rounded-full overflow-hidden border border-[#f3eee8] flex-shrink-0 bg-[#f3eee8] flex items-center justify-center relative">
                   {t.image ? (
-                    <img src={t.image} alt={t.name} className="w-full h-full object-cover" />
+                    <Image src={t.image} alt={t.name} width={32} height={32} className="w-full h-full object-cover" />
                   ) : (
                     <span className="text-[10px] font-bold text-[#d4a373]">
                       {t.name.split(" ").map((n: string) => n[0]).join("").slice(0, 2)}

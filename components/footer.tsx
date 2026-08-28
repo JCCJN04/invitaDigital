@@ -6,9 +6,10 @@ export function Footer() {
     <footer className="bg-card text-foreground overflow-hidden border-t border-border">
       <div className="container mx-auto px-6 md:px-10 py-12 pb-8 max-w-6xl">
         {/* Event links */}
-        <div className="mb-10">
+        <nav aria-label="Invitaciones por tipo de evento" className="mb-10">
           <p className="text-[10px] tracking-[0.25em] text-muted-foreground uppercase font-medium mb-4">Invitaciones por evento</p>
           <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground font-serif">
+            <Link href="/invitaciones-boda" className="hover:text-primary transition-colors">Bodas</Link>
             <Link href="/invitaciones-xv-años" className="hover:text-primary transition-colors">XV Años</Link>
             <Link href="/invitaciones-baby-shower" className="hover:text-primary transition-colors">Baby Shower</Link>
             <Link href="/invitaciones-bautizo" className="hover:text-primary transition-colors">Bautizo</Link>
@@ -16,7 +17,24 @@ export function Footer() {
             <Link href="/invitaciones-primera-comunion" className="hover:text-primary transition-colors">Primera Comunión</Link>
             <Link href="/invitaciones-corporativas" className="hover:text-primary transition-colors">Eventos Corporativos</Link>
           </div>
-        </div>
+        </nav>
+
+        {/* City links */}
+        <nav aria-label="Invitaciones por ciudad" className="mb-10">
+          <p className="text-[10px] tracking-[0.25em] text-muted-foreground uppercase font-medium mb-4">Invitaciones por ciudad</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground font-serif">
+            <Link href="/cdmx" className="hover:text-primary transition-colors">CDMX</Link>
+            <Link href="/guadalajara" className="hover:text-primary transition-colors">Guadalajara</Link>
+            <Link href="/puebla" className="hover:text-primary transition-colors">Puebla</Link>
+            <Link href="/queretaro" className="hover:text-primary transition-colors">Querétaro</Link>
+            <Link href="/merida" className="hover:text-primary transition-colors">Mérida</Link>
+            <Link href="/tijuana" className="hover:text-primary transition-colors">Tijuana</Link>
+            <Link href="/leon" className="hover:text-primary transition-colors">León</Link>
+            <Link href="/cancun" className="hover:text-primary transition-colors">Cancún</Link>
+            <Link href="/san-luis-potosi" className="hover:text-primary transition-colors">San Luis Potosí</Link>
+            <Link href="/saltillo" className="hover:text-primary transition-colors">Saltillo</Link>
+          </div>
+        </nav>
 
         <div className="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
 

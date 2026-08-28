@@ -15,7 +15,7 @@ export interface BlogPost {
 export const blogPosts: BlogPost[] = [
     {
         id: "tendencias-invitaciones-digitales-2025",
-        title: "5 Tendencias en Invitaciones Digitales para 2025",
+        title: "5 Tendencias en Invitaciones Digitales para 2026",
         excerpt: "Descubre las últimas tendencias en diseño de invitaciones digitales: minimalismo elegante, tipografía artística, paletas naturales, micro-animaciones y narrativa visual.",
         content: `
 El mundo de las invitaciones digitales está experimentando una transformación radical. Lo que antes era simplemente un PDF con información del evento, ahora se ha convertido en una experiencia interactiva que establece el tono perfecto para tu celebración. Como expertos en diseño digital, hemos identificado las 5 tendencias más impactantes que dominarán 2025.
@@ -95,14 +95,14 @@ En **Invitaciones Digitales MTY** combinamos todas estas tendencias en diseños 
     `,
         image: "/blog/tendencias-2025.jpg",
         category: "Tendencias",
-        date: "2025-01-15",
+        date: "2026-07-15",
         readTime: "5 min",
         author: "Equipo MTY",
         featured: true,
     },
     {
         id: "invitacion-digital-vs-papel",
-        title: "Invitaciones Digitales vs Papel: ¿Cuál Elegir en 2025?",
+        title: "Invitaciones Digitales vs Papel: ¿Cuál Elegir en 2026?",
         excerpt: "Comparativa completa de costos, alcance, impacto ambiental y experiencia. Descubre cuál es la mejor opción para tu evento.",
         content: `
 Como profesionales en el diseño de invitaciones, recibimos esta pregunta constantemente: **"¿Digital o papel?"** La respuesta no es simplemente una u otra; depende de múltiples factores que afectan directamente el éxito de tu evento. Analicemos cada opción con datos concretos y recomendaciones profesionales.
@@ -275,7 +275,7 @@ En **Invitaciones Digitales MTY** hemos diseñado más de 500 invitaciones digit
     `,
         image: "/blog/digital-vs-papel.jpg",
         category: "Consejos",
-        date: "2025-01-10",
+        date: "2026-07-10",
         readTime: "6 min",
         author: "Equipo MTY",
         featured: true,
@@ -593,18 +593,18 @@ Nuestro servicio incluye:
     `,
         image: "/blog/redactar-invitacion.jpg",
         category: "Bodas",
-        date: "2025-01-05",
+        date: "2026-07-05",
         readTime: "7 min",
         author: "Equipo MTY",
         featured: true,
     },
     {
         id: "guia-completa-invitaciones-bodas-2025",
-        title: "Guía Completa de Invitaciones Digitales para Bodas (2025)",
+        title: "Guía Completa de Invitaciones Digitales para Bodas (2026)",
         excerpt: "Todo lo que necesitas saber sobre invitaciones digitales para tu boda: diseño, etiqueta, cuándo enviarlas y cómo gestionar el RSVP sin estrés.",
         image: "/blog/guia-boda-2025.jpg",
         category: "Bodas",
-        date: "2025-01-20",
+        date: "2026-07-20",
         readTime: "10 min",
         author: "Equipo MTY",
         featured: true,
@@ -663,7 +663,7 @@ Las invitaciones digitales no son el futuro, son el **presente** de las bodas el
         excerpt: "¿No sabes qué poner en tu invitación? Encuentra las palabras perfectas con nuestra curaduría de frases bíblicas, románticas, para bodas en playa y textos divertidos.",
         image: "/blog/frases-boda.jpg",
         category: "Consejos",
-        date: "2025-01-22",
+        date: "2026-07-22",
         readTime: "8 min",
         author: "Equipo MTY",
         content: `
@@ -724,11 +724,11 @@ Si prefieren dinero en efectivo para su luna de miel o casa.
     },
     {
         id: "tendencias-xv-anos-2025",
-        title: "Tendencias en Invitaciones de XV Años 2025: Neón, Coquette y Más",
+        title: "Tendencias en Invitaciones de XV Años 2026: Neón, Coquette y Más",
         excerpt: "Descubre los estilos que están arrasando en las fiestas de 15 años. Desde el aesthetic Coquette hasta el Cyberpunk Neón y las invitaciones tipo 'Ticket de Concierto'.",
         image: "/blog/tendencias-xv-2025.jpg",
         category: "Tendencias",
-        date: "2025-01-25",
+        date: "2026-07-25",
         readTime: "6 min",
         author: "Equipo MTY",
         content: `
@@ -782,7 +782,7 @@ Asegúrate de que refleje al 100% la vibra que tendrá tu evento. En **Invitacio
         excerpt: "¿Te preocupa comprar online? Aprende a identificar proveedores confiables, señales de alerta y cómo proteger tu compra para que tu evento sea perfecto.",
         image: "/blog/seguridad-digital.jpg",
         category: "Consejos",
-        date: "2025-02-01",
+        date: "2026-08-01",
         readTime: "5 min",
         author: "Equipo MTY",
         content: `
@@ -823,7 +823,7 @@ Tu tranquilidad no tiene precio. Contrata servicios establecidos que te den resp
         excerpt: "Inspírate con esta boda llena de pampas grass, tonos terracota y una invitación digital que marcó el tono de todo el evento.",
         image: "/blog/real-wedding-sofia.jpg",
         category: "Real Weddings",
-        date: "2025-02-05",
+        date: "2026-08-05",
         readTime: "4 min",
         author: "Sofía (La Novia)",
         content: `
@@ -852,11 +852,11 @@ Inviertan en cosas que les den paz mental. La invitación digital nos quitó el 
     },
     {
         id: "protocolo-invitados-2025",
-        title: "Protocolo de Invitados 2025: Niños, +1 y Cancelaciones",
+        title: "Protocolo de Invitados 2026: Niños, +1 y Cancelaciones",
         excerpt: "¿Cómo decir 'no niños' sin sonar grosero? ¿A quién darle un +1? Resolvemos las dudas más incómodas de la lista de invitados.",
         image: "/blog/protocolo-invitados.jpg",
         category: "Consejos",
-        date: "2025-02-08",
+        date: "2026-08-08",
         readTime: "6 min",
         author: "Equipo MTY",
         content: `
@@ -889,6 +889,301 @@ Si ya imprimiste invitaciones, esos lugares se desperdician. Con una invitación
 
 ## Resumen
 Tu boda, tus reglas. Lo importante es comunicar con claridad y tiempo. Una invitación digital bien diseñada es tu mejor aliada para establecer estos límites con elegancia y profesionalismo.
+        `,
+    },
+    {
+        id: "cuanto-cuesta-invitacion-digital-boda-mexico",
+        title: "¿Cuánto Cuesta una Invitación Digital de Boda en México? Precios 2026",
+        excerpt: "Comparamos precios de invitaciones digitales para boda en México: desde opciones gratuitas hasta diseños premium. Descubre qué incluye cada rango y cómo elegir sin desperdiciar tu presupuesto.",
+        image: "/blog/precios-boda-2026.jpg",
+        category: "Bodas",
+        date: "2026-08-20",
+        readTime: "7 min",
+        author: "Equipo MTY",
+        featured: true,
+        content: `
+¿Ya elegiste el salón, el vestido y el menú, pero no sabes cuánto invertir en las invitaciones? Tranquila. En esta guía desglosamos los precios reales de las invitaciones digitales de boda en México para 2026, basándonos en lo que cobran los proveedores más populares del país.
+
+## Rangos de precio en México (2026)
+
+### Opción 1: Gratuitas o ultraeconómicas ($0 – $500 MXN)
+
+Son plantillas genéricas que tú misma editas en Canva, Invitio o apps similares. Incluyen lo mínimo: nombres, fecha, lugar.
+
+**Ventajas:**
+- No pagas nada o muy poco
+- Las tienes en minutos
+
+**Desventajas:**
+- Diseño repetido — hay miles de novias con la misma invitación
+- Sin RSVP automático — sigues persiguiendo confirmaciones por teléfono
+- Sin mapa GPS interactivo — solo una dirección escrita
+- Sin música, animaciones ni cuenta regresiva
+- Si te equivocas en un dato, toca rehacerla desde cero
+
+**Ideal para:** Eventos muy pequeños o informales donde el diseño no es prioridad.
+
+### Opción 2: Plataformas con plantillas editables ($500 – $1,800 MXN)
+
+Servicios como Invitandote, PartyPass o CasaConvite ofrecen plantillas prediseñadas con RSVP básico, mapa y algunos extras.
+
+**Ventajas:**
+- Más funciones que la opción gratuita
+- Panel de control para ver confirmaciones
+
+**Desventajas:**
+- Siguen siendo plantillas — tu boda se ve igual que otras 200
+- Opciones de personalización limitadas (no puedes cambiar la estructura, solo colores y texto)
+- Soporte estándar — sin atención personalizada
+
+**Ideal para:** Parejas que quieren funcionalidad pero no les importa tener un diseño único.
+
+### Opción 3: Diseño 100% personalizado ($1,800 – $4,000+ MXN)
+
+Estudios de diseño como **Invitaciones Digitales MTY** crean tu invitación desde cero, sin plantillas. Cada elemento se diseña para reflejar el estilo específico de tu boda.
+
+**Qué incluye en nuestro caso:**
+- **Plan Básico ($1,999):** Diseño a medida, RSVP a WhatsApp, mapa GPS, cuenta regresiva, 6 fotos, entrega 24h
+- **Plan Premium ($2,600):** Todo lo anterior + música, galería de 15 fotos, itinerario por horas, paleta de colores
+- **Plan Deluxe ($3,499):** Todo lo anterior + video de portada, 3 canciones, galería ilimitada, guía de hospedaje
+
+**Ventajas:**
+- Tu invitación es única — nadie más tiene la misma
+- RSVP directo a tu WhatsApp con nombre y número de acompañantes
+- Actualizaciones gratis si cambia cualquier dato
+- Boceto gratis antes de pagar — ves el resultado real sin riesgo
+- Atención personalizada por WhatsApp
+
+**Ideal para:** Parejas que quieren que su invitación refleje su historia y estilo, no una plantilla genérica.
+
+## Comparativa rápida
+
+| Característica | Gratis/DIY | Plantilla ($500-$1,800) | Personalizado ($1,999+) |
+|---|---|---|---|
+| Diseño único | ❌ | ❌ | ✅ |
+| RSVP automático | ❌ | ✅ Básico | ✅ A WhatsApp |
+| Mapa GPS interactivo | ❌ | ✅ | ✅ Múltiple |
+| Música de fondo | ❌ | Algunos | ✅ |
+| Actualizaciones gratis | ❌ | Limitadas | ✅ Ilimitadas |
+| Boceto gratis | ❌ | ❌ | ✅ |
+| Soporte personalizado | ❌ | Email | ✅ WhatsApp |
+
+## ¿Y comparado con invitaciones impresas?
+
+El costo de imprimir invitaciones físicas para 150 invitados oscila entre $4,500 y $15,000 MXN (sin contar envío). Una invitación digital premium cuesta $2,600 y la compartes con invitados ilimitados. El ahorro es de 50% a 80% — y con más funcionalidades.
+
+## Nuestra recomendación honesta
+
+Si tu presupuesto es muy ajustado, una plantilla editable de $800 MXN cumple. Pero si quieres que tu invitación genere un "wow" genuino y que el RSVP no sea un dolor de cabeza, la inversión de $2,600 en un diseño personalizado se paga sola con el tiempo que ahorras persiguiendo confirmaciones.
+
+**¿Quieres ver cómo quedaría la tuya?** Escríbenos por WhatsApp y te mandamos un boceto gratis en menos de 5 minutos. Sin pago, sin compromiso — solo para que veas el resultado antes de decidir.
+        `,
+    },
+    {
+        id: "ideas-invitaciones-xv-anos-temas-2026",
+        title: "15 Ideas de Invitaciones Digitales para XV Años (Temas 2026)",
+        excerpt: "Los 15 temas más pedidos para invitaciones de XV años en 2026: desde Cottagecore y Celestial hasta K-Pop y Neón. Con ejemplos reales y consejos de diseño para cada estilo.",
+        image: "/blog/ideas-xv-2026.jpg",
+        category: "Tendencias",
+        date: "2026-08-15",
+        readTime: "8 min",
+        author: "Equipo MTY",
+        content: `
+Elegir el tema de los XV años es una de las decisiones más emocionantes para la quinceañera — y la invitación digital es donde todo comienza. Es la primera impresión que tus invitados tendrán de la fiesta, así que tiene que ser perfecta.
+
+Como diseñadores especializados en XV años, hemos recopilado los 15 temas más solicitados en 2026 con consejos específicos para cada uno.
+
+## Temas Elegantes y Románticos
+
+### 1. Jardín Botánico / Cottagecore 🌿
+El tema más solicitado de 2026. Flores silvestres, tonos verde salvia, crema y rosa empolvado. Ideal para quintas al aire libre.
+- **Paleta:** Verde salvia, blush, crema, dorado suave
+- **Tipografía:** Serif elegante con acentos caligráficos
+- **Elementos:** Flores acuarela, hojas, mariposas
+
+### 2. Celestial / Luna y Estrellas ✨
+Azul noche, plata y dorado con constelaciones y lunas. Perfecto para fiestas nocturnas.
+- **Paleta:** Azul noche, plata, dorado, blanco
+- **Tipografía:** Sans moderna con detalles brillantes
+- **Elementos:** Constelaciones, luna creciente, estrellas
+
+### 3. Glamour Dorado / Art Déco 👑
+Elegancia máxima con líneas geométricas doradas. Para quinceañeras que quieren algo sofisticado.
+- **Paleta:** Negro, dorado, blanco, borgoña
+- **Tipografía:** Display geométrica estilo años 20
+- **Elementos:** Marcos dorados, patrones geométricos
+
+### 4. Acuarela Floral 🎨
+Diseños pintados a mano digital con flores en acuarela. Delicado y artístico.
+- **Paleta:** Tonos pastel suaves, rosa, lila, verde agua
+- **Tipografía:** Script elegante
+- **Elementos:** Flores en técnica watercolor, bordes difuminados
+
+### 5. Princesa / Castillo de Cuento 🏰
+Clásico pero actualizado. Castillos, coronas y tiaras con un toque moderno.
+- **Paleta:** Rosa, dorado, lavanda, blanco
+- **Tipografía:** Serif decorativa
+- **Elementos:** Corona, castillo estilizado, destellos
+
+## Temas Modernos y Trendy
+
+### 6. Neón Glow 💜
+Fondos oscuros con tipografía y elementos que brillan como luces neón. Ideal para salones con pista de baile.
+- **Paleta:** Negro, magenta neón, azul eléctrico, verde neón
+- **Tipografía:** Script neón sobre fondo oscuro
+- **Elementos:** Marcos luminosos, brillos, efectos glow
+
+### 7. Coquette / Lazos y Moños 🎀
+La estética Coquette sigue fuerte en 2026. Moños, encaje y tonos románticos.
+- **Paleta:** Rosa bebé, blanco, beige, rojo cereza
+- **Tipografía:** Serif femenina con lazos decorativos
+- **Elementos:** Moños, encaje, perlas, cerezas
+
+### 8. Minimalista Moderna 🤍
+Menos es más. Fondos limpios, tipografía protagonista y mucho espacio negativo.
+- **Paleta:** Blanco, negro, un solo color acento
+- **Tipografía:** Sans serif bold y limpia
+- **Elementos:** Líneas simples, composición editorial
+
+### 9. K-Pop / Estilo Coreano 🎤
+Inspirada en la cultura pop coreana. Colores vibrantes, tipografía divertida y elementos kawaii.
+- **Paleta:** Lila, rosa, azul cielo, amarillo
+- **Tipografía:** Rounded/bubbly con acentos coreanos
+- **Elementos:** Estrellas, corazones, estilo photo card
+
+### 10. Mariposas / Enchanted Garden 🦋
+Mariposas como protagonistas en una atmósfera mágica de jardín encantado.
+- **Paleta:** Lila, azul turquesa, dorado, verde menta
+- **Tipografía:** Serif elegante
+- **Elementos:** Mariposas monarca, flores, brillos
+
+## Temas Temáticos Especiales
+
+### 11. Playa / Tropical 🌴
+Para fiestas en terrazas, jardines o Cancún. Palmeras, conchas y colores vibrantes.
+
+### 12. Vintage / Retro 📷
+Estética de los años 70-80 con filtros sepia, tipografía retro y bordes envejecidos.
+
+### 13. Hollywood / Red Carpet 🎬
+Alfombra roja, marquesinas luminosas y glamour de cine. Para quinceañeras que quieren ser la estrella.
+
+### 14. Paris / Torre Eiffel 🗼
+Uno de los clásicos que nunca pasa de moda. Acuarelas parisinas, la Torre Eiffel y cafés franceses.
+
+### 15. Ticket de Concierto 🎵
+La invitación diseñada como un boleto de concierto VIP. Ultra popular entre las quinceañeras que aman la música.
+
+---
+
+## ¿Cómo elegir el tema correcto?
+
+1. **Empieza por el salón:** Si ya tienes el venue, el tema debe complementar el espacio
+2. **Define 3 palabras:** ¿Cómo quieres que se sienta tu fiesta? (ej: "elegante, mágica, moderna")
+3. **Busca referencias:** Guarda fotos en Pinterest de lo que te gusta
+4. **Comparte con tu diseñador:** Con esas referencias, un buen diseñador construye la invitación perfecta
+
+## ¿Quieres ver tu tema en una invitación real?
+
+En **Invitaciones Digitales MTY** diseñamos con cualquier tema que elijas. Solo escríbenos por WhatsApp con el nombre de la quinceañera, la fecha y el tema — te mandamos un boceto personalizado gratis en menos de 5 minutos. Sin pago, sin compromiso.
+        `,
+    },
+    {
+        id: "guia-invitaciones-baby-shower-digital",
+        title: "Guía Completa: Invitaciones Digitales para Baby Shower (2026)",
+        excerpt: "Todo lo que necesitas saber para crear la invitación digital perfecta para tu baby shower: qué incluir, cuándo enviarla, ideas de diseño por temática y cómo gestionar el RSVP sin estrés.",
+        image: "/blog/guia-baby-shower.jpg",
+        category: "Consejos",
+        date: "2026-08-12",
+        readTime: "6 min",
+        author: "Equipo MTY",
+        content: `
+El baby shower es uno de los eventos más emotivos — y la invitación marca el tono desde el primer momento. Ya sea que lo organice la futura mamá, su mejor amiga o la familia, esta guía te ayuda a crear una invitación digital que emocione, informe y facilite la organización.
+
+## ¿Qué debe incluir tu invitación de baby shower?
+
+La diferencia entre una invitación que genera preguntas y una que resuelve todo está en los detalles:
+
+### Información esencial
+- **Nombre de la futura mamá** (y del bebé si ya lo decidieron)
+- **Fecha y hora** exactas
+- **Lugar** con dirección completa y mapa GPS interactivo
+- **RSVP** con fecha límite — idealmente con confirmación automática
+- **Código de vestimenta** si aplica (ej: "Todos de blanco" o "Colores pastel")
+
+### Información que evita preguntas incómodas
+- **Mesa de regalos o sugerencias:** Links directos a Amazon, Liverpool o datos bancarios
+- **¿Es sorpresa?** Si es baby shower sorpresa, inclúyelo grande y claro
+- **¿Niños bienvenidos?** Mejor aclararlo desde la invitación
+- **Estacionamiento:** Especialmente importante en CDMX o zonas con poco espacio
+- **Restricciones alimentarias:** Si habrá comida, pregunta alergias en el RSVP
+
+## Ideas de diseño por temática
+
+### 🧸 Safari / Animales del Bosque
+Leones, jirafas, elefantes y zorros en estilo acuarela. Los colores neutros (verde, café, crema) funcionan perfecto si no quieren revelar el género.
+
+### 🌸 Floral / Garden Party
+Flores en tonos pastel, tipografía script elegante y fondos claros. Ideal para baby showers al aire libre o en terrazas.
+
+### 🎈 Minimalista Moderno
+Fondos limpios, un solo color acento y tipografía sans serif. Perfecto para padres con estilo contemporáneo.
+
+### 🧁 Temática de Dulces
+Cupcakes, macarons y tonos candy. Divertido y festivo — ideal si habrá mesa de dulces en el evento.
+
+### 🌈 Gender Reveal
+Colores neutros con signos de interrogación y el clásico "¿Niño o Niña?". La invitación puede tener una animación de revelación incluida.
+
+### 🧶 Boho Chic
+Macramé, plumas, dreamcatchers y tonos terracota. Estilo relajado y acogedor que está muy de moda.
+
+## ¿Cuándo enviar la invitación?
+
+| Tipo de evento | Cuándo enviar |
+|---|---|
+| Baby shower tradicional | 4-6 semanas antes |
+| Baby shower sorpresa | 3-4 semanas antes (solo a invitados, no a la mamá) |
+| Baby shower virtual | 2-3 semanas antes |
+| Gender reveal | 2-3 semanas antes |
+
+**Tip:** Si es cerca de una fecha festiva (Navidad, Semana Santa), envíala con más anticipación para que los invitados reserven el día.
+
+## RSVP: Cómo saber quién va sin perseguir a nadie
+
+Esta es la ventaja más grande de una invitación digital bien hecha. En lugar de llamar a cada invitada para preguntar si va, la invitación tiene un botón de confirmación que:
+
+1. **El invitado confirma con un toque** — elige si asiste y cuántos acompañantes lleva
+2. **Tú recibes la notificación** — directamente en tu WhatsApp con nombre y detalles
+3. **Puedes consultar en cualquier momento** quién confirmó y quién no
+
+Sin hojas de cálculo, sin cadenas de mensajes, sin la incómoda llamada de "¿vas a venir o no?"
+
+## ¿Imagen de Canva o invitación interactiva?
+
+Muchas personas crean una imagen bonita en Canva y la mandan por WhatsApp. Funciona, pero tiene limitaciones:
+
+| | Imagen (Canva/PNG) | Invitación Digital Interactiva |
+|---|---|---|
+| Diseño bonito | ✅ | ✅ |
+| Mapa GPS con un toque | ❌ | ✅ |
+| RSVP automático | ❌ | ✅ |
+| Cuenta regresiva | ❌ | ✅ |
+| Mesa de regalos integrada | ❌ | ✅ |
+| Se actualiza si cambia algo | ❌ | ✅ |
+| Música de fondo | ❌ | ✅ |
+
+La imagen funciona para eventos pequeños e informales. Si quieres algo que organice por ti, la invitación interactiva ahorra horas de trabajo.
+
+## ¿Cuánto cuesta?
+
+En **Invitaciones Digitales MTY** los precios para baby shower son los mismos que para cualquier evento:
+
+- **Básico:** $1,999 MXN — diseño personalizado, RSVP, mapa GPS, entrega 24h
+- **Premium:** $2,600 MXN — todo lo anterior + música, galería de fotos, itinerario
+- **Deluxe:** $3,499 MXN — el paquete completo con video y galería ilimitada
+
+Todas incluyen **boceto gratis** antes de pagar. Escríbenos por WhatsApp con la temática que tienes en mente y te mandamos una propuesta personalizada en menos de 5 minutos.
         `,
     },
 ]
