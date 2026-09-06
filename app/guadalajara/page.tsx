@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 }
 
 const whatsappUrl =
-  "https://wa.me/528180836435?text=Hola,%20quiero%20cotizar%20mi%20invitación%20digital.%20¿Puedo%20ver%20un%20boceto%20gratis?"
+  "https://wa.me/528180836435?text=Hola,%20quiero%20cotizar%20mi%20invitación%20digital.%20¿Cómo%20empezamos?"
 
 const benefits = [
   {

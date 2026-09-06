@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
-  "Hola, quiero cotizar mi invitación digital. ¿Puedo ver un boceto gratis?"
+  "Hola, quiero cotizar una invitación digital para evento corporativo. ¿Cómo empezamos?"
 )}`
 
 const benefits = [
