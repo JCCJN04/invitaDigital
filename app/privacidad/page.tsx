@@ -26,13 +26,13 @@ export default function PrivacidadPage() {
           <p>Este sitio utiliza Google Analytics 4 para medir tráfico de forma anónima y Meta Pixel para medir efectividad publicitaria. Puedes desactivar estas tecnologías desde la configuración de tu navegador. Ver también nuestra <Link href="/cookies" className="text-[#d4a373] hover:underline">Política de Cookies</Link>.</p>
 
           <h2 className="font-serif text-xl font-bold text-[#1c1917]">4. Derechos del titular</h2>
-          <p>Conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), tienes derecho de acceso, rectificación, cancelación y oposición (derechos ARCO) sobre tus datos. Ejerce tus derechos escribiendo a: <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="text-[#d4a373] hover:underline">contacto@invitacionesdigitalesmty.com.mx</a>.</p>
+          <p>Conforme a la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (LFPDPPP), tienes derecho de acceso, rectificación, cancelación y oposición (derechos ARCO) sobre tus datos. Ejerce tus derechos contactándonos vía WhatsApp al <a href="https://wa.me/528180836435" target="_blank" rel="noopener noreferrer" className="text-[#d4a373] hover:underline">+52 81 8083 6435</a>.</p>
 
           <h2 className="font-serif text-xl font-bold text-[#1c1917]">5. Seguridad</h2>
           <p>Implementamos medidas técnicas y organizativas para proteger tus datos contra acceso no autorizado. La comunicación con este sitio está protegida mediante HTTPS/TLS.</p>
 
           <h2 className="font-serif text-xl font-bold text-[#1c1917]">6. Contacto</h2>
-          <p>Para cualquier duda sobre privacidad: <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="text-[#d4a373] hover:underline">contacto@invitacionesdigitalesmty.com.mx</a>.</p>
+          <p>Para cualquier duda sobre privacidad: WhatsApp <a href="https://wa.me/528180836435" target="_blank" rel="noopener noreferrer" className="text-[#d4a373] hover:underline">+52 81 8083 6435</a>.</p>
         </div>
       </div>
     </main>

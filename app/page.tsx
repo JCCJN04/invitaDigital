@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     absolute: "Invitaciones Digitales Monterrey | Bodas y XV Años",
   },
   description:
-    "Invitaciones digitales para bodas y XV años en Monterrey. Diseño personalizado, RSVP automático por WhatsApp y entrega en 24 h. Boceto gratis sin compromiso.",
+    "Invitaciones digitales para bodas y XV años en Monterrey. Diseño personalizado, RSVP automático por WhatsApp y entrega en 24 h. Calificación 5.0 en +150 eventos.",
   keywords: [
     "invitaciones digitales monterrey",
     "invitaciones digitales boda monterrey",
@@ -190,7 +190,7 @@ const webpageSchema = {
   url: SITE_URL,
   name: "Invitaciones Digitales Monterrey | Bodas y XV Años",
   isPartOf: { "@id": `${SITE_URL}#website` },
-  about: { "@id": `${SITE_URL}#localbusiness` },
+  about: { "@id": `${SITE_URL}#localbusiness`, url: `${SITE_URL}/boda-carlayangel.webp` },
   inLanguage: "es-MX",
   datePublished: "2024-01-01",
   dateModified: "2026-07-12",

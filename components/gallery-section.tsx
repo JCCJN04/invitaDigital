@@ -13,7 +13,7 @@ const designs = [
     subtitle: "Boda",
     tag: "Estilo Elegante",
     category: "bodas" as Category,
-    image: "/boda-carlayangel.png",
+    image: "/boda-carlayangel.webp",
     url: "https://www.invitacionesdigitalesmty.com.mx/carlayangel",
     bg: "bg-[#e8ddd5]",
     recent: false,
@@ -24,7 +24,7 @@ const designs = [
     subtitle: "Boda",
     tag: "Estilo Moderno",
     category: "bodas" as Category,
-    image: "/boda-citliyamed.png",
+    image: "/boda-citliyamed.webp",
     url: "https://www.invitacionesdigitalesmty.com.mx/citliyamed/public.html",
     bg: "bg-[#e8e0d5]",
     recent: false,
@@ -35,7 +35,7 @@ const designs = [
     subtitle: "Boda",
     tag: "Estilo Romántico",
     category: "bodas" as Category,
-    image: "/boda-alma-mauricio.jpg",
+    image: "/boda-alma-mauricio.webp",
     url: "https://boda-alma-mauricio.invitacionesdigitalesmty.com.mx/",
     bg: "bg-[#cfc8b3]",
     recent: false,
@@ -46,7 +46,7 @@ const designs = [
     subtitle: "XV Años",
     tag: "Estilo Jardín",
     category: "xv" as Category,
-    image: "/xv-emmaypau.png",
+    image: "/xv-emmaypau.webp",
     url: "https://invitacionesemmaypau.vercel.app/",
     bg: "bg-[#fdecea]",
     recent: false,
@@ -57,7 +57,7 @@ const designs = [
     subtitle: "XV Años",
     tag: "Estilo Elegante",
     category: "xv" as Category,
-    image: "/xv-elisa.png",
+    image: "/xv-elisa.webp",
     url: "https://invitacionesdigitalesmty.com.mx/xv-elisa",
     bg: "bg-[#e9d9d1]",
     recent: false,
@@ -68,7 +68,7 @@ const designs = [
     subtitle: "Primera Comunión",
     tag: "",
     category: "otros" as Category,
-    image: "/primera-comunion-victoria.png",
+    image: "/primera-comunion-victoria.webp",
     url: "https://www.invitacionesdigitalesmty.com.mx/primera-comunion-victoria",
     bg: "bg-[#ede8f5]",
     recent: false,
@@ -79,7 +79,7 @@ const designs = [
     subtitle: "Cumpleaños",
     tag: "",
     category: "otros" as Category,
-    image: "/cumple-edgar.png",
+    image: "/cumple-edgar.webp",
     url: "https://invitacionesdigitalesmty.com.mx/cumple-edgar",
     bg: "bg-[#d8e8d4]",
     recent: false,
@@ -90,7 +90,7 @@ const designs = [
     subtitle: "Cumpleaños",
     tag: "Recién entregado",
     category: "otros" as Category,
-    image: "/cumple-paulina.png",
+    image: "/cumple-paulina.webp",
     url: "https://invitacionesdigitalesmty.com.mx/cumple-paulina",
     bg: "bg-[#d8e8d4]",
     recent: true,
@@ -101,7 +101,7 @@ const designs = [
     subtitle: "XV Años",
     tag: "Estilo Elegante",
     category: "xv" as Category,
-    image: "/xv-paula.png",
+    image: "/xv-paula.webp",
     url: "https://www.invitacionesdigitalesmty.com.mx/paulaxv",
     bg: "bg-[#e9d9d1]",
     recent: false,
@@ -112,7 +112,7 @@ const designs = [
     subtitle: "Bautizo",
     tag: "Estilo Clásico",
     category: "otros" as Category,
-    image: "/bautizo-mateo.png",
+    image: "/bautizo-mateo.webp",
     url: "https://invitacionesdigitalesmty.com.mx/bautizo-mateo",
     bg: "bg-[#edf5ed]",
     recent: false,
@@ -123,7 +123,7 @@ const designs = [
     subtitle: "Baby Shower",
     tag: "Estilo Boho Chic",
     category: "otros" as Category,
-    image: "/babyshower-liam.png",
+    image: "/babyshower-liam.webp",
     url: "https://invitacionesdigitalesmty.com.mx/babyshower-liam",
     bg: "bg-[#f5edf0]",
     recent: false,
@@ -134,7 +134,7 @@ const designs = [
     subtitle: "Baby Shower",
     tag: "Estilo Elegante",
     category: "otros" as Category,
-    image: "/babyshower-sarah.png",
+    image: "/babyshower-sarah.webp",
     url: "https://invitacionesdigitalesmty.com.mx/babyshower-sarah",
     bg: "bg-[#f5edf0]",
     recent: false,
@@ -150,7 +150,7 @@ const tabs: { key: Category; label: string }[] = [
 
 const whatsappUrls: Record<Category, string> = {
   todas:
-    "https://wa.me/528180836435?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20y%20me%20gustar%C3%ADa%20ver%20un%20boceto%20gratis%20para%20mi%20evento.",
+    "https://wa.me/528180836435?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20y%20me%20gustar%C3%ADa%20cotizar%20una%20invitaci%C3%B3n%20para%20mi%20evento.",
   bodas:
     "https://wa.me/528180836435?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20boda%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20mi%20boda.",
   xv: "https://wa.me/528180836435?text=Hola%2C%20vi%20sus%20dise%C3%B1os%20de%20XV%20a%C3%B1os%20y%20me%20interesa%20una%20invitaci%C3%B3n%20digital%20para%20los%20XV%20a%C3%B1os.",
@@ -257,7 +257,7 @@ export function GallerySection() {
                   {/* Image — full natural dimensions */}
                   <Image
                     src={design.image}
-                    alt={`Invitación digital de ${design.subtitle} en Monterrey — ${design.title}`}
+                    alt={`Invitación digital para ${design.subtitle} — ${design.title}${design.tag ? ` · ${design.tag}` : ""} · Invitaciones Digitales MTY Monterrey`}
                     width={400}
                     height={700}
                     className="w-full h-auto block"
@@ -363,7 +363,7 @@ export function GallerySection() {
                 ¿Te gustó algún estilo?
               </p>
               <p className="text-muted-foreground text-sm mt-1">
-                Diseñamos algo similar o completamente a tu medida. Boceto gratis, sin compromiso.
+                Diseñamos algo similar o completamente a tu medida. Cuéntanos tu evento y te mostramos opciones.
               </p>
             </div>
             <a

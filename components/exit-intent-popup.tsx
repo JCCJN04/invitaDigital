@@ -16,7 +16,7 @@ export function ExitIntentPopup() {
   const [hasShown, setHasShown] = useState(false)
 
   const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
-    "Hola, me gustaría ver mi boceto gratis de invitación digital. ¿Cómo empezamos?"
+    "Hola, me gustaría ver los precios y diseños de invitaciones digitales. ¿Qué incluyen?"
   )}`
 
   const showPopup = useCallback(() => {
@@ -78,12 +78,12 @@ export function ExitIntentPopup() {
 
           {/* Content */}
           <div className="text-center">
-            <div className="text-4xl mb-4">✨</div>
+            <div className="text-4xl mb-4">🎉</div>
             <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#1c1917] mb-3 leading-tight">
-              ¡Tu boceto gratis<br />te está esperando!
+              ¿Lista tu invitación<br />en 24 horas?
             </h3>
             <p className="text-[#4a4a4a] text-sm leading-relaxed mb-8 max-w-xs mx-auto">
-              Diseñamos un boceto personalizado sin costo y sin compromiso para tu evento. Solo toma 2 minutos.
+              Tu evento merece una invitación que sorprenda. Escríbenos por WhatsApp y te ayudamos a crearla hoy mismo.
             </p>
 
             {/* CTA */}
@@ -94,7 +94,7 @@ export function ExitIntentPopup() {
               className="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#20bd5a] text-white w-full py-4 px-6 rounded-xl font-bold text-sm tracking-wide transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
             >
               <WhatsAppIcon className="w-5 h-5" />
-              Pedir mi boceto gratis
+              Ver precios y diseños ahora
             </a>
 
             {/* Trust line */}

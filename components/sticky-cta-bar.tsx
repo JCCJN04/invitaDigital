@@ -70,7 +70,7 @@ export function StickyCTABar() {
           className="flex items-center justify-center gap-3 bg-primary hover:bg-primary-hover text-primary-foreground w-full py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all shadow-lg"
         >
           <WhatsAppIcon className="w-5 h-5 fill-current" />
-          <span>Pedir mi boceto gratis</span>
+          <span>Diseña tu invitación — desde $1,999</span>
         </a>
         <p className="text-[10px] text-white/40 text-center mt-2 tracking-wide">
           Sin compromiso · Respuesta en 5 min

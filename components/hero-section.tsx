@@ -14,7 +14,7 @@ function WhatsAppIcon({ className = "w-4 h-4" }: { className?: string }) {
 
 export function HeroSection() {
   const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
-    "Hola, me gustaría cotizar mi invitación digital personalizada. ¿Me pueden mostrar un boceto gratis sin compromiso?"
+    "Hola, me gustaría cotizar mi invitación digital. ¿Pueden mostrarme opciones de diseño para mi evento?"
   )}`
 
   return (
@@ -47,7 +47,7 @@ export function HeroSection() {
 
             {/* Clear Value Proposition */}
             <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
-              Sorprende a tus invitados desde el primer mensaje. Diseños 100% personalizados y hechos a la medida para cada cliente, con RSVP automático a WhatsApp, música, animaciones y mapa interactivo — lista en 24 horas. Boceto gratis, sin compromiso.
+              Sorprende a tus invitados desde el primer mensaje. Diseños 100% personalizados con RSVP automático a WhatsApp, música, animaciones y mapa interactivo — lista en 24 horas. Calificación 5.0 en +150 eventos.
             </p>
 
             {/* Action Buttons */}
@@ -60,7 +60,7 @@ export function HeroSection() {
                   className="inline-flex items-center justify-center gap-3 bg-primary text-primary-foreground px-7 sm:px-8 py-3.5 sm:py-4 text-xs sm:text-sm font-semibold tracking-widest uppercase hover:bg-primary-hover transition-all shadow-sm hover:shadow-md cursor-pointer text-center"
                 >
                   <WhatsAppIcon className="w-4 h-4 fill-current flex-shrink-0" />
-                  <span>Pedir mi boceto gratis</span>
+                  <span>Quiero mi invitación digital</span>
                 </a>
                 <span className="text-[10px] sm:text-[11px] text-muted-foreground mt-2 text-center sm:text-left tracking-wide">
                   Respuesta en menos de 5 min · Sin compromiso
@@ -121,7 +121,7 @@ export function HeroSection() {
               {/* Preview Image Frame */}
                 <div className="relative w-full h-[480px] sm:h-[515px] rounded-2xl overflow-hidden bg-muted">
                   <Image
-                    src="/boda-carlayangel.png"
+                    src="/boda-carlayangel.webp"
                     alt="Invitación digital Carla y Ángel"
                     fill
                     priority

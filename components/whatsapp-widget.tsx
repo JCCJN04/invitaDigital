@@ -42,7 +42,7 @@ export function WhatsAppWidget() {
             className="hidden sm:flex items-center gap-2 bg-white text-[#2C2925] px-4 py-2 rounded-full shadow-lg border border-border text-xs font-serif font-bold hover:bg-secondary transition-all transform hover:scale-105 cursor-pointer animate-in fade-in slide-in-from-right-4"
           >
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
-            <span>¿Cotizar boceto gratis?</span>
+            <span>¿Cotizamos tu invitación?</span>
           </button>
         )}
 
@@ -94,7 +94,7 @@ export function WhatsAppWidget() {
                   ¡Hola! 👋 Bienvenido a <span className="font-semibold text-[#075e54]">Invitaciones MTY</span>
                   <br />
                   <br />
-                  ¿Te gustaría una cotización rápida o ver un boceto gratis para tu evento?
+                  ¿Te gustaría ver opciones de diseño y precio para tu evento?
                 </p>
                 <div className="text-[10px] text-gray-400 mt-2 text-right">Justo ahora</div>
               </div>

@@ -58,7 +58,7 @@ export function Header() {
           <div className="flex items-center gap-2">
             <Button className="hidden md:inline-flex bg-primary hover:bg-primary-hover text-primary-foreground rounded-full px-6 py-2 h-10 text-sm font-serif font-bold shadow-md shadow-primary/20 transition-all hover:shadow-lg hover:shadow-primary/30" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                Pedir boceto gratis
+                Cotizar ahora
               </a>
             </Button>
 
@@ -94,7 +94,7 @@ export function Header() {
             <Link href="/blog" onClick={() => setIsMenuOpen(false)} className="text-base font-serif font-medium text-muted-foreground py-1.5">Blog</Link>
             <Button className="bg-primary hover:bg-primary-hover text-primary-foreground rounded-full w-full h-12 text-base font-serif font-bold mt-2" asChild>
               <a href={whatsappUrl} target="_blank" rel="noopener noreferrer">
-                Pedir boceto gratis
+                Cotizar mi invitación
               </a>
             </Button>
           </div>

@@ -51,7 +51,7 @@ export default function CookiesPage() {
           <p>Puedes bloquear o eliminar cookies desde la configuración de tu navegador. Ten en cuenta que desactivar algunas cookies puede afectar la funcionalidad del sitio. Para más información visita <a href="https://www.aboutcookies.org" target="_blank" rel="noopener noreferrer" className="text-[#d4a373] hover:underline">aboutcookies.org</a>.</p>
 
           <h2 className="font-serif text-xl font-bold text-[#1c1917]">Contacto</h2>
-          <p>Dudas: <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="text-[#d4a373] hover:underline">contacto@invitacionesdigitalesmty.com.mx</a>. Ver también nuestra <Link href="/privacidad" className="text-[#d4a373] hover:underline">Política de Privacidad</Link>.</p>
+          <p>Dudas: WhatsApp <a href="https://wa.me/528180836435" target="_blank" rel="noopener noreferrer" className="text-[#d4a373] hover:underline">+52 81 8083 6435</a>. Ver también nuestra <Link href="/privacidad" className="text-[#d4a373] hover:underline">Política de Privacidad</Link>.</p>
         </div>
       </div>
     </main>

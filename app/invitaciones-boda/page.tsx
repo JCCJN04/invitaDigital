@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     absolute: "Invitaciones Digitales para Bodas | RSVP WhatsApp | México",
   },
   description:
-    "Invitaciones digitales para bodas en todo México. Diseño personalizado, RSVP automático por WhatsApp, mapa GPS, mesa de regalos, música de fondo y cuenta regresiva. Entrega en 24 h. Boceto gratis.",
+    "Invitaciones digitales para bodas en todo México. Diseño personalizado, RSVP automático por WhatsApp, mapa GPS, mesa de regalos, música de fondo y cuenta regresiva. Entrega en 24 h. Calificación 5.0/5.",
   keywords: [
     "invitaciones digitales boda",
     "invitaciones de boda digitales",
@@ -41,12 +41,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Invitaciones Digitales para Bodas | Diseño Premium | México",
     description:
-      "Invitaciones de boda digitales con diseño 100% personalizado, RSVP automático a WhatsApp, música, mapa GPS y entrega en 24 horas. Boceto gratis.",
+      "Invitaciones de boda digitales con diseño 100% personalizado, RSVP automático a WhatsApp, música, mapa GPS y entrega en 24 horas. Diseños exclusivos.",
     url: `${SITE_URL}/invitaciones-boda`,
     type: "website",
     images: [
       {
-        url: `${SITE_URL}/boda-carlayangel.png`,
+        url: `${SITE_URL}/boda-carlayangel.webp`,
         width: 1200,
         height: 630,
         alt: "Invitación digital de boda — Invitaciones Digitales MTY",
@@ -58,12 +58,12 @@ export const metadata: Metadata = {
     title: "Invitaciones Digitales para Bodas | México",
     description:
       "Invitaciones de boda digitales premium con RSVP automático, música y mapa interactivo. Entrega en 24 h.",
-    images: [`${SITE_URL}/boda-carlayangel.png`],
+    images: [`${SITE_URL}/boda-carlayangel.webp`],
   },
 }
 
 const whatsappUrl = `https://wa.me/528180836435?text=${encodeURIComponent(
-  "Hola, quiero cotizar una invitación digital para mi boda. ¿Puedo ver un boceto gratis?"
+  "Hola, quiero cotizar una invitación digital para mi boda. ¿Cómo empezamos?"
 )}`
 
 const benefits = [

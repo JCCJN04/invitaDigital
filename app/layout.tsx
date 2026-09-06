@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     template: `%s | ${BUSINESS_NAME}`,
   },
   description:
-    "Invitaciones digitales para bodas, XV años y eventos en todo México. Diseño personalizado, RSVP automático por WhatsApp y entrega en 24 h. Boceto gratis.",
+    "Invitaciones digitales para bodas, XV años y eventos en todo México. Diseño personalizado, RSVP automático por WhatsApp y entrega en 24 h. +150 eventos realizados.",
   keywords: [
     "invitaciones digitales mexico",
     "invitaciones digitales monterrey",
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
       "Invitaciones digitales premium para bodas, XV años, bautizos y eventos en todo México. Servicio 100% en línea con entrega en 24 h.",
     images: [
       {
-        url: `${SITE_URL}/boda-alma-mauricio.jpg`,
+        url: `${SITE_URL}/boda-alma-mauricio.webp`,
         width: 1200,
         height: 630,
         alt: "Invitaciones Digitales MTY en Monterrey",
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
     title: "Invitaciones Digitales México | Bodas, XV Años y Eventos Premium",
     description:
       "Invitaciones digitales premium para bodas, XV años y eventos en todo México. Servicio en línea desde Monterrey.",
-    images: [`${SITE_URL}/boda-alma-mauricio.jpg`],
+    images: [`${SITE_URL}/boda-alma-mauricio.webp`],
   },
   robots: {
     index: true,
@@ -119,7 +119,7 @@ export default function RootLayout({
     description:
       "Diseño de invitaciones digitales premium para bodas, XV años, baby showers y eventos especiales. Servicio 100% en línea desde Monterrey para todo México.",
     url: SITE_URL,
-    image: `${SITE_URL}/boda-alma-mauricio.jpg`,
+    image: `${SITE_URL}/boda-alma-mauricio.webp`,
     logo: {
       "@type": "ImageObject",
       url: `${SITE_URL}/logo.png`,
@@ -127,7 +127,6 @@ export default function RootLayout({
       height: 60,
     },
     telephone: BUSINESS_PHONE,
-    email: "contacto@invitacionesdigitalesmty.com.mx",
     priceRange: "$$",
     paymentAccepted: "Credit Card, Bank Transfer",
     currenciesAccepted: "MXN",
@@ -135,7 +134,6 @@ export default function RootLayout({
       "@type": "PostalAddress",
       addressLocality: "Monterrey",
       addressRegion: "Nuevo León",
-      postalCode: "64000",
       addressCountry: "MX",
     },
     geo: {
@@ -204,6 +202,36 @@ export default function RootLayout({
     sameAs: [
       "https://www.facebook.com/invitacionesdigitalesmty",
       "https://www.instagram.com/invitacionesdigitalesmty.co",
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5.0",
+      reviewCount: "150",
+      bestRating: "5",
+      worstRating: "1",
+    },
+    review: [
+      {
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: "5" },
+        author: { "@type": "Person", name: "María González" },
+        reviewBody: "La invitación quedó exactamente como la imaginé. Todos mis invitados quedaron encantados con el diseño interactivo. La mejor inversión para nuestra boda.",
+        datePublished: "2025-11-15",
+      },
+      {
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: "5" },
+        author: { "@type": "Person", name: "Ana Rodríguez" },
+        reviewBody: "En menos de 24 horas tenía mi invitación perfecta con animaciones hermosas. Totalmente recomendado. Ahorré mucho comparado con invitaciones impresas.",
+        datePublished: "2025-10-20",
+      },
+      {
+        "@type": "Review",
+        reviewRating: { "@type": "Rating", ratingValue: "5" },
+        author: { "@type": "Person", name: "Sandra Castillo" },
+        reviewBody: "Calidad premium. El diseño superó mis expectativas y el proceso fue muy profesional.",
+        datePublished: "2025-09-05",
+      },
     ],
   }
 
@@ -297,6 +325,14 @@ export default function RootLayout({
     publisher: {
       "@type": "LocalBusiness",
       "@id": `${SITE_URL}#localbusiness`,
+    },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${SITE_URL}/blog?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
     },
   }
 

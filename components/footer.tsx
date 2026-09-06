@@ -1,4 +1,4 @@
-import { Instagram, Mail, Phone } from "lucide-react"
+import { Instagram, Phone } from "lucide-react"
 import Link from "next/link"
 
 export function Footer() {
@@ -18,6 +18,17 @@ export function Footer() {
             <Link href="/invitaciones-corporativas" className="hover:text-primary transition-colors">Eventos Corporativos</Link>
           </div>
         </nav>
+
+        {/* Blog link */}
+        <div className="mb-10">
+          <p className="text-[10px] tracking-[0.25em] text-muted-foreground uppercase font-medium mb-4">Recursos</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-2 text-xs text-muted-foreground font-serif">
+            <Link href="/blog" className="hover:text-primary transition-colors">Blog de invitaciones</Link>
+            <Link href="/blog/tendencias-invitaciones-digitales-2025" className="hover:text-primary transition-colors">Tendencias 2026</Link>
+            <Link href="/blog/guia-completa-invitaciones-bodas-2025" className="hover:text-primary transition-colors">Guía de bodas</Link>
+            <Link href="/blog/cuanto-cuesta-invitacion-digital-boda-mexico" className="hover:text-primary transition-colors">¿Cuánto cuesta?</Link>
+          </div>
+        </div>
 
         {/* City links */}
         <nav aria-label="Invitaciones por ciudad" className="mb-10">
@@ -59,8 +70,10 @@ export function Footer() {
             <a href="https://www.instagram.com/invitacionesdigitalesmty.co" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Instagram">
               <Instagram className="w-4 h-4" />
             </a>
-            <a href="mailto:contacto@invitacionesdigitalesmty.com.mx" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Email">
-              <Mail className="w-4 h-4" />
+            <a href="https://www.facebook.com/invitacionesdigitalesmty" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Facebook">
+              <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor" aria-hidden="true">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
             </a>
             <a href="tel:+528180836435" className="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center text-gray-500 hover:text-primary transition-colors" aria-label="Llamar">
               <Phone className="w-4 h-4" />

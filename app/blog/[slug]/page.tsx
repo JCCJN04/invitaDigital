@@ -201,6 +201,9 @@ export default async function BlogPostPage({ params }: Props) {
 
   const related = getRelatedPosts(post.id, post.category)
 
+  const wordCount = Math.round(post.content.split(/\s+/).length)
+  const readMinutes = parseInt(post.readTime) || 5
+
   const articleSchema = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -210,6 +213,8 @@ export default async function BlogPostPage({ params }: Props) {
     url: `${SITE_URL}/blog/${post.id}`,
     datePublished: post.date,
     dateModified: post.date,
+    wordCount,
+    timeRequired: `PT${readMinutes}M`,
     image: post.image
       ? {
           "@type": "ImageObject",
@@ -219,12 +224,12 @@ export default async function BlogPostPage({ params }: Props) {
         }
       : undefined,
     author: {
-      "@type": "Organization",
-      name: "Invitaciones Digitales MTY",
-      url: SITE_URL,
-      logo: {
-        "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+      "@type": "Person",
+      name: post.author,
+      worksFor: {
+        "@type": "Organization",
+        name: "Invitaciones Digitales MTY",
+        url: SITE_URL,
       },
     },
     publisher: {
@@ -290,10 +295,17 @@ export default async function BlogPostPage({ params }: Props) {
             <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-[1.1] mb-6">
               {post.title}
             </h1>
-            <div className="flex items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-4 text-sm text-muted-foreground flex-wrap">
               <span>Por {post.author}</span>
               <span>·</span>
               <time dateTime={post.date}>{formatDate(post.date)}</time>
+              <span>·</span>
+              <span className="flex items-center gap-1">
+                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                {post.readTime} de lectura
+              </span>
             </div>
           </header>
 
