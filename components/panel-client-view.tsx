@@ -81,6 +81,7 @@ interface PanelClientViewProps {
   initialEvent: Event
   initialGuests: Guest[]
   slug: string
+  isDemo?: boolean
 }
 
 interface FloorTable {
@@ -107,6 +108,7 @@ export function PanelClientView({
   initialEvent,
   initialGuests,
   slug,
+  isDemo = false,
 }: PanelClientViewProps) {
   const [event, setEvent] = useState<Event>(initialEvent)
   const [guests, setGuests] = useState<Guest[]>(initialGuests)
@@ -153,7 +155,7 @@ export function PanelClientView({
 
   // Realtime subscription for live updates
   useEffect(() => {
-    if (!event?.id) return
+    if (!event?.id || isDemo) return
 
     const channel = supabase
       .channel(`guests-realtime-${event.id}`)
@@ -428,17 +430,26 @@ export function PanelClientView({
   // Copy personalized link to clipboard
   const handleCopyLink = (guestToken: string) => {
     const origin = typeof window !== "undefined" ? window.location.origin : "https://www.invitacionesdigitalesmty.com.mx"
-    const url = `${origin}/${slug}?guest=${guestToken}`
+    const targetSlug = isDemo ? "demo" : slug
+    const url = `${origin}/${targetSlug}?guest=${guestToken}`
     navigator.clipboard.writeText(url)
     setCopiedToken(guestToken)
     setTimeout(() => setCopiedToken(null), 2000)
   }
 
-  // Update guest table assignment via Server Action
+  // Update guest table assignment via Server Action (or local in demo)
   const handleUpdateGuestTable = async (guestId: string, newTableVal: string | null) => {
     setUpdatingGuestId(guestId)
     try {
       const cleanTable = newTableVal && newTableVal.trim() !== "" ? newTableVal.trim() : null
+
+      if (isDemo) {
+        setGuests((prev) =>
+          prev.map((g) => (g.id === guestId ? { ...g, table_assigned: cleanTable } : g))
+        )
+        return
+      }
+
       const res = await updateGuestTableAction(guestId, slug, cleanTable)
 
       if (!res.success) {
@@ -456,10 +467,18 @@ export function PanelClientView({
     }
   }
 
-  // Update guest assigned passes via Server Action (only allowed if pending)
+  // Update guest assigned passes via Server Action (or local in demo)
   const handleUpdateGuestPasses = async (guestId: string, newPasses: number) => {
     try {
       const passesNum = Math.max(1, Math.min(20, newPasses))
+
+      if (isDemo) {
+        setGuests((prev) =>
+          prev.map((g) => (g.id === guestId ? { ...g, passes_assigned: passesNum } : g))
+        )
+        return
+      }
+
       const res = await updateGuestPassesAction(guestId, slug, passesNum)
       if (!res.success) {
         throw new Error(res.error || "Error al actualizar los pases.")
@@ -731,9 +750,37 @@ export function PanelClientView({
     document.body.removeChild(link)
   }
 
-  // Commit Batch Import to Supabase
+  // Commit Batch Import to Supabase (or local in demo)
   const handleCommitImport = async () => {
     if (parsedGuests.length === 0 || !event?.id) return
+
+    if (isDemo) {
+      const imported: Guest[] = parsedGuests.map((pg, idx) => ({
+        id: `demo-import-${Date.now()}-${idx}`,
+        event_id: event.id,
+        token: `import_${idx}_${Date.now()}`,
+        name: pg.name,
+        phone: pg.phone || null,
+        passes_assigned: pg.passes_assigned || 2,
+        passes_confirmed: 0,
+        rsvp_status: "pending",
+        table_assigned: pg.table_assigned || null,
+        qr_code_url: null,
+        whatsapp_sent: false,
+        whatsapp_sent_at: null,
+        whatsapp_delivered: false,
+        confirmed_at: null,
+        notes: "Importado en modo demo",
+        created_at: new Date().toISOString(),
+        children_count: 0,
+      }))
+      setGuests((prev) => [...imported, ...prev])
+      setIsImportModalOpen(false)
+      setImportText("")
+      setParsedGuests([])
+      alert(`✨ [Modo Demo] Se agregaron ${imported.length} invitados a tu lista de prueba.`)
+      return
+    }
 
     setImporting(true)
     try {
@@ -758,14 +805,45 @@ export function PanelClientView({
     }
   }
 
-  // Add new guest submit via robust Server Action
+  // Add new guest submit via robust Server Action (or local in demo)
   const handleAddGuest = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!event?.id || !newName.trim()) return
 
+    const totalPasses = newPasses + newChildren
+
+    if (isDemo) {
+      const newGuestObj: Guest = {
+        id: `demo-new-${Date.now()}`,
+        event_id: event.id,
+        token: `invitado_demo_${Date.now().toString().slice(-4)}`,
+        name: newName.trim(),
+        phone: newPhone.trim() || null,
+        passes_assigned: totalPasses,
+        passes_confirmed: 0,
+        rsvp_status: "pending",
+        table_assigned: newTable.trim() || null,
+        qr_code_url: null,
+        whatsapp_sent: false,
+        whatsapp_sent_at: null,
+        whatsapp_delivered: false,
+        confirmed_at: null,
+        notes: "Invitado de prueba agregado en la demo",
+        created_at: new Date().toISOString(),
+        children_count: newChildren,
+      }
+      setGuests((prev) => [newGuestObj, ...prev])
+      setIsAddModalOpen(false)
+      setNewName("")
+      setNewPhone("")
+      setNewPasses(2)
+      setNewChildren(0)
+      setNewTable("")
+      return
+    }
+
     setAddingGuest(true)
     try {
-      const totalPasses = newPasses + newChildren
       const res = await addGuestAction(event.id, slug, {
         name: newName.trim(),
         phone: newPhone.trim() || null,
@@ -807,14 +885,33 @@ export function PanelClientView({
     setEditAdults(adults)
   }
 
-  // Save Edit Guest
+  // Save Edit Guest (or local in demo)
   const handleSaveEditGuest = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!editingGuest || !editName.trim()) return
 
+    const totalPasses = editAdults + editKids
+
+    if (isDemo) {
+      setGuests((prev) =>
+        prev.map((g) =>
+          g.id === editingGuest.id
+            ? {
+                ...g,
+                name: editName.trim(),
+                phone: editPhone.trim() || null,
+                passes_assigned: totalPasses,
+                children_count: editKids,
+              }
+            : g
+        )
+      )
+      setEditingGuest(null)
+      return
+    }
+
     setSavingEdit(true)
     try {
-      const totalPasses = editAdults + editKids
       const res = await updateGuestInfoAction(editingGuest.id, slug, {
         name: editName.trim(),
         phone: editPhone.trim() || null,
@@ -855,8 +952,45 @@ export function PanelClientView({
   return (
     <div className="min-h-screen bg-[#FAF8F5] text-foreground font-sans selection:bg-primary/20 pb-20 overflow-x-hidden">
       
+      {/* Demo Notification & Conversion Top Banner */}
+      {isDemo && (
+        <div className="bg-gradient-to-r from-amber-700 via-amber-800 to-stone-900 text-white text-xs sm:text-sm py-2.5 px-4 shadow-md sticky top-0 z-50 border-b border-amber-500/30">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2.5 sm:gap-4">
+            <div className="flex items-center gap-2.5 text-center md:text-left flex-wrap justify-center md:justify-start">
+              <span className="bg-amber-500/30 text-amber-200 border border-amber-400/40 font-bold px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] tracking-wider uppercase inline-flex items-center gap-1 shadow-xs">
+                <Sparkles className="w-3 h-3 text-amber-300" /> MODO DEMOSTRACIÓN
+              </span>
+              <span className="font-medium text-amber-100 text-xs sm:text-[13px]">
+                Así gestionarás tu evento. Prueba agregar invitados, consultar respuestas del formulario y descargar tu reporte en Excel o PDF.
+              </span>
+            </div>
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => {
+                  setGuests(initialGuests)
+                  alert("✨ Datos de demostración restablecidos a su estado inicial.")
+                }}
+                className="bg-white/10 hover:bg-white/20 text-amber-100 px-2.5 py-1 rounded-full text-[11px] font-medium transition-all cursor-pointer flex items-center gap-1"
+                title="Restablecer lista de invitados muestra"
+              >
+                🔄 Reiniciar demo
+              </button>
+              <a
+                href="https://wa.me/528180836435?text=Hola%2C%20estuve%20probando%20el%20panel%20de%20demostraci%C3%B3n%20y%20me%20gustar%C3%ADa%20cotizar%20mi%20invitaci%C3%B3n%20digital%20con%20panel."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-3 py-1 rounded-full text-xs transition-all shadow-xs flex items-center gap-1.5 cursor-pointer"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5" />
+                <span>Quiero mi panel</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Top Floating Luxury Header matching main site */}
-      <div className="sticky top-0 z-40 w-full backdrop-blur-md bg-[#FAF8F5]/90 border-b border-border/60 transition-all">
+      <div className={`sticky ${isDemo ? "top-10 md:top-10" : "top-0"} z-40 w-full backdrop-blur-md bg-[#FAF8F5]/90 border-b border-border/60 transition-all`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 flex items-center justify-between gap-2">
           <Link href="/" className="flex items-center gap-2 sm:gap-2.5 group shrink-0">
             <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-primary-foreground font-serif font-bold text-sm shadow-sm">
@@ -867,38 +1001,51 @@ export function PanelClientView({
                 InvitacionesDigitales<span className="text-primary font-serif">MTY</span>
               </span>
               <span className="text-[9px] sm:text-[10px] text-muted-foreground tracking-widest uppercase mt-0.5 hidden xs:block">
-                Panel del Anfitrión
+                {isDemo ? "Panel de Demostración" : "Panel del Anfitrión"}
               </span>
             </div>
           </Link>
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
-              href={`/${slug}`}
+              href={isDemo ? "/demo" : `/${slug}`}
               target="_blank"
               className="px-2.5 sm:px-3.5 py-1.5 rounded-full border border-border bg-card hover:bg-secondary text-[11px] sm:text-xs font-serif font-semibold text-foreground flex items-center gap-1.5 transition-all shadow-xs shrink-0"
-              title="Abrir Invitación General del Evento"
+              title={isDemo ? "Ver Invitación de Demostración" : "Abrir Invitación General del Evento"}
             >
               <Eye className="w-3.5 h-3.5 text-primary shrink-0" strokeWidth={1.5} />
-              <span className="hidden sm:inline">Ver Invitación General</span>
+              <span className="hidden sm:inline">{isDemo ? "Ver Invitación Demo" : "Ver Invitación General"}</span>
               <span className="sm:hidden">Invitación</span>
             </Link>
 
-            <button
-              onClick={async () => {
-                await logoutPanelAction(slug)
-                window.location.reload()
-              }}
-              className="px-2.5 sm:px-3 py-1.5 rounded-full border border-border bg-card hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30 text-[11px] sm:text-xs font-serif font-semibold text-muted-foreground flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
-              title="Cerrar sesión del panel"
-            >
-              <LogOut className="w-3.5 h-3.5" strokeWidth={1.5} />
-              <span className="hidden xs:inline">Salir</span>
-            </button>
+            {isDemo ? (
+              <a
+                href="https://wa.me/528180836435?text=Hola%2C%20estuve%20viendo%20el%20panel%20demo%20y%20me%20gustar%C3%ADa%20cotizar%20para%20mi%20evento."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-2.5 sm:px-3 py-1.5 rounded-full border border-emerald-300 bg-emerald-50 text-emerald-800 hover:bg-emerald-100 text-[11px] sm:text-xs font-serif font-semibold flex items-center gap-1.5 transition-all shadow-xs"
+                title="Cotizar por WhatsApp"
+              >
+                <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600" />
+                <span className="hidden xs:inline">Cotizar Evento</span>
+              </a>
+            ) : (
+              <button
+                onClick={async () => {
+                  await logoutPanelAction(slug)
+                  window.location.reload()
+                }}
+                className="px-2.5 sm:px-3 py-1.5 rounded-full border border-border bg-card hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30 text-[11px] sm:text-xs font-serif font-semibold text-muted-foreground flex items-center gap-1.5 transition-all cursor-pointer shadow-xs"
+                title="Cerrar sesión del panel"
+              >
+                <LogOut className="w-3.5 h-3.5" strokeWidth={1.5} />
+                <span className="hidden xs:inline">Salir</span>
+              </button>
+            )}
             
             <div className="inline-flex items-center gap-1.5 text-[10px] sm:text-[11px] font-semibold text-emerald-700 bg-emerald-50 px-2.5 sm:px-3 py-1 rounded-full border border-emerald-200 shadow-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>En Vivo</span>
+              <span>{isDemo ? "Demo Activa" : "En Vivo"}</span>
             </div>
           </div>
         </div>

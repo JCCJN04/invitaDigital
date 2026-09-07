@@ -2,6 +2,7 @@
 
 import { supabase, type Guest } from "@/lib/supabase"
 import { revalidatePath } from "next/cache"
+import { isPanelAuthenticated } from "@/app/actions/panel-auth"
 
 interface SubmitRsvpParams {
   guestId?: string
@@ -26,6 +27,11 @@ export async function submitRsvpAction(params: SubmitRsvpParams) {
       phone,
       notes,
     } = params
+
+    // In demo mode, do not write to the database
+    if (eventSlug?.toLowerCase() === "demo") {
+      return { success: true }
+    }
 
     // If existing guest by ID or token
     if (guestId || token) {
@@ -108,6 +114,15 @@ export async function addGuestAction(
   }
 ) {
   try {
+    if (eventSlug.toLowerCase() === "demo") {
+      return { success: true }
+    }
+
+    const isAuthed = await isPanelAuthenticated(eventSlug)
+    if (!isAuthed) {
+      return { success: false, error: "No autorizado. Inicia sesión en el panel del evento." }
+    }
+
     const generatedToken = "g_" + Math.random().toString(36).substring(2, 10)
     const children = Math.max(0, Number(guestData.children_count) || 0)
     const totalPasses = Math.max(1, Number(guestData.passes_assigned) || 2)
@@ -147,6 +162,14 @@ export async function updateGuestTableAction(
   tableAssigned: string | null
 ) {
   try {
+    if (eventSlug.toLowerCase() === "demo") {
+      return { success: true }
+    }
+
+    const isAuthed = await isPanelAuthenticated(eventSlug)
+    if (!isAuthed) {
+      return { success: false, error: "No autorizado. Inicia sesión en el panel del evento." }
+    }
     const { data, error } = await supabase
       .from("guests")
       .update({ table_assigned: tableAssigned })
@@ -174,6 +197,15 @@ export async function updateGuestPassesAction(
   newPasses: number
 ) {
   try {
+    if (eventSlug.toLowerCase() === "demo") {
+      return { success: true }
+    }
+
+    const isAuthed = await isPanelAuthenticated(eventSlug)
+    if (!isAuthed) {
+      return { success: false, error: "No autorizado. Inicia sesión en el panel del evento." }
+    }
+
     const safePasses = Math.max(1, Math.min(20, Number(newPasses) || 1))
 
     // Only allow updating if status is pending
@@ -226,6 +258,15 @@ export async function updateGuestInfoAction(
   }
 ) {
   try {
+    if (eventSlug.toLowerCase() === "demo") {
+      return { success: true }
+    }
+
+    const isAuthed = await isPanelAuthenticated(eventSlug)
+    if (!isAuthed) {
+      return { success: false, error: "No autorizado. Inicia sesión en el panel del evento." }
+    }
+
     const trimmedName = updates.name.trim()
     if (!trimmedName) {
       return { success: false, error: "El nombre del invitado no puede estar vacío." }
@@ -279,6 +320,14 @@ export async function batchImportGuestsAction(
   guestsList: RawImportGuest[]
 ) {
   try {
+    if (eventSlug.toLowerCase() === "demo") {
+      return { success: true }
+    }
+
+    const isAuthed = await isPanelAuthenticated(eventSlug)
+    if (!isAuthed) {
+      return { success: false, error: "No autorizado. Inicia sesión en el panel del evento." }
+    }
     if (!guestsList || guestsList.length === 0) {
       return { success: false, error: "No se proporcionaron invitados para importar." }
     }

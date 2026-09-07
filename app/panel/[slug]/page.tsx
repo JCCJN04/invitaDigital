@@ -3,6 +3,7 @@ import { supabase, type Event, type Guest } from "@/lib/supabase"
 import { PanelClientView } from "@/components/panel-client-view"
 import { PanelLoginGate } from "@/components/panel-login-gate"
 import { isPanelAuthenticated } from "@/app/actions/panel-auth"
+import { DEMO_EVENT, DEMO_GUESTS } from "@/lib/demo-data"
 
 interface PanelPageProps {
   params: Promise<{ slug: string }>
@@ -11,6 +12,18 @@ interface PanelPageProps {
 export default async function HostPanelPage({ params }: PanelPageProps) {
   const resolvedParams = await params
   const slug = decodeURIComponent(resolvedParams.slug || "").trim()
+
+  // DEMO MODE: Allows prospective clients to test the panel freely without credentials
+  if (slug.toLowerCase() === "demo") {
+    return (
+      <PanelClientView
+        initialEvent={DEMO_EVENT}
+        initialGuests={DEMO_GUESTS}
+        slug="demo"
+        isDemo={true}
+      />
+    )
+  }
 
   const { data: eventData, error: eventErr } = await supabase
     .from("events")

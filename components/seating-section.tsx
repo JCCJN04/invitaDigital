@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 
 const steps = [
   {
@@ -130,17 +131,25 @@ export function SeatingSection() {
             ))}
 
             {/* CTA */}
-            <div className="mt-6 flex flex-col sm:flex-row items-start gap-4">
+            <div className="mt-6 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <button className="px-6 py-3 text-xs font-bold tracking-widest uppercase bg-primary text-primary-foreground hover:bg-primary/90 transition-colors">
+                <button className="w-full sm:w-auto px-6 py-3 text-xs font-bold tracking-widest uppercase bg-primary text-primary-foreground hover:bg-primary/90 transition-colors cursor-pointer">
                   Agregar a mi invitación
                 </button>
               </a>
-              <div className="flex items-baseline gap-2">
+              <Link
+                href="/panel/demo"
+                target="_blank"
+                className="w-full sm:w-auto px-5 py-3 text-xs font-bold tracking-wider uppercase border border-primary text-primary hover:bg-primary/10 transition-colors flex items-center justify-center gap-2 cursor-pointer text-center"
+              >
+                <span>Ver Panel Demo en Vivo</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+              <div className="flex items-baseline gap-2 justify-center sm:justify-start sm:ml-2">
                 <span className="font-serif text-2xl font-bold text-foreground">+$800</span>
                 <span className="text-xs text-muted-foreground">MXN</span>
               </div>
