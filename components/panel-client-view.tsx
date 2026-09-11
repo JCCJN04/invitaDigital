@@ -8,6 +8,7 @@ import {
   updateGuestPassesAction,
   updateGuestInfoAction,
   batchImportGuestsAction,
+  deleteGuestAction,
   type RawImportGuest,
 } from "@/app/actions/rsvp"
 import { logoutPanelAction } from "@/app/actions/panel-auth"
@@ -152,6 +153,10 @@ export function PanelClientView({
   const [editAdults, setEditAdults] = useState(2)
   const [editKids, setEditKids] = useState(0)
   const [savingEdit, setSavingEdit] = useState(false)
+
+  // Delete guest state
+  const [guestToDelete, setGuestToDelete] = useState<Guest | null>(null)
+  const [deletingGuest, setDeletingGuest] = useState(false)
 
   // Realtime subscription for live updates
   useEffect(() => {
@@ -938,6 +943,39 @@ export function PanelClientView({
     }
   }
 
+  // Delete guest submit via Server Action (or local in demo)
+  const handleConfirmDeleteGuest = async () => {
+    if (!guestToDelete || !event?.id) return
+
+    if (isDemo) {
+      setGuests((prev) => prev.filter((g) => g.id !== guestToDelete.id))
+      if (editingGuest?.id === guestToDelete.id) {
+        setEditingGuest(null)
+      }
+      setGuestToDelete(null)
+      return
+    }
+
+    setDeletingGuest(true)
+    try {
+      const res = await deleteGuestAction(guestToDelete.id, slug)
+      if (!res.success) {
+        throw new Error(res.error || "Error al eliminar el invitado.")
+      }
+
+      setGuests((prev) => prev.filter((g) => g.id !== guestToDelete.id))
+      if (editingGuest?.id === guestToDelete.id) {
+        setEditingGuest(null)
+      }
+      setGuestToDelete(null)
+    } catch (err: any) {
+      console.error("Error deleting guest:", err)
+      alert(err.message || "Error al eliminar el invitado.")
+    } finally {
+      setDeletingGuest(false)
+    }
+  }
+
   const selectedTableObj = floorTables.find((t) => t.id === selectedTable) || {
     id: selectedTable,
     label: selectedTable,
@@ -1609,13 +1647,22 @@ export function PanelClientView({
                                 <td className="py-2.5 px-3 border-r-2 border-primary/30 font-serif font-bold text-xs text-foreground sticky left-10 bg-card z-10 shadow-[3px_0_6px_-2px_rgba(0,0,0,0.06)] min-w-[130px] max-w-[170px]">
                                   <div className="flex items-center justify-between gap-1.5">
                                     <span className="leading-snug truncate">{guest.name}</span>
-                                    <button
-                                      onClick={() => handleOpenEditGuest(guest)}
-                                      className="text-[10px] text-primary/70 hover:text-primary shrink-0 cursor-pointer p-0.5"
-                                      title="Editar invitado"
-                                    >
-                                      <Edit2 className="w-2.5 h-2.5" />
-                                    </button>
+                                    <div className="flex items-center gap-1 shrink-0">
+                                      <button
+                                        onClick={() => handleOpenEditGuest(guest)}
+                                        className="text-[10px] text-primary/70 hover:text-primary shrink-0 cursor-pointer p-0.5 rounded hover:bg-primary/10 transition-colors"
+                                        title="Editar invitado"
+                                      >
+                                        <Edit2 className="w-2.5 h-2.5" />
+                                      </button>
+                                      <button
+                                        onClick={() => setGuestToDelete(guest)}
+                                        className="text-[10px] text-destructive/70 hover:text-destructive shrink-0 cursor-pointer p-0.5 rounded hover:bg-destructive/10 transition-colors"
+                                        title="Eliminar invitado"
+                                      >
+                                        <Trash2 className="w-2.5 h-2.5" />
+                                      </button>
+                                    </div>
                                   </div>
                                 </td>
 
@@ -1746,15 +1793,25 @@ export function PanelClientView({
                                     <h4 className="font-serif font-bold text-sm text-foreground leading-snug break-words flex-1">
                                       {guest.name}
                                     </h4>
-                                    <button
-                                      type="button"
-                                      onClick={() => handleOpenEditGuest(guest)}
-                                      className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-serif font-bold bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all cursor-pointer shrink-0"
-                                      title="Editar invitado"
-                                    >
-                                      <Edit2 className="w-2.5 h-2.5" />
-                                      <span>Editar</span>
-                                    </button>
+                                    <div className="flex items-center gap-1 shrink-0">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleOpenEditGuest(guest)}
+                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-serif font-bold bg-primary/10 text-primary border border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all cursor-pointer shrink-0"
+                                        title="Editar invitado"
+                                      >
+                                        <Edit2 className="w-2.5 h-2.5" />
+                                        <span>Editar</span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => setGuestToDelete(guest)}
+                                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-lg text-[10px] font-serif font-bold bg-destructive/10 text-destructive border border-destructive/20 hover:bg-destructive hover:text-white transition-all cursor-pointer shrink-0"
+                                        title="Eliminar invitado"
+                                      >
+                                        <Trash2 className="w-2.5 h-2.5" />
+                                      </button>
+                                    </div>
                                   </div>
 
                                   {guest.phone && (
@@ -1900,15 +1957,25 @@ export function PanelClientView({
                                         </p>
                                       )}
                                     </div>
-                                    <button
-                                      type="button"
-                                      onClick={() => handleOpenEditGuest(guest)}
-                                      className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-serif font-bold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
-                                      title="Editar nombre y pases del invitado"
-                                    >
-                                      <Edit2 className="w-3 h-3" />
-                                      <span>Editar</span>
-                                    </button>
+                                    <div className="flex items-center gap-1.5 shrink-0">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleOpenEditGuest(guest)}
+                                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-serif font-bold bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground border border-primary/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
+                                        title="Editar nombre y pases del invitado"
+                                      >
+                                        <Edit2 className="w-3 h-3" />
+                                        <span>Editar</span>
+                                      </button>
+                                      <button
+                                        type="button"
+                                        onClick={() => setGuestToDelete(guest)}
+                                        className="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-serif font-bold bg-destructive/10 text-destructive hover:bg-destructive hover:text-white border border-destructive/25 transition-all cursor-pointer shadow-2xs shrink-0 active:scale-95"
+                                        title="Eliminar invitado"
+                                      >
+                                        <Trash2 className="w-3 h-3" />
+                                      </button>
+                                    </div>
                                   </div>
                                 </td>
 
@@ -2272,6 +2339,20 @@ export function PanelClientView({
                   {savingEdit ? <Loader2 className="w-4 h-4 animate-spin" /> : "Guardar Cambios"}
                 </button>
               </div>
+
+              <div className="pt-2 border-t border-border flex items-center justify-center">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const guest = editingGuest
+                    setGuestToDelete(guest)
+                  }}
+                  className="text-xs text-destructive hover:text-destructive/80 font-serif font-semibold inline-flex items-center gap-1.5 cursor-pointer hover:underline py-1"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>Eliminar este invitado de la lista</span>
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -2399,6 +2480,81 @@ export function PanelClientView({
                 className="w-full py-2.5 rounded-full bg-primary hover:bg-primary-hover text-primary-foreground text-xs font-serif font-bold uppercase tracking-wider cursor-pointer shadow-sm transition-all"
               >
                 Cerrar Detalle
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* MODAL: CONFIRMAR ELIMINAR INVITADO */}
+      {guestToDelete && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="relative w-full max-w-md bg-card text-card-foreground rounded-3xl shadow-2xl border border-destructive/30 overflow-hidden p-6 sm:p-8 space-y-5">
+            <div className="flex items-center gap-3 border-b border-border pb-4">
+              <div className="w-10 h-10 rounded-2xl bg-destructive/10 text-destructive flex items-center justify-center shrink-0 border border-destructive/20 shadow-2xs">
+                <Trash2 className="w-5 h-5" strokeWidth={1.75} />
+              </div>
+              <div>
+                <h3 className="font-serif text-xl font-bold text-foreground">
+                  ¿Eliminar invitado?
+                </h3>
+                <p className="text-xs text-muted-foreground font-serif">
+                  Esta acción no se puede deshacer.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-3 text-xs font-serif">
+              <div className="bg-destructive/5 border border-destructive/20 rounded-2xl p-4 space-y-1.5">
+                <p className="text-foreground font-bold text-sm">
+                  {guestToDelete.name}
+                </p>
+                <p className="text-muted-foreground">
+                  Pases asignados: <strong className="text-foreground">{guestToDelete.passes_assigned}</strong>
+                  {guestToDelete.rsvp_status === "confirmed" && (
+                    <span className="text-emerald-700 font-bold ml-1.5">
+                      (Ya confirmó {guestToDelete.passes_confirmed > 0 ? guestToDelete.passes_confirmed : guestToDelete.passes_assigned} pases)
+                    </span>
+                  )}
+                </p>
+                {guestToDelete.phone && (
+                  <p className="text-muted-foreground font-mono text-[11px]">
+                    Teléfono: {guestToDelete.phone}
+                  </p>
+                )}
+              </div>
+
+              <p className="text-muted-foreground leading-relaxed">
+                Al eliminar este registro, el enlace personalizado de <strong className="text-foreground">{guestToDelete.name}</strong> dejará de funcionar y se borrarán sus respuestas del listado.
+              </p>
+            </div>
+
+            <div className="pt-2 flex gap-3">
+              <button
+                type="button"
+                disabled={deletingGuest}
+                onClick={() => setGuestToDelete(null)}
+                className="w-full py-3 rounded-full border border-border text-xs font-serif font-bold text-muted-foreground hover:text-foreground cursor-pointer disabled:opacity-50"
+              >
+                Cancelar
+              </button>
+              <button
+                type="button"
+                disabled={deletingGuest}
+                onClick={handleConfirmDeleteGuest}
+                className="w-full py-3 rounded-full bg-destructive hover:bg-destructive/90 text-white text-xs font-serif font-bold uppercase tracking-wider cursor-pointer disabled:opacity-50 flex items-center justify-center gap-2 shadow-md shadow-destructive/20"
+              >
+                {deletingGuest ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span>Eliminando...</span>
+                  </>
+                ) : (
+                  <>
+                    <Trash2 className="w-3.5 h-3.5" />
+                    <span>Sí, Eliminar</span>
+                  </>
+                )}
               </button>
             </div>
           </div>

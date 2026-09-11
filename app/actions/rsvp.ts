@@ -362,3 +362,36 @@ export async function batchImportGuestsAction(
     return { success: false, error: err.message || "Error al importar invitados." }
   }
 }
+
+export async function deleteGuestAction(
+  guestId: string,
+  eventSlug: string
+) {
+  try {
+    if (eventSlug.toLowerCase() === "demo") {
+      return { success: true }
+    }
+
+    const isAuthed = await isPanelAuthenticated(eventSlug)
+    if (!isAuthed) {
+      return { success: false, error: "No autorizado. Inicia sesión en el panel del evento." }
+    }
+
+    const { error } = await supabase
+      .from("guests")
+      .delete()
+      .eq("id", guestId)
+
+    if (error) {
+      console.error("Error deleting guest:", error)
+      return { success: false, error: error.message }
+    }
+
+    revalidatePath(`/boda/${eventSlug}`)
+    revalidatePath(`/panel/${eventSlug}`)
+    return { success: true }
+  } catch (err: any) {
+    console.error("Error in deleteGuestAction:", err)
+    return { success: false, error: err.message || "Error al eliminar el invitado." }
+  }
+}
