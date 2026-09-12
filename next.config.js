@@ -19,6 +19,22 @@ module.exports = {
   async rewrites() {
     return [
       {
+        source: '/bautizoaaron',
+        destination: 'https://bautizoaaron.vercel.app/',
+      },
+      {
+        source: '/bautizoaaron/:path*',
+        destination: 'https://bautizoaaron.vercel.app/:path*',
+      },
+      {
+        source: '/aaron-sebastian',
+        destination: 'https://bautizoaaron.vercel.app/',
+      },
+      {
+        source: '/aaron-sebastian/:path*',
+        destination: 'https://bautizoaaron.vercel.app/:path*',
+      },
+      {
         source: '/carlayangel',
         destination: process.env.NODE_ENV === 'development'
           ? 'http://localhost:3001/carlayangel'

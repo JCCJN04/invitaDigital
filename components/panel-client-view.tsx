@@ -12,6 +12,7 @@ import {
   type RawImportGuest,
 } from "@/app/actions/rsvp"
 import { logoutPanelAction } from "@/app/actions/panel-auth"
+import { getEventInvitationSlug, getEventInvitationPath, hasPersonalizedLinks } from "@/lib/utils"
 import Link from "next/link"
 import {
   Users,
@@ -120,6 +121,7 @@ export function PanelClientView({
   const [mobileResponsesLayout, setMobileResponsesLayout] = useState<"cards" | "excel">("cards")
   const [copiedToken, setCopiedToken] = useState<string | null>(null)
   const [copiedTable, setCopiedTable] = useState(false)
+  const showPersonalizedLinks = isDemo ? true : hasPersonalizedLinks(slug, event)
 
   // Import modal state
   const [isImportModalOpen, setIsImportModalOpen] = useState(false)
@@ -435,7 +437,7 @@ export function PanelClientView({
   // Copy personalized link to clipboard
   const handleCopyLink = (guestToken: string) => {
     const origin = typeof window !== "undefined" ? window.location.origin : "https://www.invitacionesdigitalesmty.com.mx"
-    const targetSlug = isDemo ? "demo" : slug
+    const targetSlug = isDemo ? "demo" : getEventInvitationSlug(slug)
     const url = `${origin}/${targetSlug}?guest=${guestToken}`
     navigator.clipboard.writeText(url)
     setCopiedToken(guestToken)
@@ -1046,7 +1048,7 @@ export function PanelClientView({
 
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <Link
-              href={isDemo ? "/demo" : `/${slug}`}
+              href={isDemo ? "/demo" : getEventInvitationPath(slug)}
               target="_blank"
               className="px-2.5 sm:px-3.5 py-1.5 rounded-full border border-border bg-card hover:bg-secondary text-[11px] sm:text-xs font-serif font-semibold text-foreground flex items-center gap-1.5 transition-all shadow-xs shrink-0"
               title={isDemo ? "Ver Invitación de Demostración" : "Abrir Invitación General del Evento"}
@@ -1115,22 +1117,23 @@ export function PanelClientView({
             </p>
           </div>
 
-          {/* Action Button: + Nuevo Invitado */}
-          <div className="flex items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
-            {/* Add Guest Button */}
-            <button
-              onClick={() => setIsAddModalOpen(true)}
-              className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-primary-foreground text-xs font-serif font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 cursor-pointer"
-            >
-              <UserPlus className="w-4 h-4 shrink-0" strokeWidth={1.5} />
-              <span>+ Nuevo Invitado</span>
-            </button>
-          </div>
+          {/* Action Button: + Nuevo Invitado (only if event uses personalized invitations) */}
+          {showPersonalizedLinks && (
+            <div className="flex items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
+              <button
+                onClick={() => setIsAddModalOpen(true)}
+                className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-primary hover:bg-primary-hover text-primary-foreground text-xs font-serif font-bold tracking-wider uppercase flex items-center justify-center gap-1.5 transition-all shadow-md shadow-primary/20 hover:shadow-lg hover:shadow-primary/30 cursor-pointer"
+              >
+                <UserPlus className="w-4 h-4 shrink-0" strokeWidth={1.5} />
+                <span>+ Nuevo Invitado</span>
+              </button>
+            </div>
+          )}
         </div>
 
         {/* GUEST LIST & RSVP METRICS */}
         <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-300">
-            {/* Cuenta Regresiva Oficial para la Boda */}
+            {/* Cuenta Regresiva Oficial para el Evento */}
             <div className="bg-card p-5 sm:p-6 rounded-3xl border border-primary/20 shadow-xs flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3.5">
                 <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center font-serif border border-primary/20 shadow-2xs shrink-0">
@@ -1171,7 +1174,7 @@ export function PanelClientView({
             </div>
 
             {/* Metrics Cards Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+            <div className={`grid grid-cols-2 sm:grid-cols-2 ${showPersonalizedLinks ? "lg:grid-cols-4" : "lg:grid-cols-3"} gap-3 sm:gap-6`}>
               {/* Card 1: Confirmados */}
               <div className="bg-card p-4 sm:p-6 rounded-3xl border border-emerald-500/30 shadow-[0_8px_30px_rgba(0,0,0,0.03)] relative overflow-hidden">
                 <div className="flex items-center justify-between">
@@ -1185,7 +1188,9 @@ export function PanelClientView({
                     <p className="font-serif text-2xl sm:text-4xl font-bold text-foreground">
                       {confirmedPasses}
                     </p>
-                    <span className="text-xs font-serif text-muted-foreground">/ {totalAssignedPasses}</span>
+                    {showPersonalizedLinks && (
+                      <span className="text-xs font-serif text-muted-foreground">/ {totalAssignedPasses}</span>
+                    )}
                   </div>
                   <p className="text-[10px] sm:text-[11px] text-emerald-600 font-bold mt-0.5 flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -1194,26 +1199,28 @@ export function PanelClientView({
                 </div>
               </div>
 
-              {/* Card 2: Pendientes */}
-              <div className="bg-card p-4 sm:p-6 rounded-3xl border border-amber-500/30 shadow-[0_8px_30px_rgba(0,0,0,0.03)] relative overflow-hidden">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] sm:text-xs font-serif font-semibold text-muted-foreground">Pases Pendientes</span>
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center">
-                    <Hourglass className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.5} />
+              {/* Card 2: Pendientes (Solo si aplica lista pre-registrada con pases pendientes) */}
+              {showPersonalizedLinks && (
+                <div className="bg-card p-4 sm:p-6 rounded-3xl border border-amber-500/30 shadow-[0_8px_30px_rgba(0,0,0,0.03)] relative overflow-hidden">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] sm:text-xs font-serif font-semibold text-muted-foreground">Pases Pendientes</span>
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-2xl bg-amber-500/10 text-amber-600 flex items-center justify-center">
+                      <Hourglass className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.5} />
+                    </div>
                   </div>
-                </div>
-                <div className="mt-2.5 sm:mt-3">
-                  <div className="flex items-baseline gap-2">
-                    <p className="font-serif text-2xl sm:text-4xl font-bold text-foreground">
-                      {pendingPasses}
+                  <div className="mt-2.5 sm:mt-3">
+                    <div className="flex items-baseline gap-2">
+                      <p className="font-serif text-2xl sm:text-4xl font-bold text-foreground">
+                        {pendingPasses}
+                      </p>
+                      <span className="text-xs font-serif text-muted-foreground">/ {totalAssignedPasses}</span>
+                    </div>
+                    <p className="text-[10px] sm:text-[11px] text-amber-600 font-bold mt-0.5">
+                      {pendingGuestsCount} {pendingGuestsCount === 1 ? "familia pendiente" : "familias pendientes"}
                     </p>
-                    <span className="text-xs font-serif text-muted-foreground">/ {totalAssignedPasses}</span>
                   </div>
-                  <p className="text-[10px] sm:text-[11px] text-amber-600 font-bold mt-0.5">
-                    {pendingGuestsCount} {pendingGuestsCount === 1 ? "familia pendiente" : "familias pendientes"}
-                  </p>
                 </div>
-              </div>
+              )}
 
               {/* Card 3: Cancelados */}
               <div className="bg-card p-4 sm:p-6 rounded-3xl border border-border shadow-[0_8px_30px_rgba(0,0,0,0.03)] relative overflow-hidden">
@@ -1313,7 +1320,9 @@ export function PanelClientView({
                   {[
                     { id: "all", label: "Todos", count: guests.length },
                     { id: "confirmed", label: "Confirmados", count: confirmedGuestsCount },
-                    { id: "pending", label: "Pendientes", count: pendingGuestsCount },
+                    ...(showPersonalizedLinks
+                      ? [{ id: "pending", label: "Pendientes", count: pendingGuestsCount }]
+                      : []),
                     { id: "declined", label: "Cancelados", count: declinedGuestsCount },
                     { id: "allergies", label: "⚠️ Con Alergias", count: allergiesGuestsCount, highlight: "amber" },
                     { id: "messages", label: "💌 Con Mensajes", count: messagesGuestsCount, highlight: "primary" },
@@ -1898,19 +1907,21 @@ export function PanelClientView({
                               </button>
                             )}
 
-                            {/* Bottom Row: Copy Personalized Invitation Link */}
-                            <button
-                              onClick={() => handleCopyLink(guest.token)}
-                              className={`w-full py-2.5 rounded-full border text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs active:scale-[0.98] ${
-                                copiedToken === guest.token
-                                  ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
-                                  : "bg-background hover:bg-secondary text-foreground border-border"
-                              }`}
-                              title="Copiar enlace personalizado del invitado"
-                            >
-                              <Copy className="w-3.5 h-3.5" strokeWidth={1.5} />
-                              <span>{copiedToken === guest.token ? "¡Enlace Copiado al Portapapeles!" : "Copiar Enlace Personal"}</span>
-                            </button>
+                            {/* Bottom Row: Copy Personalized Invitation Link (if enabled for this event) */}
+                            {showPersonalizedLinks && (
+                              <button
+                                onClick={() => handleCopyLink(guest.token)}
+                                className={`w-full py-2.5 rounded-full border text-xs font-serif font-bold flex items-center justify-center gap-2 transition-all cursor-pointer shadow-xs active:scale-[0.98] ${
+                                  copiedToken === guest.token
+                                    ? "bg-emerald-600 text-white border-emerald-600 shadow-sm"
+                                    : "bg-background hover:bg-secondary text-foreground border-border"
+                                }`}
+                                title="Copiar enlace personalizado del invitado"
+                              >
+                                <Copy className="w-3.5 h-3.5" strokeWidth={1.5} />
+                                <span>{copiedToken === guest.token ? "¡Enlace Copiado al Portapapeles!" : "Copiar Enlace Personal"}</span>
+                              </button>
+                            )}
                           </div>
                         )
                       })
@@ -1926,7 +1937,9 @@ export function PanelClientView({
                           <th className="py-3.5 px-4 font-bold">Pases Asignados</th>
                           <th className="py-3.5 px-4 font-bold">Estatus RSVP</th>
                           <th className="py-3.5 px-4 font-bold">Notas / Respuestas</th>
-                          <th className="py-3.5 px-6 font-bold text-right">Enlace Personal</th>
+                          {showPersonalizedLinks && (
+                            <th className="py-3.5 px-6 font-bold text-right">Enlace Personal</th>
+                          )}
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-border">
@@ -2091,18 +2104,20 @@ export function PanelClientView({
                                   )}
                                 </td>
 
-                                <td className="py-4 px-6 text-right whitespace-nowrap">
-                                  <div className="flex items-center justify-end">
-                                    <button
-                                      onClick={() => handleCopyLink(guest.token)}
-                                      className="px-3.5 py-1.5 rounded-full border border-border bg-background hover:bg-secondary text-[11px] font-serif font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs hover:border-primary/40"
-                                      title="Copiar enlace personalizado"
-                                    >
-                                      <Copy className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
-                                      <span>{copiedToken === guest.token ? "¡Copiado!" : "Copiar Link"}</span>
-                                    </button>
-                                  </div>
-                                </td>
+                                {showPersonalizedLinks && (
+                                  <td className="py-4 px-6 text-right whitespace-nowrap">
+                                    <div className="flex items-center justify-end">
+                                      <button
+                                        onClick={() => handleCopyLink(guest.token)}
+                                        className="px-3.5 py-1.5 rounded-full border border-border bg-background hover:bg-secondary text-[11px] font-serif font-semibold flex items-center gap-1.5 transition-colors cursor-pointer shadow-xs hover:border-primary/40"
+                                        title="Copiar enlace personalizado"
+                                      >
+                                        <Copy className="w-3.5 h-3.5 text-primary" strokeWidth={1.5} />
+                                        <span>{copiedToken === guest.token ? "¡Copiado!" : "Copiar Link"}</span>
+                                      </button>
+                                    </div>
+                                  </td>
+                                )}
                               </tr>
                             )
                           })

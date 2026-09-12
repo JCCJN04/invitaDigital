@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { loginPanelAction } from "@/app/actions/panel-auth"
 import { Lock, Eye, EyeOff, Loader2, ArrowRight, ShieldCheck, Heart, Sparkles, User } from "lucide-react"
 import Link from "next/link"
+import { getEventInvitationPath } from "@/lib/utils"
 import type { Event } from "@/lib/supabase"
 
 interface PanelLoginGateProps {
@@ -61,7 +62,7 @@ export function PanelLoginGate({ event, slug, onSuccess }: PanelLoginGateProps) 
         </Link>
 
         <Link
-          href={`/${slug}`}
+          href={getEventInvitationPath(slug)}
           target="_blank"
           className="text-xs font-serif font-semibold text-primary hover:text-primary-hover transition-colors flex items-center gap-1 shrink-0"
         >

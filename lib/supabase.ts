@@ -26,6 +26,7 @@ export type Event = {
   has_whatsapp_addon: boolean
   whatsapp_tier?: "basico" | "premium" | "deluxe" | null
   has_seating_addon: boolean
+  has_personalized_links?: boolean | null
   created_at: string
 }
 
